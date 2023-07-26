@@ -1,0 +1,9 @@
+.nav-container {
+  display: flex;
+  height: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px red;
+}

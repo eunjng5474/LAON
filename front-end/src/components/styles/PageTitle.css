@@ -1,0 +1,6 @@
+.page-title-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  border: solid 1px yellow;
+}
