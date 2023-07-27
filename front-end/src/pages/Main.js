@@ -1,8 +1,8 @@
 import React from 'react'
-import PageTitle from '../components/PageTitle'
-import MainMatchInfo from '../components/MainMatchInfo'
-import Weather from '../components/Weather'
-import SeatInfo from '../components/SeatInfo'
+import PageTitle from '../templates/PageTitle'
+import MainMatchInfo from '../templates/MainMatchInfo'
+import Weather from '../templates/Weather'
+import SeatInfo from '../templates/SeatInfo'
 import './styles/Main.css'
 
 export default function Main() {

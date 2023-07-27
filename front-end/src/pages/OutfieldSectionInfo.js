@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles/OutfieldSectionInfo.css'
-import PageTitle from '../components/PageTitle'
-import SearchSeat from '../components/SearchSeat'
+import PageTitle from '../templates/PageTitle'
+import SearchSeat from '../templates/SearchSeat'
 
 export default function OutfieldSectionInfo() {
   return (
