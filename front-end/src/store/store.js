@@ -1,10 +1,14 @@
 import { createStore } from 'redux';
 
 const initState = {
-
+  currentGame: null,
+  matchStatus: null,
+  matchListUrl: null,
+  matchDataUrl: null,
 }
 
 function reducer(state=initState, action) {
+  
   return state;
 }
 
