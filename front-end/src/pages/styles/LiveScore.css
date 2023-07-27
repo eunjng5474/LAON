@@ -1,0 +1,6 @@
+.live-score-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: solid 1px orange;
+}
