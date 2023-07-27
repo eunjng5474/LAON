@@ -1,7 +1,7 @@
-import { createStore } from 'redux'
+import { createStore } from 'redux';
 
-const initState={
-  
+const initState = {
+
 }
 
 function reducer(state=initState, action) {
