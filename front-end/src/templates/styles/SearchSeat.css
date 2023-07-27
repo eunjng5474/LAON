@@ -1,8 +1,0 @@
-.search-seat-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  border: solid 1px purple;
-}
