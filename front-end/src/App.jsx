@@ -1,14 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 
-import Landing from './pages/Landing';
+import Landing from './pages/landing/Landing';
 
 import Infield from './pages/before_match/Infield';
 import Outfield from './pages/before_match/Outfield';
 import Seat from './pages/before_match/Seat';
 import Section from './pages/before_match/Section';
 import SectionDetail from './pages/before_match/SectionDetail';
-
+import StrikeZone from './templates/strike_zone/StrikeZone';
 import Match from './pages/during_match/Match';
 import Facilities from './pages/during_match/Facilities';
 
@@ -26,6 +26,7 @@ function App() {
           <Route path="/section/section_detail" element={ <SectionDetail/> } />
           <Route path="/match" element={ <Match/> } />
           <Route path="/facilities" element={ <Facilities/> } />
+          <Route path="/strike" element={ <StrikeZone/> } />
         </Routes>
       </Router>
     </div>
