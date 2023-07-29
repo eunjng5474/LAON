@@ -9,10 +9,7 @@
 .home-body {
   display: flex;
   width: 100%;
+  height: 31rem;
   justify-content: flex-end;
   align-items: center;
-}
-
-.park-home-img {
-  width: 70%;
 }

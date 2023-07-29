@@ -15,7 +15,7 @@ export default function Away() {
 
 
       <div className='away-body'>
-        <img className='park-away-img' src={park_away} alt="" />
+        <img className='park-away-img' src={park_away}/>
       </div>
 
 

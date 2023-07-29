@@ -1,7 +1,7 @@
 import React from 'react'
-import './styles/Home.css'
-import park_home from './img/LP_home.png'
 import ToLive from '../../components/ToLive'
+import park_home from './img/LP_home.png'
+import './styles/Home.css'
 
 export default function Home() {
   return (
