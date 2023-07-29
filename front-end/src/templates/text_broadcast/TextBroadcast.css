@@ -1,0 +1,4 @@
+/* 모든 캔버스의 border 지움 */
+canvas {
+  border: 0px;
+}

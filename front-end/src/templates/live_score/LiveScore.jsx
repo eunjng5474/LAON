@@ -14,7 +14,7 @@ export default function LiveScore() {
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 0.06;  // 임시 높이
+    canvas.height = window.innerHeight * 0.07;  // 임시 높이
 
     // 로고 위치
     function drawLogo() {
@@ -67,7 +67,7 @@ export default function LiveScore() {
       ctx.stroke();    
     }
 
-    function drawInning() {
+    function drawInningBase() {
       const ctx = canvas.getContext('2d');
 
       ctx.beginPath();
@@ -77,9 +77,24 @@ export default function LiveScore() {
       ctx.stroke();
     }
 
+    function drawInning() {
+      const ctx = canvas.getContext('2d');
+      ctx.beginPath();
+      ctx.font = 15 + 'px ' + 'Arial';
+      ctx.fillStyle = 'black';
+      if(nowInning[0] === 'T'){
+        ctx.fillText(nowInning[2]+"회말", 157, 19);
+      } else {
+        ctx.fillText(nowInning[2]+"회초", 157, 19);
+      }
+
+      ctx.stroke();    
+    }
+
     drawLogo()
     drawNowAttack()
     drawScore()
+    drawInningBase()
     drawInning()
 
     setCtx(contextRef.current)
