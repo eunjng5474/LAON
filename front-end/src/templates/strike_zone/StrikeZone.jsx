@@ -15,7 +15,7 @@ function StrikeZone() {
     function drawBall() {
       const context = canvas.getContext("2d");
       context.beginPath();
-      context.arc(100, 100, 20, 0, Math.PI * 2);
+      context.arc(100, 100, 100, 0, Math.PI);
       context.fillStyle = 'green';
       context.fill();
       context.closePath();
