@@ -11,6 +11,7 @@ import SectionDetail from './pages/before_match/SectionDetail';
 import StrikeZone from './templates/strike_zone/StrikeZone';
 import Match from './pages/during_match/Match';
 import Facilities from './pages/during_match/Facilities';
+import LiveField from './templates/live_field/LiveField';
 
 function App() {
 

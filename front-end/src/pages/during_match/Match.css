@@ -1,0 +1,41 @@
+.match-container {
+  height: 100rem;
+  background-color: #002F54;
+}
+
+.match-headline {
+  display: flex;
+  justify-content: space-evenly; 
+}
+
+.match-headline > h1 {
+  color: white;
+}
+
+.match-live-score {
+  /* height: 3rem; */
+  display: flex;
+}
+
+.match-team-logo {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.match-ballcount {
+  height: 12rem;
+}
+
+.match-text {
+  height: 4rem;
+}
+
+.match-to-seat {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50%;
+  margin-top: 20px;
+}

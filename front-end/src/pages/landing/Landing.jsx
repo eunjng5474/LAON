@@ -35,11 +35,14 @@ function getData(Time) {
   .then((res) => {
     for (let i = 0; i < res.data.schedule[20230727].length; i++) {
       if (res.data.schedule[20230727][i].fieldName === '대구 삼성 라이온즈 파크') {
+        console.log(res.data.schedule[20230727][i])
       }
     }
   })
 }
 function Landing() {
+  getData()
+
     return (
       <div className='landing-container'>
         <h1>LANDING</h1>
