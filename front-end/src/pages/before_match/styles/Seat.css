@@ -1,22 +1,37 @@
-.to-live-button {
-  width: 5rem;
-  height: 5rem;
-  border: none;
-  border-radius: 100%;
-}
-
 .seat-container {
-  padding: 20px;
+  padding: 1rem;
 }
 
-.seat-img-container {
+.seat-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 2rem;
 }
 
 .seat-home-away {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: space-around;
+  margin-bottom: 3rem;
+}
+
+.seat-home-away h1 {
+  margin-bottom: 0px;
+}
+
+.seat-home-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat-away-logo {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
 }
 
 .seat-img {
