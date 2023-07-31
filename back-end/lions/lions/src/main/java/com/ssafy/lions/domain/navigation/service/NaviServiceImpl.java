@@ -30,6 +30,8 @@ public class NaviServiceImpl implements NaviService{
     @Autowired
     EntranceRepository entranceRepository;
 
+    private static final int SUCCESS = 1;
+    private static final int FAIL = -1;
     ArrayList<Integer>[] graph = new ArrayList[522];
     char[] type = new char[522];
     /*
@@ -47,12 +49,18 @@ public class NaviServiceImpl implements NaviService{
 
         // 그래프 그리기
         makeGraph();
+
+        // BFS를 통해 최적경로 찾기
         List<PointDto> result = bfs(gateIdCloseWithBlock, gateIdCloseWithFacility);
-        pointResultDto.setPointDtoList(result);
-        pointResultDto.setPathCnt(result.size());
-        for(PointDto p : pointResultDto.getPointDtoList()){
-            System.out.println(p);
+
+        if(result == null){
+            pointResultDto.setResult(FAIL);
+        }else{
+            pointResultDto.setPointDtoList(result);
+            pointResultDto.setPathCnt(result.size());
+            pointResultDto.setResult(SUCCESS);
         }
+        // 최적경로 리스트를 PointResultDto에 담기
         System.out.println(pointResultDto.getPathCnt());
         return pointResultDto;
     }

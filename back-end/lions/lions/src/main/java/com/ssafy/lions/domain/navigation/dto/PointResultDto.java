@@ -8,4 +8,5 @@ import java.util.List;
 public class PointResultDto {
     List<PointDto> pointDtoList;
     int pathCnt;
+    int result;
 }
