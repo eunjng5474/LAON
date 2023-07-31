@@ -7,5 +7,5 @@ import java.util.List;
 @Data
 public class PointResultDto {
     List<PointDto> pointDtoList;
-    int result;
+    int pathCnt;
 }

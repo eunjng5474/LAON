@@ -5,10 +5,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "gate")
-public class Gate {
+@Table(name = "stair")
+public class Stair {
     @Id
-    private Long gateId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long stairId;
 
     @Column(name = "floor")
     private int floor;
@@ -16,6 +17,7 @@ public class Gate {
     @Column(name = "label")
     private int label;
 
-    @Column(name = "gate_num")
-    private String gateNum;
+    @Column(name = "stair_name")
+    private String stairName;
+
 }

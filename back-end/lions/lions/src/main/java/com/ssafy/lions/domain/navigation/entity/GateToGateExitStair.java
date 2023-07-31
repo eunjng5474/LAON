@@ -12,17 +12,15 @@ public class GateToGateExitStair {
     private Long connectId;
 
     @Column(name = "gate_id")
-    private int gateId;
+    private Integer gateId;
 
     @Column(name = "connected_gate_id")
-    private int connectedGateId;
+    private Integer connectedGateId;
 
     @Column(name = "connected_exit_id")
-    private int connectedExitId;
+    private Integer connectedExitId;
 
     @Column(name = "connected_stair_id")
-    private int connectedStairId;
-
-
+    private Integer connectedStairId;
 
 }
