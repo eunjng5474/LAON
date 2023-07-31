@@ -1,7 +1,7 @@
 package com.ssafy.lions.domain.navigation.controller;
 
 import com.ssafy.lions.domain.navigation.dto.PointResultDto;
-import com.ssafy.lions.domain.navigation.service.NaviService;
+import com.ssafy.lions.domain.navigation.service.NaviServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/lions/route")
 public class NaviController {
     @Autowired
-    NaviService naviService;
+    NaviServiceImpl naviService;
     /*
         출발지 : 좌석
         도착지 : 편의시설
