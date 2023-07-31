@@ -5,7 +5,9 @@ import com.ssafy.lions.domain.eyesight.dto.SightResultDto;
 import com.ssafy.lions.domain.eyesight.repository.AreaRepository;
 import com.ssafy.lions.domain.navigation.repository.BlockToGateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class EyesightServiceImpl implements EyesightService{
 
     @Autowired
