@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface AreaRepository extends JpaRepository<Area, Long> {
     @Query("SELECT a.areaId FROM Area a WHERE a.areaNum = :areaNum and a.blockId = :blockId")
     Integer findAreaNumByAreaNumAndBlockId(String blockId, int areaNum);
+
+    @Query("SELECT count(a.areaId) FROM Area a WHERE a.areaNum = :areaNum and a.blockId = :blockId")
+    Integer findByBlockIdandAreaNum(String blockId, int areaNum);
 }

@@ -21,12 +21,30 @@ public class EyesightController {
 
     private static final int FAIL = -1;
 
-    @GetMapping("/{block_id}&{area_num}")
+    @GetMapping("/{block_id}/{area_num}")
     public ResponseEntity<SightResultDto> Eyesight(@PathVariable(name = "block_id") String blockId, @PathVariable(name = "area_num") int areaNum) {
+
+        int count = service.isSight(blockId, areaNum);
+        System.out.println("isSight = " + count);
+
+        if (count != 1) {
+            System.out.println("not found");
+            return ResponseEntity.notFound().build();
+        }
+
         System.out.println("block_id = " + blockId + " area_num = " + areaNum);
 
         SightResultDto sightResultDto;
         sightResultDto = service.eyesight(blockId, areaNum);
+
+        if (sightResultDto != null) {
+            System.out.println(sightResultDto);
+            sightResultDto.setResult(SUCCESS);
+            sightResultDto.setCount(count);
+        }else{
+            System.out.println("sightResultDto is null");
+            sightResultDto.setResult(FAIL);
+        }
 
         if (sightResultDto.getResult() == SUCCESS) {
             return ResponseEntity.ok().body(sightResultDto);

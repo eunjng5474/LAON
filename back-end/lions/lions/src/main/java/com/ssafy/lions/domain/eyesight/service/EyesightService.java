@@ -7,4 +7,6 @@ import org.springframework.stereotype.Service;
 
 public interface EyesightService {
     public SightResultDto eyesight(String blockId, int areaNum);
+
+    public int isSight(String blockId, int areaNum);
 }
