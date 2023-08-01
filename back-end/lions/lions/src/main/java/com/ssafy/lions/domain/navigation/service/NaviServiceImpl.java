@@ -97,9 +97,21 @@ public class NaviServiceImpl implements NaviService{
 
             for(Integer next : graph[cur.curPoint]){
                 if(!visit[next]){
-                    // 도착층이랑 같은 층에 있는데 계단이면 무시한다.
-                    if(type[next] == 'S' && (end / 100) == (cur.curPoint / 100)){
-                        continue;
+                    int destinationFloor = end / 100;
+                    int currentFloor = cur.curPoint / 100;
+                    // 현재층 == 도착층
+                    if(destinationFloor == currentFloor){
+                        // 도착층이랑 같은 층에 있는데 계단이면 무시한다.
+                        if(type[next] == 'S') continue;
+                    }
+                    // 현재층 > 도착층
+                    else if(currentFloor > destinationFloor){
+                        // 도착층 보다 높은 곳으로 간다면 무시한다.
+                        if(next / 100 > currentFloor) continue;
+                    }
+                    // 현재층 < 도착층
+                    else if(currentFloor < destinationFloor){
+                        if(next / 100 < currentFloor) continue;
                     }
                     visit[next] = true;
                     Point nextPoint = new Point();
@@ -108,15 +120,15 @@ public class NaviServiceImpl implements NaviService{
                     nextPoint.route = new ArrayList<>(cur.route);
                     if(type[next] == 'G'){
                         String pointName = gateRepository.findGateNameByGateId(next);
-                        System.out.println(pointName);
+                        //System.out.println(pointName);
                         nextPoint.route.add(new PointDto(next, pointName ,type[next]));
                     }else if(type[next] == 'S'){
                         String pointName = stairRepository.findStairNameByStairId(next);
-                        System.out.println(pointName);
+                        //System.out.println(pointName);
                         nextPoint.route.add(new PointDto(next, pointName ,type[next]));
                     }else if(type[next] == 'E'){
                         String pointName = entranceRepository.findEntranceNameByEntranceId(next);
-                        System.out.println(pointName);
+                        //System.out.println(pointName);
                         nextPoint.route.add(new PointDto(next, pointName ,type[next]));
                     }
                     q.offer(nextPoint);

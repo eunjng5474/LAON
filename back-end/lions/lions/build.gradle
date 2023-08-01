@@ -3,7 +3,10 @@ plugins {
 	id 'org.springframework.boot' version '3.1.2'
 	id 'io.spring.dependency-management' version '1.1.2'
 }
-
+// jar가 두개 생기는데 하나로 만들기 위해 -> 두개 있으면 오류생김
+jar {
+	enabled = false
+}
 group = 'com.ssafy'
 version = '0.0.1-SNAPSHOT'
 
@@ -31,6 +34,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.2'
+
 }
 
 tasks.named('test') {
