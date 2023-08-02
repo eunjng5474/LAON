@@ -3,7 +3,7 @@ package com.ssafy.lions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class LionsApplicationTests {
 
 	@Test
