@@ -1,60 +1,85 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
+import './LiveField.css'
+import { useSelector } from 'react-redux';
 
 export default function LiveField() {
-  const canvasRef = useRef(null);
-  const contextRef = useRef(null);
-
-  // prop할 때 1-3루 모두 null or string으로 넘겨주거나
-  // prop에 base3있을 때만 바꿔주거나?
-  // 출루 선수 정보도 숫자면 json에서 이름 찾아야 함
+  const imageCanvasRef = useRef(null);
+  const baseCanvasRef = useRef(null);
+  const playerCanvasRef = useRef(null);
   
-  // // 리스트로 받으면 편할 듯
-  // const nowBase1 = null;
-  // const nowBase2 = null;
-  // // const nowBase3 = "51463";
-  // const nowBase3 = "피렐라";
-  const nowBase = [null, null, "피렐라"];  
+  let nowBase1 = null;
+  let nowBase2 = null;
+  let nowBase3 = null;
+
+  const newHomeNowBase1 = useSelector((state) => state.newHomeNowBase1);
+  const newHomeNowBase2 = useSelector((state) => state.newHomeNowBase2);
+  const newHomeNowBase3 = useSelector((state) => state.newHomeNowBase3);
+
+  const newAwayNowBase1 = useSelector((state) => state.newAwayNowBase1);
+  const newAwayNowBase2 = useSelector((state) => state.newAwayNowBase2);
+  const newAwayNowBase3 = useSelector((state) => state.newAwayNowBase3);
+
+  const inning = useSelector((state) => state.inning)
+
+  if (inning[0] === "B"){
+    nowBase1 = newHomeNowBase1;
+    nowBase2 = newHomeNowBase2;
+    nowBase3 = newHomeNowBase3;
+  } else if (inning[0] === "T"){
+    nowBase1 = newAwayNowBase1;
+    nowBase2 = newAwayNowBase2;
+    nowBase3 = newAwayNowBase3;
+  } else {
+    nowBase1 = null
+    nowBase2 = null
+    nowBase3 = null
+  }
+
+  const nowBase = [nowBase1, nowBase2, nowBase3];  
 
   useEffect(() => {
     
     function drawField() {
-      if (!canvasRef) return;
-      canvasRef.current.width = window.innerWidth;
-      canvasRef.current.height = window.innerHeight * 0.5;
+      if (!imageCanvasRef) return;
+      const imageCanvas = imageCanvasRef.current;
+      const baseCanvas = baseCanvasRef.current;
+      const playerCanvas = playerCanvasRef.current;
 
-      const ctx = canvasRef.current.getContext("2d");
+      imageCanvas.width = 360;
+      imageCanvas.height = 350;
+
+      baseCanvas.width = 360;
+      baseCanvas.height = 360;
+      
+      playerCanvas.width = 360;
+      playerCanvas.height = 360;
+
+      const ctx = imageCanvas.getContext("2d");
       const image = new Image();
-      image.src = 'liveField.png'
+      image.src = 'liveField.png';
 
-      image.onload = function(){
-        ctx.drawImage(image, 0, 0);
+      image.onload = function() {
+        ctx.drawImage(image, 0, 0, 360, 350);
         for(let i=0; i<3; i++) {
-          const baseCtx = canvasRef.current.getContext("2d");
+          const baseCtx = baseCanvas.getContext("2d");
+          const playerCtx = playerCanvas.getContext("2d");
+          baseCtx.globalAlpha = 0.7;  // 투명도
           
           baseCtx.beginPath();
-          let x = 240 - (i * 95);
-          let y = 200 - (i%2 * 65)
-          baseCtx.rect(x, y, 70, 40);
+          playerCtx.beginPath();
+          let x = 225 - (i * 61);
+          let y = 226 - (i%2 * 60)
+          baseCtx.arc(x, y, 17, 0, Math.PI * 2);
           baseCtx.fillStyle = 'white';
           
           if(nowBase[i]) {
             baseCtx.fillStyle = 'blue';
+            playerCtx.font = 24 + 'px ' + 'Arial';
+            playerCtx.fillStyle = 'white';
+            playerCtx.fillText(nowBase[i], x-7, y+8);
           }
           baseCtx.fill();
           baseCtx.closePath();
-        }
-        
-        for(let j=0; j<3; j++) {
-          const playerCtx = canvasRef.current.getContext("2d");
-          playerCtx.beginPath();
-          let x = 240 - (j * 95);
-          let y = 200 - (j%2 * 65)
-          if(nowBase[j]) {
-            playerCtx.font = 20 + 'px ' + 'Arial';
-            playerCtx.fillStyle = 'white';
-            playerCtx.fillText(nowBase[j], x+5, y+25);
-            // 선수 글자 수에 따라 위치 바꿔야 함 -> 색 바꾸면서 생각해보기
-          }
           playerCtx.closePath();
         }
       }
@@ -65,7 +90,9 @@ export default function LiveField() {
 
   return (
     <div className='match-field'>
-      <canvas ref={canvasRef}></canvas>
+      <canvas className='live-field-canvas' ref={imageCanvasRef}></canvas>
+      <canvas className='live-field-canvas' ref={baseCanvasRef}></canvas>
+      <canvas className='live-field-canvas' ref={playerCanvasRef}></canvas>
     </div>
   )
 }

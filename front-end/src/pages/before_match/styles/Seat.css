@@ -1,5 +1,8 @@
 .seat-container {
-  padding: 1rem;
+}
+
+.seat-header {
+  margin: 0rem 1rem 1rem 1rem;
 }
 
 .seat-body {
@@ -7,41 +10,60 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0px;
 }
 
 .seat-home-away {
   display: flex;
   width: 100%;
+  height: 544px;
   justify-content: space-around;
-  margin-bottom: 3rem;
 }
 
 .seat-home-away h1 {
-  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+
+.seat-emblem {
+  width: 6rem;
 }
 
 .seat-home-logo {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+  width: 100%;
+  height: 544px;
+  /* border: solid 1px blue; */
 }
 
 .seat-away-logo {
   display: flex;
   flex-direction: column;
-
+  justify-content: flex-end;
   align-items: center;
+  width: 100%;
+  height: 544px;
+  /* border: solid 1px blue; */
 }
 
 .seat-img {
   width: 100%;
+  top: 11rem;
+  z-index: -1;
+  position: absolute;
 }
 
 .seat-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.seat-header p {
+  color: black;
 }
 
 .seat-scroll-bar {
@@ -56,5 +78,43 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 5rem
+  height: 4rem
+}
+
+.seat-search-bar input {
+  border: none;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.seat-search-bar input::placeholder {
+  font-size: 18px;
+  text-align: center;
+}
+
+.click-canvas {
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.home-body {
+  height: 500px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.away-body {
+  height: 500px;
+  display: flex;
+  align-items: center;
+}
+
+.park-home-img {
+  height: 100%
+}
+
+.park-away-img {
+  height: 100%
 }
