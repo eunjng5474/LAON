@@ -35,12 +35,10 @@ export default function Seat() {
   function selectSection(event) {
   console.log(event.target.title)
   // 좌표 수정하기
-    if(event.target.className === 'park-home-img') {
-      setSelectSeat("3_4_1");
-      setShowSeatName(event.target.title);
-      setSeatWeekdayPrice("13,000");
-      setSeatWeekendPrice("15,000");
-    }
+  setSelectSeat("3_4_1");
+  setShowSeatName(event.target.title);
+  setSeatWeekdayPrice("13,000");
+  setSeatWeekendPrice("15,000");
   }
 
   useEffect(() => {
