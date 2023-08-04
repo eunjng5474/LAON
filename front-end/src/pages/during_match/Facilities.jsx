@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import StoreDetail from './StoreDetail'
 import NavBar from '../../templates/NavBar'
 import EntireSectionMapImg from './img/sectionMap.png';
@@ -12,12 +12,20 @@ import './styles/Facilities.css';
 
 
 export default function Facilities() {
+  const naviCanvasRef = useRef(null);
 
   const [onModal, setOnModal] = useState(false);
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [currentPosition, setCurrentPosition] = useState('');
   const [floorImg, setFloorImg] = useState('');
+
+  const vertices = [
+    {x: 20, y: 150},
+    {x: 20, y: 260},
+    {x: 140, y: 360},
+    {x: 210, y: 360}
+    ];
 
   // const [state, setState] = useState('');
   const handleState = (data) => {
@@ -58,16 +66,60 @@ export default function Facilities() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
 
-    const floor = 1;
-    if (floor === 2){
-      setFloorImg(sectionMapImg2F);
-    } else if (floor === 3) {
-      setFloorImg(sectionMapImg3F);
-    } else if (floor === 5) {
-      setFloorImg(sectionMapImg5F);
-    } else {
-      setFloorImg(EntireSectionMapImg);
+    const naviCanvas = naviCanvasRef.current;
+    naviCanvas.width = 360;
+    naviCanvas.height = 400;
+    const ctx = naviCanvas.getContext("2d")
+
+    function calcWaypoints(vertices){
+      var waypoints=[];
+      for(var i=1;i<vertices.length;i++){
+          // if (vertices[i]["type"] === "S"){
+          //   setFloorImg(sectionMapImg3F);
+          // }
+
+          var pt0=vertices[i-1];
+          var pt1=vertices[i];
+          var dx=pt1["x"]-pt0["x"];
+          var dy=pt1["y"]-pt0["y"];
+          for(var j=0;j<100;j++){
+              var x=pt0.x+dx*j/100;
+              var y=pt0.y+dy*j/100;
+              waypoints.push({x:x,y:y});
+          }
+      }
+      return(waypoints);
     }
+
+    var points=calcWaypoints(vertices);
+
+    var t=1;
+
+    animate();
+
+
+    function animate(){
+        if(t<points.length-1){ requestAnimationFrame(animate); }
+        ctx.beginPath();
+        ctx.moveTo(points[t-1].x,points[t-1].y);
+        ctx.lineTo(points[t].x,points[t].y);
+        ctx.lineWidth = '12';
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = 'blue';
+        ctx.stroke();
+        t++;
+    }
+
+    // const floor = 1;
+    // if (floor === 2){
+    //   setFloorImg(sectionMapImg2F);
+    // } else if (floor === 3) {
+    //   setFloorImg(sectionMapImg3F);
+    // } else if (floor === 5) {
+    //   setFloorImg(sectionMapImg5F);
+    // } else {
+    //   setFloorImg(EntireSectionMapImg);
+    // }
 
   },[])
 
@@ -79,7 +131,8 @@ export default function Facilities() {
       </div>
       
       <div className='facilities-body'>
-        <img className='facilities-img' src={floorImg} alt=''/>
+        <img className='facilities-img' src={sectionMapImg3F} alt=''/>
+        <canvas className='points-canvas' ref={naviCanvasRef}></canvas>
         
         <div className='facilities-select'>
           <div className='facilities-search-bar'>

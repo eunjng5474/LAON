@@ -200,3 +200,9 @@ a {
   border: none;
 }
 
+.points-canvas {
+  position: absolute;
+  top:0;
+  left:0;
+  margin-top: 10rem;
+}
