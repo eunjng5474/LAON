@@ -170,6 +170,9 @@ function getData() {
                 }
                 store.dispatch(setBase3(base3))
                 })
+                .catch(err => {
+                  console.log(err)
+                })
                 break loop;
               }
             }
