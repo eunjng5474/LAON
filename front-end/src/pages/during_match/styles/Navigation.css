@@ -1,0 +1,35 @@
+.navigation-container {
+  padding: 1rem;
+}
+
+.points-img {
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.map-img {
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+}
+
+
+.navigation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4rem;
+}
+
+.navigation-body {
+  position: relative;
+}
+
+.points-canvas {
+  position: absolute;
+  top:0;
+  left:0;
+}
+

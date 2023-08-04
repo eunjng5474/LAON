@@ -1,0 +1,7 @@
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.font {
+  font-family: "Pretendard";
+}
