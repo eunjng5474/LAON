@@ -50,30 +50,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 6.78rem;
-  margin-bottom: 3.2rem;
+  height: 100%;
 }
 
 .liveText h2{
   color: #ffffff;
-  width: 18rem;
+  width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-
   font-size: large;
+}
+
+.match-live-info {
+  display: flex;
+  position: absolute;
+  top: 40vh;
+  height: 21.5vh;
 }
 
 .bso-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  background-color: #0b88e7;
+  background-color: #0b88e784;
   width: 11.8rem;
   height: 10rem;
-  top: 23rem;
-  left: 5.2rem;
 }
 
 .bso-text-container {
@@ -139,9 +141,19 @@
   margin: 0rem 0.3rem;
 }
 
+.strike-zone-container {
+  width: 37vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0b88e784;
+}
+
 .match-field {
   display: flex;
   flex-direction: column;
+  height: 57.3vh;
   align-items: center;
   justify-content: flex-end;
 }
@@ -196,7 +208,7 @@
 }
 
 .match-field-img {
-  width: 100%
+  width: 100%;
 }
 
 .match-header > h1 {

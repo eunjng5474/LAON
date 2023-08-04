@@ -2,7 +2,7 @@ const initialState = {
     gameId: null,
     gameStatus : null,
     inning : null,
-    liveText : null,
+    liveText : '경기 종료',
     awayScore : null,
     homeScore : null,
     ballCount : null,

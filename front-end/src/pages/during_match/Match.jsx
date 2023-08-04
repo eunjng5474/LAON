@@ -110,39 +110,46 @@ export default function Match() {
           </div>
         </div>
 
-        <div className='match-ball-count'>
-
-          <div className='bso-container'>
-            
-            <div className='bso-text-container'>
-              <span>B</span>
-              <span>S</span>
-              <span>O</span>
-            </div>
-
-            <div className='bso-circle-container'>
-
-              <div  className='ball-circle-container'>
-                {divCount(ballCount)}
-              </div>
-
-              <div className='strike-circle-container'>
-                {divCount(strikeCount)}
-              </div>
-
-              <div className='out-circle-container'>
-                {divCount(outCount)}
-              </div>
-
-            </div>
-          </div>
           
-          <div className='liveText'>
-            <h2>{liveText}</h2>
-          </div>
-
+        <div className='liveText'>
+          <h2>{liveText}</h2>
         </div>
 
+        <div className='match-live-info'>
+          <div className='match-ball-count'>
+
+            <div className='bso-container'>
+              
+              <div className='bso-text-container'>
+                <span>B</span>
+                <span>S</span>
+                <span>O</span>
+              </div>
+
+              <div className='bso-circle-container'>
+
+                <div  className='ball-circle-container'>
+                  {divCount(ballCount)}
+                </div>
+
+                <div className='strike-circle-container'>
+                  {divCount(strikeCount)}
+                </div>
+
+                <div className='out-circle-container'>
+                  {divCount(outCount)}
+                </div>
+
+              </div>
+
+              
+            </div>
+
+          </div>
+          <div className='strike-zone-container'>
+            <span>스트라이크 존</span>
+          </div>
+        </div>
 
         <div className='match-field'>
           <div className={base1 ? 'base1t' : 'base1'}>

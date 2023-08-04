@@ -45,6 +45,7 @@
 .facilities-select:focus-within {
   height: 80%;
   transition: 0.3s;
+
   .facilities-item-container {
     display: flex;
   }
@@ -131,8 +132,9 @@ a {
 .facilities-item:focus-within {
   transition: 0.3s;
   height: 24rem;
+
   .store-menu-img {
-    opacity: 100;
+    display: block;
   }
 }
 
@@ -158,12 +160,6 @@ a {
   transition: 0.4s;
   display: none;
 } */
-
-.store-menu-img {
-  transition: 0.3s;
-  width: 21rem;
-  opacity: 0;
-}
 
 .store-img-container {
   display: flex;
@@ -205,4 +201,10 @@ a {
   top:0;
   left:0;
   margin-top: 10rem;
+}
+
+.store-menu-img {
+  display: none;
+  transition: 0.3s;
+  width: 21rem;
 }

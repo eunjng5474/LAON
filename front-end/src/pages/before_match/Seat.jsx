@@ -41,8 +41,12 @@ export default function Seat() {
   setSeatWeekendPrice("15,000");
   }
 
+  function showAR() {
+    window.location.href = '/ar/ar.html'
+  }
+
   useEffect(() => {
-    ImageMap('img[usemap]')
+    ImageMap('img[useMap]')
   }, [])
 
   return (
@@ -55,7 +59,7 @@ export default function Seat() {
           <SwiperSlide>
             <div className='home-body'>
               
-              <div>하하</div>
+              <button className='ar-on' onClick={showAR}>AR</button>
               <img className='park-home-img' src={park_home} usemap="#home-map"/>
 
               <map name="home-map">
@@ -111,7 +115,7 @@ export default function Seat() {
                 <area target="" onClick={selectSection} alt="외야 패밀리석" title="외야 패밀리석" coords="107,81,170,145,184,130,121,65" shape="poly"/>
             </map>
 
-            <div>하하</div>
+            <button className='ar-on' onClick={showAR}>AR</button>
 
             </div>
           </SwiperSlide>
