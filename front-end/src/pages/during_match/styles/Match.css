@@ -148,6 +148,7 @@
   justify-content: center;
   align-items: center;
   background-color: #0b88e784;
+  position: relative;
 }
 
 .match-field {
@@ -251,4 +252,16 @@
 
 .match-link{
   color : white
+}
+
+.strikezone-canvas {
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.strikezone-text-canvas {
+  position: absolute;
+  top:0;
+  left:0;
 }
