@@ -1,28 +1,15 @@
-.preventTouch {
-  touch-action: none;
-}
-
-.section-detail-map {
-  z-index: -1;
-}
-
-.react-transform-wrapper {
+.map-controller {
   position: absolute;
-  background-color: white;
-  padding: 5%;
-  width: 90vw;
-  height: 24vh;
-  bottom: 0rem;
-  border-radius: 3rem 3rem 0rem 0rem;
-}
-
-.section-detail-field-img {
-  z-index: 100;
   width: 100vw;
-  height: 100vh;
-  object-fit: cover;
+  height: 30vh;
+  bottom: 0;
+  border-radius: 48px;
+  background-color: #ffffff;
+  overflow: hidden;
 }
 
-area {
-  z-index: 100;
+.map-controller img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

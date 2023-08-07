@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './styles/TabBar.css'
 import store from '../store/store';
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import gps from './icons/gps_icon.png'
+import seat from './icons/stadium.png'
+import live from './icons/base_ball.png'
+import './styles/TabBar.css'
 
 export default function TabBar() {
   const navigate = useNavigate();
@@ -20,18 +22,18 @@ export default function TabBar() {
   }
 
   function navigatePage(e) {
-    console.log(e.target.innerText)
-    if (e.target.innerText === '좌석') {
+    console.log(e.target.alt)
+    if (e.target.alt === '좌석') {
       navigate('/seat')
       const currentPage = '좌석'
       store.dispatch(setCurrentPage(currentPage))
     }
-    else if (e.target.innerText === '내비') {
+    else if (e.target.alt === '내비') {
       navigate('/facilities')
       const currentPage = '내비'
       store.dispatch(setCurrentPage(currentPage))
     } 
-    else if (e.target.innerText === '경기') {
+    else if (e.target.alt === '경기') {
       navigate('/match')
       const currentPage = '경기'
       store.dispatch(setCurrentPage(currentPage))
@@ -70,15 +72,9 @@ export default function TabBar() {
 
   return (
     <div className={`tab-bar-container ${dark ? "dark" : ""} ${hide ? "hide" : ""} font`}>
-      <span className={`${naviSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage}>
-        내비
-      </span>
-      <span className={`${seatSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage}>
-        좌석
-      </span>
-      <span className={`${matchSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage}>
-        경기
-      </span>
+      <img className={`tab-bar-icon ${naviSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={gps} alt="내비" />
+      <img className={`tab-bar-icon ${seatSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={seat} alt="좌석" />
+      <img className={`tab-bar-icon ${matchSelected ? "tab-bar-selected" : ""}`} src={live} onClick={navigatePage} alt="경기" />
     </div>
   )
 }
