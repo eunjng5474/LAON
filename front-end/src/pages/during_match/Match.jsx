@@ -157,16 +157,6 @@ export default function Match() {
   return (
     <div className='match-container font'>
 
-      <div className='match-header'>
-        {/* <Link to="/facilities">
-          <h3 className='match-link'>시설 안내</h3>
-        </Link>
-        <h1>스코어 보드</h1>
-        <Link to="/seat">
-          <h3 className='match-link'>좌석 안내</h3>
-        </Link> */}
-      </div>
-
       <div className='match-body'>
 
         <div className='match-score-board'>
