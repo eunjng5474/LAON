@@ -17,7 +17,6 @@ public class FacilityServiceImpl implements FacilityService{
     FacilityRepository facilityRepository;
     @Autowired
     ItemRepository itemRepository;
-
     private static final int SUCCESS = 1;
     private static final int FAIL = -1;
 
