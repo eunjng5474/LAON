@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import './styles/TabBar.css'
 import store from '../store/store';
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import './styles/TabBar.css'
 
 export default function TabBar() {
   const navigate = useNavigate();

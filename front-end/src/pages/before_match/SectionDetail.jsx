@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router'
 import img_3_4_1 from './img/3_4_1.jpeg'
+import arrow from './img/arrow.png'
 import SeatMap from "../../components/SeatMap";
 
 import './styles/SectionDetail.css';
@@ -21,7 +22,7 @@ export default function SectionDetail() {
   return (
     <div className='section-detail-container'>
       <div className='section-detail-header' onClick={toSeat}>
-        <h2 className='font'>back</h2>
+        <img className='go-back-arrow' src={arrow} alt="" />
       </div>
 
       <div>

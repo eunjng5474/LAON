@@ -112,7 +112,7 @@
 }
 
 .ball-circle-container .bso-circle {
-  background-color: rgb(0, 255, 81);
+  background-color: #7DB249;
 }
 
 .strike-circle-container {
@@ -124,7 +124,7 @@
 }
 
 .strike-circle-container .bso-circle {
-  background-color: rgb(255, 225, 0);
+  background-color: #FFCD4A;
 }
 
 .out-circle-container {
@@ -136,7 +136,7 @@
 }
 
 .out-circle-container .bso-circle {
-  background-color: rgb(255, 0, 0);
+  background-color: #FF0000;
 }
 
 .bso-circle {
