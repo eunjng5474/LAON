@@ -21,16 +21,14 @@ export default function StoreDetail({ handleState }) {
   return (
     <div className='store-detail-container font'>
       <button className='facilities-item'>
-        <button className='store-detail-header'>
-          <div className='store-desc'>
-            <span className='store-title'>땅땅땅땅땅치킨</span>
-          </div>
-          <div className='store-detail-button'>
-            <button className='set-destination-button' onClick={selectDestination}>
-              도착
-            </button>
-          </div>
-        </button>
+        <div className='store-desc'>
+          <span className='store-title'>땅땅땅땅땅치킨</span>
+        </div>
+        <div className='store-detail-button'>
+          <button className='set-destination-button' onClick={selectDestination}>
+            도착
+          </button>
+        </div>
         <div className='store-detail-body'>
           <img className="store-menu-img" src={ttangttangmenu} alt="" />
         </div>

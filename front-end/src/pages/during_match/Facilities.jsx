@@ -1,23 +1,37 @@
 import React, { useEffect, useState, useRef } from 'react'
 import StoreDetail from './StoreDetail'
 import EntireSectionMapImg from './img/sectionMap.png';
-import sectionMapImg2F from './img/sectionMap_2F.png';
-import sectionMapImg3F from './img/sectionMap_3F.png';
-import sectionMapImg5F from './img/sectionMap_5F.png';
-import { Link } from 'react-router-dom';
+import map2F from './img/sectionMap_2F.png';
+import map3F from './img/sectionMap_3F.png';
+import map5F from './img/sectionMap_5F.png';
 import store from '../../store/store'
+import axios from 'axios';
 import { useGeolocated } from "react-geolocated";
 import './styles/Facilities.css';
 
 
 export default function Facilities() {
   const naviCanvasRef = useRef(null);
-
-  const [onModal, setOnModal] = useState(false);
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [currentPosition, setCurrentPosition] = useState('');
-  const [floorImg, setFloorImg] = useState('');
+  const [floor, setFloor] = useState(map3F)
+  const storeList = []
+  const facilities = []
+
+
+  function selectFloor(e) {
+    console.log(e)
+    if (e.target.innerText === '2F') {
+      setFloor(map2F)
+    }
+    else if (e.target.innerText === '3F') {
+      setFloor(map3F)
+    }
+    else if (e.target.innerText === '5F') {
+      setFloor(map5F)
+    }
+  }
 
   const vertices = [
     {x: 20, y: 150},
@@ -60,7 +74,18 @@ export default function Facilities() {
     console.log(e)
   }
 
-  
+
+  axios.get('https://laon.info/api/lions/facility/all')
+  .then((res) => {
+    for (let i=0; i < res.data.facilityList.length; i++) {
+      if (res.data.facilityList[i].type === '편의시설') {
+        facilities.push(res.data.facilityList[i])
+      } else {
+        store.push(res.data.facilityList[i])
+      }
+    }
+
+  })
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
@@ -96,7 +121,6 @@ export default function Facilities() {
 
     animate();
 
-
     function animate(){
         if(t<points.length-1){ requestAnimationFrame(animate); }
         ctx.beginPath();
@@ -108,26 +132,20 @@ export default function Facilities() {
         ctx.stroke();
         t++;
     }
-
-    // const floor = 1;
-    // if (floor === 2){
-    //   setFloorImg(sectionMapImg2F);
-    // } else if (floor === 3) {
-    //   setFloorImg(sectionMapImg3F);
-    // } else if (floor === 5) {
-    //   setFloorImg(sectionMapImg5F);
-    // } else {
-    //   setFloorImg(EntireSectionMapImg);
-    // }
-
+    
   },[])
 
   return (
     <div className='facilities-container font'>
-
+      <div className='floor-select-button'>
+        <button onClick={selectFloor}>2F</button>
+        <button onClick={selectFloor}>3F</button>
+        <button onClick={selectFloor}>5F</button>
+      </div>
       <div className='facilities-body'>
         <div className='facilities-navigation'>
-          <img className='facilities-img' src={sectionMapImg3F} alt=''/>
+          <img className='facilities-img' src={floor} alt=''/>  
+          
           <canvas className='points-canvas' ref={naviCanvasRef}></canvas>
         </div>
         
@@ -143,10 +161,9 @@ export default function Facilities() {
 
           <div className='facilities-item-container'>
             {/* 나중에 for 문으로 컴포넌트 돌리기 */}
-            <StoreDetail handleState={handleState}/>
-            <StoreDetail handleState={handleState}/>
-            <StoreDetail handleState={handleState}/>
-            <StoreDetail handleState={handleState}/>
+            <StoreDetail/>
+            <StoreDetail/>
+            <StoreDetail/>
           </div>
         </div>
       </div>
