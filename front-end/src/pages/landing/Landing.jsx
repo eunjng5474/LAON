@@ -30,6 +30,7 @@ function Landing() {
   
     return (
       <div className='landing-container font'>
+        <span>LA:ON</span>
       </div>
     )
 }

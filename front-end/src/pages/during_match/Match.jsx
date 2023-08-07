@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Field from './img/field.png'
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 
 export default function Match() {
@@ -12,55 +12,59 @@ export default function Match() {
   const inningData = useSelector((state) => state.inning)
   const awayScore = useSelector((state) => state.awayScore )
   const homeScore = useSelector((state) => state.homeScore)
-  const liveText = useSelector((state) => state.liveText)
+  let liveText = useSelector((state) => state.liveText)
   const ballCount = useSelector((state) => state.ballCount)
   const strikeCount = useSelector((state) => state.strikeCount)
   const outCount = useSelector((state) => state.outCount)
-  const homeNowBase1 = useSelector((state) => state.homeNowBase1)
-  const homeNowBase2 = useSelector((state) => state.homeNowBase2)
-  const homeNowBase3 = useSelector((state) => state.homeNowBase3)
-  const awayNowBase1 = useSelector((state) => state.awayNowBase1)
-  const awayNowBase2 = useSelector((state) => state.awayNowBase2)
-  const awayNowBase3 = useSelector((state) => state.awayNowBase3)
 
   const base1 = useSelector((state) => state.base1)
   const base2 = useSelector((state) => state.base2)
   const base3 = useSelector((state) => state.base3)
-  console.log(base1, base2, base3)
+
+  const strikeZoneRef = useRef(null);
+  const strikeZoneCountRef = useRef(null);
+  const nowBallcount = 1;
+  const pitchResult = 'S';
+
+  const vy0 = -117.064;
+  const ay = 21.3453;
+  const y0 = 50.0;
+  const x0 = -1.36354;
+  const vx0 = 1.87692;
+  const ax = 0.282741;
+  const z0 = 5.65017;
+  const vz0 = -4.94352;
+  const az = -25.713;
+  const crossPlateX = -0.526267;
+  const crossPlateY = 1.4167;
+
+  let t = vy0 - Math.sqrt(vy0 * vy0 - 2 * ay * (y0 - crossPlateY))
+  t /= ay
+  const xp = x0 + vx0 * t + ax * t * t * 0.5
+  const zp = z0 + vz0 * t + az * t * t * 0.5
+
+  // PitchId로 ptsPitchId 찾아서 해당 투구 찾아서 fillStyle 변경
+    // pitchResult === 'B'이면 초록, pitchResult === 'S'이면 노랑
+  // x0이 -1.얼마로 변경되고, y0가 다 50.0이라 다른 값이 좌표인지 확인해보기
+
 
   // 출루정보
-  let nowBase1 = null
-  let nowBase2 = null
-  let nowBase3 = null
   let inning = null //이닝
 
   if (inningData === "BEFORE"){
-    inning = "경기예정" // 이닝
-    nowBase1 = null
-    nowBase2 = null
-    nowBase3 = null
+    inning = "경기 예정" // 이닝
+    liveText = "경기 예정"
   } else if (inningData === 'END') { 
-    inning = "경기종료"
-    nowBase1 = null
-    nowBase2 = null
-    nowBase3 = null
+    inning = "경기 종료"
+    liveText = "경기 종료"
   } else if (inningData === null) {
     console.log('로딩 중..')
   } else if (inningData[0] === "B"){
     inning = inningData[2] + "회말" // 이닝
-    nowBase1 = homeNowBase1
-    nowBase2 = homeNowBase2
-    nowBase3 = homeNowBase3
   } else if (inningData[0] === 'T'){
     inning = inningData[2] + "회초" // 이닝
-    nowBase1 = awayNowBase1
-    nowBase2 = awayNowBase2
-    nowBase3 = awayNowBase3
   } else if (inningData === null){
     inning = "경기종료" // 이닝
-    nowBase1 = null
-    nowBase2 = null
-    nowBase3 = null
   } else {
     console.log("end")
   }
@@ -75,21 +79,45 @@ export default function Match() {
   }
 
   useEffect(() => {
+    const strikeCanvas = strikeZoneRef.current;
+    strikeCanvas.width = 110;
+    strikeCanvas.height = 130;
+    const stZoneBallCtx = strikeCanvas.getContext("2d");
 
+    const strikeCountCanvas = strikeZoneCountRef.current;
+    strikeCountCanvas.width = 110;
+    strikeCountCanvas.height = 130;
+    const stZoneTextCtx = strikeCountCanvas.getContext("2d");
+
+    console.log(xp, zp);
+
+    function drawBall() {
+      stZoneBallCtx.beginPath();
+      stZoneBallCtx.moveTo(xp, zp);
+      stZoneBallCtx.arc(xp, zp, 12, 0, 2 * Math.PI);
+      // stZoneBallCtx.moveTo(x2, y2*2);
+      // stZoneBallCtx.arc(x2, y2*2, 12, 0, 2 * Math.PI);
+      stZoneBallCtx.stroke();
+      if(pitchResult === 'S'){
+        stZoneBallCtx.fillStyle = 'yellow';
+      } else {
+        stZoneBallCtx.fillStyle = 'green';
+      }
+      stZoneBallCtx.fill();
+      
+      // stZoneTextCtx.beginPath();
+      // stZoneTextCtx.moveTo(x1+20, y1);
+      // stZoneTextCtx.fillStyle = 'black';
+      // stZoneTextCtx.font = "20px bold";
+      // stZoneTextCtx.fillText(1, x1+14, y1+6);
+      // stZoneTextCtx.fill();
+    }
+
+    drawBall();
   })
 
   return (
     <div className='match-container font'>
-
-      <div className='match-header'>
-        {/* <Link to="/facilities">
-          <h3 className='match-link'>시설 안내</h3>
-        </Link>
-        <h1>스코어 보드</h1>
-        <Link to="/seat">
-          <h3 className='match-link'>좌석 안내</h3>
-        </Link> */}
-      </div>
 
       <div className='match-body'>
 
@@ -100,8 +128,13 @@ export default function Match() {
           </div>
           
           <div className='score-board-center'>
-            <span className='score-board-inning'>{inning}</span>
-            <span className='score-board-point'>{awayScore} | {homeScore}</span>
+            <span className='score-board-inning'>
+              {inning}
+            </span>
+            <br />
+            <span className='score-board-point'>
+              {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
+            </span>
           </div>
           
           <div className='match-home-team-container'>
@@ -112,7 +145,7 @@ export default function Match() {
 
           
         <div className='liveText'>
-          <h2>{liveText}</h2>
+          <span>{liveText}</span>
         </div>
 
         <div className='match-live-info'>
@@ -147,7 +180,9 @@ export default function Match() {
 
           </div>
           <div className='strike-zone-container'>
-            <span>스트라이크 존</span>
+            {/* <span>스트라이크 존</span> */}
+            <canvas className='strikezone-canvas' ref={strikeZoneRef}></canvas>
+            <canvas className='strikezone-text-canvas' ref={strikeZoneCountRef}></canvas>
           </div>
         </div>
 

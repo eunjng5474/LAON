@@ -1,0 +1,22 @@
+.tab-bar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 10vh;  
+}
+
+
+.hide {
+  display: none;
+}
+
+.dark {
+  background-color: rgb(47, 47, 47);
+}
+
+.tab-bar-icon {
+  width: 10vw;
+  height: 5vh;
+}

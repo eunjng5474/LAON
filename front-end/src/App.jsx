@@ -9,7 +9,6 @@ import Seat from './pages/before_match/Seat';
 import SectionDetail from './pages/before_match/SectionDetail';
 import Match from './pages/during_match/Match';
 import Facilities from './pages/during_match/Facilities';
-import Navigation from './pages/during_match/Navigation';
 import { useSelector } from 'react-redux';
 
 const currentDate = new Date();
@@ -186,7 +185,6 @@ function getData() {
    })
  }
 
-
 function App() {
   const gameStatus = useSelector((state) => state.gameStatus)
   getData()
@@ -201,7 +199,6 @@ function App() {
           <Route path="/section" element={ <SectionDetail/> } />
           <Route path="/match" element={ <Match/> } />
           <Route path="/facilities" element={ <Facilities/> } />
-          <Route path="/navigation" element={ <Navigation/> } />
         </Routes>
   );
 }

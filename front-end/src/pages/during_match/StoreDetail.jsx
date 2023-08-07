@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './styles/Facilities.css'
+import './styles/StoreDetail.css'
 import ttangttang from './img/ttangttang.jpg'
 import ttangttangmenu from './img/ttangttnagmenu.jpg'
 import store from '../../store/store'
@@ -22,12 +22,8 @@ export default function StoreDetail({ handleState }) {
     <div className='store-detail-container font'>
       <button className='facilities-item'>
         <button className='store-detail-header'>
-          <div className='store-img-container'>
-            <img className='store-img' src={ttangttang} alt="" />
-          </div>
           <div className='store-desc'>
             <span className='store-title'>땅땅땅땅땅치킨</span>
-            <span>2층에 있는 맛있는 떙떙 취퀸</span>
           </div>
           <div className='store-detail-button'>
             <button className='set-destination-button' onClick={selectDestination}>

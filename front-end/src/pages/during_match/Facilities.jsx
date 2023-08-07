@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
 import StoreDetail from './StoreDetail'
-import NavBar from '../../templates/NavBar'
 import EntireSectionMapImg from './img/sectionMap.png';
 import sectionMapImg2F from './img/sectionMap_2F.png';
 import sectionMapImg3F from './img/sectionMap_3F.png';
@@ -126,13 +125,11 @@ export default function Facilities() {
   return (
     <div className='facilities-container font'>
 
-      <div className='facilities-header'>
-
-      </div>
-      
       <div className='facilities-body'>
-        <img className='facilities-img' src={sectionMapImg3F} alt=''/>
-        <canvas className='points-canvas' ref={naviCanvasRef}></canvas>
+        <div className='facilities-navigation'>
+          <img className='facilities-img' src={sectionMapImg3F} alt=''/>
+          <canvas className='points-canvas' ref={naviCanvasRef}></canvas>
+        </div>
         
         <div className='facilities-select'>
           <div className='facilities-search-bar'>
