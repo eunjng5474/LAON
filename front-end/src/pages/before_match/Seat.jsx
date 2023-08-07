@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import './styles/Seat.css'
 import parkimg from './img/LP.png'
-import ToLive from '../../components/ToLive'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -12,7 +11,6 @@ import ImageMap from 'image-map'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "./styles/SwiperStyle.css";
 
 export default function Seat() {
   const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
@@ -51,15 +49,27 @@ export default function Seat() {
 
   return (
     <div className='seat-container'>
-      <div className='seat-header'>
-      </div>
       
       <div className='swiper-container'>
         <Swiper>
           <SwiperSlide>
             <div className='home-body'>
               
-              <button className='ar-on' onClick={showAR}>AR</button>
+              <button className='ar-on'>
+                  <span className='font'>
+                    {showSeatName ? showSeatName : "블럭을 선택하세요"} 
+                    <br />
+                    주중: {seatWeekdayPrice}
+                    <br />
+                    주말: {seatWeekendPrice} 
+                  </span>
+                  <br />
+                  <br />
+                  <span onClick={toSectionDetail} className='font'>시야 보러 가기</span>
+                  <br />
+                  <Link to="https://m.ticketlink.co.kr/sports/137/57" className='font'>예매 하러 가기</Link>
+              </button>
+
               <img className='park-home-img' src={park_home} usemap="#home-map"/>
 
               <map name="home-map">
@@ -115,22 +125,29 @@ export default function Seat() {
                 <area target="" onClick={selectSection} alt="외야 패밀리석" title="외야 패밀리석" coords="107,81,170,145,184,130,121,65" shape="poly"/>
             </map>
 
-            <button className='ar-on' onClick={showAR}>AR</button>
+            <button className='ar-on'>
+                <span className='font'>
+                  {showSeatName ? showSeatName : "블럭을 선택하세요"} 
+                  <br />
+                  주중: {seatWeekdayPrice}
+                  <br />
+                  주말: {seatWeekendPrice} 
+                </span>
+                <br />
+                <br />
+                <span onClick={toSectionDetail} className='font'>시야 보러 가기</span>
+                <Link to="https://m.ticketlink.co.kr/sports/137/57" className='font'>예매 하러 가기</Link>
+            </button>
 
             </div>
           </SwiperSlide>
         </Swiper>
-
-
       </div>
 
-      
 
       {selectSeat && 
         <div className='seat-body'>
-          <Link to="https://m.ticketlink.co.kr/sports/137/57" className='font'>예매 링크로 이동</Link>
-          <p onClick={toSectionDetail} className='font'>시야 보러 가기</p>
-          <p className='font'>{showSeatName}: 주중 {seatWeekdayPrice} | 주말 {seatWeekendPrice} </p>
+          
         </div>
       }
     </div>

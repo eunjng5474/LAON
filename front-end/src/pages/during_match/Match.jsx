@@ -109,8 +109,13 @@ export default function Match() {
           </div>
           
           <div className='score-board-center'>
-            <span className='score-board-inning'>{inning}</span>
-            <span className='score-board-point'>{awayScore} | {homeScore}</span>
+            <span className='score-board-inning'>
+              {inning}
+            </span>
+            <br />
+            <span className='score-board-point'>
+              {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
+            </span>
           </div>
           
           <div className='match-home-team-container'>
@@ -121,7 +126,7 @@ export default function Match() {
 
           
         <div className='liveText'>
-          <h2>{liveText}</h2>
+          <span>{liveText}</span>
         </div>
 
         <div className='match-live-info'>
