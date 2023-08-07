@@ -1,8 +1,6 @@
 package com.ssafy.lions.domain.facility.service;
 
-import com.ssafy.lions.domain.facility.dto.FacilityResultDto;
-import com.ssafy.lions.domain.facility.dto.ItemDto;
-import com.ssafy.lions.domain.facility.dto.ItemResultDto;
+import com.ssafy.lions.domain.facility.dto.*;
 import com.ssafy.lions.domain.facility.entity.Facility;
 import com.ssafy.lions.domain.facility.entity.Item;
 import com.ssafy.lions.domain.facility.repository.FacilityRepository;
@@ -19,7 +17,6 @@ public class FacilityServiceImpl implements FacilityService{
     FacilityRepository facilityRepository;
     @Autowired
     ItemRepository itemRepository;
-
     private static final int SUCCESS = 1;
     private static final int FAIL = -1;
 
@@ -42,24 +39,54 @@ public class FacilityServiceImpl implements FacilityService{
         System.out.println("-------------------- facility service ------------------");
         System.out.println("-------------------- 선택한 편의시설의 메뉴 조회 ------------------");
         List<Item> itemList = itemRepository.findByFacility_FacilityId(facilityId);
-        List<ItemDto> itemDtoList = new ArrayList<>();
-        for(Item item : itemList){
-            ItemDto itemDto = new ItemDto();
-            itemDto.setItemId(item.getItemId());
-            itemDto.setItemName(item.getItemName());
-            itemDto.setPrice(item.getPrice());
-            itemDtoList.add(itemDto);
-        }
-        System.out.println(itemDtoList);
+
         ItemResultDto itemResultDto = new ItemResultDto();
-        // 해당 가게 메뉴가 등록되지 않았을 경우
-        if(itemDtoList.size() == 0){
-            itemResultDto.setItemDtoList(itemDtoList);
-            itemResultDto.setResult(FAIL);
-        }else{
-            itemResultDto.setItemDtoList(itemDtoList);
+
+        ArrayList<ItemDto> singleItemDtoList = new ArrayList<>();
+        ArrayList<ItemDto> setItemDtoList = new ArrayList<>();
+        ArrayList<ItemDto> sideItemDtoList = new ArrayList<>();
+        ArrayList<ItemDto> beverageItemDtoList = new ArrayList<>();
+
+        for(Item item : itemList){
+            String itemType = item.getItemType();
+            ItemDto itemDto = makeItemDto(item);
+            if(itemType.equals("단품")){
+                singleItemDtoList.add(itemDto);
+            }else if(itemType.equals("세트")){
+                setItemDtoList.add(itemDto);
+            }else if(itemType.equals("사이드")){
+                sideItemDtoList.add(itemDto);
+            }else if(itemType.equals("음료")){
+                beverageItemDtoList.add(itemDto);
+            }
+        }
+        itemResultDto.setResult(FAIL);
+        if(singleItemDtoList.size() != 0){
+            itemResultDto.setSingleItemDtoList(singleItemDtoList);
             itemResultDto.setResult(SUCCESS);
         }
+        if(setItemDtoList.size() != 0){
+            itemResultDto.setSetItemDtoList(setItemDtoList);
+            itemResultDto.setResult(SUCCESS);
+        }
+        if(sideItemDtoList.size() != 0){
+            itemResultDto.setSideItemDtoList(sideItemDtoList);
+            itemResultDto.setResult(SUCCESS);
+        }
+        if(beverageItemDtoList.size() != 0){
+            itemResultDto.setBeverageItemDtoList(beverageItemDtoList);
+            itemResultDto.setResult(SUCCESS);
+        }
+
         return itemResultDto;
+    }
+
+    public ItemDto makeItemDto(Item item){
+        ItemDto itemDto = new ItemDto();
+        itemDto.setItemId(item.getItemId());
+        itemDto.setItemName(item.getItemName());
+        itemDto.setPrice(item.getPrice());
+        itemDto.setItemType(item.getItemType());
+        return itemDto;
     }
 }

@@ -12,4 +12,6 @@ public class ItemDto {
     private String itemName;
     @Schema(description = "메뉴 가격", example = "20000")
     private int price;
+    @Schema(description = "메뉴 종류", example = "단품")
+    private String itemType;
 }
