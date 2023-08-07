@@ -1,0 +1,8 @@
+.tab-bar-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 10vh;  
+}

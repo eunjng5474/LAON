@@ -52,8 +52,6 @@ export default function SeatMap() {
             <area onClick={getCoordinate} target="" alt="" title="" href="" coords="137,310,166,310,166,325,137,325" shape="poly"/>
         </map>
       </TransformComponent>
-      
-      <button>asd</button>
     </TransformWrapper>
   )
 }

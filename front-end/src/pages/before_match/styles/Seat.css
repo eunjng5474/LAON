@@ -1,11 +1,22 @@
-.seat-header {
-  margin: 0rem 1rem 2.5rem 1rem;
+.seat-container {
+  height: 82vh;
+
+}
+
+.swiper-container {
+  display: flex;
+  align-items: center;
+  height: 82vh;
+}
+
+.swiper-container div {
+  height: 70vh;
 }
 
 .seat-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 0px;
 }
@@ -102,7 +113,7 @@
 }
 
 .home-body {
-  width: 130.1vw;
+  width: 100vw;
   height: 67.46vh;
   display: flex;
   justify-content: space-between;
@@ -126,10 +137,11 @@
 }
 
 .ar-on {
-  width: 10vw;
-  height: 7vh;
+  margin: 4vw;
+  width: 28vw;
+  height: 24vh;
   border: none;
-  border-radius: 20%;
-  background-color: rgba(68, 68, 246, 0.8);
+  border-radius: 40px;
+  background-color: rgb(57, 143, 255);
   color: white;
 }
