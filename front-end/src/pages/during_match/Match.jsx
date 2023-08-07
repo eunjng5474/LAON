@@ -21,27 +21,62 @@ export default function Match() {
   const base2 = useSelector((state) => state.base2)
   const base3 = useSelector((state) => state.base3)
 
-  const strikeZoneRef = useRef(null);
-  const strikeZoneCountRef = useRef(null);
+  const stZoneRef = useRef(null);
+  const stZoneRectRef = useRef(null);
   const nowBallcount = 1;
   const pitchResult = 'S';
 
-  const vy0 = -117.064;
-  const ay = 21.3453;
-  const y0 = 50.0;
-  const x0 = -1.36354;
-  const vx0 = 1.87692;
-  const ax = 0.282741;
-  const z0 = 5.65017;
-  const vz0 = -4.94352;
-  const az = -25.713;
-  const crossPlateX = -0.526267;
-  const crossPlateY = 1.4167;
+  const crossPlateX1 = -0.526267
+  const crossPlateY1 = 1.4167
+  const topSz1 = 3.40393
+  const bottomSz1 = 1.42926
+  const vy01 = -117.064
+  const vz01 = -4.94352
+  const vx01 = 1.87692
+  const z01 = 5.65017
+  const y01 = 50.0
+  const x01 = -1.36354
+  const ax1 = 0.282741
+  const ay1 = 21.3453
+  const az1 = -25.713
 
-  let t = vy0 - Math.sqrt(vy0 * vy0 - 2 * ay * (y0 - crossPlateY))
-  t /= ay
-  const xp = x0 + vx0 * t + ax * t * t * 0.5
-  const zp = z0 + vz0 * t + az * t * t * 0.5
+  const crossPlateX2 = -0.449976
+  const crossPlateY2 = 1.4167
+  const topSz2 = 3.40393
+  const bottomSz2 = 1.42926
+  const vy02 = -130.023
+  const vz02 = -8.43999
+  const vx02 = 4.22331
+  const z02 = 5.43352
+  const y02 = 50.0
+  const x02 = -1.14148
+  const ax2 = -12.5548
+  const ay2 = 29.7531
+  const az2 = -12.9796
+
+  let t1 = -vy01 - Math.sqrt(vy01 * vy01 - 2 * ay1 * (y01 - crossPlateY1))
+  t1 /= ay1
+  const xp1 = x01 + vx01 * t1 + ax1 * t1 * t1 * 0.5
+  const zp1 = z01 + vz01 * t1 + az1 * t1 * t1 * 0.5
+
+  let t2 = -vy02 - Math.sqrt(vy02 * vy02 - 2 * ay2 * (y02 - crossPlateY2))
+  t2 /= ay2
+  const xp2 = x02 + vx02 * t2 + ax2 * t2 * t2 * 0.5
+  const zp2 = z02 + vz02 * t2 + az2 * t2 * t2 * 0.5
+
+  // // calculate pitch movement(pfx_x, pfx_z)
+  // let t40 = -df['vy0'] - np.sqrt(df['vy0'] * df['vy0'] - 2 * df['ay'] * (df['y0'] - 40))
+  // t40 /= df['ay']
+  // x40 = df['x0'] + df['vx0'] * t40 + 0.5 * df['ax'] * t40 * t40
+  // vx40 = df['vx0'] + df['ax'] * t40
+  // z40 = df['z0'] + df['vz0'] * t40 + 0.5 * df['az'] * t40 * t40
+  // vz40 = df['vz0'] + df['az'] * t40
+  // th = t - t40
+  // x_no_air = x40 + vx40 * th
+  // z_no_air = z40 + vz40 * th - 0.5 * 32.174 * th * th
+  // df['pfx_x'] = np.round((xp - x_no_air) * 12, 5)
+  // df['pfx_z'] = np.round((zp - z_no_air) * 12, 5)
+
 
   // PitchId로 ptsPitchId 찾아서 해당 투구 찾아서 fillStyle 변경
     // pitchResult === 'B'이면 초록, pitchResult === 'S'이면 노랑
@@ -79,24 +114,27 @@ export default function Match() {
   }
 
   useEffect(() => {
-    const strikeCanvas = strikeZoneRef.current;
+    const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
     strikeCanvas.height = 130;
     const stZoneBallCtx = strikeCanvas.getContext("2d");
 
-    const strikeCountCanvas = strikeZoneCountRef.current;
-    strikeCountCanvas.width = 110;
-    strikeCountCanvas.height = 130;
-    const stZoneTextCtx = strikeCountCanvas.getContext("2d");
+    const strikeRectCanvas = stZoneRectRef.current;
+    strikeRectCanvas.width = 110;
+    strikeRectCanvas.height = 130;
+    const stZoneRectCtx = strikeRectCanvas.getContext("2d");
 
-    console.log(xp, zp);
+    console.log(xp1, zp1);
 
     function drawBall() {
       stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(xp, zp);
-      stZoneBallCtx.arc(xp, zp, 12, 0, 2 * Math.PI);
-      // stZoneBallCtx.moveTo(x2, y2*2);
-      // stZoneBallCtx.arc(x2, y2*2, 12, 0, 2 * Math.PI);
+      stZoneBallCtx.moveTo(xp1*30+55, zp1*30+65);
+      stZoneBallCtx.arc(xp1*30+55, zp1*30+65, 12, 0, 2 * Math.PI);
+      
+      stZoneBallCtx.moveTo(xp2*30+55, zp2*30+65);
+      stZoneBallCtx.arc(xp2*30+55, zp2*30+65, 12, 0, 2 * Math.PI);
+      // stZoneBallCtx.moveTo(-1.14148*-10, 5.43352*10);
+      // stZoneBallCtx.arc(-1.14148*-10, 5.43352*10, 12, 0, 2 * Math.PI);
       stZoneBallCtx.stroke();
       if(pitchResult === 'S'){
         stZoneBallCtx.fillStyle = 'yellow';
@@ -105,12 +143,12 @@ export default function Match() {
       }
       stZoneBallCtx.fill();
       
-      // stZoneTextCtx.beginPath();
-      // stZoneTextCtx.moveTo(x1+20, y1);
-      // stZoneTextCtx.fillStyle = 'black';
-      // stZoneTextCtx.font = "20px bold";
-      // stZoneTextCtx.fillText(1, x1+14, y1+6);
-      // stZoneTextCtx.fill();
+      stZoneRectCtx.beginPath();
+      stZoneRectCtx.moveTo(24, 24);
+      stZoneRectCtx.strokeStyle = "white";
+      stZoneRectCtx.strokeRect(24, 24, 62, 82);
+      stZoneRectCtx.stroke();
+      // stZoneRectCtx.fill();
     }
 
     drawBall();
@@ -181,8 +219,8 @@ export default function Match() {
           </div>
           <div className='strike-zone-container'>
             {/* <span>스트라이크 존</span> */}
-            <canvas className='strikezone-canvas' ref={strikeZoneRef}></canvas>
-            <canvas className='strikezone-text-canvas' ref={strikeZoneCountRef}></canvas>
+            <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
+            <canvas className='strikezone-text-canvas' ref={stZoneRectRef}></canvas>
           </div>
         </div>
 
