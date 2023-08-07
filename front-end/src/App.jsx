@@ -185,25 +185,6 @@ function getData() {
    })
  }
 
-<<<<<<< HEAD
-
-// function getStrikezoneData() {
-//   const https = require('https');
-//   const url = 'https://api-gw.sports.naver.com/schedule/games/20230726SKSS02023/game-polling?inning=7';
-  
-//   https.get(url, stream => {
-//     let rawdata = '';
-//     stream.setEncoding('utf8');
-//     stream.on('data', buffer => rawdata += buffer);
-//     stream.on('end', function () {
-//       console.log(rawdata);
-//     });
-//   });
-// }
-
-
-=======
->>>>>>> 2c3779fa9d6b30b501ddd0dc8e5b3d5758fc0197
 function App() {
   const gameStatus = useSelector((state) => state.gameStatus)
   getData()
