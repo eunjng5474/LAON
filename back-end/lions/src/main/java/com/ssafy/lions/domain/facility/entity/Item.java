@@ -23,4 +23,7 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "facility_id")
     private Facility facility;
+
+    @Column(name = "item_type")
+    private String itemType;
 }
