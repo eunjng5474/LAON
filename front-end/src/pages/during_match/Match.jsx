@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Field from './img/field.png'
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 
 export default function Match() {
@@ -12,55 +12,38 @@ export default function Match() {
   const inningData = useSelector((state) => state.inning)
   const awayScore = useSelector((state) => state.awayScore )
   const homeScore = useSelector((state) => state.homeScore)
-  const liveText = useSelector((state) => state.liveText)
+  let liveText = useSelector((state) => state.liveText)
   const ballCount = useSelector((state) => state.ballCount)
   const strikeCount = useSelector((state) => state.strikeCount)
   const outCount = useSelector((state) => state.outCount)
-  const homeNowBase1 = useSelector((state) => state.homeNowBase1)
-  const homeNowBase2 = useSelector((state) => state.homeNowBase2)
-  const homeNowBase3 = useSelector((state) => state.homeNowBase3)
-  const awayNowBase1 = useSelector((state) => state.awayNowBase1)
-  const awayNowBase2 = useSelector((state) => state.awayNowBase2)
-  const awayNowBase3 = useSelector((state) => state.awayNowBase3)
 
   const base1 = useSelector((state) => state.base1)
   const base2 = useSelector((state) => state.base2)
   const base3 = useSelector((state) => state.base3)
-  console.log(base1, base2, base3)
+
+  const strikeZoneRef = useRef(null);
+  const strikeZoneCountRef = useRef(null);
+  const nowBallcount = 2;
+  const x = 1.11719;
+  const y = 50.0;
 
   // 출루정보
-  let nowBase1 = null
-  let nowBase2 = null
-  let nowBase3 = null
   let inning = null //이닝
 
   if (inningData === "BEFORE"){
-    inning = "경기예정" // 이닝
-    nowBase1 = null
-    nowBase2 = null
-    nowBase3 = null
+    inning = "경기 예정" // 이닝
+    liveText = "경기 예정"
   } else if (inningData === 'END') { 
-    inning = "경기종료"
-    nowBase1 = null
-    nowBase2 = null
-    nowBase3 = null
+    inning = "경기 종료"
+    liveText = "경기 종료"
   } else if (inningData === null) {
     console.log('로딩 중..')
   } else if (inningData[0] === "B"){
     inning = inningData[2] + "회말" // 이닝
-    nowBase1 = homeNowBase1
-    nowBase2 = homeNowBase2
-    nowBase3 = homeNowBase3
   } else if (inningData[0] === 'T'){
     inning = inningData[2] + "회초" // 이닝
-    nowBase1 = awayNowBase1
-    nowBase2 = awayNowBase2
-    nowBase3 = awayNowBase3
   } else if (inningData === null){
     inning = "경기종료" // 이닝
-    nowBase1 = null
-    nowBase2 = null
-    nowBase3 = null
   } else {
     console.log("end")
   }
@@ -75,7 +58,33 @@ export default function Match() {
   }
 
   useEffect(() => {
+    const strikeCanvas = strikeZoneRef.current;
+    strikeCanvas.width = 140;
+    strikeCanvas.height = 160;
+    const stZoneBallCtx = strikeCanvas.getContext("2d");
 
+    const strikeCountCanvas = strikeZoneCountRef.current;
+    strikeCountCanvas.width = 140;
+    strikeCountCanvas.height = 160;
+    const stZoneTextCtx = strikeCountCanvas.getContext("2d");
+
+    function drawBall() {
+      stZoneBallCtx.beginPath();
+      stZoneBallCtx.moveTo(x+20, y);
+      stZoneBallCtx.arc(x+20, y, 15, 0, 2 * Math.PI);
+      stZoneBallCtx.stroke();
+      stZoneBallCtx.fillStyle = 'red';
+      stZoneBallCtx.fill();
+      
+      stZoneTextCtx.beginPath();
+      stZoneTextCtx.moveTo(x+20, y);
+      stZoneTextCtx.fillStyle = 'white';
+      stZoneTextCtx.font = "22px bold";
+      stZoneTextCtx.fillText(nowBallcount, x+14, y+8);
+      stZoneTextCtx.fill();
+    }
+
+    drawBall();
   })
 
   return (
@@ -152,7 +161,9 @@ export default function Match() {
 
           </div>
           <div className='strike-zone-container'>
-            <span>스트라이크 존</span>
+            {/* <span>스트라이크 존</span> */}
+            <canvas className='strikezone-canvas' ref={strikeZoneRef}></canvas>
+            <canvas className='strikezone-text-canvas' ref={strikeZoneCountRef}></canvas>
           </div>
         </div>
 
