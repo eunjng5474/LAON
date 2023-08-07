@@ -16,8 +16,9 @@ export default function Facilities() {
   const [destination, setDestination] = useState('');
   const [currentPosition, setCurrentPosition] = useState('');
   const [floor, setFloor] = useState(map3F)
-  const storeList = []
-  const facilities = []
+  const [category, setCategory] = useState('식음매장')
+  const [stores, setStores] = useState()
+  const [facilities, setFacilities] = useState()
 
 
   function selectFloor(e) {
@@ -74,20 +75,27 @@ export default function Facilities() {
     console.log(e)
   }
 
+  function isFacility(data) {
+    return data.type === "편의시설";
+  }
 
-  axios.get('https://laon.info/api/lions/facility/all')
-  .then((res) => {
-    for (let i=0; i < res.data.facilityList.length; i++) {
-      if (res.data.facilityList[i].type === '편의시설') {
-        facilities.push(res.data.facilityList[i])
-      } else {
-        store.push(res.data.facilityList[i])
-      }
-    }
+  function isStore(data) {
+    return data.type === "식음료"
+  }
 
-  })
-  
+  function categorySelect(e) {
+    setCategory(e.target.innerText)
+    console.log(category)
+  }
+
   useEffect(() => {
+    
+    axios.get('https://laon.info/api/lions/facility/all')
+    .then((res) => {
+      setFacilities(res.data.facilityList.filter(isFacility))
+      setStores(res.data.facilityList.filter(isStore))
+    })
+
     navigator.geolocation.getCurrentPosition(getPosition)
 
     const naviCanvas = naviCanvasRef.current;
@@ -132,7 +140,7 @@ export default function Facilities() {
         ctx.stroke();
         t++;
     }
-    
+
   },[])
 
   return (
@@ -160,10 +168,24 @@ export default function Facilities() {
           </div>
 
           <div className='facilities-item-container'>
-            {/* 나중에 for 문으로 컴포넌트 돌리기 */}
-            <StoreDetail/>
-            <StoreDetail/>
-            <StoreDetail/>
+            <div className='category-select'>
+              <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장</button>
+              <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""}`}>편의시설</button>
+            </div>
+            <div className={`store-list ${category === "식음매장" ? "category-show" : ""}`}>
+              
+              {/* {stores && stores.map((data) => {
+                console.log(data)
+                return (
+                  <StoreDetail key={data.facilityId} facilityName={data.facilityName} floor={data.floor}/>
+                )
+              })} */}
+            </div>
+
+            <div className={`facility-list ${category === "편의시설" ? "category-show" : ""}`}>
+
+            </div>
+            
           </div>
         </div>
       </div>

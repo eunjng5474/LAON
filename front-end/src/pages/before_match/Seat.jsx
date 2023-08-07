@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 export default function Seat() {
+  
   const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
   const homeTeamLogo = useSelector((state) => state.homeTeamLogo)
 
