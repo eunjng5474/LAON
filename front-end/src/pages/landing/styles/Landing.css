@@ -1,5 +1,14 @@
 .landing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(95, 95, 213);
+  background-color: #0092F2;
+}
+
+.landing-container span {
+  color: #ffffff;
+  font-size: 60px;
+  font-weight: 800;
 }

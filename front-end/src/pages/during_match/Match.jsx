@@ -23,9 +23,30 @@ export default function Match() {
 
   const strikeZoneRef = useRef(null);
   const strikeZoneCountRef = useRef(null);
-  const nowBallcount = 2;
-  const x = 1.11719;
-  const y = 50.0;
+  const nowBallcount = 1;
+  const pitchResult = 'S';
+
+  const vy0 = -117.064;
+  const ay = 21.3453;
+  const y0 = 50.0;
+  const x0 = -1.36354;
+  const vx0 = 1.87692;
+  const ax = 0.282741;
+  const z0 = 5.65017;
+  const vz0 = -4.94352;
+  const az = -25.713;
+  const crossPlateX = -0.526267;
+  const crossPlateY = 1.4167;
+
+  let t = vy0 - Math.sqrt(vy0 * vy0 - 2 * ay * (y0 - crossPlateY))
+  t /= ay
+  const xp = x0 + vx0 * t + ax * t * t * 0.5
+  const zp = z0 + vz0 * t + az * t * t * 0.5
+
+  // PitchId로 ptsPitchId 찾아서 해당 투구 찾아서 fillStyle 변경
+    // pitchResult === 'B'이면 초록, pitchResult === 'S'이면 노랑
+  // x0이 -1.얼마로 변경되고, y0가 다 50.0이라 다른 값이 좌표인지 확인해보기
+
 
   // 출루정보
   let inning = null //이닝
@@ -59,29 +80,37 @@ export default function Match() {
 
   useEffect(() => {
     const strikeCanvas = strikeZoneRef.current;
-    strikeCanvas.width = 140;
-    strikeCanvas.height = 160;
+    strikeCanvas.width = 110;
+    strikeCanvas.height = 130;
     const stZoneBallCtx = strikeCanvas.getContext("2d");
 
     const strikeCountCanvas = strikeZoneCountRef.current;
-    strikeCountCanvas.width = 140;
-    strikeCountCanvas.height = 160;
+    strikeCountCanvas.width = 110;
+    strikeCountCanvas.height = 130;
     const stZoneTextCtx = strikeCountCanvas.getContext("2d");
+
+    console.log(xp, zp);
 
     function drawBall() {
       stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(x+20, y);
-      stZoneBallCtx.arc(x+20, y, 15, 0, 2 * Math.PI);
+      stZoneBallCtx.moveTo(xp, zp);
+      stZoneBallCtx.arc(xp, zp, 12, 0, 2 * Math.PI);
+      // stZoneBallCtx.moveTo(x2, y2*2);
+      // stZoneBallCtx.arc(x2, y2*2, 12, 0, 2 * Math.PI);
       stZoneBallCtx.stroke();
-      stZoneBallCtx.fillStyle = 'red';
+      if(pitchResult === 'S'){
+        stZoneBallCtx.fillStyle = 'yellow';
+      } else {
+        stZoneBallCtx.fillStyle = 'green';
+      }
       stZoneBallCtx.fill();
       
-      stZoneTextCtx.beginPath();
-      stZoneTextCtx.moveTo(x+20, y);
-      stZoneTextCtx.fillStyle = 'white';
-      stZoneTextCtx.font = "22px bold";
-      stZoneTextCtx.fillText(nowBallcount, x+14, y+8);
-      stZoneTextCtx.fill();
+      // stZoneTextCtx.beginPath();
+      // stZoneTextCtx.moveTo(x1+20, y1);
+      // stZoneTextCtx.fillStyle = 'black';
+      // stZoneTextCtx.font = "20px bold";
+      // stZoneTextCtx.fillText(1, x1+14, y1+6);
+      // stZoneTextCtx.fill();
     }
 
     drawBall();
@@ -89,16 +118,6 @@ export default function Match() {
 
   return (
     <div className='match-container font'>
-
-      <div className='match-header'>
-        {/* <Link to="/facilities">
-          <h3 className='match-link'>시설 안내</h3>
-        </Link>
-        <h1>스코어 보드</h1>
-        <Link to="/seat">
-          <h3 className='match-link'>좌석 안내</h3>
-        </Link> */}
-      </div>
 
       <div className='match-body'>
 

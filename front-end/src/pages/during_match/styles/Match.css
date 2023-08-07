@@ -71,8 +71,9 @@
   height: 10rem;
   top: 21.5rem;
   left: 4.85rem; */
-  width: 57.2vw;
+  width: 50.2vw;
   height: 21.6vh;
+  margin: 0vh 2vw;
 }
 
 .bso-text-container {
@@ -267,14 +268,13 @@
   color : white
 }
 
-.strikezone-canvas {
-  position: absolute;
-  top:0;
-  left:0;
+.strike-zone-container {
+  width: 36vw;
+  margin: 0vh 2vw;
 }
 
 .strikezone-text-canvas {
   position: absolute;
-  top:0;
-  left:0;
+  border-radius: 5px;
+  border: 1px solid white;
 }
