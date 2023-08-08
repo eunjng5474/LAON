@@ -15,6 +15,6 @@ public class StrikeZoneController {
 
     @GetMapping("/{date}/{awayTeam}/{inning}")
     public StrikeZoneResultDto getStrikeZoneInfo(@PathVariable String date, @PathVariable String awayTeam, @PathVariable String year, @PathVariable String inning) throws Exception {
-        return strikeZoneService.getStrikeZoneInfo(date, awayTeam, year, inning);
+        return strikeZoneService.getStrikeZoneInfo(date, awayTeam, inning);
     }
 }
