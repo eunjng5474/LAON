@@ -1,23 +1,38 @@
 import React, { useEffect, useState, useRef } from 'react'
 import StoreDetail from './StoreDetail'
 import EntireSectionMapImg from './img/sectionMap.png';
-import sectionMapImg2F from './img/sectionMap_2F.png';
-import sectionMapImg3F from './img/sectionMap_3F.png';
-import sectionMapImg5F from './img/sectionMap_5F.png';
-import { Link } from 'react-router-dom';
+import map2F from './img/sectionMap_2F.png';
+import map3F from './img/sectionMap_3F.png';
+import map5F from './img/sectionMap_5F.png';
 import store from '../../store/store'
+import axios from 'axios';
 import { useGeolocated } from "react-geolocated";
 import './styles/Facilities.css';
 
 
 export default function Facilities() {
   const naviCanvasRef = useRef(null);
-
-  const [onModal, setOnModal] = useState(false);
   const [departure, setDeparture] = useState('');
   const [destination, setDestination] = useState('');
   const [currentPosition, setCurrentPosition] = useState('');
-  const [floorImg, setFloorImg] = useState('');
+  const [floor, setFloor] = useState(map3F)
+  const [category, setCategory] = useState('식음매장')
+  const [stores, setStores] = useState()
+  const [facilities, setFacilities] = useState()
+
+
+  function selectFloor(e) {
+    console.log(e)
+    if (e.target.innerText === '2F') {
+      setFloor(map2F)
+    }
+    else if (e.target.innerText === '3F') {
+      setFloor(map3F)
+    }
+    else if (e.target.innerText === '5F') {
+      setFloor(map5F)
+    }
+  }
 
   const vertices = [
     {x: 20, y: 150},
@@ -60,9 +75,27 @@ export default function Facilities() {
     console.log(e)
   }
 
-  
-  
+  function isFacility(data) {
+    return data.type === "편의시설";
+  }
+
+  function isStore(data) {
+    return data.type === "식음료"
+  }
+
+  function categorySelect(e) {
+    setCategory(e.target.innerText)
+    console.log(category)
+  }
+
   useEffect(() => {
+    
+    axios.get('https://laon.info/api/lions/facility/all')
+    .then((res) => {
+      setFacilities(res.data.facilityList.filter(isFacility))
+      setStores(res.data.facilityList.filter(isStore))
+    })
+
     navigator.geolocation.getCurrentPosition(getPosition)
 
     const naviCanvas = naviCanvasRef.current;
@@ -96,7 +129,6 @@ export default function Facilities() {
 
     animate();
 
-
     function animate(){
         if(t<points.length-1){ requestAnimationFrame(animate); }
         ctx.beginPath();
@@ -109,25 +141,19 @@ export default function Facilities() {
         t++;
     }
 
-    // const floor = 1;
-    // if (floor === 2){
-    //   setFloorImg(sectionMapImg2F);
-    // } else if (floor === 3) {
-    //   setFloorImg(sectionMapImg3F);
-    // } else if (floor === 5) {
-    //   setFloorImg(sectionMapImg5F);
-    // } else {
-    //   setFloorImg(EntireSectionMapImg);
-    // }
-
   },[])
 
   return (
     <div className='facilities-container font'>
-
+      <div className='floor-select-button'>
+        <button onClick={selectFloor}>2F</button>
+        <button onClick={selectFloor}>3F</button>
+        <button onClick={selectFloor}>5F</button>
+      </div>
       <div className='facilities-body'>
         <div className='facilities-navigation'>
-          <img className='facilities-img' src={sectionMapImg3F} alt=''/>
+          <img className='facilities-img' src={floor} alt=''/>  
+          
           <canvas className='points-canvas' ref={naviCanvasRef}></canvas>
         </div>
         
@@ -142,11 +168,24 @@ export default function Facilities() {
           </div>
 
           <div className='facilities-item-container'>
-            {/* 나중에 for 문으로 컴포넌트 돌리기 */}
-            <StoreDetail handleState={handleState}/>
-            <StoreDetail handleState={handleState}/>
-            <StoreDetail handleState={handleState}/>
-            <StoreDetail handleState={handleState}/>
+            <div className='category-select'>
+              <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장</button>
+              <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""}`}>편의시설</button>
+            </div>
+            <div className={`store-list ${category === "식음매장" ? "category-show" : ""}`}>
+              
+              {/* {stores && stores.map((data) => {
+                console.log(data)
+                return (
+                  <StoreDetail key={data.facilityId} facilityName={data.facilityName} floor={data.floor}/>
+                )
+              })} */}
+            </div>
+
+            <div className={`facility-list ${category === "편의시설" ? "category-show" : ""}`}>
+
+            </div>
+            
           </div>
         </div>
       </div>

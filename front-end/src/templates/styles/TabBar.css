@@ -4,7 +4,8 @@
   align-items: center;
   background-color: #ffffff;
   width: 100vw;
-  height: 10vh;  
+  height: 10vh;
+  z-index: 100;
 }
 
 

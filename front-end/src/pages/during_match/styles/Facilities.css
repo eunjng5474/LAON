@@ -22,23 +22,31 @@
 }
 
 .facilities-select {
+  position: absolute;
+  padding: 3vw;
   display: flex;
   flex-direction: column;
+  width: 94vw;
+  height: 70vh;
+  bottom: 10vh;
+  border-top: 2px solid rgba(143, 143, 143, 0.344);
+  border-radius: 40px;
+  background-color: white;
 }
 
 .facilities-search-bar {
-  width: 100vw;
+  width: 80vw;
   height: 12vh;
 }
 
 .facilities-category {
   padding: 1vh 3vw;
-  width: 94vw;
+  width: 80vw;
   height: 4vh;
 }
 
 .facilities-search-bar input {
-  width: 94vw;
+  width: 80vw;
   height: 100%;
   border: none;
   font-size: 14px;
@@ -46,5 +54,49 @@
 
 .facilities-item-container {
   display: flex;
-  width: 100vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95vw;
+  height: 100vh;
+}
+
+.category-select {
+  /* border: 1px red solid; */
+  width: 90vw;
+  height: 6vh;
+}
+
+
+.category-select button {
+  background-color: #ffffff;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 1px solid rgb(196, 196, 196);
+  width: 45vw;
+  height: 6vh;
+  font-size: 4.2vw;
+}
+
+
+.facilities-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 20vw;
+  height: 20vw;
+  color: black;
+  border: 1px solid black;
+  margin: 2vw;
+}
+
+.store-title {
+  font-size: 18px;
+}
+
+.store-list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
