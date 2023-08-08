@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import store from '../store/store';
 import './styles/NavBar.css'
+import logo from './img/SL_logo.svg'
 
 export default function NavBar() {
   const navigate = useNavigate();
@@ -50,7 +51,17 @@ export default function NavBar() {
 
   return (
     <div className={`nav-bar-container ${dark ? "dark" : ""} ${hide ? "hide" : ""} font`}>
-      <span className='logo-title'>LA:ON</span>
+      <div className='nav-bar-logo-container'>
+        <img className='nav-bar-logo' src={logo} alt="" />
+        <span className='logo-title'>
+          designed by LA:ON
+        </span>
+      </div>
+      <div className='weather'>
+
+      </div>
+      <div className='on-air'>
+      </div>
     </div>
   )
 }

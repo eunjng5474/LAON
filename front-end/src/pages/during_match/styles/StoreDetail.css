@@ -1,8 +1,14 @@
 .store-detail-container {
-  display: none;
-  width: 100vw;
+  /* display: none; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.facilities-item {
+  width: 40vw;
+  height: 40vw;
 }
 
 .store-menu-img {
-  width: 3vw;
+  display: none;
 }
