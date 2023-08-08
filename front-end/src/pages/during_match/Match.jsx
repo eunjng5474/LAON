@@ -2,6 +2,7 @@ import './styles/Match.css'
 import { useSelector } from 'react-redux';
 
 import Field from './img/field.png'
+import fieldImg from './img/lapark.jpg'
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
@@ -219,7 +220,7 @@ export default function Match() {
             <span>
             </span>
           </div>
-          <img className='match-field-img' src={Field} alt="" />
+          <img className='match-field-img' src={fieldImg} alt="" />
         </div>
 
       </div>
