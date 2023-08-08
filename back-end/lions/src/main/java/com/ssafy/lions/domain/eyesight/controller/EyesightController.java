@@ -4,6 +4,7 @@ import com.ssafy.lions.domain.eyesight.dto.SightResultDto;
 import com.ssafy.lions.domain.eyesight.service.EyesightService;
 import com.ssafy.lions.domain.eyesight.service.EyesightServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*", methods = {
         RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS,
         RequestMethod.HEAD })
+@Tag(name = "좌석 시야 정보", description = "좌석 시야 정보 조회 API")
 public class EyesightController {
 
     @Autowired
