@@ -13,7 +13,8 @@ import java.io.InputStreamReader;
 public class StrikeZoneServiceImpl implements StrikeZoneService {
 
     @Override
-    public StrikeZoneResultDto getStrikeZoneInfo(String date, String awayTeam, String year, String inning) throws Exception {
+    public StrikeZoneResultDto getStrikeZoneInfo(String date, String awayTeam, String inning) throws Exception {
+        String year = date.substring(0, 4);
         ProcessBuilder builder = new ProcessBuilder("python", "test.py", date, awayTeam, year, inning);
         builder.redirectErrorStream(true);
         Process process = builder.start();
