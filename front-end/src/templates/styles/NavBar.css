@@ -1,17 +1,23 @@
 .nav-bar-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #0092F2;
+  background-color: #074CA1;
   height: 8vh;
 }
 
 .logo-title {
+  margin-top: 2.8vh;
   color: white;
-  font-size: 10vw;
-  font-weight: 600;
-  margin-left: 3vw;
+  font-size: 3.6vw;
+  margin-right: 3vw;
 }
 
 .hide {
   display: none;
+}
+
+.nav-bar-logo {
+  height: 5vh;
+  margin-left: 4vw;
 }

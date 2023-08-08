@@ -151,7 +151,7 @@ export default function Seat() {
   }
 
   function toTicketing() {
-    console.log(1)
+    window.location.href="https://m.ticketlink.co.kr/sports/137/57"
   }
 
   function selectSection(event) {
@@ -172,10 +172,6 @@ export default function Seat() {
     }
   }
 
-  function showAR() {
-    window.location.href = '/ar/ar.html'
-  }
-
   useEffect(() => {
     ImageMap('img[useMap]')
   }, [])
@@ -187,50 +183,55 @@ export default function Seat() {
         <Swiper>
           <SwiperSlide>
             <div className='home-body'>
-              
-              <button className='seat-info'>
-                  <span className='seat-info-title font'>
-                    {showSeatName ? showSeatName : "블럭 선택하기"} 
-                    <br />
+              <div className='home-left'>
+            
+              <div id='seat-home-info'>
+                <div className='seat-info-header font'>
+                  <span className='seat-info-header-title'>
+                    {showSeatName ? showSeatName : "블럭 선택하기"}
+                  </span>
+                  <span className='seat-info-header-desc'>
                     {seatWeekdayPrice ? "주중: " + seatWeekdayPrice : ""}
-                    <br />
+                  </span>
+                  <span className='seat-info-header-desc'>
                     {seatWeekendPrice ? "주말 : " + seatWeekendPrice : ""} 
                   </span>
-                  <br />
+                </div>
+                <div className='seat-info-footer'>
                   <button className='font' onClick={toSectionDetail}>
-                    시야 보러 가기
+                    VIEW
                   </button>
-                  <br />
-                  <button onClick={toTicketing} className='font'>
-                    예매 하러 가기
-                  </button>
+                </div>
+              </div>
+              <button onClick={toTicketing} className='ticket-button font'>
+                  TICKET
               </button>
+            </div>
 
-              <img className='park-home-img' src={park_home} usemap="#home-map"/>
+            <img className='park-home-img' src={park_home} usemap="#home-map"/>
 
-              <map name="home-map">
-                <area target="" onClick={selectSection} alt="SKY 자유석 1" title="SKY 자유석 1" coords="172,461,159,497,221,497,221,461" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 자유석 2" title="SKY 자유석 2" coords="169,459,156,495,90,434,114,409" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 자유석 3" title="SKY 자유석 3" coords="35,340,112,409,89,433,13,363" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="6,182,33,182,33,339,12,362,5,356" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 지정석 1" title="SKY 지정석 1" coords="35,182,46,182,46,325,35,337" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 지정석 2" title="SKY 지정석 2" coords="37,338,47,327,123,397,114,407" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 지정석 3" title="SKY 지정석 3" coords="115,408,125,398,174,443,170,457" shape="poly"/>
-                <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="176,444,171,458,221,458,221,444" shape="poly"/>
-                <area target="" onClick={selectSection} alt="3루 내야지정석" title="3루 내야지정석" coords="50,195,60,195,118,252,118,275,50,275" shape="poly"/>
-                <area target="" onClick={selectSection} alt="블루존" title="블루존" coords="50,278,118,278,118,300,160,339,118,385,50,325" shape="poly"/>
-                <area target="" onClick={selectSection} alt="지브로존" title="지브로존" coords="120,387,162,341,200,372,178,438" shape="poly"/>
-                <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="203,376,221,376,221,439,182,439" shape="poly"/>
-                <area target="" onClick={selectSection} alt="3루 익사이팅석" title="3루 익사이팅석" coords="122,253,122,300,148,324,148,275" shape="poly"/>
-                <area target="" onClick={selectSection} alt="외야 테이블석 1" title="외야 테이블석 1" coords="57,187,67,178,99,207,89,217" shape="poly"/>
-                <area target="" onClick={selectSection} alt="외야 지정석 1" title="외야 지정석 1" coords="69,175,88,194,142,140,122,122" shape="poly"/>
-                <area target="" onClick={selectSection} alt="외야 지정석 2" title="외야 지정석 2" coords="124,120,144,138,183,99,203,99,203,73,171,73" shape="poly"/>
-                <area target="" onClick={selectSection} alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="90,196,100,206,154,150,143,141" shape="poly"/>
-                <area target="" onClick={selectSection} alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="146,140,155,148,186,116,203,116,203,101,184,101" shape="poly"/>
-                <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="173,56,173,66,203,66,203,56" shape="poly"/>
-                <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="58,110,74,125,135,66,120,51" shape="poly"/>
-                <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="206,362,203,374,221,374,221,362" shape="poly"/>
-
+            <map name="home-map">
+              <area target="" onClick={selectSection} alt="SKY 자유석 1" title="SKY 자유석 1" coords="172,461,159,497,221,497,221,461" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 2" title="SKY 자유석 2" coords="169,459,156,495,90,434,114,409" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 3" title="SKY 자유석 3" coords="35,340,112,409,89,433,13,363" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="6,182,33,182,33,339,12,362,5,356" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 1" title="SKY 지정석 1" coords="35,182,46,182,46,325,35,337" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 2" title="SKY 지정석 2" coords="37,338,47,327,123,397,114,407" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 3" title="SKY 지정석 3" coords="115,408,125,398,174,443,170,457" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="176,444,171,458,221,458,221,444" shape="poly"/>
+              <area target="" onClick={selectSection} alt="3루 내야지정석" title="3루 내야지정석" coords="50,195,60,195,118,252,118,275,50,275" shape="poly"/>
+              <area target="" onClick={selectSection} alt="블루존" title="블루존" coords="50,278,118,278,118,300,160,339,118,385,50,325" shape="poly"/>
+              <area target="" onClick={selectSection} alt="지브로존" title="지브로존" coords="120,387,162,341,200,372,178,438" shape="poly"/>
+              <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="203,376,221,376,221,439,182,439" shape="poly"/>
+              <area target="" onClick={selectSection} alt="3루 익사이팅석" title="3루 익사이팅석" coords="122,253,122,300,148,324,148,275" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 1" title="외야 테이블석 1" coords="57,187,67,178,99,207,89,217" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 지정석 1" title="외야 지정석 1" coords="69,175,88,194,142,140,122,122" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 지정석 2" title="외야 지정석 2" coords="124,120,144,138,183,99,203,99,203,73,171,73" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="90,196,100,206,154,150,143,141" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="146,140,155,148,186,116,203,116,203,101,184,101" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="173,56,173,66,203,66,203,56" shape="poly"/>
+              <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="58,110,74,125,135,66,120,51" shape="poly"/>
+              <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="206,362,203,374,221,374,221,362" shape="poly"/>
             </map>
             </div>
           </SwiperSlide>
@@ -261,20 +262,31 @@ export default function Seat() {
               <area target="" onClick={selectSection} alt="외야 미니테이블석 4" title="외야 미니테이블석 4" coords="68,152,78,143,131,196,121,206" shape="poly"/>
               <area target="" onClick={selectSection} alt="외야 패밀리석" title="외야 패밀리석" coords="107,81,170,145,184,130,121,65" shape="poly"/>
             </map>
+            <div className='away-right'>
+              <button onClick={toTicketing} className='ticket-button font'>
+                TICKET
+              </button>
+              <div id='seat-away-info'>
+                <div className='seat-info-header font'>
+                  <span className='seat-info-header-title'>
+                    {showSeatName ? showSeatName : "블럭 선택하기"}
+                  </span>
+                  <span className='seat-info-header-desc'>
+                    {seatWeekdayPrice ? "주중: " + seatWeekdayPrice : ""}
+                  </span>
+                  <span className='seat-info-header-desc'>
+                    {seatWeekendPrice ? "주말 : " + seatWeekendPrice : ""} 
+                  </span>
+                </div>
+                <div className='seat-info-footer'>
+                  <button className='font' onClick={toSectionDetail}>
+                    VIEW    
+                  </button>
+                </div>
+              </div>
+              
+            </div>
 
-            <button className='ar-on'>
-                <span className='font'>
-                  {showSeatName ? showSeatName : "블럭을 선택하세요"} 
-                  <br />
-                  주중: {seatWeekdayPrice}
-                  <br />
-                  주말: {seatWeekendPrice} 
-                </span>
-                <br />
-                <br />
-                <span onClick={toSectionDetail} className='font'>시야 보러 가기</span>
-                <Link to="https://m.ticketlink.co.kr/sports/137/57" className='font'>예매 하러 가기</Link>
-            </button>
 
             </div>
           </SwiperSlide>

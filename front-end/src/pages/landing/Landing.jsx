@@ -2,6 +2,7 @@ import React from 'react'
 import './styles/Landing.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
+import emblem from './img/emblem.svg'
 
 
 
@@ -30,7 +31,8 @@ function Landing() {
   
     return (
       <div className='landing-container font'>
-        <span>LA:ON</span>
+        <img className='landing-emblem' src={emblem} alt="" />
+        <span className='landing-title'>devloped by LA:ON</span>
       </div>
     )
 }
