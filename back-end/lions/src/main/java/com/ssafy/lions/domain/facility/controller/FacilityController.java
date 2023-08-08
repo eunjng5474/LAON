@@ -4,6 +4,7 @@ import com.ssafy.lions.domain.facility.dto.FacilityResultDto;
 import com.ssafy.lions.domain.facility.dto.ItemResultDto;
 import com.ssafy.lions.domain.facility.service.FacilityService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*", methods = {
         RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS,
         RequestMethod.HEAD })
+@Tag(name = "편의시설 정보", description = "편의시설 정보 조회 API")
 public class FacilityController {
     @Autowired
     FacilityService facilityService;
