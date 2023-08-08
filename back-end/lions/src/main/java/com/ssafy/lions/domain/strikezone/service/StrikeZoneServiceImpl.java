@@ -8,26 +8,31 @@ import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class StrikeZoneServiceImpl implements StrikeZoneService {
 
     @Override
     public StrikeZoneResultDto getStrikeZoneInfo(String date, String awayTeam, String inning) throws Exception {
-        String year = date.substring(0, 4);
-        ProcessBuilder builder = new ProcessBuilder("python", "test.py", date, awayTeam, year, inning);
-        builder.redirectErrorStream(true);
-        Process process = builder.start();
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(),"euc-kr"));
-        StringBuilder sb = new StringBuilder();
-        String line;
-
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-        }
-
-        System.out.println(sb);
+        Path currentPath = Paths.get("");
+        String path = currentPath.toAbsolutePath().toString();
+        System.out.println("현재 작업 경로: " + path);
+//        String year = date.substring(0, 4);
+//        ProcessBuilder builder = new ProcessBuilder("python", "./localhost:8080/test.py", date, awayTeam, year, inning);
+//        builder.redirectErrorStream(true);
+//        Process process = builder.start();
+//
+//        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(),"euc-kr"));
+//        StringBuilder sb = new StringBuilder();
+//        String line;
+//
+//        while ((line = br.readLine()) != null) {
+//            sb.append(line);
+//        }
+//
+//        System.out.println(sb);
 
 //        JSONParser parser = new JSONParser();
 //        JSONObject jsonObject = (JSONObject)parser.parse(sb.toString());
