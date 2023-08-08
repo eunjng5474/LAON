@@ -19,15 +19,15 @@ function Landing() {
 
   const gameStatus = useSelector((state) => state.gameStatus)
 
-  if (gameStatus === 'PLAY') {
-    setTimeout(() => {
-      navigate('/match')
-    }, 3000)
-  } else {
-    setTimeout(() => {
-      navigate('/seat')
-    }, 3000)
-  }
+  // if (gameStatus === 'PLAY') {
+  //   setTimeout(() => {
+  //     navigate('/match')
+  //   }, 3000)
+  // } else {
+  //   setTimeout(() => {
+  //     navigate('/seat')
+  //   }, 3000)
+  // }
   
     return (
       <div className='landing-container font'>
