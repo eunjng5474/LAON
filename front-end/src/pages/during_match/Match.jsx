@@ -47,12 +47,6 @@ export default function Match() {
 
   const px = x0 + vx0 * t + ax * t * t * 0.5
   const pz = z0 + vz0 * t + az * t * t * 0.5
-
-  const pfx_x = (px - x_no_air) * 12
-  const pfx_z = (pz - z_no_air) * 12
-  const pfx_x_raw = px * 12
-
-
   
   // 출루정보
   let inning = null //이닝
