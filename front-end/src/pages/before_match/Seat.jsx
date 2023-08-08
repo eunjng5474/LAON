@@ -67,6 +67,9 @@ export default function Seat() {
       title: "SKY 지정석 6", seat: "U-3 1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
+      title: "SKY 여기보존", seat: "yogibo 1", weekdayPrice: "15,000", seekendPRice : "18,000"
+    },
+    {
       title: "3루 내야지정석", seat: "3-9 2", weekdayPrice: "11,000", seekendPRice : "13,000"
     },
     {
@@ -213,27 +216,28 @@ export default function Seat() {
             <img className='park-home-img' src={park_home} usemap="#home-map"/>
 
             <map name="home-map">
-              <area target="" onClick={selectSection} alt="SKY 자유석 1" title="SKY 자유석 1" coords="172,461,159,497,221,497,221,461" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 자유석 2" title="SKY 자유석 2" coords="169,459,156,495,90,434,114,409" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 자유석 3" title="SKY 자유석 3" coords="35,340,112,409,89,433,13,363" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="6,182,33,182,33,339,12,362,5,356" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 1" title="SKY 지정석 1" coords="35,182,46,182,46,325,35,337" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 2" title="SKY 지정석 2" coords="37,338,47,327,123,397,114,407" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 3" title="SKY 지정석 3" coords="115,408,125,398,174,443,170,457" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="176,444,171,458,221,458,221,444" shape="poly"/>
-              <area target="" onClick={selectSection} alt="3루 내야지정석" title="3루 내야지정석" coords="50,195,60,195,118,252,118,275,50,275" shape="poly"/>
-              <area target="" onClick={selectSection} alt="블루존" title="블루존" coords="50,278,118,278,118,300,160,339,118,385,50,325" shape="poly"/>
-              <area target="" onClick={selectSection} alt="지브로존" title="지브로존" coords="120,387,162,341,200,372,178,438" shape="poly"/>
-              <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="203,376,221,376,221,439,182,439" shape="poly"/>
-              <area target="" onClick={selectSection} alt="3루 익사이팅석" title="3루 익사이팅석" coords="122,253,122,300,148,324,148,275" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 테이블석 1" title="외야 테이블석 1" coords="57,187,67,178,99,207,89,217" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 지정석 1" title="외야 지정석 1" coords="69,175,88,194,142,140,122,122" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 지정석 2" title="외야 지정석 2" coords="124,120,144,138,183,99,203,99,203,73,171,73" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="90,196,100,206,154,150,143,141" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 1" title="SKY 자유석 1" coords="8,200,37,201,38,370,13,399,6,392" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 2" title="SKY 자유석 2" coords="15,401,99,476,125,452,37,376" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 3" title="SKY 자유석 3" coords="101,479,172,545,185,508,127,453" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="175,543,198,544,196,527,239,524,237,507,187,506" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 1" title="SKY 지정석 1" coords="38,203,39,367,49,358,48,202" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 2" title="SKY 지정석 2" coords="41,374,122,449,133,437,51,364" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 3" title="SKY 지정석 3" coords="125,449,183,502,189,487,134,441" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="239,506,187,506,191,490,239,492" shape="poly"/>
+              <area target="" onClick={selectSection} alt="3루 내야지정석" title="3루 내야지정석" coords="55,218,54,302,128,302,126,278,63,217" shape="poly"/>
+              <area target="" onClick={selectSection} alt="블루존" title="블루존" coords="55,308,56,358,129,423,173,374,128,331,125,309" shape="poly"/>
+              <area target="" onClick={selectSection} alt="지브로존" title="지브로존" coords="130,427,194,480,217,411,177,378" shape="poly"/>
+              <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="238,483,200,483,221,416,239,416" shape="poly"/>
+              <area target="" onClick={selectSection} alt="3루 익사이팅석" title="3루 익사이팅석" coords="159,352,130,330,133,284,161,304" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 1" title="외야 테이블석 1" coords="96,239,105,229,72,197,61,206" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 지정석 1" title="외야 지정석 1" coords="95,213,153,154,132,134,74,194" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 지정석 2" title="외야 지정석 2" coords="155,151,197,108,218,107,219,82,188,81,135,133" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="109,225,165,166,156,159,101,214" shape="poly"/>
               <area target="" onClick={selectSection} alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="146,140,155,148,186,116,203,116,203,101,184,101" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="173,56,173,66,203,66,203,56" shape="poly"/>
-              <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="58,110,74,125,135,66,120,51" shape="poly"/>
-              <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="206,362,203,374,221,374,221,362" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="170,162,202,130,219,127,219,114,200,112,158,154" shape="poly"/>
+              <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="80,133,145,69,132,58,67,120" shape="poly"/>
+              <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="222,410,239,410,240,393,224,393" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 여기보존" title="SKY 여기보존" coords="238,543,200,544,198,527,239,529" shape="poly"/>
             </map>
             </div>
           </SwiperSlide>
@@ -242,27 +246,28 @@ export default function Seat() {
             <img className='park-away-img' src={park_away} usemap="#away-map"/>
 
             <map name="away-map">
-              <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="0,497,63,497,49,459,-1,460" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 자유석 5" title="SKY 자유석 5" coords="51,459,65,495,130,435,105,409" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 자유석 6" title="SKY 자유석 6" coords="107,407,132,434,208,363,184,338" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="49,457,43,443,0,444,0,458" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 5" title="SKY 지정석 5" coords="95,396,104,407,50,456,44,442" shape="poly"/>
-              <area target="" onClick={selectSection} alt="SKY 지정석 6" title="SKY 지정석 6" coords="96,395,105,406,184,336,173,325" shape="poly"/>
-              <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="39,438,19,375,0,376,0,437" shape="poly"/>
-              <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="20,373,17,362,0,362,0,373" shape="poly"/>
-              <area target="" onClick={selectSection} alt="대구는 지브로존" title="대구는 지브로존" coords="23,373,43,436,100,385,59,341" shape="poly"/>
-              <area target="" onClick={selectSection} alt="원정 응원석" title="원정 응원석" coords="61,339,101,302,164,327,101,383" shape="poly"/>
-              <area target="" onClick={selectSection} alt="1루 내야지정석" title="1루 내야지정석" coords="101,300,101,253,166,194,165,325" shape="poly"/>
-              <area target="" onClick={selectSection} alt="1루 익사이팅석" title="1루 익사이팅석" coords="73,277,73,324,98,301,98,255" shape="poly"/>
-              <area target="" onClick={selectSection} alt="잔디석" title="잔디석" coords="198,188,217,171,217,341,198,325" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 테이블석 3" title="외야 테이블석 3" coords="125,208,132,217,163,188,155,180" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 테이블석 4" title="외야 테이블석 4" coords="157,172,166,163,90,88,82,97" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 테이블석 5" title="외야 테이블석 5" coords="68,82,77,73,59,56,18,56,18,66,53,67" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 지정석 3" title="외야 지정석 3" coords="19,74,49,74,97,122,78,140,39,99,19,99" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 지정석 4" title="외야 지정석 4" coords="81,141,100,123,151,176,132,195" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 미니테이블석 3" title="외야 미니테이블석 3" coords="19,102,38,102,77,142,67,151,35,118,19,118" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 미니테이블석 4" title="외야 미니테이블석 4" coords="68,152,78,143,131,196,121,206" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 패밀리석" title="외야 패밀리석" coords="107,81,170,145,184,130,121,65" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="1,508,50,507,69,547,17,545,17,527,-1,525" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 5" title="SKY 자유석 5" coords="71,543,139,479,112,451,55,505" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 자유석 6" title="SKY 자유석 6" coords="143,475,224,401,199,374,116,447" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="1,504,51,505,43,489,-1,489" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 5" title="SKY 지정석 5" coords="53,500,111,448,101,437,47,486" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 지정석 6" title="SKY 지정석 6" coords="114,445,200,371,187,361,104,434" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 여기보존" title="SKY 여기보존" coords="0,545,19,545,18,526,2,527" shape="poly"/>
+              <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="-1,483,42,484,21,415,-1,414" shape="poly"/>
+              <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="-1,411,18,411,15,398,-1,395" shape="poly"/>
+              <area target="" onClick={selectSection} alt="대구는 지브로존" title="대구는 지브로존" coords="47,480,105,425,61,375,23,410" shape="poly"/>
+              <area target="" onClick={selectSection} alt="원정 응원석" title="원정 응원석" coords="109,422,178,361,108,335,65,374" shape="poly"/>
+              <area target="" onClick={selectSection} alt="1루 내야지정석" title="1루 내야지정석" coords="181,358,109,330,109,281,173,219,181,222" shape="poly"/>
+              <area target="" onClick={selectSection} alt="1루 익사이팅석" title="1루 익사이팅석" coords="80,356,106,333,105,284,78,306" shape="poly"/>
+              <area target="" onClick={selectSection} alt="잔디석" title="잔디석" coords="233,369,233,196,216,207,214,356" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 3" title="외야 테이블석 3" coords="72,89,80,81,63,63,18,63,18,72,55,75" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 4" title="외야 테이블석 4" coords="171,190,88,107,96,96,179,182" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 5" title="외야 테이블석 5" coords="143,238,175,209,167,200,138,227" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 지정석 3" title="외야 지정석 3" coords="19,110,40,110,83,152,103,134,53,85,20,84" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 지정석 4" title="외야 지정석 4" coords="87,154,144,216,165,195,106,135" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 미니테이블석 3" title="외야 미니테이블석 3" coords="71,164,37,131,19,129,20,114,39,113,80,155" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 미니테이블석 4" title="외야 미니테이블석 4" coords="130,225,74,169,83,160,143,218" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 패밀리석" title="외야 패밀리석" coords="184,160,117,90,132,74,201,144" shape="poly"/>
             </map>
             <div className='away-right'>
               <button onClick={toTicketing} className='ticket-button font'>
