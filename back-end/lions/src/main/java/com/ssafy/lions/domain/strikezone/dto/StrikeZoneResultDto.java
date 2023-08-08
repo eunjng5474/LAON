@@ -1,6 +1,7 @@
 package com.ssafy.lions.domain.strikezone.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
@@ -13,8 +14,14 @@ public class StrikeZoneResultDto {
     @Schema(description = "투수의 투구 구종")
     private String stuff;
 
-    public StrikeZoneResultDto(String speed, String stuff) {
-        this.speed = speed;
-        this.stuff = stuff;
-    }
+    private String crossPlateY;
+    private String vy0;
+    private String vz0;
+    private String vx0;
+    private String ax;
+    private String ay;
+    private String az;
+    private String z0;
+    private String y0;
+    private String x0;
 }
