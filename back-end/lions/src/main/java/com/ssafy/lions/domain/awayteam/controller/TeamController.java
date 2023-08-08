@@ -4,6 +4,7 @@ import com.ssafy.lions.domain.awayteam.dto.TeamResultDto;
 import com.ssafy.lions.domain.awayteam.service.TeamServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*", methods = {
         RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS,
     RequestMethod.HEAD })
+@Tag(name = "팀 정보", description = "팀 정보 조회 API")
 public class TeamController {
     @Autowired
     TeamServiceImpl teamService;
