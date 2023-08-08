@@ -149,9 +149,12 @@ export default function Facilities() {
 
   },[])
 
-    function focusBody() {
-      setFocusedBody(!focusedBody)
-      console.log(focusedBody)
+    function focusBody(e) {
+      if (e.target.className === 'facilities-body') {
+        setFocusedBody(true)
+      } else {
+        setFocusedBody(false)
+      }
     }
 
 
@@ -186,7 +189,6 @@ export default function Facilities() {
             </div>
             <div className={`store-list ${category === "편의시설" ? "store-show" : ""}`}>
 
-              
                 <div className='facilities-store'>
                   KELLY
                 </div>
@@ -232,9 +234,7 @@ export default function Facilities() {
                 <div className='facilities-store'>
                   한만두
                 </div>
-                <div className='facilities-store'>
-                  블루샷
-                </div>
+                
               
               {/* {stores && stores.map((data) => {
                 console.log(data)
@@ -266,7 +266,10 @@ export default function Facilities() {
                 </div>
                 <div className='facilities-store'>
                   흡연실
-            </div>
+                </div>
+                <div className='facilities-store'>
+                  블루샷
+                </div>
             </div>
             
           </div>
