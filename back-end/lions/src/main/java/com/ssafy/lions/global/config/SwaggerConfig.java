@@ -13,11 +13,11 @@ public class SwaggerConfig{
     @Bean
     public OpenAPI openAPI(){
         final Server prodServer = new Server();
-        prodServer.setUrl("https://laon.info/swagger-ui/index.html#/");
+        prodServer.setUrl("https://laon.info/api/swagger-ui/index.html#/");
         prodServer.description("운영 환경 서버 URL");
 
         final Server devServer  = new Server();
-        devServer.setUrl("http://localhost:8080/swagger-ui/index.html#/");
+        devServer.setUrl("http://localhost:8080/api/swagger-ui/index.html#/");
         devServer.description("개발 환경 서버 URL");
 
         Info info = new Info()
