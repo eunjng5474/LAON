@@ -2,7 +2,7 @@ import './styles/Match.css'
 import { useSelector } from 'react-redux';
 
 import Field from './img/field.png'
-import fieldImg from './img/lapark.jpg'
+import fieldImg from './img/lapark3.jpg'
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
@@ -45,28 +45,12 @@ export default function Match() {
 
   const t = (-vy0 - (vy0 * vy0 - 2 * ay * (y0 - crossPlateY)) ** 0.5) / ay
 
-  const t40 = (-vy0 - (vy0 * vy0 - 2 * ay * (y0 - 40)) ** 0.5) / ay
-  const x40 = x0 + vx0 * t40 + 0.5 * ax * t40 * t40
-  const vx40 = vx0 + ax * t40
-  const z40 = z0 + vz0 * t40 + 0.5 * az * t40 * t40
-  const vz40 = vz0 + az * t40
-  const th = t - t40
-  const x_no_air = x40 + vx40 * th
-  const z_no_air = z40 + vz40 * th - 0.5 * 32.174 * th * th
-  const z_no_induced = z0 + vz0 * t
-
   const px = x0 + vx0 * t + ax * t * t * 0.5
   const pz = z0 + vz0 * t + az * t * t * 0.5
-
-  const pfx_x = (px - x_no_air) * 12
-  const pfx_z = (pz - z_no_air) * 12
-  const pfx_x_raw = px * 12
-
-
   
   // 출루정보
   let inning = null //이닝
-  let homeAttack = false;  // 홈 공격 여부
+  let homeAttack = true;  // 홈 공격 여부
   let awayAttack = false;  // 어웨이 공격 여부
 
   if (inningData === "BEFORE"){
@@ -92,8 +76,20 @@ export default function Match() {
   // 볼카운트
   const divCount = function(payload) {
     const result = []
-    for (let i = 0; i < payload; i++) {
-      result.push(<div className='bso-circle' key={i}></div>)      
+    if (payload === ballCount){
+      for (let i = 0; i < payload; i++) {
+        result.push(<div className='bso-circle' key={i}></div>)      
+      }
+      for(let j = 0; j < 3 - payload; j++) {
+        result.push(<div className='no-bso-circle' key={j}></div>)      
+      }
+    } else {
+      for (let i = 0; i < payload; i++) {
+        result.push(<div className='bso-circle' key={i}></div>)      
+      }
+      for(let j = 0; j < 2 - payload; j++) {
+        result.push(<div className='no-bso-circle' key={j}></div>)      
+      }
     }
     return result
   }
@@ -145,7 +141,6 @@ export default function Match() {
             <img className='match-away-team' src={awayTeamLogo} alt="" />
             <div className='match-away-info'>
               <h3>AWAY</h3>
-              <div className={ awayAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
             </div>
           </div>
           
@@ -153,16 +148,19 @@ export default function Match() {
             <div className='score-board-inning'>
               {inning}
             </div>
-            <br />
+            {/* <br /> */}
             <div className='score-board-point'>
               {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
+              <div className='score-board-attack'>
+                <div className={ awayAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+                <div className={ homeAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+              </div>
             </div>
           </div>
           
           <div className='match-home-team-container'>
             <img className='match-home-team' src={homeTeamLogo} alt="" />
             <div className='match-home-info'>
-              <div className={ homeAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
               <h3>HOME</h3>
             </div>
           </div>
@@ -199,8 +197,6 @@ export default function Match() {
                 </div>
 
               </div>
-
-              
             </div>
 
           </div>

@@ -15,6 +15,7 @@ import BUTTER from './img/facilities/버터우드로고.png'
 import ALTONG from './img/facilities/알통닭강정로고.png'
 import HONG from './img/facilities/리얼키친더홍로고.png'
 import MANDU from './img/facilities/한만두로고.png'
+import YUBU from './img/facilities/대왕유부초밥로고.png'
 import store from '../../store/store'
 import axios from 'axios';
 import { useGeolocated } from "react-geolocated";
@@ -96,7 +97,8 @@ export default function Facilities() {
   function focusBody(e) {
     if (e.target.className === 'facilities-body' ||
     e.target.className === 'points-canvas' ||
-    e.target.className === 'store-img') {
+    e.target.className === 'store-img' ||
+    e.target.className === 'to-ar-button') {
       setFocusedBody(true)
     } else {
       setFocusedBody(false)
@@ -105,6 +107,10 @@ export default function Facilities() {
 
   function selectStore(e) {
     setDestination(e.target.id)
+  }
+
+  function goAR() {
+    window.location.href = "/ar/ar.html"
   }
 
   useEffect(() => {
@@ -169,6 +175,8 @@ export default function Facilities() {
           
           <canvas className='points-canvas' ref={naviCanvasRef}></canvas>
         </div>
+
+        <button className='to-ar-button' onClick={goAR}>AR</button>
         
         <div className={`facilities-select ${focusedBody ? "facilities-select-focus-body" : ""}`} onClick={focusBody}>
           <div className='facilities-search-bar'>
@@ -181,10 +189,12 @@ export default function Facilities() {
           </div>
 
           <div className={`facilities-item-container ${focusedBody ? "item-container-hide" : ""}`}>
+
             <div className='category-select'>
               <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장</button>
               <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""}`}>편의시설</button>
             </div>
+
             <div className={`store-list ${category === "편의시설" ? "store-show" : ""}`}>
 
                 <div 
@@ -231,10 +241,9 @@ export default function Facilities() {
                 </div>
                 <div 
                   className='facilities-store'
-                  id="대왕유부초밥"
                   onClick={selectStore}
                 >
-                  대왕유부초밥
+                  <img className='store-img' id="대왕유부초밥" src={YUBU} alt="" />
                 </div>
                 <div 
                   className='facilities-store'
@@ -342,7 +351,6 @@ export default function Facilities() {
                   쓰레기통
                 </div>
             </div>
-            
           </div>
         </div>
       </div>
