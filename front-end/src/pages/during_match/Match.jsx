@@ -74,22 +74,24 @@ export default function Match() {
   }
 
   // 볼카운트
-  const divCount = function(payload) {
+  const divCountBall = function(payload) {
     const result = []
-    if (payload === ballCount){
-      for (let i = 0; i < payload; i++) {
-        result.push(<div className='bso-circle' key={i}></div>)      
-      }
-      for(let j = 0; j < 3 - payload; j++) {
-        result.push(<div className='no-bso-circle' key={j}></div>)      
-      }
-    } else {
-      for (let i = 0; i < payload; i++) {
-        result.push(<div className='bso-circle' key={i}></div>)      
-      }
-      for(let j = 0; j < 2 - payload; j++) {
-        result.push(<div className='no-bso-circle' key={j}></div>)      
-      }
+    for (let i = 0; i < payload; i++) {
+      result.push(<div className='bso-circle' key={i}></div>)      
+    }
+    for(let j = 0; j < 3 - payload; j++) {
+      result.push(<div className='no-bso-circle' key={j}></div>)      
+    }
+    return result
+  }
+
+  const divCountSO = function(payload) {
+    const result = []
+    for (let i = 0; i < payload; i++) {
+      result.push(<div className='bso-circle' key={i}></div>)      
+    }
+    for(let j = 0; j < 2 - payload; j++) {
+      result.push(<div className='no-bso-circle' key={j}></div>)      
     }
     return result
   }
@@ -114,9 +116,9 @@ export default function Match() {
 
       stZoneBallCtx.stroke();
       if(pitchResult === 'S'){
-        stZoneBallCtx.fillStyle = 'yellow';
+        stZoneBallCtx.fillStyle = '#FFCD4A';
       } else {
-        stZoneBallCtx.fillStyle = 'green';
+        stZoneBallCtx.fillStyle = '#7DB249';
       }
       stZoneBallCtx.fill();
       
@@ -185,15 +187,15 @@ export default function Match() {
               <div className='bso-circle-container'>
 
                 <div  className='ball-circle-container'>
-                  {divCount(ballCount)}
+                  {divCountBall(ballCount)}
                 </div>
 
                 <div className='strike-circle-container'>
-                  {divCount(strikeCount)}
+                  {divCountSO(strikeCount)}
                 </div>
 
                 <div className='out-circle-container'>
-                  {divCount(outCount)}
+                  {divCountSO(outCount)}
                 </div>
 
               </div>
@@ -209,6 +211,7 @@ export default function Match() {
 
         <div className='match-field'>
           <div className={base1 ? 'base1t' : 'base1'}>
+            <img/>
           </div>
           <div className={base2 ? 'base2t' : 'base2'}>
           </div>
