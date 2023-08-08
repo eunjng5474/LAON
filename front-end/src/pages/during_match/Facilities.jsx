@@ -4,6 +4,17 @@ import EntireSectionMapImg from './img/sectionMap.png';
 import map2F from './img/sectionMap_2F.png';
 import map3F from './img/sectionMap_3F.png';
 import map5F from './img/sectionMap_5F.png';
+import KELLY from './img/facilities/켈리로고.png'
+import JJAKTAE from './img/facilities/짝태시대 로고.png'
+import TTANG from './img/facilities/땅땅치킨로고.png'
+import PAPA from './img/facilities/파파존스피자로고.png'
+import HAPPY from './img/facilities/해피치즈스마일로고.png'
+import JOKSU from './img/facilities/족발슈퍼.png'
+import CU from './img/facilities/CU로고.png'
+import BUTTER from './img/facilities/버터우드로고.png'
+import ALTONG from './img/facilities/알통닭강정로고.png'
+import HONG from './img/facilities/리얼키친더홍로고.png'
+import MANDU from './img/facilities/한만두로고.png'
 import store from '../../store/store'
 import axios from 'axios';
 import { useGeolocated } from "react-geolocated";
@@ -53,6 +64,7 @@ export default function Facilities() {
   const onChangeDeparture = (e) => {
     setDeparture(e.target.value);
   }
+
   const onChangeDestination = (e) => {
     setDestination(e.target.value);
   }
@@ -77,30 +89,25 @@ export default function Facilities() {
     console.log(e)
   }
 
-  function isFacility(data) {
-    return data.type === "편의시설";
-  }
-
-  function isStore(data) {
-    return data.type === "식음료"
-  }
-
   function categorySelect(e) {
     setCategory(e.target.innerText)
-    console.log(category)
+  }
+
+  function focusBody(e) {
+    if (e.target.className === 'facilities-body' ||
+    e.target.className === 'points-canvas' ||
+    e.target.className === 'store-img') {
+      setFocusedBody(true)
+    } else {
+      setFocusedBody(false)
+    }
+  }
+
+  function selectStore(e) {
+    setDestination(e.target.id)
   }
 
   useEffect(() => {
-    
-    axios.get('https://laon.info/api/lions/facility/all')
-    .then((res) => {
-      console.log(res.data)
-      setFacilities(res.data.facilityList.filter(isFacility))
-      setStores(res.data.facilityList.filter(isStore))
-    })
-    .catch((error) => {
-      console.log(error)
-    })
 
     navigator.geolocation.getCurrentPosition(getPosition)
 
@@ -149,15 +156,6 @@ export default function Facilities() {
 
   },[])
 
-    function focusBody(e) {
-      if (e.target.className === 'facilities-body') {
-        setFocusedBody(true)
-      } else {
-        setFocusedBody(false)
-      }
-    }
-
-
   return (
     <div className='facilities-container font'>
       <div className='floor-select-button'>
@@ -175,7 +173,7 @@ export default function Facilities() {
         <div className={`facilities-select ${focusedBody ? "facilities-select-focus-body" : ""}`} onClick={focusBody}>
           <div className='facilities-search-bar'>
             <div className='facilities-category'>
-              <input onClick={focusBody} id="departure" onChange={onChangeDeparture} value={'현위치 : '+ currentPosition+'구역'} placeholder='출발지'/>
+              <input onClick={focusBody} id="departure" onChange={onChangeDeparture} value={currentPosition ? '현위치 : '+ currentPosition+'구역' : '위치 조회중...'} placeholder='출발지'/>
             </div>
             <div className='facilities-category'>
               <input onClick={focusBody} id="destination" onChange={onChangeDestination} value={destination} placeholder='목적지'/>          
@@ -189,86 +187,159 @@ export default function Facilities() {
             </div>
             <div className={`store-list ${category === "편의시설" ? "store-show" : ""}`}>
 
-                <div className='facilities-store'>
-                  KELLY
+                <div 
+                  className='facilities-store' 
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="KELLY" src={KELLY} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  짝태시대
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="짝태시대" src={JJAKTAE} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  리얼키친더홍
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="리얼키친더홍" src={HONG} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  파파존스피자
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="파파존스피자" src={PAPA} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  CU
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="CU" src={CU} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  해피치즈스마일
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="해피치즈스마일" src={HAPPY} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  땅땅치킨
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="땅땅치킨" src={TTANG} alt="" />
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="대왕유부초밥"
+                  onClick={selectStore}
+                >
                   대왕유부초밥
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="전설꼬치"
+                  onClick={selectStore}
+                >
                   전설꼬치
                 </div>
-                <div className='facilities-store'>
-                  버터우드
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="버터우드" src={BUTTER} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  알통닭강정
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="알통닭강정" src={ALTONG} alt="" />
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="리얼피그"
+                  onClick={selectStore}
+                >
                   리얼피그
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="5직떡볶이"
+                  onClick={selectStore}
+                >
                   5직떡볶이
                 </div>
-                <div className='facilities-store'>
-                  족발슈퍼
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="족발슈퍼" src={JOKSU} alt="" />
                 </div>
-                <div className='facilities-store'>
-                  한만두
+                <div 
+                  className='facilities-store'
+                  onClick={selectStore}
+                >
+                  <img className='store-img' id="한만두" src={MANDU} alt="" />
                 </div>
-                
-              
-              {/* {stores && stores.map((data) => {
-                console.log(data)
-                return (
-                  <StoreDetail key={data.facilityId} facilityName={data.facilityName} floor={data.floor}/>
-                )
-              })} */}
             </div>
 
             <div className={`facility-list ${category === "식음매장" ? "facility-show" : ""}`}>            
 
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="여자화장실"
+                  onClick={selectStore}
+                >
                   여자화장실
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="남자화장실"
+                  onClick={selectStore}
+                >
                   남자화장실
                 </div>
-                <div className='facilities-store'>
-                  쓰레기통
-                </div>
-                <div className='facilities-store'>
-                  남자 장애인 화장실
-                </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="여자 장애인 화장실"
+                  onClick={selectStore}
+                >
                   여자 장애인 화장실
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="남자 장애인 화장실"
+                  onClick={selectStore}
+                >
+                  남자 장애인 화장실
+                </div>
+                <div 
+                  className='facilities-store'
+                  id="블루샷"
+                  onClick={selectStore}
+                >
+                  블루샷
+                </div>
+                <div 
+                  className='facilities-store'
+                  id="수유실"
+                  onClick={selectStore}
+                >
                   수유실
                 </div>
-                <div className='facilities-store'>
+                <div 
+                  className='facilities-store'
+                  id="흡연실"
+                  onClick={selectStore}
+                >
                   흡연실
                 </div>
-                <div className='facilities-store'>
-                  블루샷
+                <div 
+                  className='facilities-store'
+                  id="쓰레기통"
+                  onClick={selectStore}
+                >
+                  쓰레기통
                 </div>
             </div>
             
