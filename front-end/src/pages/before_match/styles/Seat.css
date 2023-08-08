@@ -136,12 +136,29 @@
   height: 100%
 }
 
-.ar-on {
-  margin: 4vw;
-  width: 28vw;
+
+.seat-info {
+  margin: 2vw;
+  width: 34vw;
   height: 24vh;
   border: none;
   border-radius: 40px;
   background-color: rgb(57, 143, 255);
   color: white;
+}
+
+.seat-info-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 4vw;
+}
+
+.seat-info button {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  margin: 1vw;
+  height: 4vh;
 }
