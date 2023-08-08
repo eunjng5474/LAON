@@ -66,6 +66,9 @@ export default function Seat() {
       title: "SKY 지정석 6", seat: "U-3 1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
+      title: "SKY 여기보존", seat: "yogibo 1", weekdayPrice: "15,000", seekendPRice : "18,000"
+    },
+    {
       title: "3루 내야지정석", seat: "3-9 2", weekdayPrice: "11,000", seekendPRice : "13,000"
     },
     {
@@ -232,7 +235,7 @@ export default function Seat() {
               <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="170,162,202,130,219,127,219,114,200,112,158,154" shape="poly"/>
               <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="80,133,145,69,132,58,67,120" shape="poly"/>
               <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="222,410,239,410,240,393,224,393" shape="poly"/>
-              <area target="" onClick={selectSection} alt="여기보존" title="여기보존" coords="238,543,200,544,198,527,239,529" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 여기보존" title="SKY 여기보존" coords="238,543,200,544,198,527,239,529" shape="poly"/>
             </map>
             </div>
           </SwiperSlide>
@@ -247,7 +250,7 @@ export default function Seat() {
               <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="1,504,51,505,43,489,-1,489" shape="poly"/>
               <area target="" onClick={selectSection} alt="SKY 지정석 5" title="SKY 지정석 5" coords="53,500,111,448,101,437,47,486" shape="poly"/>
               <area target="" onClick={selectSection} alt="SKY 지정석 6" title="SKY 지정석 6" coords="114,445,200,371,187,361,104,434" shape="poly"/>
-              <area target="" onClick={selectSection} alt="여기보존" title="여기보존" coords="0,545,19,545,18,526,2,527" shape="poly"/>
+              <area target="" onClick={selectSection} alt="SKY 여기보존" title="SKY 여기보존" coords="0,545,19,545,18,526,2,527" shape="poly"/>
               <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="-1,483,42,484,21,415,-1,414" shape="poly"/>
               <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="-1,411,18,411,15,398,-1,395" shape="poly"/>
               <area target="" onClick={selectSection} alt="대구는 지브로존" title="대구는 지브로존" coords="47,480,105,425,61,375,23,410" shape="poly"/>
