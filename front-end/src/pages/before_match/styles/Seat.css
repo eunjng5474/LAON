@@ -8,10 +8,6 @@
   height: 82vh;
 }
 
-.swiper-container div {
-  height: 70vh;
-}
-
 .seat-body {
   display: flex;
   flex-direction: column;
@@ -113,7 +109,7 @@
 
 .home-body {
   width: 100vw;
-  height: 67.46vh;
+  height: 70vh;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -128,7 +124,7 @@
 
 .away-body {
   width: 100vw;
-  height: 67.6vh;
+  height: 70vh;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -153,7 +149,7 @@
 #seat-home-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 2vw;
   padding: 2vw;
@@ -168,7 +164,7 @@
 #seat-away-info {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 2vw;
   padding: 2vw;
