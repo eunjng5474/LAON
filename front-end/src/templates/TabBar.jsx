@@ -72,9 +72,24 @@ export default function TabBar() {
 
   return (
     <div className={`tab-bar-container ${dark ? "dark" : ""} ${hide ? "hide" : ""} font`}>
-      <img className={`tab-bar-icon ${naviSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={gps} alt="내비" />
-      <img className={`tab-bar-icon ${seatSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={seat} alt="좌석" />
-      <img className={`tab-bar-icon ${matchSelected ? "tab-bar-selected" : ""}`} src={live} onClick={navigatePage} alt="경기" />
+      <div className='tab-bar-item'>
+        <img className={`tab-bar-icon ${naviSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={gps} alt="내비" />
+        <span className='tab-bar-span'>
+          NAVI
+        </span>
+      </div>
+      <div className='tab-bar-item'>
+        <img className={`tab-bar-icon ${seatSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={seat} alt="좌석" />
+        <span className='tab-bar-span'>
+          SEAT
+        </span>
+      </div>
+      <div className='tab-bar-item'>
+        <img className={`tab-bar-icon ${matchSelected ? "tab-bar-selected" : ""}`} src={live} onClick={navigatePage} alt="경기" />
+        <span className='tab-bar-span'>
+          LIVE
+        </span>
+      </div>
     </div>
   )
 }

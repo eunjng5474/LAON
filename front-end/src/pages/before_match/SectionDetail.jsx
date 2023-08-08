@@ -51,7 +51,6 @@ export default function SectionDetail() {
               <area onClick={getCoordinate} target="" alt="" title="" coords="137,310,166,310,166,325,137,325" shape="poly"/>
           </map>
         </div>
-
       </div>
     </div>
   )
