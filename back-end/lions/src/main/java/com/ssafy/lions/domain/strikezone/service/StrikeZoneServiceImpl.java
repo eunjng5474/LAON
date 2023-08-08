@@ -27,26 +27,28 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
             sb.append(line);
         }
 
-        JSONParser parser = new JSONParser();
-        JSONObject jsonObject = (JSONObject)parser.parse(sb.toString());
-        jsonObject = (JSONObject)jsonObject.get("result");
+        System.out.println(sb);
 
-        if (jsonObject.size() > 0) {
-            jsonObject = (JSONObject)jsonObject.get("textRelayData");
-            JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
-            jsonObject = (JSONObject)jsonArray.get(0);
-
-//            jsonArray = (JSONArray)jsonObject.get("ptsOptions");
-//            JSONObject textOptions = (JSONObject)jsonArray.get(1);
-
-            jsonArray = (JSONArray)jsonObject.get("textOptions");
-            JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
-
-//            System.out.println(jsonObject.get("ptsPitchId") + " " + jsonObject.get("speed") + " " + jsonObject.get("stuff"));
-//            System.out.println(textOptions);
-//            System.out.println(strikeZoneResultDto);
-            return new StrikeZoneResultDto(ptsOptions.get("speed").toString(), ptsOptions.get("stuff").toString());
-        }
+//        JSONParser parser = new JSONParser();
+//        JSONObject jsonObject = (JSONObject)parser.parse(sb.toString());
+//        jsonObject = (JSONObject)jsonObject.get("result");
+//
+//        if (jsonObject.size() > 0) {
+//            jsonObject = (JSONObject)jsonObject.get("textRelayData");
+//            JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
+//            jsonObject = (JSONObject)jsonArray.get(0);
+//
+////            jsonArray = (JSONArray)jsonObject.get("ptsOptions");
+////            JSONObject textOptions = (JSONObject)jsonArray.get(1);
+//
+//            jsonArray = (JSONArray)jsonObject.get("textOptions");
+//            JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
+//
+////            System.out.println(jsonObject.get("ptsPitchId") + " " + jsonObject.get("speed") + " " + jsonObject.get("stuff"));
+////            System.out.println(textOptions);
+////            System.out.println(strikeZoneResultDto);
+//            return new StrikeZoneResultDto(ptsOptions.get("speed").toString(), ptsOptions.get("stuff").toString());
+//        }
 
         return null;
     }
