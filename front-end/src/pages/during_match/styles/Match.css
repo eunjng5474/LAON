@@ -302,3 +302,9 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.score-board-attack {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
