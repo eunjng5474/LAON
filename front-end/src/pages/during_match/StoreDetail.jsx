@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './styles/StoreDetail.css'
-import ttangttang from './img/ttangttang.jpg'
-import ttangttangmenu from './img/ttangttnagmenu.jpg'
 import store from '../../store/store'
 
 export default function StoreDetail({key, facilityName, floor}) {
@@ -29,7 +27,6 @@ export default function StoreDetail({key, facilityName, floor}) {
           </p>
         </div>
         <div className='store-detail-body'>
-          <img className="store-menu-img" src={ttangttangmenu} alt="" />
         </div>
       </div>
     </div>
