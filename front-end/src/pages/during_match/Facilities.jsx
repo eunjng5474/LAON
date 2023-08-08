@@ -15,6 +15,7 @@ import BUTTER from './img/facilities/버터우드로고.png'
 import ALTONG from './img/facilities/알통닭강정로고.png'
 import HONG from './img/facilities/리얼키친더홍로고.png'
 import MANDU from './img/facilities/한만두로고.png'
+import YUBU from './img/facilities/대왕유부초밥로고.png'
 import store from '../../store/store'
 import axios from 'axios';
 import { useGeolocated } from "react-geolocated";
@@ -231,10 +232,9 @@ export default function Facilities() {
                 </div>
                 <div 
                   className='facilities-store'
-                  id="대왕유부초밥"
                   onClick={selectStore}
                 >
-                  대왕유부초밥
+                  <img className='store-img' id="대왕유부초밥" src={YUBU} alt="" />
                 </div>
                 <div 
                   className='facilities-store'
