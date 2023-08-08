@@ -229,3 +229,14 @@
   color: #ffffff;
   background-color: #074CA1;
 }
+
+.road-view-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.road-view-icon {
+  max-width: 13vw;
+}

@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 import park_away from './img/seat_r.png'
 // import park_home from './img/LP_home.png'
 import park_home from './img/seat_l.png'
+import roadView from './img/roadviewicon.png'
 
 import ImageMap from 'image-map'
 
@@ -198,8 +199,9 @@ export default function Seat() {
                   </span>
                 </div>
                 <div className='seat-info-footer'>
-                  <button className='font' onClick={toSectionDetail}>
-                    VIEW
+                  <button className='road-view-button font' onClick={toSectionDetail}>
+                    <img className="road-view-icon" src={roadView} alt="" />
+                    <span>시야 보기</span>
                   </button>
                 </div>
               </div>
@@ -279,8 +281,9 @@ export default function Seat() {
                   </span>
                 </div>
                 <div className='seat-info-footer'>
-                  <button className='font' onClick={toSectionDetail}>
-                    VIEW    
+                  <button className='road-view-button font' onClick={toSectionDetail}>
+                    <img className="road-view-icon" src={roadView} alt="" />
+                    <span>시야 보기</span>
                   </button>
                 </div>
               </div>
