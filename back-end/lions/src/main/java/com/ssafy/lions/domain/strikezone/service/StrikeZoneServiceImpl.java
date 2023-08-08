@@ -20,7 +20,7 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         builder.redirectErrorStream(true);
         Process process = builder.start();
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(),"euc-kr"));
+        BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(),"utf-8"));
         StringBuilder sb = new StringBuilder();
         String line;
 
