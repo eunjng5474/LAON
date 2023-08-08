@@ -16,7 +16,7 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
     public StrikeZoneResultDto getStrikeZoneInfo(String date, String awayTeam, String inning) throws Exception {
 
         String year = date.substring(0, 4);
-        ProcessBuilder builder = new ProcessBuilder("python", "/secret/crawler.py", date, awayTeam, year, inning);
+        ProcessBuilder builder = new ProcessBuilder("python3", "/secret/crawler.py", date, awayTeam, year, inning);
         builder.redirectErrorStream(true);
         Process process = builder.start();
 
