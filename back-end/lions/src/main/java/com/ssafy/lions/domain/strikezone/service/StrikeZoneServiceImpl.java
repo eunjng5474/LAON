@@ -16,7 +16,7 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
     public StrikeZoneResultDto getStrikeZoneInfo(String date, String awayTeam, String inning) throws Exception {
 
         String year = date.substring(0, 4);
-        ProcessBuilder builder = new ProcessBuilder("python3", "/secret/crawler.py", date, awayTeam, year, inning);
+        ProcessBuilder builder = new ProcessBuilder("python3", "./secret/crawler.py", date, awayTeam, year, inning);
         builder.redirectErrorStream(true);
         Process process = builder.start();
 
@@ -32,23 +32,37 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         JSONObject jsonObject = (JSONObject)parser.parse(sb.toString());
         jsonObject = (JSONObject)jsonObject.get("result");
 
+        StrikeZoneResultDto strikeZoneResultDto = new StrikeZoneResultDto();
+
         if (jsonObject.size() > 0) {
             jsonObject = (JSONObject)jsonObject.get("textRelayData");
             JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
             jsonObject = (JSONObject)jsonArray.get(0);
 
-//            jsonArray = (JSONArray)jsonObject.get("ptsOptions");
-//            JSONObject textOptions = (JSONObject)jsonArray.get(1);
-
             jsonArray = (JSONArray)jsonObject.get("textOptions");
-            JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
+            JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
 
-//            System.out.println(jsonObject.get("ptsPitchId") + " " + jsonObject.get("speed") + " " + jsonObject.get("stuff"));
-//            System.out.println(textOptions);
-//            System.out.println(strikeZoneResultDto);
-            return new StrikeZoneResultDto(ptsOptions.get("speed").toString(), ptsOptions.get("stuff").toString());
+            jsonArray = (JSONArray)jsonObject.get("ptsOptions");
+            JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
+
+            try {
+                strikeZoneResultDto.setSpeed(textOptions.get("speed").toString());
+                strikeZoneResultDto.setStuff(textOptions.get("stuff").toString());
+                strikeZoneResultDto.setCrossPlateY(ptsOptions.get("crossPlateY").toString());
+                strikeZoneResultDto.setVy0(ptsOptions.get("vy0").toString());
+                strikeZoneResultDto.setVz0(ptsOptions.get("vz0").toString());
+                strikeZoneResultDto.setVx0(ptsOptions.get("vx0").toString());
+                strikeZoneResultDto.setAx(ptsOptions.get("ax").toString());
+                strikeZoneResultDto.setAy(ptsOptions.get("ay").toString());
+                strikeZoneResultDto.setAz(ptsOptions.get("az").toString());
+                strikeZoneResultDto.setZ0(ptsOptions.get("z0").toString());
+                strikeZoneResultDto.setY0(ptsOptions.get("y0").toString());
+                strikeZoneResultDto.setX0(ptsOptions.get("x0").toString());
+            } catch (NullPointerException e) {
+                return null;
+            }
         }
 
-        return null;
+        return strikeZoneResultDto;
     }
 }
