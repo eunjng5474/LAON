@@ -16,9 +16,16 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
 
     @Override
     public StrikeZoneResultDto getStrikeZoneInfo(String date, String awayTeam, String inning) throws Exception {
-        Path currentPath = Paths.get("");
-        String path = currentPath.toAbsolutePath().toString();
-        System.out.println("현재 작업 경로: " + path);
+//        Path currentPath = Paths.get("");
+//        String path = currentPath.toAbsolutePath().toString();
+//        System.out.println("현재 작업 경로: " + path);
+
+        java.io.File file = new java.io.File("/secret/application.yml");
+
+        if (file.exists()) {
+            System.out.println("cnpz!!!!!");
+        }
+
 //        String year = date.substring(0, 4);
 //        ProcessBuilder builder = new ProcessBuilder("python", "./localhost:8080/test.py", date, awayTeam, year, inning);
 //        builder.redirectErrorStream(true);
