@@ -8,6 +8,11 @@
   height: 82vh;
 }
 
+.swiper {
+  display: flex;
+  height: 82vh;
+}
+
 .seat-body {
   display: flex;
   flex-direction: column;
@@ -109,30 +114,35 @@
 
 .home-body {
   width: 100vw;
-  height: 70vh;
+  height: 82vh;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
+  background-image: url('../img/bg.png');
+  background-color: #074CA1;
 }
 
 .home-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: flex-end;
+  height: 82vh;
+  align-items: center;
 }
 
 .away-body {
   width: 100vw;
-  height: 70vh;
+  height: 82vh;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+  background-color: #074CA1;
 }
 
 .away-right {
   display: flex;
   flex-direction: column;
+  height: 82vh;
   align-items: center;
   justify-content: flex-start;
 }
@@ -153,11 +163,11 @@
   align-items: center;
   margin: 2vw;
   padding: 2vw;
-  width: 28vw;
-  height: 30vh;
+  width: 20vw;
+  height: 26vh;
   border: none;
   border-radius: 40px;
-  background-color: #074CA1;
+  background-color: #ffffff3e;
   color: white;
 }
 
@@ -168,11 +178,11 @@
   align-items: center;
   margin: 2vw;
   padding: 2vw;
-  width: 28vw;
-  height: 30vh;
+  width: 20vw;
+  height: 26vh;
   border: none;
   border-radius: 40px;
-  background-color: #074CA1;
+  background-color: #ffffff3e;
   color: white;
 }
 
@@ -203,27 +213,9 @@
   border: none;
   border-radius: 100px;
   margin: 1vw;
-  width: 23.2vw;
-  height: 11.3vh;
+  width: 18vw;
+  height: 10vh;
   padding: 0px;
-}
-
-.home-left button {
-  width: 23.2vw;
-  height: 11.3vh;
-  border: none;
-  border-radius: 100px;
-}
-.away-right button {
-  width: 23.2vw;
-  height: 11.3vh;
-  border: none;
-  border-radius: 100px;
-}
-
-.ticket-button {
-  color: #ffffff;
-  background-color: #074CA1;
 }
 
 .road-view-button {
@@ -234,5 +226,41 @@
 }
 
 .road-view-icon {
-  max-width: 13vw;
+  max-width: 10vw;
+}
+
+.home-left .ticket-button {
+  width: 20vw;
+  height: 20vw;
+  border: none;
+  border-radius: 36px;
+  margin-bottom: 6vh;
+  color: #ffffff;
+  background-color: #ffffff3e;
+}
+
+.away-right .ticket-button {
+  width: 20vw;
+  height: 20vw;
+  border: none;
+  border-radius: 36px;
+  margin-top: 6vh;
+  color: #ffffff;
+  background-color: #ffffff3e;
+}
+
+.home-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 72vw;
+  height: 82vh;
+}
+
+.away-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 72vw;
+  height: 82vh;
 }
