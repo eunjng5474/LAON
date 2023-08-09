@@ -109,13 +109,28 @@ export default function Match() {
     strikeRectCanvas.height = 130;
     const stZoneRectCtx = strikeRectCanvas.getContext("2d");
     // console.log(px, pz);
-
+    
     function drawBall() {
+      // stZoneRectCtx.lineWidth = 0.7;
+      stZoneRectCtx.beginPath();
+      stZoneRectCtx.strokeStyle = "white";
+      stZoneRectCtx.strokeRect(25, 32, 60, 66);
+      stZoneRectCtx.moveTo(45, 32);
+      stZoneRectCtx.lineTo(45, 98);
+      stZoneRectCtx.moveTo(65, 32);
+      stZoneRectCtx.lineTo(65, 98);
+      stZoneRectCtx.moveTo(25, 54);
+      stZoneRectCtx.lineTo(85, 54);
+      stZoneRectCtx.moveTo(25, 76);
+      stZoneRectCtx.lineTo(85, 76);
+      stZoneRectCtx.stroke();
+      stZoneRectCtx.fill();
+      
       stZoneBallCtx.beginPath();
       // 4
       stZoneBallCtx.moveTo(60-px*33, 150-pz*33);
       stZoneBallCtx.arc(60-px*33, 150-pz*33, 8, 0, 2 * Math.PI);
-
+  
       stZoneBallCtx.stroke();
       if(pitchResult === 'S'){
         stZoneBallCtx.fillStyle = '#FFCD4A';
@@ -123,13 +138,6 @@ export default function Match() {
         stZoneBallCtx.fillStyle = '#7DB249';
       }
       stZoneBallCtx.fill();
-      
-      stZoneRectCtx.beginPath();
-      stZoneRectCtx.moveTo(24, 24);
-      stZoneRectCtx.strokeStyle = "white";
-      stZoneRectCtx.strokeRect(27, 32, 56, 66);
-      stZoneRectCtx.stroke();
-      // stZoneRectCtx.fill();
     }
 
     drawBall();
