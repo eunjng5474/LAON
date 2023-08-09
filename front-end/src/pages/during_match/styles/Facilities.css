@@ -61,15 +61,6 @@
   font-size: 14px;
 }
 
-
-.facilities-item-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 95vw;
-  height: 100vh;
-}
-
 .category-select {
   /* border: 1px red solid; */
   width: 90vw;
@@ -104,6 +95,14 @@
 
 .store-title {
   font-size: 18px;
+}
+
+.facilities-item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95vw;
+  height: 44.5vh;
 }
 
 .store-list {
