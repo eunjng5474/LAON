@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router'
-import img_3_4_1 from './images/3-1/1.jpg'
+import img_3_4_1 from '/images/3-1/1.jpg'
 import arrow from './img/arrow.png'
 import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
