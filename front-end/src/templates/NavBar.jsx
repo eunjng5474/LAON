@@ -21,7 +21,6 @@ export default function NavBar() {
   }
 
   useEffect(() => {
-    console.log(window.location.pathname)
     if (window.location.pathname === '/' || window.location.pathname === '/section') {
       setHide(true)
     } else {

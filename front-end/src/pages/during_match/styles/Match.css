@@ -175,7 +175,8 @@
 
 
 .strike-zone-container {
-  width: 37vw;
+  width: 33vw;
+  margin: 0vh 2vw;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -285,11 +286,6 @@
 
 .match-link{
   color : white
-}
-
-.strike-zone-container {
-  width: 36vw;
-  margin: 0vh 2vw;
 }
 
 .strikezone-rect-canvas {
