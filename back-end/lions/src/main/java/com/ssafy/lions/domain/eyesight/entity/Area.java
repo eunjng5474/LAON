@@ -10,7 +10,6 @@ import lombok.Data;
 @Data
 @Table(name = "area")
 public class Area {
-
     @Id
     private int areaId;
 
@@ -19,4 +18,7 @@ public class Area {
 
     @Column(name = "block_id")
     private String blockId;
+
+    @Column(name = "picture")
+    private String picture;
 }
