@@ -10,15 +10,25 @@ import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
 
 // detail section select
-import B3_5_2 from './img/section_select/블루존.png'
-import B1_9_2 from './img/section_select/1루내야지정석.png'
-import B3_9_2 from './img/section_select/3루내야지정석.png'
-import T3_2_2 from './img/section_select/지브로존.png'
-// import B3E_2_1 from './img/section_select/3루익사이팅석'
-
-
-
-
+import SKY1 from './img/section_select/SKY1.png' // SKY 자유/지정석1
+import SKY2 from './img/section_select/SKY2.png' // SKY 자유/지정석2
+import SKY3 from './img/section_select/SKY3.png' // SKY 자유/지정석3
+import SKY4 from './img/section_select/SKY4.png' // SKY 자유/지정석4
+import INFIELD3 from './img/section_select/3루내야지정석.png'
+import INFIELD1 from './img/section_select/1루내야지정석.png'
+import EXCITING1 from './img/section_select/1루익사이팅석.png'
+import EXCITING3 from './img/section_select/3루익사이팅석.png'
+import DDANG from './img/section_select/땅땅치킨.png'
+import OUTFIELD1 from './img/section_select/외야-지정석+미니테이블.png'
+import OUTFIELD3 from './img/section_select/외야지정석+미니테이블+테이블1.png'
+import ZBRO1 from './img/section_select/대구는지브로존.png'
+import ZBRO3 from './img/section_select/지브로존.png'
+import BLUE from './img/section_select/블루존.png'
+import OUTFIELDTable from './img/section_select/외야테이블석.png'
+import OUTFIELDFamily from './img/section_select/외야패밀리석.png'
+import AWAYSUPPORT from './img/section_select/원정응원석.png'
+import GRASSZONE from './img/section_select/잔디석.png'
+import MAINTABLE from './img/section_select/중앙테이블VIP석.png'
 
 import './styles/SectionDetail.css';
 import { useSelector } from 'react-redux';
@@ -65,7 +75,7 @@ export default function SectionDetail() {
 
         
         <div className='map-controller'>
-          <img  src={B3_5_2} useMap="#image-map"/>
+          <img  src={MAINTABLE} useMap="#image-map"/>
 
           <map name="image-map">
               <area onClick={getCoordinate} target="" alt="" title="" coords="63,217,63,232,84,232,70,217" shape="poly"/>
