@@ -2,6 +2,7 @@ package com.ssafy.lions.domain.navigation.service;
 
 import com.ssafy.lions.domain.facility.dto.FacilityCloseGateDto;
 import com.ssafy.lions.domain.facility.repository.FacilityRepository;
+import com.ssafy.lions.domain.navigation.dto.DestinationDto;
 import com.ssafy.lions.domain.navigation.dto.PointDto;
 import com.ssafy.lions.domain.navigation.dto.PointResultDto;
 import com.ssafy.lions.domain.navigation.entity.GateToGateExitStair;
@@ -99,14 +100,17 @@ public class NaviServiceImpl implements NaviService{
         List<FacilityCloseGateDto> facilityCloseGateDtoList = facilityRepository.findIdsByFacilityNameLike(type);
         System.out.println(facilityCloseGateDtoList);
         // 목적지 중 출발지와 같은 층에 있는 것만 남긴다.
-        List<Integer> realDestinationList = new ArrayList<>();
+        List<DestinationDto> realDestinationList = new ArrayList<>();
         // 출발지를 얻어온다.
         List<Integer> gateIdListCloseWithBlock = blockToGateRepository.findGateIdByBlockId(blockId);
         System.out.println(gateIdListCloseWithBlock);
         // 출발지의 층과 도착지의 층이 같은 경우만 찾는다.
         for(FacilityCloseGateDto facilityCloseGateDto : facilityCloseGateDtoList){
             if(facilityCloseGateDto.getCloseGateId() / 100 == gateIdListCloseWithBlock.get(0) / 100){
-                realDestinationList.add(facilityCloseGateDto.getCloseGateId());
+                DestinationDto destinationDto = new DestinationDto();
+                destinationDto.setFacilityId(facilityCloseGateDto.getFacilityId());
+                destinationDto.setCloseGateId(facilityCloseGateDto.getCloseGateId());
+                destinationDto.setFacilityName(facilityCloseGateDto.getFacilityName());
             }
         }
 
@@ -124,6 +128,7 @@ public class NaviServiceImpl implements NaviService{
                         pointResultDto.setPointDtoList(result);
                         pointResultDto.setPathCnt(result.size());
                         pointResultDto.setResult(SUCCESS);
+                        pointResultDto.setFacilityName(facilityCloseGateDto.getFacilityName());
                         pointResultDto.setDiffBetweenStartFloorAndEndFloor(Math.abs(gateIdCloseWithBlock/100 - facilityCloseGateDto.getCloseGateId()/100));
                     }
                     pq.offer(pointResultDto);
@@ -133,10 +138,10 @@ public class NaviServiceImpl implements NaviService{
         // 같은 층에 클릭한 목적지가 있다면 탐색 범위 압축
         else{
             for(Integer gateIdCloseWithBlock : gateIdListCloseWithBlock){
-                for(Integer realDestination : realDestinationList){
+                for(DestinationDto destinationDto : realDestinationList){
                     PointResultDto pointResultDto = new PointResultDto();
                     // BFS를 통해 최적경로 찾기
-                    List<PointDto> result = bfs(gateIdCloseWithBlock, realDestination);
+                    List<PointDto> result = bfs(gateIdCloseWithBlock, destinationDto.getCloseGateId());
                     // 최적경로 리스트를 PointResultDto에 담기
                     if(result == null){
                         pointResultDto.setResult(FAIL);
@@ -144,7 +149,8 @@ public class NaviServiceImpl implements NaviService{
                         pointResultDto.setPointDtoList(result);
                         pointResultDto.setPathCnt(result.size());
                         pointResultDto.setResult(SUCCESS);
-                        pointResultDto.setDiffBetweenStartFloorAndEndFloor(Math.abs(gateIdCloseWithBlock/100 - realDestination/100));
+                        pointResultDto.setFacilityName(destinationDto.getFacilityName());
+                        pointResultDto.setDiffBetweenStartFloorAndEndFloor(Math.abs(gateIdCloseWithBlock/100 - destinationDto.getCloseGateId()/100));
                     }
                     pq.offer(pointResultDto);
                 }
