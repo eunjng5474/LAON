@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #074CA1;
+  background-color: #074ca1;
   height: 8vh;
+  border-bottom: 1px solid #074ca1;
 }
 
 .logo-title {
@@ -15,6 +16,11 @@
 
 .hide {
   display: none;
+}
+
+.dark {
+  background-color: rgb(47, 47, 47);
+  border-bottom: 1px solid rgb(47, 47, 47);
 }
 
 .nav-bar-logo {

@@ -22,7 +22,6 @@ export default function TabBar() {
   }
 
   function navigatePage(e) {
-    console.log(e.target.alt)
     if (e.target.alt === '좌석') {
       navigate('/seat')
       const currentPage = '좌석'
@@ -41,7 +40,6 @@ export default function TabBar() {
   }
 
   useEffect(() => {
-    console.log(window.location.pathname)
     if (window.location.pathname === '/' || window.location.pathname === '/section') {
       setHide(true)
     } else {
@@ -71,7 +69,7 @@ export default function TabBar() {
 
 
   return (
-    <div className={`tab-bar-container ${dark ? "dark" : ""} ${hide ? "hide" : ""} font`}>
+    <div className={`tab-bar-container ${hide ? "hide" : ""} font`}>
       <div className='tab-bar-item'>
         <img className={`tab-bar-icon ${naviSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={gps} alt="내비" />
         <span className='tab-bar-span'>
