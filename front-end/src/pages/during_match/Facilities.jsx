@@ -396,6 +396,7 @@ export default function Facilities() {
                 쓰레기통
               </div>
             </div>
+            
           </div>
         </div>
       </div>
