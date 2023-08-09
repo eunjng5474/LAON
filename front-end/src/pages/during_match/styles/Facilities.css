@@ -7,6 +7,7 @@
 
 .facilities-body {
   width: 100vw;
+  height: 79.5vh;
 }
 
 .facilities-navigation {
@@ -102,7 +103,7 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 95vw;
-  height: 44.5vh;
+  height: 51vh;
 }
 
 .store-list {
@@ -137,7 +138,7 @@
   border-radius : 3px;
   color: black;
   line-height: 18vh;
-  margin: 2vh;
+  margin: 2vh 0vh 2vh 0vh;
 }
 
 .store-show {
