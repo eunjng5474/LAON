@@ -237,7 +237,7 @@ export default function Facilities() {
           <div className={`facilities-item-container ${focusedBody ? "item-container-hide" : ""}`}>
 
             <div className='category-select'>
-              <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장</button>
+              <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장1</button>
               <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""}`}>편의시설</button>
             </div>
 
