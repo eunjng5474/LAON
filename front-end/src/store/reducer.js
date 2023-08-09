@@ -22,6 +22,7 @@ const initialState = {
     base1 : null,
     base2 : null,
     base3 : null,
+    gameDate : null,
   }
 
 
@@ -185,6 +186,13 @@ const initialState = {
       return {
         ...state,
         currentPage: newCurrentPage
+      }
+    }
+    if (action.type === 'SET_DATE'){
+      let newGameDate = action.gameDate
+      return {
+        ...state,
+        gameDate : newGameDate
       }
     }
     return state;

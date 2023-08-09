@@ -17,6 +17,8 @@ export default function Match() {
   const ballCount = useSelector((state) => state.ballCount)
   const strikeCount = useSelector((state) => state.strikeCount)
   const outCount = useSelector((state) => state.outCount)
+  const gameDate = useSelector((state) => state.gameDate)
+  console.log(gameDate)
 
   const base1 = useSelector((state) => state.base1)
   const base2 = useSelector((state) => state.base2)
@@ -55,7 +57,7 @@ export default function Match() {
 
   if (inningData === "BEFORE"){
     inning = "경기 예정" // 이닝
-    liveText = "경기 예정"
+    liveText = `경기 예정 : ${gameDate}`
   } else if (inningData === 'END') { 
     inning = "경기 종료"
     liveText = "경기 종료"
