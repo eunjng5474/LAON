@@ -110,6 +110,8 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  height: 44.5vh;
+  overflow: scroll;
 }
 
 .facility-list {
