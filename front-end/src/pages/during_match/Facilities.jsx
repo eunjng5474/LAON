@@ -16,9 +16,7 @@ import ALTONG from './img/facilities/알통닭강정로고.png'
 import HONG from './img/facilities/리얼키친더홍로고.png'
 import MANDU from './img/facilities/한만두로고.png'
 import YUBU from './img/facilities/대왕유부초밥로고.png'
-import store from '../../store/store'
 import axios from 'axios';
-import { useGeolocated } from "react-geolocated";
 import './styles/Facilities.css';
 
 
@@ -31,9 +29,7 @@ export default function Facilities() {
   const [category, setCategory] = useState('식음매장')
   const [stores, setStores] = useState()
   const [facilities, setFacilities] = useState()
-
   const [focusedBody, setFocusedBody] = useState(false)
-  // const []
 
   function selectFloor(e) {
     console.log(e)
@@ -119,11 +115,15 @@ export default function Facilities() {
     } else if(35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408  <= lng && lng <= 128.6818359228813){
       setCurrentPosition('LF-3')
       document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+    } else {
+      setCurrentPosition('3-1')
+      document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
     }
   }
 
   function selectDestination(e) {
     console.log(e)
+    
   }
 
   function categorySelect(e) {
@@ -143,6 +143,14 @@ export default function Facilities() {
 
   function selectStore(e) {
     setDestination(e.target.id)
+    console.log(e.target.id)
+    console.log(currentPosition)
+    
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "3-1"}/${e.target.id}`)
+    .then((res) => {
+      console.log(res.data)
+    })
+    
   }
 
   function goAR() {
@@ -200,11 +208,13 @@ export default function Facilities() {
 
   return (
     <div className='facilities-container font'>
+
       <div className='floor-select-button'>
         <button onClick={selectFloor}>2F</button>
         <button onClick={selectFloor}>3F</button>
         <button onClick={selectFloor}>5F</button>
       </div>
+
       <div className='facilities-body' onClick={focusBody}>
         <div className='facilities-navigation'>
           <img className='facilities-img' src={floor} alt=''/>  
@@ -249,7 +259,7 @@ export default function Facilities() {
                   className='facilities-store'
                   onClick={selectStore}
                 >
-                  <img className='store-img' id="리얼키친더홍" src={HONG} alt="" />
+                  <img className='store-img' id="리얼키친홍" src={HONG} alt="" />
                 </div>
                 <div 
                   className='facilities-store'
@@ -328,64 +338,63 @@ export default function Facilities() {
                 </div>
             </div>
 
-            <div className={`facility-list ${category === "식음매장" ? "facility-show" : ""}`}>            
-
-                <div 
-                  className='facilities-store'
-                  id="여자화장실"
-                  onClick={selectStore}
-                >
-                  여자화장실
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="남자화장실"
-                  onClick={selectStore}
-                >
-                  남자화장실
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="여자 장애인 화장실"
-                  onClick={selectStore}
-                >
-                  여자 장애인 화장실
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="남자 장애인 화장실"
-                  onClick={selectStore}
-                >
-                  남자 장애인 화장실
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="블루샷"
-                  onClick={selectStore}
-                >
-                  블루샷
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="수유실"
-                  onClick={selectStore}
-                >
-                  수유실
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="흡연실"
-                  onClick={selectStore}
-                >
-                  흡연실
-                </div>
-                <div 
-                  className='facilities-store'
-                  id="쓰레기통"
-                  onClick={selectStore}
-                >
-                  쓰레기통
-                </div>
+            <div className={`facility-list ${category === "식음매장" ? "facility-show" : ""}`}>
+              <div 
+                className='facilities-store'
+                id="여자화장실"
+                onClick={selectStore}
+              >
+                여자화장실
+              </div>
+              <div 
+                className='facilities-store'
+                id="남자화장실"
+                onClick={selectStore}
+              >
+                남자화장실
+              </div>
+              <div 
+                className='facilities-store'
+                id="여자 장애인 화장실"
+                onClick={selectStore}
+              >
+                여자 장애인 화장실
+              </div>
+              <div 
+                className='facilities-store'
+                id="남자 장애인 화장실"
+                onClick={selectStore}
+              >
+                남자 장애인 화장실
+              </div>
+              <div 
+                className='facilities-store'
+                id="블루샷"
+                onClick={selectStore}
+              >
+                블루샷
+              </div>
+              <div 
+                className='facilities-store'
+                id="수유실"
+                onClick={selectStore}
+              >
+                수유실
+              </div>
+              <div 
+                className='facilities-store'
+                id="흡연실"
+                onClick={selectStore}
+              >
+                흡연실
+              </div>
+              <div 
+                className='facilities-store'
+                id="쓰레기통"
+                onClick={selectStore}
+              >
+                쓰레기통
+              </div>
             </div>
           </div>
         </div>
