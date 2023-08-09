@@ -14,7 +14,7 @@ import B3_5_2 from './img/section_select/블루존.png'
 import B1_9_2 from './img/section_select/1루내야지정석.png'
 import B3_9_2 from './img/section_select/3루내야지정석.png'
 import T3_2_2 from './img/section_select/지브로존.png'
-import B3E_2_1 from './img/section_select/3루익사이팅석'
+// import B3E_2_1 from './img/section_select/3루익사이팅석'
 
 
 
