@@ -4,11 +4,10 @@ import parkimg from './img/LP.png'
 import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import park_away from './img/LP_away.png'
 import park_away from './img/seat_r.png'
-// import park_home from './img/LP_home.png'
 import park_home from './img/seat_l.png'
 import roadView from './img/roadviewicon.png'
+import store from '../../store/store.js';
 
 import ImageMap from 'image-map'
 
@@ -31,123 +30,124 @@ export default function Seat() {
 
   const seatData = [
     {
-      title: "SKY 자유석 1", seat: "SKY자유석1 4", weekdayPrice: "7,000", seekendPRice : "9,000"
+      title: "SKY 자유석 1", seat: "SKY1_4", weekdayPrice: "7,000", seekendPRice : "9,000"
     },
     {
-      title: "SKY 자유석 2", seat: "SKY자유석2 3", weekdayPrice: "7,000", seekendPRice : "9,000"
+      title: "SKY 자유석 2", seat: "SKY2_3", weekdayPrice: "7,000", seekendPRice : "9,000"
     },
     {
-      title: "SKY 자유석 3", seat: "SKY자유석3 3", weekdayPrice: "7,000", seekendPRice : "9,000"
+      title: "SKY 자유석 3", seat: "SKY3_3", weekdayPrice: "7,000", seekendPRice : "9,000"
     },
     {
-      title: "SKY 자유석 4", seat: "SKY자유석4 3", weekdayPrice: "7,000", seekendPRice : "9,000"
+      title: "SKY 자유석 4", seat: "SKY4_3", weekdayPrice: "7,000", seekendPRice : "9,000"
     },
     {
-      title: "SKY 자유석 5", seat: "SKY자유석5 3", weekdayPrice: "7,000", seekendPRice : "9,000"
+      title: "SKY 자유석 5", seat: "SKY5_3", weekdayPrice: "7,000", seekendPRice : "9,000"
     },
     {
-      title: "SKY 자유석 6", seat: "SKY자유석6 3", weekdayPrice: "7,000", seekendPRice : "9,000"
+      title: "SKY 자유석 6", seat: "SKY6_3", weekdayPrice: "7,000", seekendPRice : "9,000"
     },
     {
-      title: "SKY 지정석 1", seat: "U-28 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "SKY 지정석 1", seat: "U_28_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "SKY 지정석 2", seat: "U-22 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "SKY 지정석 2", seat: "U_22_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "SKY 지정석 3", seat: "U-18 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "SKY 지정석 3", seat: "U_18_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "SKY 지정석 4", seat: "U-12 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "SKY 지정석 4", seat: "U_12_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "SKY 지정석 5", seat: "U-7 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "SKY 지정석 5", seat: "U_7_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "SKY 지정석 6", seat: "U-3 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "SKY 지정석 6", seat: "U_3_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "SKY 여기보존", seat: "yogibo 1", weekdayPrice: "15,000", seekendPRice : "18,000"
+      title: "SKY 여기보존", seat: "yogibo_1", weekdayPrice: "15,000", seekendPRice : "18,000"
     },
     {
-      title: "3루 내야지정석", seat: "3-9 2", weekdayPrice: "11,000", seekendPRice : "13,000"
+      title: "3루 내야지정석", seat: "3_9_2", weekdayPrice: "11,000", seekendPRice : "13,000"
     },
     {
-      title: "블루존", seat: "3-5 2", weekdayPrice: "13,000", seekendPRice : "15,000"
+      title: "블루존", seat: "3_5_2", weekdayPrice: "13,000", seekendPRice : "15,000"
     },
     {
-      title: "지브로존", seat: "T3-2 2", weekdayPrice: "30,000", seekendPRice : "40,000"
+      title: "지브로존", seat: "T3_2_2", weekdayPrice: "30,000", seekendPRice : "40,000"
     },
     {
-      title: "으뜸병원 중앙테이블석", seat: "TC-2 2", weekdayPrice: "35,000", seekendPRice : "45,000"
+      title: "으뜸병원 중앙테이블석", seat: "TC_2_2", weekdayPrice: "35,000", seekendPRice : "45,000"
     },
     {
-      title: "3루 익사이팅석", seat: "3E-2 1", weekdayPrice: "20,000", seekendPRice : "25,000"
+      title: "3루 익사이팅석", seat: "3E_2_1", weekdayPrice: "20,000", seekendPRice : "25,000"
     },
     {
-      title: "외야 테이블석 1", seat: "TL-0 1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
+      title: "외야 테이블석 1", seat: "TL_0_1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
     },
     {
-      title: "외야 지정석 1", seat: "LF-4 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "외야 지정석 1", seat: "LF_4_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "외야 지정석 2", seat: "LF-8 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "외야 지정석 2", seat: "LF_8_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "외야 미니테이블석 1", seat: "ML-4 1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
+      title: "외야 미니테이블석 1", seat: "ML_4_1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
     },
     {
-      title: "외야 미니테이블석 2", seat: "ML-8 1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
+      title: "외야 미니테이블석 2", seat: "ML_8_1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
     },
     {
-      title: "외야 테이블석 2", seat: "TL-9 1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
+      title: "외야 테이블석 2", seat: "TL_9_1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
     },
     {
-      title: "땅땅치킨 루프탑", seat: "루프탑 2", weekdayPrice: "18,000", seekendPRice : "21,000"
+      title: "땅땅치킨 루프탑", seat: "ROOFTOP_2", weekdayPrice: "18,000", seekendPRice : "21,000"
     },
     {
-      title: "VIP석", seat: "VIP2 1", weekdayPrice: "40,000", seekendPRice : "50,000"
+      title: "VIP석", seat: "VIP2_1", weekdayPrice: "40,000", seekendPRice : "50,000"
     },
     {
-      title: "대구는 지브로존", seat: "T1-2 2", weekdayPrice: "30,000", seekendPRice : "40,000"
+      title: "대구는 지브로존", seat: "T1_2_2", weekdayPrice: "30,000", seekendPRice : "40,000"
     },
     {
-      title: "원정 응원석", seat: "1-3 2", weekdayPrice: "13,000", seekendPRice : "15,000"
+      title: "원정 응원석", seat: "1_3_2", weekdayPrice: "13,000", seekendPRice : "15,000"
     },
     {
-      title: "1루 내야지정석", seat: "1-9 2", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "1루 내야지정석", seat: "1_9_2", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "1루 익사이팅석", seat: "1E-2 1", weekdayPrice: "20,000", seekendPRice : "25,000"
+      title: "1루 익사이팅석", seat: "1E_2_1", weekdayPrice: "20,000", seekendPRice : "25,000"
     },
     {
-      title: "잔디석", seat: "잔디석 2", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "잔디석", seat: "GRASS_2", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "외야 테이블석 3", seat: "TR-0 1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
+      title: "외야 테이블석 3", seat: "TR_0_1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
     },
     {
-      title: "외야 테이블석 4", seat: "TR-5 1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
+      title: "외야 테이블석 4", seat: "TR_5_1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
     },
     {
-      title: "외야 테이블석 5", seat: "TR-9 1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
+      title: "외야 테이블석 5", seat: "TR_9_1", weekdayPrice: "60,000/4인", seekendPRice : "72,000/4인"
     },
     {
-      title: "외야 지정석 3", seat: "RF-8 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "외야 지정석 3", seat: "RF_8_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "외야 지정석 4", seat: "RF-4 1", weekdayPrice: "8,000", seekendPRice : "10,000"
+      title: "외야 지정석 4", seat: "RF_4_1", weekdayPrice: "8,000", seekendPRice : "10,000"
     },
     {
-      title: "외야 미니테이블석 3", seat: "MR-8 1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
+      title: "외야 미니테이블석 3", seat: "MR_8_1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
     },
     {
-      title: "외야 미니테이블석 4", seat: "MR-4 1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
+      title: "외야 미니테이블석 4", seat: "MR_4_1", weekdayPrice: "24,000/2인", seekendPRice : "30,000/2인"
     },
     {
-      title: "외야 패밀리석", seat: "F-2 1", weekdayPrice: "15,000/1인", seekendPRice : "18,000/1인"
+      title: "외야 패밀리석", seat: "F_2_1", weekdayPrice: "15,000/1인", seekendPRice : "18,000/1인"
     }
   ]
+
 
   function toSectionDetail() {
     navigate('/section', { state: selectSeat});
@@ -168,13 +168,24 @@ export default function Seat() {
       if (title === seatData[index].title) {
         const seats = seatData[index];
         console.log(seats.title);
+        const seatsSeat = seats.seat
         setSelectSeat(seats.seat);
         console.log(seats.weekdayPrice)
         setSeatWeekdayPrice(seats.weekdayPrice);
         setSeatWeekendPrice(seats.seekendPRice);
+
+        function setSeatData(seatsSeat){
+          return {
+            type : 'SET_SEAT_DATA',
+            seatsSeat
+          }
+        }
+        store.dispatch(setSeatData(seatsSeat))
       }
     }
   }
+
+
 
   useEffect(() => {
     ImageMap('img[useMap]')
@@ -233,8 +244,8 @@ export default function Seat() {
               <area target="" onClick={selectSection} alt="외야 지정석 1" title="외야 지정석 1" coords="95,213,153,154,132,134,74,194" shape="poly"/>
               <area target="" onClick={selectSection} alt="외야 지정석 2" title="외야 지정석 2" coords="155,151,197,108,218,107,219,82,188,81,135,133" shape="poly"/>
               <area target="" onClick={selectSection} alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="109,225,165,166,156,159,101,214" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="146,140,155,148,186,116,203,116,203,101,184,101" shape="poly"/>
-              <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="170,162,202,130,219,127,219,114,200,112,158,154" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="171,165,203,132,221,129,222,112,202,112,163,153" shape="poly"/>
+              <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="222,74,190,74,191,63,222,62" shape="poly"/>
               <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="80,133,145,69,132,58,67,120" shape="poly"/>
               <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="222,410,239,410,240,393,224,393" shape="poly"/>
               <area target="" onClick={selectSection} alt="SKY 여기보존" title="SKY 여기보존" coords="238,543,200,544,198,527,239,529" shape="poly"/>

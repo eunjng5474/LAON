@@ -23,6 +23,7 @@ const initialState = {
     base2 : null,
     base3 : null,
     gameDate : null,
+    seatsSeat : null,
   }
 
 
@@ -193,6 +194,13 @@ const initialState = {
       return {
         ...state,
         gameDate : newGameDate
+      }
+    }
+    if (action.type === 'SET_SEAT_DATA'){
+      let newSeatsSeat = action.seatsSeat
+      return {
+        ...state,
+        seatsSeat : newSeatsSeat
       }
     }
     return state;
