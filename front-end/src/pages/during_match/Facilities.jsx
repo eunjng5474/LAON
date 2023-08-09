@@ -147,7 +147,7 @@ export default function Facilities() {
     setDestination(e.target.id)
     console.log(e.target.id)
     console.log(currentPosition)
-    axios.get(`https://laon.info/api/lions/route/${currentPosition}/${e.target.id}`)
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "3-1"}/${e.target.id}`)
     .then((res) => {
       console.log(res.data)
     })
