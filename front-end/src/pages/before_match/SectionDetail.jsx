@@ -3,9 +3,21 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router'
 import img_3_4_1 from './img/3_4_1.jpeg'
 // import img_3_4_1 from './images/3-4/1.jpg'
+// 대표 사진 
+
 import arrow from './img/arrow.png'
 import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
+
+// detail section select
+import B3_5_2 from './img/section_select/블루존.png'
+import B1_9_2 from './img/section_select/1루내야지정석.png'
+import B3_9_2 from './img/section_select/3루내야지정석.png'
+import T3_2_2 from './img/section_select/지브로존.png'
+
+
+
+
 import './styles/SectionDetail.css';
 import { useSelector } from 'react-redux';
 
@@ -18,6 +30,7 @@ export default function SectionDetail() {
   const navigate = useNavigate();
 
   const seatsSeat = useSelector((state) => state.seatsSeat)
+  console.log(seatsSeat)
 
   function toSeat() {
     navigate('/seat');
@@ -50,7 +63,7 @@ export default function SectionDetail() {
 
         
         <div className='map-controller'>
-          <img  src={mapImg} useMap="#image-map"/>
+          <img  src={B3_5_2} useMap="#image-map"/>
 
           <map name="image-map">
               <area onClick={getCoordinate} target="" alt="" title="" coords="63,217,63,232,84,232,70,217" shape="poly"/>
