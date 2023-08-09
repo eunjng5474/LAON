@@ -78,7 +78,6 @@ export default function Facilities() {
 
   const setPosition = (lat, lng) => {
     if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448    <= lng && lng <= 128.68125028657408   ) {
-      console.log(1)
       setCurrentPosition('3-9')
       document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
     } else if(35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539 ){
