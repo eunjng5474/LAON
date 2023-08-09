@@ -20,4 +20,6 @@ public interface FacilityRepository extends JpaRepository<Facility, Long> {
             "WHERE f.facilityId = g.facilityId " +
             "AND f.facilityName LIKE %:name%")
     List<FacilityCloseGateDto> findIdsByFacilityNameLike(String name);
+    @Query("SELECT f.facilityName FROM Facility f WHERE f.facilityId = :facilityId")
+    String findFacilityNameByFacilityId(int facilityId);
 }
