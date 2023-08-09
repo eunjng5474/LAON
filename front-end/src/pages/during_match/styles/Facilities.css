@@ -30,11 +30,16 @@
   flex-direction: column;
   width: 93vw;
   height: 70vh;
-  bottom: 12vh;
+  bottom: 10vh;
   border-top: 2px solid rgba(143, 143, 143, 0.344);
   border-radius: 40px 40px 0px 0px;
   background-color: white;
-  overflow-y: auto;
+  overflow: scroll;
+}
+
+.facilities-select-focus-body {
+  transition: 0.3s;
+  height: 14vh;
 }
 
 .facilities-search-bar {
@@ -116,11 +121,6 @@
 
 .item-container-hide {
   display: none;
-}
-
-.facilities-select-focus-body {
-  transition: 0.3s;
-  height: 10vh;
 }
 
 .facilities-category input {

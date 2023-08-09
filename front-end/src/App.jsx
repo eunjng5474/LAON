@@ -68,6 +68,16 @@ function getData() {
 
                 axios.get(`https://sports.daum.net/prx/hermes/api/game/get.json?gameId=${gameId}&detail=liveData`)
                 .then((res) => {
+                  // console.log(res.data)
+                  const gameDate = res.data.startDate
+                  function setDate(gameDate){
+                    return {
+                      type : 'SET_DATE',
+                      gameDate
+                    }
+                  }
+                  store.dispatch(setDate(gameDate))
+
                   const gameStatus = res.data.gameStatus
                   function setStatus(gameStatus){
                     return {
