@@ -1,12 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router'
-<<<<<<< HEAD
 import img_3_4_1 from './images/3-1/1.jpg'
-=======
-import img_3_4_1 from './img/3_4_1.jpeg'
-// import img_3_4_1 from './images/3-4/1.jpg'
->>>>>>> e3511858d631ed5cc839bacbe7790dbd140acc55
 import arrow from './img/arrow.png'
 import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
