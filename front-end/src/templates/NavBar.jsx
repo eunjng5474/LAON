@@ -52,10 +52,10 @@ export default function NavBar() {
   return (
     <div className={`nav-bar-container ${dark ? "dark" : ""} ${hide ? "hide" : ""} font`}>
       <div className='nav-bar-logo-container'>
-        <img className='nav-bar-logo' src={logo} alt="" />
-        <span className='logo-title'>
+        {/* <img className='nav-bar-logo' src={logo} alt="" /> */}
+        {/* <span className='logo-title'>
           designed by LA:ON
-        </span>
+        </span> */}
       </div>
       <div className='weather'>
 
