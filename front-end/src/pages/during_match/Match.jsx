@@ -1,8 +1,12 @@
 import './styles/Match.css'
 import { useSelector } from 'react-redux';
 
-import Field from './img/field.png'
-import fieldImg from './img/lapark3.jpg'
+import Field from './img/field.png';
+import fieldImg from './img/lapark3.jpg';
+import base13Yes from './img/base13_yes.png';
+import base13No from './img/base13_no.png';
+import base2Yes from './img/base2_yes.png';
+import base2No from './img/base2_no.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 
@@ -18,7 +22,6 @@ export default function Match() {
   const strikeCount = useSelector((state) => state.strikeCount)
   const outCount = useSelector((state) => state.outCount)
   const gameDate = useSelector((state) => state.gameDate)
-  console.log(gameDate)
 
   const base1 = useSelector((state) => state.base1)
   const base2 = useSelector((state) => state.base2)
@@ -44,23 +47,22 @@ export default function Match() {
   const ay = 29.6069
   const az = -13.4183
 
-
   const t = (-vy0 - (vy0 * vy0 - 2 * ay * (y0 - crossPlateY)) ** 0.5) / ay
-
   const px = x0 + vx0 * t + ax * t * t * 0.5
   const pz = z0 + vz0 * t + az * t * t * 0.5
-  
+
+
   // 출루정보
   let inning = null //이닝
-  let homeAttack = true;  // 홈 공격 여부
+  let homeAttack = false;  // 홈 공격 여부
   let awayAttack = false;  // 어웨이 공격 여부
 
   if (inningData === "BEFORE"){
     inning = "경기 예정" // 이닝
-    liveText = `경기 예정 : ${gameDate}`
+    liveText = `${gameDate.substr(4, 2)}월 ${gameDate.substr(6, 2)}일 경기 예정입니다`
   } else if (inningData === 'END') { 
     inning = "경기 종료"
-    liveText = "경기 종료"
+    liveText = "경기가 종료되었습니다"
   } else if (inningData === null) {
     console.log('로딩 중..')
   } else if (inningData[0] === "B"){
@@ -110,10 +112,10 @@ export default function Match() {
     const stZoneRectCtx = strikeRectCanvas.getContext("2d");
     // console.log(px, pz);
     
-    function drawBall() {
-      // stZoneRectCtx.lineWidth = 0.7;
+    function drawZone() {
       stZoneRectCtx.beginPath();
       stZoneRectCtx.strokeStyle = "white";
+      stZoneRectCtx.lineWidth = 0.7;
       stZoneRectCtx.strokeRect(25, 32, 60, 66);
       stZoneRectCtx.moveTo(45, 32);
       stZoneRectCtx.lineTo(45, 98);
@@ -125,11 +127,13 @@ export default function Match() {
       stZoneRectCtx.lineTo(85, 76);
       stZoneRectCtx.stroke();
       stZoneRectCtx.fill();
-      
+    }
+
+    function drawBall() {
       stZoneBallCtx.beginPath();
       // 4
-      stZoneBallCtx.moveTo(60-px*33, 150-pz*33);
-      stZoneBallCtx.arc(60-px*33, 150-pz*33, 8, 0, 2 * Math.PI);
+      stZoneBallCtx.moveTo(60-px*37, 155-pz*35);
+      stZoneBallCtx.arc(60-px*37, 155-pz*35, 8, 0, 2 * Math.PI);
   
       stZoneBallCtx.stroke();
       if(pitchResult === 'S'){
@@ -140,6 +144,7 @@ export default function Match() {
       stZoneBallCtx.fill();
     }
 
+    drawZone();
     drawBall();
   })
 
@@ -160,7 +165,6 @@ export default function Match() {
             <div className='score-board-inning'>
               {inning}
             </div>
-            {/* <br /> */}
             <div className='score-board-point'>
               {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
               <div className='score-board-attack'>
@@ -215,19 +219,19 @@ export default function Match() {
           <div className='strike-zone-container'>
             {/* <span>스트라이크 존</span> */}
             <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
-            <canvas className='strikezone-text-canvas' ref={stZoneRectRef}></canvas>
+            <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
           </div>
         </div>
 
         <div className='match-field'>
-          <div className={base1 ? 'base1t' : 'base1'}>
-            <img/>
+          <div className='base1'>
+            {base1 ? <img src={base13Yes}/> : <img src={base13No}/>}
           </div>
-          <div className={base2 ? 'base2t' : 'base2'}>
+          <div className='base2'>
+            {base2 ? <img src={base2Yes}/> : <img src={base2No}/>}
           </div>
-          <div className={base3 ? 'base3t' : 'base3'}>
-            <span>
-            </span>
+          <div className='base3'>
+            {base3 ? <img src={base13Yes}/> : <img src={base13No}/>}
           </div>
           <img className='match-field-img' src={fieldImg} alt="" />
         </div>
