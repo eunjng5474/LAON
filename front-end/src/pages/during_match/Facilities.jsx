@@ -31,9 +31,7 @@ export default function Facilities() {
   const [category, setCategory] = useState('식음매장')
   const [stores, setStores] = useState()
   const [facilities, setFacilities] = useState()
-
   const [focusedBody, setFocusedBody] = useState(false)
-  // const []
 
   function selectFloor(e) {
     console.log(e)
@@ -119,11 +117,15 @@ export default function Facilities() {
     } else if(35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408  <= lng && lng <= 128.6818359228813){
       setCurrentPosition('LF-3')
       document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+    } else {
+      setCurrentPosition('3-1')
+      document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
     }
   }
 
   function selectDestination(e) {
     console.log(e)
+    
   }
 
   function categorySelect(e) {
@@ -143,6 +145,12 @@ export default function Facilities() {
 
   function selectStore(e) {
     setDestination(e.target.id)
+    console.log(e.target.id)
+    console.log(currentPosition)
+    axios.get(`https://laon.info/api/lions/route/${currentPosition}/${e.target.id}`)
+    .then((res) => {
+      console.log(res.data)
+    })
   }
 
   function goAR() {
@@ -200,11 +208,13 @@ export default function Facilities() {
 
   return (
     <div className='facilities-container font'>
+
       <div className='floor-select-button'>
         <button onClick={selectFloor}>2F</button>
         <button onClick={selectFloor}>3F</button>
         <button onClick={selectFloor}>5F</button>
       </div>
+
       <div className='facilities-body' onClick={focusBody}>
         <div className='facilities-navigation'>
           <img className='facilities-img' src={floor} alt=''/>  
@@ -249,7 +259,7 @@ export default function Facilities() {
                   className='facilities-store'
                   onClick={selectStore}
                 >
-                  <img className='store-img' id="리얼키친더홍" src={HONG} alt="" />
+                  <img className='store-img' id="리얼키친홍" src={HONG} alt="" />
                 </div>
                 <div 
                   className='facilities-store'
