@@ -21,11 +21,20 @@ export default function SectionDetail() {
 
 
   const seatsSeat = useSelector((state) => state.seatsSeat)
-  const seatSelect = useSelector((state) => state.seatSelect)
+  // const seatSelect = useSelector((state) => state.seatSelect)
 
-  console.log(seatSelect)
+  console.log(seatsSeat)
+  let seatUrl = "laon.info/images/view/";
+  const seatsSeat2 = seatsSeat.substr(1);
+  const seatsSeatList = seatsSeat2.split('_');
+  console.log(seatsSeatList)
+  if (seatsSeatList.length == 2) {
+    seatUrl += seatsSeatList[0] +"/"+ seatsSeatList[1];
+  } else if (seatsSeatList.length == 3) {
+    seatUrl += seatsSeatList[0] + "-" +seatsSeat[1] + "/" + seatsSeatList[2];
+  }
 
-  const seatImg = eval(seatSelect)
+  // const seatImg = eval(seatSelect)
 
   function toSeat() {
     navigate('/seat');
@@ -53,7 +62,7 @@ export default function SectionDetail() {
       <div>
 
         <div className='section-detail-img'>
-          <img src='https://github.com/iri95/PJT/assets/98926324/242b06e4-1924-434f-8068-a5e99b85e19d'></img>
+          <img src={seatUrl}></img>
         </div>
 
         <div className='map-controller'>
