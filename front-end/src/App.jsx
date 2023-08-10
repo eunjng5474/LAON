@@ -9,6 +9,7 @@ import Seat from './pages/before_match/Seat';
 import SectionDetail from './pages/before_match/SectionDetail';
 import Match from './pages/during_match/Match';
 import Facilities from './pages/during_match/Facilities';
+import Navigation from './pages/during_match/Navigation';
 import NotFound from './pages/not_found/NotFound';
 import { useSelector } from 'react-redux';
 
@@ -210,6 +211,7 @@ function App() {
           <Route path="/section" element={ <SectionDetail/> } />
           <Route path="/match" element={ <Match/> } />
           <Route path="/facilities" element={ <Facilities/> } />
+          <Route path="/navigation" element={ <Navigation/> } />
           <Route path="/*" element={<NotFound/>}/>
         </Routes>
   );
