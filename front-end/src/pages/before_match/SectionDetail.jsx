@@ -15,25 +15,15 @@ import { useSelector } from 'react-redux';
 
 export default function SectionDetail() {
   const { state } = useLocation();
-  const seatName = state;
+  const seatName = state.sectionSelect;
   const [panoramaSrc, setPanoramaSrc] = useState()
   const navigate = useNavigate();
 
-
-  const seatsSeat = useSelector((state) => state.seatsSeat)
-  const seatSelect = useSelector((state) => state.seatSelect)
-
-  console.log(seatSelect)
-
-  const seatImg = eval(seatSelect)
-
   function toSeat() {
     navigate('/seat');
-    // console.log(selectSeat);
   }
 
   function getCoordinate(event) {
-    // const child = event.target.children[0]
     const x = event.pageX;
     const y = event.pageY;
   }
@@ -41,8 +31,6 @@ export default function SectionDetail() {
   useEffect(() => {
     ImageMap('img[useMap]')
   }, [])
-
-  // console.log(setSelectSeat)
 
   return (
     <div className='section-detail-container'>
@@ -53,11 +41,11 @@ export default function SectionDetail() {
       <div>
 
         <div className='section-detail-img'>
-          <img src='https://github.com/iri95/PJT/assets/98926324/242b06e4-1924-434f-8068-a5e99b85e19d'></img>
+          <img src='https://laon.info/images/view/1-1/1.jpg'></img>
         </div>
 
         <div className='map-controller'>
-          <img  src='https://laon.info/images/sectionSelect/SKY1.png' useMap="#image-map"/>
+          <img  src={`https://laon.info/images/sectionSelect/${seatName}.png`} useMap="#image-map"/>
 
           <map name="image-map">
               <area onClick={getCoordinate} target="" alt="" title="" coords="63,217,63,232,84,232,70,217" shape="poly"/>
