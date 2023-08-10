@@ -36,6 +36,23 @@
   color: #ffffff;
 }
 
+.facility-detail-navi-button {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 6vh;
+  margin-bottom: 2vh;
+}
+
+.facility-detail-navi-button button {
+  width: 30vw;
+  height: 14vw;
+  border: none;
+  border-radius: 30px;
+  background-color: #074CA1;
+  color: #ffffff;
+}
+
 .facility-detail-body {
   display: flex;
   flex-direction: column;
@@ -45,8 +62,34 @@
 }
 
 .facility-detail-menu {
-  width: 100%;
-  height: 51.8vh;
+  padding: 4vw;
+  width: 90%;
+  height: 40.8vh;
   overflow: scroll;
+  margin-bottom: 2vh;
+}
+
+.menu-category {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.menu-container {
+  margin-bottom: 2vh;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item-name {
+  font-size: 18px;
+  font-weight:400;
+  margin-bottom: 4px;
+}
+
+.menu-item-price {
+  font-size: 16px;
 }
 

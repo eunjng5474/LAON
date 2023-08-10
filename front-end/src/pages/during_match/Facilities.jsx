@@ -191,10 +191,6 @@ export default function Facilities() {
     })
   } 
 
-  function goAR() {
-    window.location.href = `/ar/${naviGoal}.html`
-  }
-
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
   },[])
@@ -204,9 +200,7 @@ export default function Facilities() {
       <div className='facilities-header'>
 
         <div className='floor-select-button'>
-          <button onClick={selectFloor}>2F</button>
-          <button onClick={selectFloor}>3F</button>
-          <button onClick={selectFloor}>5F</button>
+          <h2>현재 위치 : {currentPosition}</h2>
         </div>
 
         <div className='facilities-search-bar'>
