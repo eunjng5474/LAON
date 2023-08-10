@@ -11,6 +11,24 @@ export default function Navigation() {
   const [floor, setFloor] = useState(map3F)
   const [currentFloor, setCurrentFloor] = useState('3F')
 
+  // const naviGoal = data.facilityName;
+  const naviGoal = '파파존스피자(Food Street)';
+  const pointDtoList = {
+    0: {pointId: 314, pointName: '3-1', type: 'G', x: 20, y: 150},
+    1: {pointId: 313, pointName: '3-2', type: 'G', x: 20, y: 200},
+    2: {pointId: 312, pointName: '3-3', type: 'G', x: 20, y: 250},
+    3: {pointId: 311, pointName: '3-4', type: 'G', x: 20, y: 300},
+    4: {pointId: 309, pointName: '3-5', type: 'G', x: 50, y: 330},
+    5: {pointId: 308, pointName: '3-6', type: 'G', x: 80, y: 360},
+    6: {pointId: 307, pointName: '3-7', type: 'G', x: 110, y: 390},
+    7: {pointId: 306, pointName: '3-8', type: 'G', x: 140, y: 400},
+    8: {pointId: 305, pointName: '3-9', type: 'G', x: 200, y: 400},
+    9: {pointId: 304, pointName: '3-10 기둥 근처 계단', type: 'S', x: 200, y: 420},
+    10: {pointId: 227, pointName: 'Food Street 내부 계단', type: 'S', x: 5, y: 160},
+    11: {pointId: 225, pointName: '2층 게이트3', type: 'G', x: 20, y: 200},
+    12: {pointId: 224, pointName: '2층 게이트2', type: 'G', x: 20, y: 260}
+  }
+
   function selectFloor(e) {
     console.log(e)
     if (e.target.innerText === '2F') {
@@ -27,12 +45,12 @@ export default function Navigation() {
     }
   }
 
-  const vertices = [
-    {x: 20, y: 150},
-    {x: 20, y: 260},
-    {x: 140, y: 360},
-    {x: 210, y: 360}
-    ];
+  // const vertices = [
+  //   {x: 20, y: 150},
+  //   {x: 20, y: 260},
+  //   {x: 140, y: 360},
+  //   {x: 210, y: 360}
+  //   ];
 
   // function selectStore(e) {
   //   setDestination(e.target.id)
@@ -50,8 +68,7 @@ export default function Navigation() {
   // }
 
   function goAR() {
-    // window.location.href = `/ar/${naviGoal}.html`
-    window.location.href = '/ar/포토카드(3-11).html'
+    window.location.href = `/ar/${naviGoal}.html`
   }
 
   useEffect(() => {
@@ -62,15 +79,16 @@ export default function Navigation() {
 
     function calcWaypoints(vertices){
       var waypoints=[];
-      for(var i=1;i<vertices.length;i++){
+      console.log(Object.keys(vertices).length)
+      for(var i=1;i<Object.keys(vertices).length;i++){
           // if (vertices[i]["type"] === "S"){
           //   setFloorImg(sectionMapImg3F);
           // }
 
           var pt0=vertices[i-1];
           var pt1=vertices[i];
-          var dx=pt1["x"]-pt0["x"];
-          var dy=pt1["y"]-pt0["y"];
+          var dx=pt1['x']-pt0['x'];
+          var dy=pt1['y']-pt0['y'];
           for(var j=0;j<100;j++){
               var x=pt0.x+dx*j/100;
               var y=pt0.y+dy*j/100;
@@ -80,7 +98,7 @@ export default function Navigation() {
       return(waypoints);
     }
 
-    var points=calcWaypoints(vertices);
+    var points=calcWaypoints(pointDtoList);
 
     var t=1;
 

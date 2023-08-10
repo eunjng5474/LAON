@@ -8,10 +8,13 @@ import base13No from './img/base13_no.png';
 import base2Yes from './img/base2_yes.png';
 import base2No from './img/base2_no.png';
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import axios from 'axios';
+
 
 
 export default function Match() {
+  const awayTeamName = useSelector((state) => state.awayTeamName)
   const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
   const homeTeamLogo = useSelector((state) => state.homeTeamLogo)
   const inningData = useSelector((state) => state.inning)
@@ -29,27 +32,12 @@ export default function Match() {
 
   const stZoneRef = useRef(null);
   const stZoneRectRef = useRef(null);
-  const nowBallcount = 1;
-  const pitchResult = 'S';
-
-  // 
-  const crossPlateX = -0.347363
-  const crossPlateY = 1.4167
-  const topSz = 3.48983
-  const bottomSz = 1.5
-  const vy0 = -130.945
-  const vz0 = -4.46333
-  const vx0 = 3.86331
-  const z0 = 5.64619
-  const y0 = 50.0
-  const x0 = -0.979984
-  const ax = -11.5091
-  const ay = 29.6069
-  const az = -13.4183
-
-  const t = (-vy0 - (vy0 * vy0 - 2 * ay * (y0 - crossPlateY)) ** 0.5) / ay
-  const px = x0 + vx0 * t + ax * t * t * 0.5
-  const pz = z0 + vz0 * t + az * t * t * 0.5
+  
+  const [t, setT] = useState('');
+  const [px, setPx] = useState('');
+  const [pz, setPz] = useState('');
+  // const nowBallcount = 1;
+  // const pitchResult = 'S';
 
 
   // 출루정보
@@ -100,6 +88,17 @@ export default function Match() {
     return result
   }
 
+
+  function getStrikeZone(e) {
+    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
+    .then((res) => {
+      setT((-res["vy0"] - (res["vy0"] * res["vy0"] - 2 * res["ay"] * (res["y0"] - res["crossPlateY"])) ** 0.5) / res["ay"])
+      setPx(res["x0"] + res["vx0"] * t + res["ax"] * t * t * 0.5)
+      setPz(res["z0"] + res["vz0"] * t + res["az"] * t * t * 0.5)
+    })
+  }
+
+
   useEffect(() => {
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
@@ -136,12 +135,12 @@ export default function Match() {
       stZoneBallCtx.arc(60-px*37, 155-pz*35, 8, 0, 2 * Math.PI);
   
       stZoneBallCtx.stroke();
-      if(pitchResult === 'S'){
-        stZoneBallCtx.fillStyle = '#FFCD4A';
-      } else {
-        stZoneBallCtx.fillStyle = '#7DB249';
-      }
-      stZoneBallCtx.fill();
+      // if(pitchResult === 'S'){
+      //   stZoneBallCtx.fillStyle = '#FFCD4A';
+      // } else {
+      //   stZoneBallCtx.fillStyle = '#7DB249';
+      // }
+      // stZoneBallCtx.fill();
     }
 
     drawZone();
