@@ -8,7 +8,6 @@ import './styles/TabBar.css'
 
 export default function TabBar() {
   const navigate = useNavigate();
-  const [dark, setDark] = useState()
   const [hide, setHide] = useState()
   const [naviSelected, setNaviSelected] = useState()
   const [seatSelected, setSeatSelected] = useState()
@@ -44,12 +43,6 @@ export default function TabBar() {
       setHide(true)
     } else {
       setHide(false)
-    }
-
-    if (window.location.pathname === '/match') {
-      setDark(true)
-    } else {
-      setDark(false)
     }
 
     if (window.location.pathname === '/facilities') {
