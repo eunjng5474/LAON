@@ -22,10 +22,15 @@ export default function Seat() {
 
   const [selectSeat, setSelectSeat] = useState(null); // 넘겨줄 변수(3-1 이런 식으로)
   const [showSeatName, setShowSeatName] = useState(null); // 보여줄 이름(블루존)
+  const [sectionSelect, setSectionSelect] = useState() // sectionDetail에서 보여줄 사진 이름
+
+  // console.log(selectSeat, sectionSelect)
 
   // const [onClick, setOnClick] = useState(false);
   const [seatWeekdayPrice, setSeatWeekdayPrice] = useState(null);
   const [seatWeekendPrice, setSeatWeekendPrice] = useState(null);
+
+
 
   const navigate = useNavigate();
 
@@ -85,22 +90,22 @@ export default function Seat() {
       title: "3루 익사이팅석", seat: "B3E_2_1", weekdayPrice: "20,000", weekendPrice : "25,000", seatSelect : "EXCITING3"
     },
     {
-      title: "외야 테이블석 1", seat: "BTL_0_1", weekdayPrice: "60,000/4인", weekendPrice : "72,000/4인", seatSelect : "OUTFIELDTable"
+      title: "외야 테이블석 1", seat: "BTL_0_1", weekdayPrice: "60,000/4인", weekendPrice : "72,000/4인", seatSelect : "OUTFIELD1"
     },
     {
       title: "외야 지정석 1", seat: "BLF_4_1", weekdayPrice: "8,000", weekendPrice : "10,000", seatSelect : "OUTFIELD1"
     },
     {
-      title: "외야 지정석 2", seat: "BLF_8_1", weekdayPrice: "8,000", weekendPrice : "10,000", seatSelect : "OUTFIELD3"
+      title: "외야 지정석 2", seat: "BLF_8_1", weekdayPrice: "8,000", weekendPrice : "10,000", seatSelect : "OUTFIELD1"
     },
     {
-      title: "외야 미니테이블석 1", seat: "BML_4_1", weekdayPrice: "24,000/2인", weekendPrice : "30,000/2인", seatSelect : "OUTFIELD3"
+      title: "외야 미니테이블석 1", seat: "BML_4_1", weekdayPrice: "24,000/2인", weekendPrice : "30,000/2인", seatSelect : "OUTFIELD1"
     },
     {
-      title: "외야 미니테이블석 2", seat: "BML_8_1", weekdayPrice: "24,000/2인", weekendPrice : "30,000/2인", seatSelect : "OUTFIELD3"
+      title: "외야 미니테이블석 2", seat: "BML_8_1", weekdayPrice: "24,000/2인", weekendPrice : "30,000/2인", seatSelect : "OUTFIELD1"
     },
     {
-      title: "외야 테이블석 2", seat: "BTL_9_1", weekdayPrice: "60,000/4인", weekendPrice : "72,000/4인", seatSelect : "OUTFIELD3"
+      title: "외야 테이블석 2", seat: "BTL_9_1", weekdayPrice: "60,000/4인", weekendPrice : "72,000/4인", seatSelect : "OUTFIELD1"
     },
     {
       title: "땅땅치킨 루프탑", seat: "BROOFTOP_2", weekdayPrice: "18,000", weekendPrice : "21,000", seatSelect : "DDANG"
@@ -151,8 +156,12 @@ export default function Seat() {
 
 
   function toSectionDetail() {
-    navigate('/section', { state: selectSeat});
+    navigate('/section', { state: {
+      sectionSelect: sectionSelect,
+      selectSeat : selectSeat
+    }});
     // selecSeat을 섹션까지 나눠진 번호 넘겨주기 -> detail에서 imgSrc에 해당 변수값만 바꾸면 되게끔
+    
   }
 
   function toTicketing() {
@@ -170,26 +179,12 @@ export default function Seat() {
         const seats = seatData[index];
         console.log(seats.title);
         const seatsSeat = seats.seat
-        const seatSelect = seats.seatSelect
+        const sectionSelect = seats.seatSelect
+
+        setSectionSelect(sectionSelect)
         setSelectSeat(seats.seat);
         setSeatWeekdayPrice(seats.weekdayPrice);
         setSeatWeekendPrice(seats.weekendPrice);
-
-        function setSeatData(seatsSeat){
-          return {
-            type : 'SET_SEAT_DATA',
-            seatsSeat
-          }
-        }
-        store.dispatch(setSeatData(seatsSeat))
-
-        function setSeatSelect(seatSelect){
-          return {
-            type : 'SET_SEAT_SELECT',
-            seatSelect
-          }
-        }
-        store.dispatch(setSeatSelect(seatSelect))
       }
     }
   }
