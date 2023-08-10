@@ -9,7 +9,7 @@ import map5F from './img/sectionMap_5F.png';
 export default function Navigation() {
   const naviCanvasRef = useRef(null);
   const [floor, setFloor] = useState(navigationMap)
-  const [currentFloor, setCurrentFloor] = useState('3F')
+  // const [currentFloor, setCurrentFloor] = useState('3F')
 
   // const naviGoal = data.facilityName;
   const naviGoal = '파파존스피자(Food Street)';
@@ -29,21 +29,21 @@ export default function Navigation() {
     12: {pointId: 224, pointName: '2층 게이트2', type: 'G', x: 20, y: 260}
   }
 
-  function selectFloor(e) {
-    console.log(e)
-    if (e.target.innerText === '2F') {
-      setFloor(map2F)
-      setCurrentFloor('2F')
-    }
-    else if (e.target.innerText === '3F') {
-      setFloor(map3F)
-      setCurrentFloor('3F')
-    }
-    else if (e.target.innerText === '5F') {
-      setFloor(map5F)
-      setCurrentFloor('5F')
-    }
-  }
+  // function selectFloor(e) {
+  //   console.log(e)
+  //   if (e.target.innerText === '2F') {
+  //     setFloor(map2F)
+  //     setCurrentFloor('2F')
+  //   }
+  //   else if (e.target.innerText === '3F') {
+  //     setFloor(map3F)
+  //     setCurrentFloor('3F')
+  //   }
+  //   else if (e.target.innerText === '5F') {
+  //     setFloor(map5F)
+  //     setCurrentFloor('5F')
+  //   }
+  // }
 
   // function selectStore(e) {
   //   setDestination(e.target.id)
@@ -65,68 +65,95 @@ export default function Navigation() {
   }
 
   
-  const [floorIdx, setFloorIdx] = useState(0);
+  // const [floorIdx, setFloorIdx] = useState(0);
+  // 함수에 인자로 넘겨주는 식으로 하기
 
   useEffect(() => {
-    const naviCanvas = naviCanvasRef.current;
+    let naviCanvas = naviCanvasRef.current;
     naviCanvas.width = 412;
     naviCanvas.height = 461;
-    const ctx = naviCanvas.getContext("2d")
+    let ctx = naviCanvas.getContext("2d")
 
+    let wayArray = [];
     function calcWaypoints(vertices){
       var waypoints=[];
-      for(var i=floorIdx+1;i<Object.keys(vertices).length;i++){
-        if(vertices[i]['type'] === 'S'){
-          setFloorIdx(i);
-          break
-        }
-        if(i === Object.keys(vertices).length - 1){
-          setFloorIdx(i+1);
+      for(var i=1;i<Object.keys(vertices).length;i++){
+
+        if(parseInt(vertices[i]['pointId']/100) !== parseInt(vertices[i-1]['pointId']/100)){
+          wayArray.push(waypoints);
+          var waypoints=[];
+          continue
         }
 
-        console.log(i);
-          var pt0=vertices[i-1];
-          var pt1=vertices[i];
-          var dx=pt1['x']-pt0['x'];
-          var dy=pt1['y']-pt0['y'];
-          for(var j=0;j<100;j++){
-              var x=pt0.x+dx*j/100;
-              var y=pt0.y+dy*j/100;
-              waypoints.push({x:x,y:y});
-          }
+        // console.log(i);
+        var pt0=vertices[i-1];
+        var pt1=vertices[i];
+        var dx=pt1['x']-pt0['x'];
+        var dy=pt1['y']-pt0['y'];
+        
+
+        for(var j=0;j<20;j++){
+            var x=pt0.x+dx*j/20;
+            var y=pt0.y+dy*j/20;
+            waypoints.push({x:x,y:y});
+        }
+
+        if(i === Object.keys(vertices).length - 1){
+          wayArray.push(waypoints);
+        }
       }
-      return(waypoints);
+      return(wayArray);
     }
+
+    // var waypoints=[];
+    // for(let i=1; i<Object.keys(pointDtoList).length;i++){
+    //   // var points = calcWaypoints(pointDtoList);
+      
+    //   if(pointDtoList[i]['type'] === 'S'){
+    //     calcWaypoints(pointDtoList, i)
+    //     var t=1;
+    //     animate();
+    //     var waypoints=[];
+    //   }
+    // }
  
-      var points=calcWaypoints(pointDtoList);
-      
-      var t=1;
-      
-      animate();
     
+    // var points = calcWaypoints(pointDtoList);
+    calcWaypoints(pointDtoList);
+
     
+    // for(let j=0; j<wayArray.length; j++){
+    //   var points = wayArray[j];
+    //   console.log(points)
+    //   var t=1;
+    //   // ctx.clearRect(0, 0, naviCanvas.width, naviCanvas.height)
+
+    //   animate();
+    // }
+    
+
+    let j=0;
+    let t=1;
+    let points = wayArray[j];
+    ctx.clearRect(0, 0, naviCanvas.width, naviCanvas.height)
+    animate();
 
     function animate(){
-        if(t<points.length-1){ requestAnimationFrame(animate); }
-        ctx.beginPath();
-        ctx.moveTo(points[t-1].x,points[t-1].y);
-        ctx.lineTo(points[t].x,points[t].y);
-        ctx.lineWidth = '10';
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = '#074CA1';
-        ctx.stroke();
-        t++;
+      if(t<points.length-1){ requestAnimationFrame(animate); }
+      ctx.beginPath();
+      ctx.moveTo(points[t-1].x, points[t-1].y);
+      ctx.lineTo(points[t].x, points[t].y);
+      ctx.lineWidth = '10';
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = '#074CA1';
+      ctx.stroke();
+      t++;
     }
 
   },[])
 
   return (
     <div className='navigation-container font'>
-      <div className='floor-select-button'>
-        <button onClick={selectFloor}>2F</button>
-        <button onClick={selectFloor}>3F</button>
-        <button onClick={selectFloor}>5F</button>
-      </div>
 
       <div className='navigation-body'>
         <div className='navigation-route'>

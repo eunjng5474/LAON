@@ -165,6 +165,7 @@ export default function Facilities() {
     setDestination(e.target.id)
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "3-1"}/${e.target.id}`)
     .then((res) => {
+      console.log(res)
       // AR 변수 지정해주는 함수
       setNaviGoal(naviGoal => {
         naviGoal = res.data.facilityName
