@@ -200,7 +200,9 @@ function getData() {
 
 function App() {
   const gameStatus = useSelector((state) => state.gameStatus)
+  
   getData()
+
   if (gameStatus === 'PLAY'){
     const reGetData = setInterval(getData, 2000)
   }
