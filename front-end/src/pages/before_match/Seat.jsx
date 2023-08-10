@@ -22,13 +22,15 @@ export default function Seat() {
 
   const [selectSeat, setSelectSeat] = useState(null); // 넘겨줄 변수(3-1 이런 식으로)
   const [showSeatName, setShowSeatName] = useState(null); // 보여줄 이름(블루존)
+  const [sectionSelect, setSectionSelect] = useState() // sectionDetail에서 보여줄 사진 이름
+
+  // console.log(selectSeat, sectionSelect)
 
   // const [onClick, setOnClick] = useState(false);
   const [seatWeekdayPrice, setSeatWeekdayPrice] = useState(null);
   const [seatWeekendPrice, setSeatWeekendPrice] = useState(null);
 
 
-  const [sectionSelect, setSectionSelect] = useState()
 
   const navigate = useNavigate();
 
@@ -204,12 +206,15 @@ export default function Seat() {
             
               <div id='seat-home-info'>
                 <div className='seat-info-header font'>
-                  <span className='seat-info-header-desc'>
+                  <span className='seat-info-header-title'>
+                    {showSeatName}
+                  </span>
+                  {/* <span className='seat-info-header-desc'>
                     {seatWeekdayPrice ? "주중: " + seatWeekdayPrice : ""}
                   </span>
                   <span className='seat-info-header-desc'>
                     {seatWeekendPrice ? "주말 : " + seatWeekendPrice : ""} 
-                  </span>
+                  </span> */}
                 </div>
                 <div className='seat-info-footer'>
                   <button className='road-view-button font' onClick={toSectionDetail}>
@@ -223,7 +228,7 @@ export default function Seat() {
               </button>
             </div>
             <div className='home-right'>
-              <img className='park-home-img' src={park_home} usemap="#home-map"/>
+              <img className='park-home-img' src={park_home} useMap="#home-map"/>
             </div>
 
             <map name="home-map">
@@ -255,7 +260,7 @@ export default function Seat() {
           <SwiperSlide>
             <div className='away-body'>
               <div className='away-left'>
-                <img className='park-away-img' src={park_away} usemap="#away-map"/>
+                <img className='park-away-img' src={park_away} useMap="#away-map"/>
               </div>
 
               <map name="away-map">
@@ -288,15 +293,15 @@ export default function Seat() {
                 </button>
                 <div id='seat-away-info'>
                   <div className='seat-info-header font'>
-                    {/* <span className='seat-info-header-title'>
+                    <span className='seat-info-header-title'>
                       {showSeatName}
-                    </span> */}
-                    <span className='seat-info-header-desc'>
+                    </span>
+                    {/* <span className='seat-info-header-desc'>
                       {seatWeekdayPrice ? "주중: " + seatWeekdayPrice : ""}
                     </span>
                     <span className='seat-info-header-desc'>
                       {seatWeekendPrice ? "주말 : " + seatWeekendPrice : ""} 
-                    </span>
+                    </span> */}
                   </div>
                   <div className='seat-info-footer'>
                     <button className='road-view-button font' onClick={toSectionDetail}>

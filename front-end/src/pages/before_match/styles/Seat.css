@@ -264,3 +264,7 @@
   width: 72vw;
   height: 82vh;
 }
+
+.seat-info-header {
+  height: 10vh;
+}
