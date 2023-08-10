@@ -8,7 +8,7 @@ import map5F from './img/sectionMap_5F.png';
 
 export default function Navigation() {
   const naviCanvasRef = useRef(null);
-  const [floor, setFloor] = useState(map3F)
+  const [floor, setFloor] = useState(navigationMap)
   const [currentFloor, setCurrentFloor] = useState('3F')
 
   // const naviGoal = data.facilityName;
@@ -21,9 +21,9 @@ export default function Navigation() {
     4: {pointId: 309, pointName: '3-5', type: 'G', x: 50, y: 330},
     5: {pointId: 308, pointName: '3-6', type: 'G', x: 80, y: 360},
     6: {pointId: 307, pointName: '3-7', type: 'G', x: 110, y: 390},
-    7: {pointId: 306, pointName: '3-8', type: 'G', x: 140, y: 400},
-    8: {pointId: 305, pointName: '3-9', type: 'G', x: 200, y: 400},
-    9: {pointId: 304, pointName: '3-10 기둥 근처 계단', type: 'S', x: 200, y: 420},
+    7: {pointId: 306, pointName: '3-8', type: 'G', x: 140, y: 420},
+    8: {pointId: 305, pointName: '3-9', type: 'G', x: 200, y: 420},
+    9: {pointId: 304, pointName: '3-10 기둥 근처 계단', type: 'S', x: 200, y: 460},
     10: {pointId: 227, pointName: 'Food Street 내부 계단', type: 'S', x: 5, y: 160},
     11: {pointId: 225, pointName: '2층 게이트3', type: 'G', x: 20, y: 200},
     12: {pointId: 224, pointName: '2층 게이트2', type: 'G', x: 20, y: 260}
@@ -45,13 +45,6 @@ export default function Navigation() {
     }
   }
 
-  // const vertices = [
-  //   {x: 20, y: 150},
-  //   {x: 20, y: 260},
-  //   {x: 140, y: 360},
-  //   {x: 210, y: 360}
-  //   ];
-
   // function selectStore(e) {
   //   setDestination(e.target.id)
   //   axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "3-1"}/${e.target.id}`)
@@ -71,6 +64,9 @@ export default function Navigation() {
     window.location.href = `/ar/${naviGoal}.html`
   }
 
+  
+  const [floorIdx, setFloorIdx] = useState(0);
+
   useEffect(() => {
     const naviCanvas = naviCanvasRef.current;
     naviCanvas.width = 412;
@@ -79,12 +75,16 @@ export default function Navigation() {
 
     function calcWaypoints(vertices){
       var waypoints=[];
-      console.log(Object.keys(vertices).length)
-      for(var i=1;i<Object.keys(vertices).length;i++){
-          // if (vertices[i]["type"] === "S"){
-          //   setFloorImg(sectionMapImg3F);
-          // }
+      for(var i=floorIdx+1;i<Object.keys(vertices).length;i++){
+        if(vertices[i]['type'] === 'S'){
+          setFloorIdx(i);
+          break
+        }
+        if(i === Object.keys(vertices).length - 1){
+          setFloorIdx(i+1);
+        }
 
+        console.log(i);
           var pt0=vertices[i-1];
           var pt1=vertices[i];
           var dx=pt1['x']-pt0['x'];
@@ -97,12 +97,14 @@ export default function Navigation() {
       }
       return(waypoints);
     }
-
-    var points=calcWaypoints(pointDtoList);
-
-    var t=1;
-
-    animate();
+ 
+      var points=calcWaypoints(pointDtoList);
+      
+      var t=1;
+      
+      animate();
+    
+    
 
     function animate(){
         if(t<points.length-1){ requestAnimationFrame(animate); }
@@ -128,7 +130,7 @@ export default function Navigation() {
 
       <div className='navigation-body'>
         <div className='navigation-route'>
-          <img className='navigation-map-img' src={navigationMap} alt=''/>
+          <img className='navigation-map-img' src={floor} alt=''/>
           <canvas className='navigation-canvas' ref={naviCanvasRef}></canvas>
         </div>
 
