@@ -13,11 +13,18 @@ public class PointDto {
     String pointName;
     @Schema(description = "지점의 타입", example = "G : 게이트(기둥), S : 계단, E : 출구")
     char type; // G : 기둥, S : 계단, E : 출구
+    @Schema(description = "지점의 캔버스 x 좌표", example = "120")
+    int x;
+    @Schema(description = "지점의 캔버스 y 좌표", example = "100")
+    int y;
 
+    public PointDto(){}
     @Builder
-    public PointDto(int pointId, String pointName, char type){
+    public PointDto(int pointId, String pointName, char type, int y, int x){
         this.pointId = pointId;
         this.pointName = pointName;
         this.type = type;
+        this.y = y;
+        this.x = x;
     }
 }
