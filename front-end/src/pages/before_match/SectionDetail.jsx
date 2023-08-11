@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router'
 import arrow from './img/arrow.png'
 import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
+import pin from './img/pin.png'
 
 
 import './styles/SectionDetail.css';
@@ -23,7 +24,6 @@ export default function SectionDetail() {
   const imageUrl = "https://laon.info/images/view/";
   const seatsSeat2 = seatName.substr(1);
   const seatsSeatList = seatsSeat2.split('_');
-  console.log("list", seatsSeatList)
 
   if (seatsSeatList.length == 2) {
     seatUrlAdd = seatsSeatList[0] + "/" + seatsSeatList[1] + ".jpg";
@@ -32,8 +32,9 @@ export default function SectionDetail() {
   }
 
   const [seatUrl, setSeatUrl] = useState(imageUrl + seatUrlAdd);
+  const [pinCoords, setPinCoords] = useState({x:0, y:0})
 
-  console.log(seatUrl);
+  // console.log(seatUrl);
 
   function toSeat() {
     navigate('/seat');
@@ -48,9 +49,13 @@ export default function SectionDetail() {
     } else if (titleList.length === 3) {
       setSeatUrl(imageUrl + titleList[0] + "-" + titleList[1] + "/" + titleList[2] + ".jpg")
     }
-    console.log(seatUrl)
+    // console.log(seatUrl)
+    const x = event.clientX
+    const y = event.clientY -650
+    setPinCoords({x, y})
 
   }
+  console.log(pinCoords)
 
   useEffect(() => {
     ImageMap('img[useMap]')
@@ -64,12 +69,20 @@ export default function SectionDetail() {
 
       <div>
         <div className='section-detail-img'>
-          <img src={seatUrl}></img>
+          <img src={seatUrl} onClick={selectSeat}></img>
         </div>
       </div>
 
       <div className='map-controller'>
         <img src={`https://laon.info/images/sectionSelect/${sectionName}.png`} useMap={`#${sectionName}`} />
+
+        <img src={pin} style={{
+          position:'absolute',
+          left : pinCoords.x,
+          top : pinCoords.y,
+          width: '20px',
+          height: '20px',
+        }}/>
 
         <map name="INFIELD3">
           <area onClick={selectSeat} alt="3_12_1" title="3_12_1" coords="179,17,180,59,218,60" shape="poly" />
