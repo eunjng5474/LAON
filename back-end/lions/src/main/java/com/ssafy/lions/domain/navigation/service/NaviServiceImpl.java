@@ -5,8 +5,7 @@ import com.ssafy.lions.domain.facility.repository.FacilityRepository;
 import com.ssafy.lions.domain.navigation.dto.DestinationDto;
 import com.ssafy.lions.domain.navigation.dto.PointDto;
 import com.ssafy.lions.domain.navigation.dto.PointResultDto;
-import com.ssafy.lions.domain.navigation.entity.GateToGateExitStair;
-import com.ssafy.lions.domain.navigation.entity.StairToStair;
+import com.ssafy.lions.domain.navigation.entity.*;
 import com.ssafy.lions.domain.navigation.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -186,20 +185,17 @@ public class NaviServiceImpl implements NaviService{
         point.route = new ArrayList<>();
         point.pathCnt = 1;
         if(type[start] == 'G'){
-            String pointName = gateRepository.findGateNameByGateId(start);
-            int x = gateRepository.findXByGateId(start);
-            int y = gateRepository.findYByGateId(start);
-            point.route.add(new PointDto(start, pointName ,type[start], x, y));
+            Gate gate = gateRepository.findByGateId(start);
+            PointDto pointDto = makePointDto(gate.getGateId(), gate.getGateNum(), gate.getX(), gate.getY(), 'G');
+            point.route.add(pointDto);
         }else if(type[start] == 'S'){
-            String pointName = stairRepository.findStairNameByStairId(start);
-            int x = stairRepository.findXByStairId(start);
-            int y = stairRepository.findYByStairId(start);
-            point.route.add(new PointDto(start, pointName ,type[start], x, y));
+            Stair stair = stairRepository.findByStairId(start);
+            PointDto pointDto = makePointDto(stair.getStairId(), stair.getStairName(), stair.getX(), stair.getY(), 'S');
+            point.route.add(pointDto);
         }else if(type[start] == 'E'){
-            String pointName = entranceRepository.findEntranceNameByEntranceId(start);
-            int x = entranceRepository.findXByEntranceId(start);
-            int y = entranceRepository.findYByEntranceId(start);
-            point.route.add(new PointDto(start, pointName ,type[start], x, y));
+            Entrance entrance = entranceRepository.findByEntranceId(start);
+            PointDto pointDto = makePointDto(entrance.getEntranceId(), entrance.getEntranceName(), entrance.getX(), entrance.getY(), 'E');
+            point.route.add(pointDto);
         }
         q.offer(point);
         boolean[] visit = new boolean[522];
@@ -235,26 +231,17 @@ public class NaviServiceImpl implements NaviService{
                     nextPoint.curPoint = next;
                     nextPoint.route = new ArrayList<>(cur.route);
                     if(type[next] == 'G'){
-                        String pointName = gateRepository.findGateNameByGateId(next);
-                        int x = gateRepository.findXByGateId(next);
-                        int y = gateRepository.findYByGateId(next);
-                        //System.out.println("게이트 x = " + x + " y = " + y);
-                        //System.out.println(pointName);
-                        nextPoint.route.add(new PointDto(next, pointName ,type[next], x, y));
+                        Gate gate = gateRepository.findByGateId(next);
+                        PointDto pointDto = makePointDto(gate.getGateId(), gate.getGateNum(), gate.getX(), gate.getY(), 'G');
+                        nextPoint.route.add(pointDto);
                     }else if(type[next] == 'S'){
-                        String pointName = stairRepository.findStairNameByStairId(next);
-                        int x = stairRepository.findXByStairId(next);
-                        int y = stairRepository.findYByStairId(next);
-                        //System.out.println("계단 x = " + x + " y = " + y);
-                        //System.out.println(pointName);
-                        nextPoint.route.add(new PointDto(next, pointName ,type[next], x, y));
+                        Stair stair = stairRepository.findByStairId(next);
+                        PointDto pointDto = makePointDto(stair.getStairId(), stair.getStairName(), stair.getX(), stair.getY(), 'S');
+                        nextPoint.route.add(pointDto);
                     }else if(type[next] == 'E'){
-                        String pointName = entranceRepository.findEntranceNameByEntranceId(next);
-                        int x = entranceRepository.findXByEntranceId(next);
-                        int y = entranceRepository.findYByEntranceId(next);
-                        //System.out.println("입구 x = " + x + " y = " + y);
-                        //System.out.println(pointName);
-                        nextPoint.route.add(new PointDto(next, pointName ,type[next], x, y));
+                        Entrance entrance = entranceRepository.findByEntranceId(next);
+                        PointDto pointDto = makePointDto(entrance.getEntranceId(), entrance.getEntranceName(), entrance.getX(), entrance.getY(), 'E');
+                        nextPoint.route.add(pointDto);
                     }
                     q.offer(nextPoint);
                 }
@@ -262,38 +249,13 @@ public class NaviServiceImpl implements NaviService{
         }
         return null;
     }
-    // 리팩토링 중
-    public PointDto makePointDto(char types, int id){
+    public PointDto makePointDto(long id, String name, int x, int y, char type){
         PointDto pointDto = new PointDto();
-        if(types == 'G'){
-            String pointName = gateRepository.findGateNameByGateId(id);
-            int x = gateRepository.findXByGateId(id);
-            int y = gateRepository.findYByGateId(id);
-            pointDto.setPointId(id);
-            pointDto.setPointName(pointName);
-            pointDto.setType(type[id]);
-            pointDto.setX(x);
-            pointDto.setY(y);
-        }else if(types == 'S'){
-            String pointName = stairRepository.findStairNameByStairId(id);
-            int x = stairRepository.findXByStairId(id);
-            int y = stairRepository.findYByStairId(id);
-            pointDto.setPointId(id);
-            pointDto.setPointName(pointName);
-            pointDto.setType(type[id]);
-            pointDto.setX(x);
-            pointDto.setY(y);
-        }else if(types == 'E'){
-            String pointName = entranceRepository.findEntranceNameByEntranceId(id);
-            int x = entranceRepository.findXByEntranceId(id);
-            int y = entranceRepository.findYByEntranceId(id);
-            pointDto.setPointId(id);
-            pointDto.setPointName(pointName);
-            pointDto.setType(type[id]);
-            pointDto.setX(x);
-            pointDto.setY(y);
-        }
-
+        pointDto.setPointId(id);
+        pointDto.setPointName(name);
+        pointDto.setType(type);
+        pointDto.setX(x);
+        pointDto.setY(y);
         return pointDto;
     }
     public void makeGraph(){
