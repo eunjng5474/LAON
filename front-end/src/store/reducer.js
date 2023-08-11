@@ -19,7 +19,7 @@ const initialState = {
     homeTeamLogo : null,
     currentPage: null,
     destination: null,
-    base1 : 1,
+    base1 : null,
     base2 : null,
     base3 : null,
     gameDate : null,

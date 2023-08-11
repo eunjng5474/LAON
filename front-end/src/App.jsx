@@ -9,6 +9,7 @@ import Seat from './pages/before_match/Seat';
 import SectionDetail from './pages/before_match/SectionDetail';
 import Match from './pages/during_match/Match';
 import Facilities from './pages/during_match/Facilities';
+import FacilityDetail from './pages/during_match/FacilityDetail'
 import Navigation from './pages/during_match/Navigation';
 import NotFound from './pages/not_found/NotFound';
 import { useSelector } from 'react-redux';
@@ -199,21 +200,24 @@ function getData() {
 
 function App() {
   const gameStatus = useSelector((state) => state.gameStatus)
+  
   getData()
+
   if (gameStatus === 'PLAY'){
     const reGetData = setInterval(getData, 2000)
   }
 
   return (
-        <Routes>
-          <Route path="/" element={ <Landing/> } />
-          <Route path="/seat" element={ <Seat/> } />
-          <Route path="/section" element={ <SectionDetail/> } />
-          <Route path="/match" element={ <Match/> } />
-          <Route path="/facilities" element={ <Facilities/> } />
-          <Route path="/navigation" element={ <Navigation/> } />
-          <Route path="/*" element={<NotFound/>}/>
-        </Routes>
+    <Routes>
+      <Route path="/" element={ <Landing/> } />
+      <Route path="/seat" element={ <Seat/> } />
+      <Route path="/section" element={ <SectionDetail/> } />
+      <Route path="/match" element={ <Match/> } />
+      <Route path="/facilities" element={ <Facilities/> } />
+      <Route path="/facilities/detail" element={ <FacilityDetail/> } />
+      <Route path="/navigation" element={ <Navigation/> } />
+      <Route path="/*" element={<NotFound/>}/>
+    </Routes>
   );
 }
 
