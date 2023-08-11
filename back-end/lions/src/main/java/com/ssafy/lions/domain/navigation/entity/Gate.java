@@ -18,4 +18,10 @@ public class Gate {
 
     @Column(name = "gate_num")
     private String gateNum;
+
+    @Column(name = "x")
+    private int x;
+    @Column(name = "y")
+    private int y;
+
 }

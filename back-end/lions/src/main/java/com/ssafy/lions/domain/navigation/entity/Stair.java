@@ -20,4 +20,9 @@ public class Stair {
     @Column(name = "stair_name")
     private String stairName;
 
+    @Column(name = "x")
+    private int x;
+
+    @Column(name = "y")
+    private int y;
 }

@@ -10,4 +10,10 @@ import org.springframework.stereotype.Repository;
 public interface GateRepository extends JpaRepository<Gate, Long> {
     @Query("SELECT g.gateNum FROM Gate g WHERE g.gateId = :gateId")
     String findGateNameByGateId(int gateId);
+
+    @Query("SELECT g.x FROM Gate g WHERE g.gateId = :gateId")
+    int findXByGateId(int gateId);
+
+    @Query("SELECT g.y FROM Gate g WHERE g.gateId = :gateId")
+    int findYByGateId(int gateId);
 }

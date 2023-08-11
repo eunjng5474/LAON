@@ -10,4 +10,11 @@ import org.springframework.stereotype.Repository;
 public interface StairRepository extends JpaRepository<Stair, Long> {
     @Query("SELECT s.stairName FROM Stair s WHERE s.stairId = :stairId")
     String findStairNameByStairId(int stairId);
+
+    @Query("SELECT s.x FROM Stair s WHERE s.stairId = :stairId")
+    int findXByStairId(int stairId);
+
+    @Query("SELECT s.y FROM Stair s WHERE s.stairId = :stairId")
+    int findYByStairId(int stairId);
+
 }

@@ -187,13 +187,19 @@ public class NaviServiceImpl implements NaviService{
         point.pathCnt = 1;
         if(type[start] == 'G'){
             String pointName = gateRepository.findGateNameByGateId(start);
-            point.route.add(new PointDto(start, pointName ,type[start]));
+            int x = gateRepository.findXByGateId(start);
+            int y = gateRepository.findYByGateId(start);
+            point.route.add(new PointDto(start, pointName ,type[start], x, y));
         }else if(type[start] == 'S'){
             String pointName = stairRepository.findStairNameByStairId(start);
-            point.route.add(new PointDto(start, pointName ,type[start]));
+            int x = stairRepository.findXByStairId(start);
+            int y = stairRepository.findYByStairId(start);
+            point.route.add(new PointDto(start, pointName ,type[start], x, y));
         }else if(type[start] == 'E'){
             String pointName = entranceRepository.findEntranceNameByEntranceId(start);
-            point.route.add(new PointDto(start, pointName ,type[start]));
+            int x = entranceRepository.findXByEntranceId(start);
+            int y = entranceRepository.findYByEntranceId(start);
+            point.route.add(new PointDto(start, pointName ,type[start], x, y));
         }
         q.offer(point);
         boolean[] visit = new boolean[522];
@@ -230,22 +236,65 @@ public class NaviServiceImpl implements NaviService{
                     nextPoint.route = new ArrayList<>(cur.route);
                     if(type[next] == 'G'){
                         String pointName = gateRepository.findGateNameByGateId(next);
+                        int x = gateRepository.findXByGateId(next);
+                        int y = gateRepository.findYByGateId(next);
+                        //System.out.println("게이트 x = " + x + " y = " + y);
                         //System.out.println(pointName);
-                        nextPoint.route.add(new PointDto(next, pointName ,type[next]));
+                        nextPoint.route.add(new PointDto(next, pointName ,type[next], x, y));
                     }else if(type[next] == 'S'){
                         String pointName = stairRepository.findStairNameByStairId(next);
+                        int x = stairRepository.findXByStairId(next);
+                        int y = stairRepository.findYByStairId(next);
+                        //System.out.println("계단 x = " + x + " y = " + y);
                         //System.out.println(pointName);
-                        nextPoint.route.add(new PointDto(next, pointName ,type[next]));
+                        nextPoint.route.add(new PointDto(next, pointName ,type[next], x, y));
                     }else if(type[next] == 'E'){
                         String pointName = entranceRepository.findEntranceNameByEntranceId(next);
+                        int x = entranceRepository.findXByEntranceId(next);
+                        int y = entranceRepository.findYByEntranceId(next);
+                        //System.out.println("입구 x = " + x + " y = " + y);
                         //System.out.println(pointName);
-                        nextPoint.route.add(new PointDto(next, pointName ,type[next]));
+                        nextPoint.route.add(new PointDto(next, pointName ,type[next], x, y));
                     }
                     q.offer(nextPoint);
                 }
             }
         }
         return null;
+    }
+    // 리팩토링 중
+    public PointDto makePointDto(char types, int id){
+        PointDto pointDto = new PointDto();
+        if(types == 'G'){
+            String pointName = gateRepository.findGateNameByGateId(id);
+            int x = gateRepository.findXByGateId(id);
+            int y = gateRepository.findYByGateId(id);
+            pointDto.setPointId(id);
+            pointDto.setPointName(pointName);
+            pointDto.setType(type[id]);
+            pointDto.setX(x);
+            pointDto.setY(y);
+        }else if(types == 'S'){
+            String pointName = stairRepository.findStairNameByStairId(id);
+            int x = stairRepository.findXByStairId(id);
+            int y = stairRepository.findYByStairId(id);
+            pointDto.setPointId(id);
+            pointDto.setPointName(pointName);
+            pointDto.setType(type[id]);
+            pointDto.setX(x);
+            pointDto.setY(y);
+        }else if(types == 'E'){
+            String pointName = entranceRepository.findEntranceNameByEntranceId(id);
+            int x = entranceRepository.findXByEntranceId(id);
+            int y = entranceRepository.findYByEntranceId(id);
+            pointDto.setPointId(id);
+            pointDto.setPointName(pointName);
+            pointDto.setType(type[id]);
+            pointDto.setX(x);
+            pointDto.setY(y);
+        }
+
+        return pointDto;
     }
     public void makeGraph(){
         List<GateToGateExitStair> gateToGateExitStairs = gateToGateExitStairRepository.findAll();

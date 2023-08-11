@@ -9,4 +9,10 @@ import org.springframework.stereotype.Repository;
 public interface EntranceRepository extends JpaRepository<Entrance, Long> {
     @Query("SELECT e.entranceName FROM Entrance e WHERE e.entranceId = :entranceId")
     String findEntranceNameByEntranceId(int entranceId);
+
+    @Query("SELECT e.x FROM Entrance e WHERE e.entranceId = :entranceId")
+    int findXByEntranceId(int entranceId);
+
+    @Query("SELECT e.y FROM Entrance e WHERE e.entranceId = :entranceId")
+    int findYByEntranceId(int entranceId);
 }

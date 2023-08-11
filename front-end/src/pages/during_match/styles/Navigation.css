@@ -1,0 +1,35 @@
+.navigation-container {
+  display: flex;
+  flex-direction: column;
+  height: 82vh;
+  color: #ffffff;
+}
+
+.navigation-body {
+  width: 100vw;
+  height: 79.5vh;
+}
+
+.navigation-route {
+  margin-top: 5vh;
+  width: 100vw;
+  height: 60vh;
+}
+
+.navigation-map-img {
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+}
+
+.to-ar-button {
+  position: absolute;
+  right: 5vw;
+  bottom: 28vh;
+  width: 20vw;
+  height: 6vh;
+  border: none;
+  border-radius: 5vw;
+  background-color: #074CA1;
+  color: #ffffff;
+}
