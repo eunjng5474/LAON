@@ -51,11 +51,13 @@ export default function SectionDetail() {
     }
     // console.log(seatUrl)
     const x = event.clientX
-    const y = event.clientY -650
+    const y = event.clientY - 650
     setPinCoords({x, y})
+    // console.log(pinCoords, event.clientY)
 
   }
-  console.log(pinCoords)
+
+
 
   useEffect(() => {
     ImageMap('img[useMap]')

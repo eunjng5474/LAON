@@ -4,7 +4,7 @@ import EntireSectionMapImg from './img/sectionMap.png';
 import map2F from './img/sectionMap_2F.png';
 import map3F from './img/sectionMap_3F.png';
 import map5F from './img/sectionMap_5F.png';
-import KELLY from './img/facilities/켈리로고.png'
+import KELLY from './img/food/kelly.png'
 import JJAKTAE from './img/facilities/짝태시대 로고.png'
 import TTANG from './img/facilities/땅땅치킨로고.png'
 import PAPA from './img/facilities/파파존스피자로고.png'
@@ -216,9 +216,9 @@ export default function Facilities() {
 
         </div>
 
-        <div className='category-select'>
-          <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장</button>
-          <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""}`}>편의시설</button>
+        <div className='category-select font'>
+          <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""} font`}>식음매장</button>
+          <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""} font`}>편의시설</button>
         </div>
       </div>
 
@@ -229,9 +229,14 @@ export default function Facilities() {
               className='facilities-store' 
               onClick={selectStore}
             >
-              <img className='store-img' id="KELLY" src={KELLY} alt="" />
+              <div className='store-item-header'>
+                <span className='facility-store-title'>KELLY</span>
+              </div>
+              <div className='store-item-body'>
+                <img className='store-img' id="KELLY" src={KELLY} alt="" />
+              </div>
             </div>
-            <div 
+            {/* <div 
               className='facilities-store'
               onClick={selectStore}
             >
@@ -317,7 +322,7 @@ export default function Facilities() {
               onClick={selectStore}
             >
               <img className='store-img' id="한만두" src={MANDU} alt="" />
-            </div>
+            </div> */}
         </div>
 
         <div className={`facility-list ${category === "식음매장" ? "facility-hide" : ""}`}>
