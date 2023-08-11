@@ -262,40 +262,7 @@ public class NaviServiceImpl implements NaviService{
         }
         return null;
     }
-    // 리팩토링 중
-    public PointDto makePointDto(char types, int id){
-        PointDto pointDto = new PointDto();
-        if(types == 'G'){
-            String pointName = gateRepository.findGateNameByGateId(id);
-            int x = gateRepository.findXByGateId(id);
-            int y = gateRepository.findYByGateId(id);
-            pointDto.setPointId(id);
-            pointDto.setPointName(pointName);
-            pointDto.setType(type[id]);
-            pointDto.setX(x);
-            pointDto.setY(y);
-        }else if(types == 'S'){
-            String pointName = stairRepository.findStairNameByStairId(id);
-            int x = stairRepository.findXByStairId(id);
-            int y = stairRepository.findYByStairId(id);
-            pointDto.setPointId(id);
-            pointDto.setPointName(pointName);
-            pointDto.setType(type[id]);
-            pointDto.setX(x);
-            pointDto.setY(y);
-        }else if(types == 'E'){
-            String pointName = entranceRepository.findEntranceNameByEntranceId(id);
-            int x = entranceRepository.findXByEntranceId(id);
-            int y = entranceRepository.findYByEntranceId(id);
-            pointDto.setPointId(id);
-            pointDto.setPointName(pointName);
-            pointDto.setType(type[id]);
-            pointDto.setX(x);
-            pointDto.setY(y);
-        }
 
-        return pointDto;
-    }
     public void makeGraph(){
         List<GateToGateExitStair> gateToGateExitStairs = gateToGateExitStairRepository.findAll();
         List<StairToStair> stairToStairs = stairToStairRepository.findAll();
