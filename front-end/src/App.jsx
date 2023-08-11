@@ -208,16 +208,16 @@ function App() {
   }
 
   return (
-        <Routes>
-          <Route path="/" element={ <Landing/> } />
-          <Route path="/seat" element={ <Seat/> } />
-          <Route path="/section" element={ <SectionDetail/> } />
-          <Route path="/match" element={ <Match/> } />
-          <Route path="/facilities" element={ <Facilities/> } />
-          <Route path="/facilities/detail" element={ <FacilityDetail/> } />
-          <Route path="/navigation" element={ <Navigation/> } />
-          <Route path="/*" element={<NotFound/>}/>
-        </Routes>
+    <Routes>
+      <Route path="/" element={ <Landing/> } />
+      <Route path="/seat" element={ <Seat/> } />
+      <Route path="/section" element={ <SectionDetail/> } />
+      <Route path="/match" element={ <Match/> } />
+      <Route path="/facilities" element={ <Facilities/> } />
+      <Route path="/facilities/detail" element={ <FacilityDetail/> } />
+      <Route path="/navigation" element={ <Navigation/> } />
+      <Route path="/*" element={<NotFound/>}/>
+    </Routes>
   );
 }
 

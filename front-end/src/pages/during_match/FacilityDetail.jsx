@@ -13,18 +13,16 @@ export default function FacilityDetail() {
   const [sideItem, setSideItem] = useState()
   const [beverage, setBeverage] = useState()
 
-  console.log(facility)
-  console.log(setItem)
-  console.log(singleItem)
-  console.log(sideItem)
-  console.log(beverage)
-
   function goAR() {
     window.location.href = `/ar/${location.state.naviGoal}.html`
   }
 
   function goBack() {
     navigate('/facilities')
+  }
+
+  function goNavi() {
+    navigate('/navigation')
   }
 
   function menuRenderer(menuArray) {
@@ -106,7 +104,7 @@ export default function FacilityDetail() {
           </div>
         </div>
         <div className='facility-detail-navi-button'>
-          <button>길찾기</button>
+          <button onClick={goNavi}>길찾기</button>
           <button onClick={goAR}>ROADVIEW</button>
         </div>
       </div>

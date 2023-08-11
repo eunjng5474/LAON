@@ -198,7 +198,7 @@ export default function Facilities() {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
-  },[])
+  }, [])
 
   return (
     <div className='facilities-container font'>
