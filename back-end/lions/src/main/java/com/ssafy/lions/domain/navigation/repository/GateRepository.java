@@ -21,4 +21,5 @@ public interface GateRepository extends JpaRepository<Gate, Long> {
     @Query("SELECT g.y FROM Gate g WHERE g.gateId = :gateId")
     int findYByGateId(int gateId);
 
+    Gate findByGateId(int gateId);
 }

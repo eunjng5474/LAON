@@ -17,4 +17,5 @@ public interface StairRepository extends JpaRepository<Stair, Long> {
     @Query("SELECT s.y FROM Stair s WHERE s.stairId = :stairId")
     int findYByStairId(int stairId);
 
+    Stair findByStairId(int stairId);
 }
