@@ -16,37 +16,30 @@ export default function Navigation() {
   const [showNextPoints, setshowNextPoints] = useState(false)
   // const [currentFloor, setCurrentFloor] = useState('3F')
 
-
-  function draw() {
+  let i = 1;
+  function startDraw() {
     if (!pointDtoList) {
       return
     }
-
     const canvas = document.getElementById('navi-canvas')
     canvas.width = "412"
     canvas.height = "462"
-    // canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     const ctx = canvas.getContext('2d')
-
-
     ctx.beginPath()
     ctx.moveTo(pointDtoList[0].x, pointDtoList[0].y)
-    for (let i = 0; i < pointDtoList.length; i++) {
-      ctx.lineTo(pointDtoList[i].x, pointDtoList[i].y)
-      // if (pointDtoList[i].type === 'S') {
-      //   setPointDtoList(pointDtoList => {
-      //     pointDtoList = nextPointDtoList
-      //     console.log(pointDtoList)
-      //     // setFloor(map2F)
-      //     // draw()
-      //     return pointDtoList
-      //   })
-      // }
-    }
-    ctx.stroke()
 
-    requestAnimationFrame(draw)
+    function draw() {
+      if (i < pointDtoList.length) {
+        ctx.lineTo(pointDtoList[i].x, pointDtoList[i].y)
+        ctx.stroke()
+        i ++;
+        requestAnimationFrame(draw)
+      }
+    }
+
+    draw()
   }
+
 
 
   // const naviGoal = data.facilityName;
@@ -76,14 +69,14 @@ export default function Navigation() {
             pointDtoList = res.data.pointDtoList.slice(0, i+1)
             console.log('현재 리스트')
             console.log(pointDtoList)
-            draw(pointDtoList)
+            startDraw(pointDtoList)
             return pointDtoList
           })
           setNextPointDtoList(nextPointDtoList => {
             nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
             console.log('다음 리스트')
             console.log(nextPointDtoList)
-            draw(nextPointDtoList)
+            startDraw(nextPointDtoList)
             return nextPointDtoList
           })
           // setshowNextPoints(true)
@@ -95,7 +88,7 @@ export default function Navigation() {
   }, [])
 
   useEffect(() => {
-    draw()
+    startDraw()
     setshowNextPoints(true)
 
   }, [pointDtoList])
@@ -105,8 +98,8 @@ export default function Navigation() {
       setTimeout(() => {
         setFloor(map2F)
         setPointDtoList(nextPointDtoList)
-        draw()
-      }, 2000)
+        startDraw()
+      }, 500)
     }
   }, [nextPointDtoList])
 
