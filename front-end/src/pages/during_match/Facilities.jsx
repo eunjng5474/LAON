@@ -206,6 +206,9 @@ export default function Facilities() {
 
         <div className='floor-select-button'>
           <h2>현재 위치 : {currentPosition}</h2>
+          <button>2F</button>
+          <button>3F</button>
+          <button>4F</button>
         </div>
 
         <div className='facilities-search-bar'>
