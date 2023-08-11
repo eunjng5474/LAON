@@ -56,8 +56,8 @@ export default function SectionDetail() {
   }
 
   function getCoordinate(e) {
-    console.log(e.nativeEvent.offsetX)
-    console.log(e.nativeEvent.offsetY)
+    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
+    // console.log(e.nativeEvent.offsetY)
     const x = e.nativeEvent.offsetX
     const y = e.nativeEvent.offsetY
 
@@ -250,6 +250,206 @@ export default function SectionDetail() {
     else if (41 <= x && x <= 49 && 201 <= y && y <= 224) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY6/5.jpg"
+        return seatUrl
+      })
+    }
+    else if (209 <= x && x <= 227 && 531 <= y && y <= 545) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "yogibo/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (231 <= x && x <= 250 && 531 <= y && y <= 545) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "yogibo/2.jpg"
+        return seatUrl
+      })
+    }
+    
+    // sky하단
+    else if (42 <= x && x <= 48 && 202 <= y && y <= 223) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-31/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (42 <= x && x <= 48 && 228 <= y && y <= 247) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-30/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (42 <= x && x <= 48 && 252 <= y && y <= 271) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-29/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (42 <= x && x <= 48 && 276 <= y && y <= 296) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-28/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (42 <= x && x <= 48 && 301 <= y && y <= 321) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-27/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (42 <= x && x <= 48 && 327 <= y && y <= 347) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-26/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (42 <= x && x <= 48 && 354 <= y && y <= 364) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-25/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (45 <= x && x <= 54 && 368 <= y && y <= 375) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-24/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (59 <= x && x <= 70 && 378 <= y && y <= 390) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-23/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (73 <= x && x <= 85 && 395 <= y && y <= 405) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-22/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (86 <= x && x <= 102 && 410 <= y && y <= 419) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-21/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (105 <= x && x <= 118 && 425 <= y && y <= 433) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-20/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (117 <= x && x <= 132 && 437 <= y && y <= 449) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-19/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (132 <= x && x <= 148 && 455 <= y && y <= 465) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-18/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (147 <= x && x <= 164 && 470 <= y && y <= 479) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-17/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (163 <= x && x <= 180 && 485 <= y && y <= 494) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-16/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (178 <= x && x <= 190 && 500 <= y && y <= 508) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-15/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (194 <= x && x <= 204 && 506 <= y && y <= 510) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-14/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (209 <= x && x <= 227 && 506 <= y && y <= 510) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-13/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (232 <= x && x <= 250 && 506 <= y && y <= 510) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-12/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (255 <= x && x <= 273 && 506 <= y && y <= 510) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-11/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (278 <= x && x <= 289 && 506 <= y && y <= 510) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-10/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (292 <= x && x <= 305 && 496 <= y && y <= 505) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-9/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (307 <= x && x <= 320 && 482 <= y && y <= 496) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-8/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (322 <= x && x <= 339 && 464 <= y && y <= 476) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-7/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (340 <= x && x <= 355 && 447 <= y && y <= 460) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-6/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (356 <= x && x <= 370 && 430 <= y && y <= 445) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-5/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (372 <= x && x <= 390 && 443 <= y && y <= 426) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-4/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (390 <= x && x <= 406 && 397 <= y && y <= 410) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-3/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (405 <= x && x <= 423 && 381 <= y && y <= 390) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-2/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (423 <= x && x <= 436 && 366 <= y && y <= 380) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "U-1/1.jpg"
         return seatUrl
       })
     }
