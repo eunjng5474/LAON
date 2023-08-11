@@ -21,4 +21,10 @@ public class Entrance {
 
     @Column(name = "entrance_name")
     private String entranceName;
+
+    @Column(name = "x")
+    private int x;
+
+    @Column(name = "y")
+    private int y;
 }
