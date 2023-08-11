@@ -7,18 +7,48 @@ import './styles/NavBar.css'
 import logo from './img/SL_logo.svg'
 
 export default function NavBar() {
+  const navigate = useNavigate();
   const [dark, setDark] = useState()
   const [hide, setHide] = useState()
 
   const gameStatus = useSelector((state) => state.gameStatus)
 
+  function setCurrentPage(currentPage) {
+    return {
+      type: 'SET_CURRENT_PAGE',
+      currentPage
+    }
+  }
 
+  function navigatePage(e) {
+    if (e.target.alt === '좌석') {
+      navigate('/seat')
+      const currentPage = '좌석'
+      store.dispatch(setCurrentPage(currentPage))
+    }
+    else if (e.target.alt === '내비') {
+      navigate('/facilities')
+      const currentPage = '내비'
+      store.dispatch(setCurrentPage(currentPage))
+    } 
+    else if (e.target.alt === '경기') {
+      navigate('/match')
+      const currentPage = '경기'
+      store.dispatch(setCurrentPage(currentPage))
+    }
+  }
 
   useEffect(() => {
     if (window.location.pathname === '/' || window.location.pathname === '/section') {
-      setHide(true)
+      setHide(hide => {
+        hide = true
+        return hide
+      })
     } else {
-      setHide(false)
+      setHide(hide => {
+        hide = false
+        return hide
+      })
     }
 
     if (window.location.pathname === '/match') {
