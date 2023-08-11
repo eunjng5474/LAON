@@ -79,6 +79,7 @@
   justify-content: center;
   align-items: center;
   height: 65vh;
+  width: 600vh;
   background-color: #074ca1;
   flex-wrap: wrap;
   overflow: scroll;
@@ -88,6 +89,9 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  width: 315vh;
+  height: 65vh;
+  white-space:nowrap;
   overflow: scroll;
 }
 
