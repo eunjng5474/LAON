@@ -1349,6 +1349,7 @@ export default function SectionDetail() {
         initialScale={3}
         initialPositionX={-400}
         initialPositionY={-300}
+        className='map-controller'
       >
         <TransformComponent>
           <div onClick={getCoordinate}>
