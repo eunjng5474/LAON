@@ -21,7 +21,6 @@ export default function Navigation() {
     if (!pointDtoList) {
       return
     }
-
     const canvas = document.getElementById('navi-canvas')
     canvas.width = "412"
     canvas.height = "462"
@@ -29,23 +28,53 @@ export default function Navigation() {
     const ctx = canvas.getContext('2d')
 
 
-    ctx.beginPath()
-    ctx.moveTo(pointDtoList[0].x, pointDtoList[0].y)
-    for (let i = 0; i < pointDtoList.length; i++) {
-      ctx.lineTo(pointDtoList[i].x, pointDtoList[i].y)
-      // if (pointDtoList[i].type === 'S') {
-      //   setPointDtoList(pointDtoList => {
-      //     pointDtoList = nextPointDtoList
-      //     console.log(pointDtoList)
-      //     // setFloor(map2F)
-      //     // draw()
-      //     return pointDtoList
-      //   })
-      // }
-    }
-    ctx.stroke()
+    let waypoints = [];
 
-    requestAnimationFrame(draw)
+    console.log(pointDtoList)
+    for(let i=1; i<pointDtoList.length(); i++){
+      var pt0 = pointDtoList[i-1];
+      var pt1 = pointDtoList[i];
+      var dx=pt1['x']-pt0['x'];
+      var dy=pt1['y']-pt0['y'];
+      for(var j=0;j<30;j++){
+          var x=pt0.x+dx*j/30;
+          var y=pt0.y+dy*j/30;
+          waypoints.push({x:x,y:y});
+      }
+      return(waypoints);
+    }
+
+
+  //   function animate(){
+  //     if(t<points.length-1){ requestAnimationFrame(animate); }
+  //     ctx.beginPath();
+  //     ctx.moveTo(points[t-1].x,points[t-1].y);
+  //     ctx.lineTo(points[t].x,points[t].y);
+  //     ctx.lineWidth = '10';
+  //     ctx.lineCap = 'round';
+  //     ctx.strokeStyle = '#074CA1';
+  //     ctx.stroke();
+  //     t++;
+  // }
+
+
+    // ctx.beginPath()
+    // ctx.moveTo(pointDtoList[0].x, pointDtoList[0].y)
+    // for (let i = 0; i < pointDtoList.length; i++) {
+    //   ctx.lineTo(pointDtoList[i].x, pointDtoList[i].y)
+    //   // if (pointDtoList[i].type === 'S') {
+    //   //   setPointDtoList(pointDtoList => {
+    //   //     pointDtoList = nextPointDtoList
+    //   //     console.log(pointDtoList)
+    //   //     // setFloor(map2F)
+    //   //     // draw()
+    //   //     return pointDtoList
+    //   //   })
+    //   // }
+    // }
+    // ctx.stroke()
+
+    // requestAnimationFrame(draw)
   }
 
 
@@ -76,14 +105,14 @@ export default function Navigation() {
             pointDtoList = res.data.pointDtoList.slice(0, i+1)
             console.log('현재 리스트')
             console.log(pointDtoList)
-            draw(pointDtoList)
+            // draw()
             return pointDtoList
           })
           setNextPointDtoList(nextPointDtoList => {
             nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
             console.log('다음 리스트')
             console.log(nextPointDtoList)
-            draw(nextPointDtoList)
+            // draw()
             return nextPointDtoList
           })
           // setshowNextPoints(true)
@@ -95,8 +124,33 @@ export default function Navigation() {
   }, [])
 
   useEffect(() => {
-    draw()
+    // draw()
+    
+    // var points = draw(pointDtoList);
+    // var t = 1;
+    // animate()
+
+  //   function animate(){
+
+  //     const canvas = document.getElementById('navi-canvas')
+  //     canvas.width = "412"
+  //     canvas.height = "462"
+  //     // canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+  //     const ctx = canvas.getContext('2d')
+
+  //     if(t<points.length-1){ requestAnimationFrame(animate); }
+  //     ctx.beginPath();
+  //     ctx.moveTo(points[t-1].x,points[t-1].y);
+  //     ctx.lineTo(points[t].x,points[t].y);
+  //     ctx.lineWidth = '10';
+  //     ctx.lineCap = 'round';
+  //     ctx.strokeStyle = '#074CA1';
+  //     ctx.stroke();
+  //     t++;
+  // }
+
     setshowNextPoints(true)
+
 
   }, [pointDtoList])
 
@@ -105,7 +159,7 @@ export default function Navigation() {
       setTimeout(() => {
         setFloor(map2F)
         setPointDtoList(nextPointDtoList)
-        draw()
+        // draw()
       }, 2000)
     }
   }, [nextPointDtoList])
