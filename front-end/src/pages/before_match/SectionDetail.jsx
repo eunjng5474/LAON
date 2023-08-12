@@ -1326,6 +1326,9 @@ export default function SectionDetail() {
         return seatUrl
       })
     }
+
+    // 지브로존
+    
   }
 
   useEffect(() => {
