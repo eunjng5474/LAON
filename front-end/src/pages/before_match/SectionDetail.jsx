@@ -1353,7 +1353,6 @@ export default function SectionDetail() {
       >
         <TransformComponent>
           <div onClick={getCoordinate}>
-            <div className='pin'></div>
             <img src={mapImg} alt="" />
           </div>
         </TransformComponent>
