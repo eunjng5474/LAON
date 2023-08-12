@@ -214,7 +214,6 @@ export default function Facilities() {
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
   }, [])
-
   return (
     <div className='facilities-container font'>
       <div className='facilities-header'>
@@ -239,8 +238,8 @@ export default function Facilities() {
         </div>
 
         <div className='category-select'>
-          <button onClick={categorySelect} className={`${category === "식음매장" ? "category-show-button" : ""}`}>식음매장</button>
-          <button onClick={categorySelect} className={`${category === "편의시설" ? "category-show-button" : ""}`}>편의시설</button>
+          <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음매장</button>
+          <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의시설</button>
         </div>
       </div>
 
@@ -252,18 +251,18 @@ export default function Facilities() {
               onClick={selectStore}
             >
               <div className='store-item-header'>
-                <img className='store-img' src={KEELY_img} alt="" />
+                <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
                 <div className='store-item-logo'>
                   <img className='store-logo-img' id="KELLY" src={KELLY} alt=""/>
                 </div>
               </div>
               <div className='store-item-body'>
                 <div className='store-title'>
-                <span className='facility-store-title'>KELLY</span>
+                <span className='facility-store-title' id="KELLY">KELLY</span>
                 </div>
                 <div className='store-itme-tag'>
-                  <span className='store-tag'>#맥주</span>
-                  <span className='store-tag'>#KELLY</span>
+                  <span className='store-tag' id="KELLY">#맥주</span>
+                  <span className='store-tag' id="KELLY">#KELLY</span>
                 </div>
               </div>
             </div>
@@ -302,8 +301,8 @@ export default function Facilities() {
                 <span className='facility-store-title'>리얼키친홍</span>
                 </div>
                 <div className='store-itme-tag'>
-                  <span className='store-tag'>#분식</span>
                   <span className='store-tag'>#덮밥</span>
+                  <span className='store-tag'>#우동</span>
                 </div>
               </div>
             </div>
@@ -323,7 +322,7 @@ export default function Facilities() {
                 </div>
                 <div className='store-itme-tag'>
                   <span className='store-tag'>#피자</span>
-                  <span className='store-tag'>#파파존스</span>
+                  <span className='store-tag'>#페퍼로니</span>
                 </div>
               </div>
             </div>
@@ -343,7 +342,7 @@ export default function Facilities() {
                 </div>
                 <div className='store-itme-tag'>
                   <span className='store-tag'>#편의점</span>
-                  <span className='store-tag'>#시원한물</span>
+                  <span className='store-tag'>#얼음물</span>
                 </div>
               </div>
             </div>
@@ -362,8 +361,8 @@ export default function Facilities() {
                 <span className='facility-store-title'>해피치즈스마일</span>
                 </div>
                 <div className='store-itme-tag'>
-                  <span className='store-tag'>#당볶이세트</span>
                   <span className='store-tag'>#분식</span>
+                  <span className='store-tag'>#소프트콘</span>
                 </div>
               </div>
             </div>
@@ -383,7 +382,7 @@ export default function Facilities() {
                 </div>
                 <div className='store-itme-tag'>
                   <span className='store-tag'>#치킨</span>
-                  <span className='store-tag'>#땅땅치킨</span>
+                  <span className='store-tag'>#햄버거</span>
                 </div>
               </div>
             </div>
@@ -427,7 +426,6 @@ export default function Facilities() {
                 </div>
               </div>
             </div>
-            {/* /////////////// */}
             <div 
               className='facilities-store' 
               onClick={selectStore}
@@ -503,7 +501,7 @@ export default function Facilities() {
                 <span className='facility-store-title'>5직떡볶이</span>
                 </div>
                 <div className='store-itme-tag'>
-                  <span className='store-tag'>#떡볶이</span>
+                  <span className='store-tag'>#분식</span>
                   <span className='store-tag'>#5직5재일</span>
                 </div>
               </div>
@@ -528,7 +526,6 @@ export default function Facilities() {
                 </div>
               </div>
             </div>
-            {/* //////// */}
             <div 
               className='facilities-store' 
               onClick={selectStore}
@@ -544,7 +541,7 @@ export default function Facilities() {
                 <span className='facility-store-title'>한만두</span>
                 </div>
                 <div className='store-itme-tag'>
-                  <span className='store-tag'>#갈비만두</span>
+                  <span className='store-tag'>#한만두</span>
                   <span className='store-tag'>#왕만두</span>
                 </div>
               </div>
