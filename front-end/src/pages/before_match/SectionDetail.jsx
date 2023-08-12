@@ -1352,10 +1352,10 @@ export default function SectionDetail() {
         initialScale={3}
         initialPositionX={-400}
         initialPositionY={-300}
+        className='map-controller'
       >
         <TransformComponent>
           <div onClick={getCoordinate}>
-            <div className='pin'></div>
             <img src={mapImg} alt="" />
           </div>
         </TransformComponent>
