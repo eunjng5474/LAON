@@ -37,6 +37,13 @@ import OJIK_img from './img/food/5직떡볶이.jpg'
 
 //////
 import female_logo from './img/facility/female-sign.png'
+import male_logo from './img/facility/male-sign.png'
+import disabled_female from './img/facility/disabled-female.png'
+import disabled_male from './img/facility/disabled-male.png'
+import camera from './img/facility/camera.png'
+import baby from './img/facility/baby-bottle.png'
+import smoking from './img/facility/smoking.png'
+import trash from './img/facility/trash-can.png'
 
 import axios from 'axios';
 import './styles/Facilities.css';
@@ -558,6 +565,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={female_logo} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>여자화장실</span>
               </div>
@@ -574,6 +584,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={male_logo} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>남자화장실</span>
               </div>
@@ -589,6 +602,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={disabled_female} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>여자장애인화장실</span>
               </div>
@@ -604,6 +620,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={disabled_male} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>남자장애인화장실</span>
               </div>
@@ -619,6 +638,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={camera} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>블루샷</span>
               </div>
@@ -634,6 +656,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+            <div className='facility-icon-item'>
+                <img className='facility-icon' src={baby} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>수유실</span>
               </div>
@@ -649,6 +674,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+            <div className='facility-icon-item'>
+                <img className='facility-icon' src={smoking} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>흡연실</span>
               </div>
@@ -664,6 +692,9 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+            <div className='facility-icon-item'>
+                <img className='facility-icon' src={trash} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>쓰레기통</span>
               </div>

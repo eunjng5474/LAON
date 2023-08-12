@@ -82,11 +82,13 @@
 .facility-list {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   overflow: scroll;
   border-radius: 20px;
-  border: 1px solid rgb(208, 208, 208);
+  /* border: 1px solid rgb(208, 208, 208); */
   width: 85vw;
+  height: 60vh;
 }
 
 .facility-hide {
@@ -184,33 +186,49 @@
 
 .facilities-facility{
   align-items: center;
-  width: 75vw;
+  width: 80vw;
   height: 6vh;
   /* border: 1px solid black; */
   /* border-radius: 20px; */
-  border-bottom: 1px solid rgb(203, 203, 203);
-  /* margin: 5px 0px; */
+  /* border-bottom: 1px solid rgb(203, 203, 203); */
   white-space: normal;
   overflow-x: scroll;
+  border: 10vh;
 }
 
 .facility-scroll-body{
   display: flex;
   /* border: 1px solid red; */
-  width: 115vw;
+  border-bottom: 1px solid  rgb(203, 203, 203);
+  width: 108vw;
   height: 6vh;
+}
+
+.facility-icon-item{
+  /* border: 1px solid teal; */
+  width: 10vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facility-icon {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .facility-title-item{
   /* border: 1px solid orange; */
-  width: 85vw;
+  width: 66vw;
   display: flex;
   align-items: center;
-  padding-left: 2.5vw;
+  padding-left: 2vw;
 }
 
 .facility-title {
-  font-size: 5vw;
+  font-size: 4.5vw;
 }
 
 .facility-body {
@@ -220,9 +238,10 @@
 
 .facility-body-button{
   background: #0065b3b4;
-  /* border: 1px solid #000; */
   color: white;
+  font-size: 4vw;
   border: none;
   width: 15vw;
   height: 100%;
+  margin: 0.1vw;
 }
