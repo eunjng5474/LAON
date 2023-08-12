@@ -188,7 +188,6 @@ export default function Seat() {
   }
 
 
-
   useEffect(() => {
     ImageMap('img[useMap]')
   }, [])
