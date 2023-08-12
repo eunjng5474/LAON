@@ -69,6 +69,7 @@
   display: flex;
   justify-content: center;
   overflow: scroll;
+  margin-top: 1.5vh;
 }
 
 .store-list {
@@ -187,13 +188,12 @@
 .facilities-facility{
   align-items: center;
   width: 80vw;
-  height: 6vh;
+  height: 7vh;
   /* border: 1px solid black; */
   /* border-radius: 20px; */
   /* border-bottom: 1px solid rgb(203, 203, 203); */
   white-space: normal;
   overflow-x: scroll;
-  border: 10vh;
 }
 
 .facility-scroll-body{
