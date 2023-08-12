@@ -35,6 +35,9 @@ import REALPIG_img from './img/food/realPig.jpg'
 import OJIK from './img/facilities/ojik로고.png'
 import OJIK_img from './img/food/5직떡볶이.jpg'
 
+//////
+import female_logo from './img/facility/female-sign.png'
+
 import axios from 'axios';
 import './styles/Facilities.css';
 
@@ -251,18 +254,18 @@ export default function Facilities() {
               onClick={selectStore}
             >
               <div className='store-item-header'>
-                <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
+                <img className='store-img' src={KEELY_img} alt="" />
                 <div className='store-item-logo'>
                   <img className='store-logo-img' id="KELLY" src={KELLY} alt=""/>
                 </div>
               </div>
               <div className='store-item-body'>
                 <div className='store-title'>
-                <span className='facility-store-title' id="KELLY">KELLY</span>
+                <span className='facility-store-title'>KELLY</span>
                 </div>
                 <div className='store-itme-tag'>
-                  <span className='store-tag' id="KELLY">#맥주</span>
-                  <span className='store-tag' id="KELLY">#KELLY</span>
+                  <span className='store-tag'>#맥주</span>
+                  <span className='store-tag'>#KELLY</span>
                 </div>
               </div>
             </div>
@@ -550,60 +553,125 @@ export default function Facilities() {
 
         <div className={`facility-list ${category === "식음매장" ? "facility-hide" : ""}`}>
           <div 
-            className='facilities-store'
+            className='facilities-facility'
             id="여자화장실"
             onClick={selectStore}
           >
-            여자화장실
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>여자화장실</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
+          {/* //// */}
           <div 
-            className='facilities-store'
+            className='facilities-facility'
             id="남자화장실"
             onClick={selectStore}
           >
-            남자화장실
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>남자화장실</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
           <div 
-            className='facilities-store'
-            id="여자 장애인 화장실"
+            className='facilities-facility'
+            id="여자장애인화장실"
             onClick={selectStore}
           >
-            여자 장애인 화장실
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>여자장애인화장실</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
           <div 
-            className='facilities-store'
-            id="남자 장애인 화장실"
+            className='facilities-facility'
+            id="남자장애인화장실"
             onClick={selectStore}
           >
-            남자 장애인 화장실
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>남자장애인화장실</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
           <div 
-            className='facilities-store'
+            className='facilities-facility'
             id="블루샷"
             onClick={selectStore}
           >
-            블루샷
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>블루샷</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
           <div 
-            className='facilities-store'
+            className='facilities-facility'
             id="수유실"
             onClick={selectStore}
           >
-            수유실
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>수유실</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
           <div 
-            className='facilities-store'
+            className='facilities-facility'
             id="흡연실"
             onClick={selectStore}
           >
-            흡연실
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>흡연실</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
           <div 
-            className='facilities-store'
+            className='facilities-facility'
             id="쓰레기통"
             onClick={selectStore}
           >
-            쓰레기통
+            <div className='facility-scroll-body'>
+              <div className='facility-title-item'>
+                <span className='facility-title font'>쓰레기통</span>
+              </div>
+              <div className='facility-body'>
+                <button className='facility-body-button font'>길찾기</button>
+                <button className='facility-body-button font'>로드뷰</button>
+              </div>
+            </div>
           </div>
         </div>
           

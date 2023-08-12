@@ -10,6 +10,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1.5vh;
 }
 
 .floor-select-button {
@@ -65,6 +66,8 @@
 }
 
 .facilities-body {
+  display: flex;
+  justify-content: center;
   overflow: scroll;
 }
 
@@ -81,6 +84,9 @@
   justify-content: center;
   flex-wrap: wrap;
   overflow: scroll;
+  border-radius: 20px;
+  border: 1px solid rgb(208, 208, 208);
+  width: 85vw;
 }
 
 .facility-hide {
@@ -96,9 +102,10 @@
   height: 25vh;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0px 2px 0px 0px rgb(203, 203, 203);
+  /* box-shadow: 0px 2px 0px 0px rgb(203, 203, 203); */
   margin: 10px 14px;
   text-align: center;
+  border-bottom: 2px solid rgb(203, 203, 203);
 }
 
 .store-img {
@@ -172,5 +179,50 @@
   letter-spacing: 1.5px;
   margin: 0.6vh;
   padding: 1vw;
-  border-radius: 15%;
+  border-radius: 5px;
+}
+
+.facilities-facility{
+  align-items: center;
+  width: 75vw;
+  height: 6vh;
+  /* border: 1px solid black; */
+  /* border-radius: 20px; */
+  border-bottom: 1px solid rgb(203, 203, 203);
+  /* margin: 5px 0px; */
+  white-space: normal;
+  overflow-x: scroll;
+}
+
+.facility-scroll-body{
+  display: flex;
+  /* border: 1px solid red; */
+  width: 115vw;
+  height: 6vh;
+}
+
+.facility-title-item{
+  /* border: 1px solid orange; */
+  width: 85vw;
+  display: flex;
+  align-items: center;
+  padding-left: 2.5vw;
+}
+
+.facility-title {
+  font-size: 5vw;
+}
+
+.facility-body {
+  /* border: 1px solid blue; */
+  display: flex;
+}
+
+.facility-body-button{
+  background: #0065b3b4;
+  /* border: 1px solid #000; */
+  color: white;
+  border: none;
+  width: 15vw;
+  height: 100%;
 }
