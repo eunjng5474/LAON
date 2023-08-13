@@ -13,6 +13,9 @@ export default function FacilityDetail() {
   const [sideItem, setSideItem] = useState()
   const [beverage, setBeverage] = useState()
 
+  const departure = location.state.currentPosition;
+  const destination = location.state.naviGoal;
+
   function goAR() {
     window.location.href = `/ar/${location.state.naviGoal}.html`
   }
@@ -22,7 +25,7 @@ export default function FacilityDetail() {
   }
 
   function goNavi() {
-    navigate('/navigation')
+    navigate('/navigation', { state: {departure, destination}})
   }
 
   function menuRenderer(menuArray) {

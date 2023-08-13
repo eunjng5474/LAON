@@ -1,15 +1,23 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import './styles/Navigation.css';
-import navigationMap from './img/navigation.png'
+import navigationMap from './img/navigation.png';
 // import EntireSectionMapImg from './img/sectionMap.png';
 import map2F from './img/coordinate_2F.png';
 import map3F from './img/coordinate_3F.png';
 import map5F from './img/coordinate_5F.png';
-import axios from 'axios'
+import axios from 'axios';
 
 export default function Navigation() {
+
+  const location = useLocation();
+  const departure = location.state.departure
+  const destination = location.state.destination
+
   const naviCanvasRef = useRef(null);
-  const [floor, setFloor] = useState(map3F)
+  const [floor, setFloor] = useState(navigationMap)
   const [pointDtoList, setPointDtoList] = useState()
   const [nextPointDtoList, setNextPointDtoList] = useState()
 
@@ -19,6 +27,9 @@ export default function Navigation() {
   let i = 1;
   
   function startDraw(list) {
+    // let currentFloor = list[0].pointId[0]
+    // console.log(currentFloor)
+    // setFloor(`map${currentFloor}F`)
     let waypoints = [];
 
     if (!pointDtoList) {
@@ -48,8 +59,6 @@ export default function Navigation() {
     let t=1;
     draw();
 
-    console.log(waypoints)
-
     // ctx.beginPath()
     // ctx.moveTo(waypoints[0].x, waypoints[0].y)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -58,7 +67,7 @@ export default function Navigation() {
       if (t < waypoints.length-1) {
         requestAnimationFrame(draw);
       }
-      else if (t === waypoints.length - 1) {
+      else if (t === waypoints.length - 1 && nextPointDtoList) {
         setshowNextPoints(true)
       }
       ctx.beginPath()
@@ -88,8 +97,8 @@ export default function Navigation() {
 
 
 
-  // const naviGoal = data.facilityName;
-  const naviGoal = '파파존스피자(Food Street)';
+  const naviGoal = destination;
+  // const naviGoal = '파파존스피자(Food Street)';
 
 
   // function getCoordinate(e) {
@@ -106,9 +115,11 @@ export default function Navigation() {
   // 함수에 인자로 넘겨주는 식으로 하기
 
   useEffect(() => {
+    // console.log(departure, destination)
 
-    axios.get('https://laon.info/api/lions/route/3-1/파파존스')
+    axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
+      console.log(res)
       for (let i = 0; i < res.data.pointDtoList.length; i++) {
         if (res.data.pointDtoList[i].type === 'S') {
           setPointDtoList(pointDtoList => {
@@ -128,12 +139,25 @@ export default function Navigation() {
           // setshowNextPoints(true)
           break
         }
+        else if (i === res.data.pointDtoList.length - 1) {
+          setPointDtoList(pointDtoList => {
+            pointDtoList = res.data.pointDtoList
+            // console.log('현재 리스트')
+            // console.log(pointDtoList)
+            // startDraw(pointDtoList)
+            return pointDtoList
+          })
+        }
       }
     })
 
   }, [])
 
   useEffect(() => {
+    // let currentFloor = pointDtoList[0].pointId[0]
+    // console.log(currentFloor)
+    // setFloor(`map${currentFloor}F`)
+
     startDraw(pointDtoList)
     // setshowNextPoints(true)
   }, [pointDtoList])
@@ -160,6 +184,8 @@ export default function Navigation() {
 
         <button className='to-ar-button' onClick={goAR}>AR</button>
       </div>
+        {/* <p>출발지: {depart}</p>
+        <p>목적지: {dest}</p> */}
     </div>
   )
 }
