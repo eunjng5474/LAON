@@ -13,7 +13,6 @@ const rootElement = document.getElementById('root');
 ReactDOM.createRoot(rootElement).render(
   <Provider store={store}>
     <Router>
-      <NavBar/>
       <App />
       <TabBar/>
     </Router>

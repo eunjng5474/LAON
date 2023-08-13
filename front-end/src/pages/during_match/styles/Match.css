@@ -1,6 +1,6 @@
 .match-container {
   /* height: 42rem; */
-  height: 82vh;
+  height: 90vh;
   /* height: 100%; */
   background-color: #2d2d2d;
   color: #ffffff;
@@ -189,6 +189,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  padding-top: 8vh;
 }
 
 .match-field div {
