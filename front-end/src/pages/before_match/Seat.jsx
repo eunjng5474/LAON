@@ -6,8 +6,6 @@ import park_away from './img/seat_r.png'
 import park_home from './img/seat_l.png'
 import store from '../../store/store.js';
 
-
-
 import ImageMap from 'image-map'
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -147,7 +145,6 @@ export default function Seat() {
     }
   ]
 
-
   function toSectionDetail() {
     navigate('/section', {
       state: {
@@ -155,8 +152,6 @@ export default function Seat() {
         selectSeat: selectSeat
       }
     });
-    // selecSeat을 섹션까지 나눠진 번호 넘겨주기 -> detail에서 imgSrc에 해당 변수값만 바꾸면 되게끔
-
   }
 
   function toTicketing() {
@@ -183,7 +178,6 @@ export default function Seat() {
       }
     }
   }
-
 
   useEffect(() => {
     ImageMap('img[useMap]')

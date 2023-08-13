@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import './styles/NavBar.css'
 import logo from './img/SL_logo.svg'
 
+
 export default function NavBar() {
   const navigate = useNavigate();
   const [dark, setDark] = useState()
