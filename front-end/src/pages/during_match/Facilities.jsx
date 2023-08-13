@@ -223,7 +223,13 @@ export default function Facilities() {
   }
 
   function goNavi() {
-    navigate('/navigation')
+    // navigate('/navigation')
+    // block_id , facility_id -> 어디서 받지
+    console.log('nav')
+    // axios.get('https://laon.info/api/lions/facility/all')
+    // .then((res) => {
+    //   console.log(res)
+    // })
   }
 
   function goAR() {
