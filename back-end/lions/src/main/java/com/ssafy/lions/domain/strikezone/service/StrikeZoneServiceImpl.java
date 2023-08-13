@@ -43,6 +43,10 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
                 jsonArray = (JSONArray)jsonObject.get("textOptions");
                 JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
 
+                if (textOptions.get("stuff").equals("")) {
+                    textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
+                }
+
                 jsonArray = (JSONArray)jsonObject.get("ptsOptions");
                 JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
 
