@@ -1,15 +1,18 @@
 .nav-bar-container {
+  position: fixed;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #074ca1;
+  background-color: #074ca100;
+  width: 100vh;
   height: 8vh;
-  border-bottom: 1px solid #074ca1;
+  padding: 0vh 4vw;
 }
 
 .logo-title {
   margin-top: 2.8vh;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 3vw;
   margin-left: 3vw;
 }
@@ -21,6 +24,7 @@
 .dark {
   background-color: rgb(47, 47, 47);
   border-bottom: 1px solid rgb(47, 47, 47);
+  color: #ffffff;
 }
 
 .nav-bar-logo {
@@ -37,12 +41,14 @@
 }
 
 .on-air {
+  background-color: #ffffff;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 20vw;
   height: 80%;
+  border-radius: 30px;
   /* border: 1px solid red; */
 }
 
@@ -61,9 +67,9 @@
 }
 
 .on-air-text {
-  color: #ffffff;
   width: 100%;
   text-align: center;
   font-size: 18px;
   font-weight: 200;
+  color: #000000;
 }

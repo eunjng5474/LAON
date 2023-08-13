@@ -56,6 +56,16 @@ function getData() {
                 }
                 store.dispatch(setAwayTeamLogo(awayTeamLogo))
 
+                const awayTeamName = res.data.schedule[date][game].awayTeamName
+
+                function setAwayTeamName(awayTeamName) {
+                  return {
+                    type : 'SET_AWAY_TEAM_NAME',
+                    awayTeamName
+                  }
+                }
+
+                store.dispatch(setAwayTeamName(awayTeamName))
                 const homeTeamLogo = res.data.schedule[date][game].homeTeamImageUrl
                 function setHomeTeamLogo(homeTeamLogo){
                   return {
