@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import store from '../store/store';
+import axios from 'axios'
 import { useSelector } from 'react-redux'
 import './styles/NavBar.css'
 import logo from './img/SL_logo.svg'
@@ -12,6 +13,7 @@ export default function NavBar() {
   const [hide, setHide] = useState()
 
   const gameStatus = useSelector((state) => state.gameStatus)
+  const gameDate = useSelector((state) => state.gameDate)
 
   function setCurrentPage(currentPage) {
     return {
@@ -56,19 +58,14 @@ export default function NavBar() {
     } else {
       setDark(false)
     }
-  })
+
+  }, [window.location.pathname])
 
   return (
     <div className={`nav-bar-container ${dark ? "dark" : ""} ${hide ? "hide" : ""} font`}>
-      <div className='nav-bar-left'>
-        <div className='on-air'>
-          <div className={`on-air-dot ${gameStatus === "PLAY" ? "live-on" : ""}`}></div>
-          <span className='on-air-text'>LIVE</span>
-        </div>
-
-        <div className='weather'>
-          <h3>맑음</h3>
-        </div>
+      <div className='on-air'>
+        <div className={`on-air-dot ${gameStatus === "PLAY" ? "live-on" : ""}`}></div>
+        <span className={`on-air-text`}>LIVE</span>
       </div>
       <div className='nav-bar-logo-container'>
         {/* <img className='nav-bar-logo' src={logo} alt="" /> */}

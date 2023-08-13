@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 82vh;
+  height: 87vh;
+  padding-top: 3vh;
 }
 
 .facilities-header {
@@ -15,11 +16,13 @@
 
 .floor-select-button {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  width: 100vw;
+  width: 88vw;
   height: 6vh;
   margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-bottom: 5vh;
+  margin-left: 12vw;
 }
 
 .floor-select-button button {

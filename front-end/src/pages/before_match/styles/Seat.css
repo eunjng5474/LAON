@@ -1,5 +1,5 @@
 .seat-container {
-  height: 82vh;
+  height: 90vh;
 }
 
 .swiper-container {
@@ -107,6 +107,8 @@
   justify-content: flex-end;
   align-items: flex-start;
   background-image: url('../img/team_bg/lions.png');
+  background-color: #074CA1;
+  padding-top: 8vh;
 }
 
 
@@ -116,43 +118,55 @@
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
+  padding-top: 8vh;
 }
 
 .LG {
   background-image: url('../img/team_bg/twins.png');
+  background-color: #000000;
 }
 
 .KIA {
   background-image: url('../img/team_bg/tigers.png');
+  background-color: #06141F;
 }
 
 .KT {
   background-image: url('../img/team_bg/kt_wiz_bg.png');
+  background-color: #000000;
 }
 
 .NC {
   background-image: url('../img/team_bg/dinos.png');
+  background-color: #315288;
 }
 
 .두산 {
   background-image: url('../img/team_bg/bears.png');
+  background-color: #131230;
 }
 
 .롯데 {
   background-image: url('../img/team_bg/giants.png');
+  background-color: #041E42;
 }
 
 .SSG {
   background-image: url('../img/team_bg/ssg.png');
+  background-color: #CE0E2D;
 }
 
 .한화 {
   background-image: url('../img/team_bg/eagles.png');
+  background-color: #FF6600;
 }
 
 .키움 {
   background-image: url('../img/team_bg/heroes.png');
+  background-color: #570514;
 }
+
+
 
 .park-home-img {
   height: 70vh
