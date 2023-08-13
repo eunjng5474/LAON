@@ -90,6 +90,7 @@ export default function Facilities() {
     const lng = position.coords.longitude
     const alt = position.coords.altitude
     setPosition(lat, lng)
+    // setCurrentPosition('U-26')
     return alt
   }
 
@@ -216,7 +217,8 @@ export default function Facilities() {
             facilityId,
             naviGoal,
             facilityImg,
-            currentPosition
+            currentPosition,
+            currentFloor
           }
         })
       })
@@ -242,7 +244,7 @@ export default function Facilities() {
           <div>
             <button>2F</button>
             <button>3F</button>
-            <button>4F</button>
+            <button>5F</button>
           </div>
         </div>
 

@@ -15,6 +15,7 @@ export default function Navigation() {
   const location = useLocation();
   const departure = location.state.departure
   const destination = location.state.destination
+  let currentFloor = location.state.currentFloor
 
   const naviCanvasRef = useRef(null);
   const [floor, setFloor] = useState(navigationMap)
@@ -22,7 +23,7 @@ export default function Navigation() {
   const [nextPointDtoList, setNextPointDtoList] = useState()
 
   const [showNextPoints, setshowNextPoints] = useState(false)
-  // const [currentFloor, setCurrentFloor] = useState('3F')
+  const [noRoute, setNoRoute] = useState(false)
 
   let i = 1;
   
@@ -115,48 +116,59 @@ export default function Navigation() {
   // 함수에 인자로 넘겨주는 식으로 하기
 
   useEffect(() => {
-    // console.log(departure, destination)
+    console.log(currentFloor)
+    if(currentFloor === '2F'){
+      setFloor(map2F)
+    } else if (currentFloor === '3F'){
+      setFloor(map3F)
+    } else if (currentFloor === '5F'){
+      setFloor(map5F)
+    }
 
     axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
       console.log(res)
-      for (let i = 0; i < res.data.pointDtoList.length; i++) {
-        if (res.data.pointDtoList[i].type === 'S') {
-          setPointDtoList(pointDtoList => {
-            pointDtoList = res.data.pointDtoList.slice(0, i+1)
-            // console.log('현재 리스트')
-            // console.log(pointDtoList)
-            // startDraw(pointDtoList)
-            return pointDtoList
-          })
-          setNextPointDtoList(nextPointDtoList => {
-            nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
-            // console.log('다음 리스트')
-            // console.log(nextPointDtoList)
-            // startDraw(nextPointDtoList)
-            return nextPointDtoList
-          })
-          // setshowNextPoints(true)
-          break
+      if(res.data.pointDtoList.length !== 1) {
+        let flag = true
+        for (let i = 0; i < res.data.pointDtoList.length; i++) {
+          if (res.data.pointDtoList[i].type === 'S') {
+            flag = false
+            setPointDtoList(pointDtoList => {
+              pointDtoList = res.data.pointDtoList.slice(0, i+1)
+              console.log('현재 리스트')
+              console.log(pointDtoList)
+              // startDraw(pointDtoList)
+              return pointDtoList
+            })
+            setNextPointDtoList(nextPointDtoList => {
+              nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
+              console.log('다음 리스트')
+              console.log(nextPointDtoList)
+              // startDraw(nextPointDtoList)
+              return nextPointDtoList
+            })
+            // setshowNextPoints(true)
+            break
+          }
+          if (flag && i === res.data.pointDtoList.length - 1) {
+            setPointDtoList(pointDtoList => {
+              pointDtoList = res.data.pointDtoList
+              // console.log('현재 리스트')
+              // console.log(pointDtoList)
+              // startDraw(pointDtoList)
+              return pointDtoList
+            })
+          }
         }
-        else if (i === res.data.pointDtoList.length - 1) {
-          setPointDtoList(pointDtoList => {
-            pointDtoList = res.data.pointDtoList
-            // console.log('현재 리스트')
-            // console.log(pointDtoList)
-            // startDraw(pointDtoList)
-            return pointDtoList
-          })
-        }
+      }
+      else {
+        setNoRoute(true)
       }
     })
 
   }, [])
 
   useEffect(() => {
-    // let currentFloor = pointDtoList[0].pointId[0]
-    // console.log(currentFloor)
-    // setFloor(`map${currentFloor}F`)
 
     startDraw(pointDtoList)
     // setshowNextPoints(true)
@@ -165,7 +177,14 @@ export default function Navigation() {
   useEffect(() => {
     if(showNextPoints){
       setTimeout(() => {
-        setFloor(map2F)
+        currentFloor = parseInt(nextPointDtoList[0].pointId/100)
+        if(currentFloor === 2){
+          setFloor(map2F)
+        } else if (currentFloor === 3){
+          setFloor(map3F)
+        } else if (currentFloor === 5){
+          setFloor(map5F)
+        }
         setPointDtoList(nextPointDtoList)
         startDraw(nextPointDtoList)
       }, 500)
@@ -183,9 +202,15 @@ export default function Navigation() {
         </div>
 
         <button className='to-ar-button' onClick={goAR}>AR</button>
+        <div className='navigation-text font'>
+          {noRoute ? <h3>출발지와 목적지가 인접해 있습니다</h3> : 
+            <div>
+              <h3>출발지: {departure}</h3>
+              <h3>목적지: {destination}</h3>
+            </div>
+          }
+        </div>
       </div>
-        {/* <p>출발지: {depart}</p>
-        <p>목적지: {dest}</p> */}
     </div>
   )
 }
