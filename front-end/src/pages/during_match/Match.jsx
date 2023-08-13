@@ -14,10 +14,12 @@ import axios from 'axios';
 
 
 export default function Match() {
-  const awayTeamName = useSelector((state) => state.awayTeamName)
+  // const awayTeamName = useSelector((state) => state.awayTeamName)
+  const awayTeamName = 'SK'
   const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
   const homeTeamLogo = useSelector((state) => state.homeTeamLogo)
-  const inningData = useSelector((state) => state.inning)
+  // const inningData = useSelector((state) => state.inning)
+  const inningData = 'T01'
   const awayScore = useSelector((state) => state.awayScore )
   const homeScore = useSelector((state) => state.homeScore)
   let liveText = useSelector((state) => state.liveText)
@@ -90,8 +92,9 @@ export default function Match() {
 
 
   function getStrikeZone(e) {
-    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
+    axios.get(`https://laon.info/api/lions/strike_zone/20230813/${awayTeamName}/${inning[0]}`)
     .then((res) => {
+      console.log(res)
       setT((-res["vy0"] - (res["vy0"] * res["vy0"] - 2 * res["ay"] * (res["y0"] - res["crossPlateY"])) ** 0.5) / res["ay"])
       setPx(res["x0"] + res["vx0"] * t + res["ax"] * t * t * 0.5)
       setPz(res["z0"] + res["vz0"] * t + res["az"] * t * t * 0.5)
@@ -100,6 +103,15 @@ export default function Match() {
 
 
   useEffect(() => {
+
+  // const gameStatus = useSelector((state) => state.gameStatus)
+  const gameStatus = 'PLAY';
+
+  // if (gameStatus === 'PLAY'){
+  //   const reGetData = setInterval(getStrikeZone, 5000)
+  // }
+
+
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
     strikeCanvas.height = 130;

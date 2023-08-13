@@ -206,6 +206,7 @@ export default function Facilities() {
   }
 
   function goDetail (naviGoal, facilityImg) {
+    
     axios.get('https://laon.info/api/lions/facility/all')
     .then((res) => {
       const facilityId = res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
@@ -214,7 +215,8 @@ export default function Facilities() {
         state: {
           facilityId,
           naviGoal,
-          facilityImg
+          facilityImg,
+          currentPosition
         }
       })
     })
