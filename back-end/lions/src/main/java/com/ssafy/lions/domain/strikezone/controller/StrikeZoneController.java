@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/lions/strike_zone")
 @RequiredArgsConstructor
 @ResponseBody
+@CrossOrigin(origins = "*")
 public class StrikeZoneController {
 
     private final StrikeZoneService strikeZoneService;
