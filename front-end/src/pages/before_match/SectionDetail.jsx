@@ -1542,7 +1542,7 @@ export default function SectionDetail() {
     }
     else if (206 <= x && x <= 221 && 63 <= y && y <= 74) {
       setSeatUrl(seatUrl => {
-        seatUrl = imageUrl + "TL-10/1.jpg"
+        seatUrl = imageUrl + "TL-9/1.jpg"
         return seatUrl
       })
     }
