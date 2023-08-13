@@ -67,7 +67,6 @@
   display: flex;
   position: relative;
   padding: 1vh 3vw;
-  bottom: 13vh;
   /* border: 1px solid red; */
   border-radius: 140px 140px 0px 0px;
   background-color: rgb(237, 237, 237);
@@ -85,6 +84,8 @@
 }
 
 .transform-container div {
+  position: absolute;
+  bottom: 0;
   width: 100vw;
   height: 28vh;
 }
