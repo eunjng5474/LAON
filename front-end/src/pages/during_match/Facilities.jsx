@@ -90,6 +90,7 @@ export default function Facilities() {
     const lng = position.coords.longitude
     const alt = position.coords.altitude
     setPosition(lat, lng)
+    // setCurrentPosition('U-26')
     return alt
   }
 
@@ -216,7 +217,8 @@ export default function Facilities() {
             facilityId,
             naviGoal,
             facilityImg,
-            currentPosition
+            currentPosition,
+            currentFloor
           }
         })
       })
@@ -242,7 +244,7 @@ export default function Facilities() {
           <div>
             <button>2F</button>
             <button>3F</button>
-            <button>4F</button>
+            <button>5F</button>
           </div>
         </div>
 
@@ -259,8 +261,8 @@ export default function Facilities() {
         </div>
 
         <div className='category-select'>
-          <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음매장</button>
-          <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의시설</button>
+          <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음 매장</button>
+          <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의 시설</button>
         </div>
       </div>
 
@@ -580,7 +582,7 @@ export default function Facilities() {
                 <img className='facility-icon' src={female_logo} alt="" />
               </div>
               <div className='facility-title-item'>
-                <span className='facility-title font'>여자화장실</span>
+                <span className='facility-title font'>여자 화장실</span>
               </div>
               <div className='facility-body'>
                 <button className='facility-body-button font' onClick={goNavi}>길찾기</button>
@@ -598,7 +600,7 @@ export default function Facilities() {
                 <img className='facility-icon' src={male_logo} alt="" />
               </div>
               <div className='facility-title-item'>
-                <span className='facility-title font'>남자화장실</span>
+                <span className='facility-title font'>남자 화장실</span>
               </div>
               <div className='facility-body'>
                 <button className='facility-body-button font'>길찾기</button>
@@ -615,7 +617,7 @@ export default function Facilities() {
                 <img className='facility-icon' src={disabled_female} alt="" />
               </div>
               <div className='facility-title-item'>
-                <span className='facility-title font'>여자장애인화장실</span>
+                <span className='facility-title font'>여자 장애인 화장실</span>
               </div>
               <div className='facility-body'>
                 <button className='facility-body-button font'>길찾기</button>
@@ -632,7 +634,7 @@ export default function Facilities() {
                 <img className='facility-icon' src={disabled_male} alt="" />
               </div>
               <div className='facility-title-item'>
-                <span className='facility-title font'>남자장애인화장실</span>
+                <span className='facility-title font'>남자 장애인 화장실</span>
               </div>
               <div className='facility-body'>
                 <button className='facility-body-button font'>길찾기</button>
