@@ -37,6 +37,13 @@ import OJIK_img from './img/food/5직떡볶이.jpg'
 
 //////
 import female_logo from './img/facility/female-sign.png'
+import male_logo from './img/facility/male-sign.png'
+import disabled_female from './img/facility/disabled-female.png'
+import disabled_male from './img/facility/disabled-male.png'
+import camera from './img/facility/camera.png'
+import baby from './img/facility/baby-bottle.png'
+import smoking from './img/facility/smoking.png'
+import trash from './img/facility/trash-can.png'
 
 import axios from 'axios';
 import './styles/Facilities.css';
@@ -183,15 +190,15 @@ export default function Facilities() {
     }
   }
 
-  function selectStore(e) {
+  function selectStore (e) {
     setDestination(e.target.id)
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "3-1"}/${e.target.id}`)
     .then((res) => {
-      console.log(res)
       // AR 변수 지정해주는 함수
       setNaviGoal(naviGoal => {
         naviGoal = res.data.facilityName
-        goDetail(naviGoal, e.target.src)
+        // goDetail(naviGoal, e.target.src)
+        goDetail(naviGoal)
         return naviGoal
       })
       // 길찾기 좌표 지정해주는 함수
@@ -201,7 +208,6 @@ export default function Facilities() {
   function goDetail (naviGoal, facilityImg) {
     axios.get('https://laon.info/api/lions/facility/all')
     .then((res) => {
-      console.log(naviGoal)
       const facilityId = res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
 
       navigate('/facilities/detail/', {
@@ -213,6 +219,14 @@ export default function Facilities() {
       })
     })
   } 
+
+  function goNavi() {
+    navigate('/navigation')
+  }
+
+  function goAR() {
+    console.log("Ar")
+  }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
@@ -250,22 +264,23 @@ export default function Facilities() {
 
         <div className={`store-list ${category === "편의시설" ? "facility-hide" : ""}`}>
             <div 
-              className='facilities-store' 
+              className='facilities-store'
+              id="KELLY" 
               onClick={selectStore}
             >
-              <div className='store-item-header'>
-                <img className='store-img' src={KEELY_img} alt="" />
+              <div className='store-item-header' id="KELLY" >
+                <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
                 <div className='store-item-logo'>
-                  <img className='store-logo-img' id="KELLY" src={KELLY} alt=""/>
+                  <img className='store-logo-img' src={KELLY} alt="" id="KELLY" />
                 </div>
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
-                <span className='facility-store-title'>KELLY</span>
+              <div className='store-item-body' id="KELLY" >
+                <div className='store-title' id="KELLY" >
+                <span className='facility-store-title' id="KELLY" >KELLY</span>
                 </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#맥주</span>
-                  <span className='store-tag'>#KELLY</span>
+                <div className='store-itme-tag' id="KELLY" >
+                  <span className='store-tag' id="KELLY" >#맥주</span>
+                  <span className='store-tag' id="KELLY" >#KELLY</span>
                 </div>
               </div>
             </div>
@@ -274,7 +289,7 @@ export default function Facilities() {
               onClick={selectStore}
             >
               <div className='store-item-header'>
-                <img className='store-img' src={JJAKTAE_img} alt="" />
+                <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대"/>
                 <div className='store-item-logo'>
                   <img className='store-logo-img' id="짝태시대" src={JJAKTAE} alt=""/>
                 </div>
@@ -555,25 +570,29 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="여자화장실"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={female_logo} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>여자화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={goNavi}>길찾기</button>
+                <button className='facility-body-button font' onClick={goAR}>로드뷰</button>
               </div>
             </div>
           </div>
-          {/* //// */}
+
           <div 
             className='facilities-facility'
             id="남자화장실"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={male_logo} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>남자화장실</span>
               </div>
@@ -586,9 +605,11 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="여자장애인화장실"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={disabled_female} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>여자장애인화장실</span>
               </div>
@@ -601,9 +622,11 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="남자장애인화장실"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={disabled_male} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>남자장애인화장실</span>
               </div>
@@ -616,9 +639,11 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="블루샷"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+              <div className='facility-icon-item'>
+                <img className='facility-icon' src={camera} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>블루샷</span>
               </div>
@@ -631,9 +656,11 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="수유실"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+            <div className='facility-icon-item'>
+                <img className='facility-icon' src={baby} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>수유실</span>
               </div>
@@ -646,9 +673,11 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="흡연실"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+            <div className='facility-icon-item'>
+                <img className='facility-icon' src={smoking} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>흡연실</span>
               </div>
@@ -661,9 +690,11 @@ export default function Facilities() {
           <div 
             className='facilities-facility'
             id="쓰레기통"
-            onClick={selectStore}
           >
             <div className='facility-scroll-body'>
+            <div className='facility-icon-item'>
+                <img className='facility-icon' src={trash} alt="" />
+              </div>
               <div className='facility-title-item'>
                 <span className='facility-title font'>쓰레기통</span>
               </div>
