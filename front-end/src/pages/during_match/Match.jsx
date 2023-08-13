@@ -135,11 +135,10 @@ export default function Match() {
   const gameStatus = 'PLAY';
 
   if (gameStatus === 'PLAY'){
-    const getStzone = setInterval(getStrikeZone, 5000)
-    setTimeout(() => {
-
-      const getDrawBall = setInterval(drawBall, 5000)
-    }, 100)
+    // const getStzone = setInterval(getStrikeZone, 5000)
+    // setTimeout(() => {
+    //   const getDrawBall = setInterval(drawBall, 5000)
+    // }, 100)
   }
 
 

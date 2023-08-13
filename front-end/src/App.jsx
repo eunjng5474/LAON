@@ -1,9 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-
 import './App.css'
 import axios from 'axios';
 import store from "./store/store"
-
 import Landing from './pages/landing/Landing';
 import Seat from './pages/before_match/Seat';
 import SectionDetail from './pages/before_match/SectionDetail';
