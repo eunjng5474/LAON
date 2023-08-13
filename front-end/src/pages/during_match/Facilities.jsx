@@ -99,7 +99,22 @@ export default function Facilities() {
       if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('Food Street')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      }
+      } else if (35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
+        setCurrentPosition('RF-3')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
+        setCurrentPosition('RF-7')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
+        setCurrentPosition('RF-10')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813 <= lng && lng <= 128.68209186069376) {
+        setCurrentPosition('LF-7')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408 <= lng && lng <= 128.6818359228813) {
+        setCurrentPosition('LF-3')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } 
     } else if (currentFloor === '3F') {
       if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('3-9')
@@ -128,22 +143,7 @@ export default function Facilities() {
       } else if (35.84009687202578 <= lat && lat <= 35.84065138467286 && 128.68164989674025 <= lng && lng <= 128.68232307201419) {
         setCurrentPosition('1-8')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
-        setCurrentPosition('RF-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
-        setCurrentPosition('RF-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
-        setCurrentPosition('RF-10')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813 <= lng && lng <= 128.68209186069376) {
-        setCurrentPosition('LF-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408 <= lng && lng <= 128.6818359228813) {
-        setCurrentPosition('LF-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else {
+      }else {
         setCurrentPosition('3-1')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
@@ -195,6 +195,7 @@ export default function Facilities() {
     setDestination(e.target.id)
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
       .then((res) => {
+        console.log(res.data)
         // AR 변수 지정해주는 함수
         setNaviGoal(naviGoal => {
           naviGoal = res.data.facilityName
@@ -224,19 +225,29 @@ export default function Facilities() {
       })
   }
 
-  function goNavi() {
-    // navigate('/navigation')
-    // block_id , facility_id -> 어디서 받지
-    console.log('nav')
-    // axios.get('https://laon.info/api/lions/facility/all')
-    // .then((res) => {
-    //   console.log(res)
-    // })
+  function selectFacilityNavi(e) {
+    // 편의시설 길찾기 보내는 함수
+    const destination = e.target.id
+    const departure = currentPosition
+
+    navigate('/navigation', {
+      state: {
+        departure,
+        currentFloor,
+        destination
+      }
+    })
   }
 
-  function goAR() {
-    console.log("Ar")
+  function selectFacilityAr(e){
+    console.log('AR')
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
+    .then((res) => {
+      const naviGoal = res.data.facilityName
+      window.location.href = `/ar/${naviGoal}.html`
+    })
   }
+
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
@@ -319,40 +330,42 @@ export default function Facilities() {
           <div
             className='facilities-store'
             onClick={selectStore}
+            id="리얼키친홍"
           >
             <div className='store-item-header'>
-              <img className='store-img' src={HONG_img} alt="" />
+              <img className='store-img' src={HONG_img} alt="" id="리얼키친홍"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="리얼키친홍" src={HONG} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
+            <div className='store-item-body' id="리얼키친홍">
               <div className='store-title'>
-                <span className='facility-store-title'>리얼키친홍</span>
+                <span className='facility-store-title' id="리얼키친홍">리얼키친홍</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#덮밥</span>
-                <span className='store-tag'>#우동</span>
+                <span className='store-tag' id="리얼키친홍">#덮밥</span>
+                <span className='store-tag' id="리얼키친홍">#우동</span>
               </div>
             </div>
           </div>
           <div
             className='facilities-store'
             onClick={selectStore}
+            id="파파존스피자"
           >
             <div className='store-item-header'>
-              <img className='store-img' src={PAPA_img} alt="" />
+              <img className='store-img' src={PAPA_img} alt="" id="파파존스피자"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="파파존스피자" src={PAPA} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>파파존스피자</span>
+            <div className='store-item-body' id="파파존스피자">
+              <div className='store-title' id="파파존스피자">
+                <span className='facility-store-title' id="파파존스피자">파파존스피자</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#피자</span>
-                <span className='store-tag'>#페퍼로니</span>
+              <div className='store-itme-tag' id="파파존스피자">
+                <span className='store-tag' id="파파존스피자">#피자</span>
+                <span className='store-tag' id="파파존스피자">#페퍼로니</span>
               </div>
             </div>
           </div>
@@ -591,8 +604,8 @@ export default function Facilities() {
                 <span className='facility-title font'>여자화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font' onClick={goNavi}>길찾기</button>
-                <button className='facility-body-button font' onClick={goAR}>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">길찾기</button>
+                <button className='facility-body-button font' id="여자화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -609,8 +622,8 @@ export default function Facilities() {
                 <span className='facility-title font'>남자화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">길찾기</button>
+                <button className='facility-body-button font' id="남자화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -626,8 +639,8 @@ export default function Facilities() {
                 <span className='facility-title font'>여자장애인화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -643,8 +656,8 @@ export default function Facilities() {
                 <span className='facility-title font'>남자장애인화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -660,8 +673,8 @@ export default function Facilities() {
                 <span className='facility-title font'>블루샷</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">로드뷰</button>
               </div>
             </div>
           </div>
@@ -677,8 +690,8 @@ export default function Facilities() {
                 <span className='facility-title font'>수유실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -694,8 +707,8 @@ export default function Facilities() {
                 <span className='facility-title font'>흡연실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -711,8 +724,8 @@ export default function Facilities() {
                 <span className='facility-title font'>쓰레기통</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">로드뷰</button>
               </div>
             </div>
           </div>
