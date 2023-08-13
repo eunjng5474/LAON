@@ -95,51 +95,51 @@ export default function Facilities() {
 
   const setPosition = (lat, lng) => {
     if (currentFloor === '2F') {
-      if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408   ) {
+      if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('Food Street')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '3F') {
-      if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408   ) {
+      if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('3-9')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539 ) {
+      } else if (35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539) {
         setCurrentPosition('3-7')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.841257004439704 <= lat && lat <= 35.84141262165993 && 128.6803969657282 <= lng && lng <= 128.68086784271355 ) {
+      } else if (35.841257004439704 <= lat && lat <= 35.84141262165993 && 128.6803969657282 <= lng && lng <= 128.68086784271355) {
         setCurrentPosition('3-5')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84100052759342 <= lat && lat <= 35.841257004439704 && 128.68037218713292 <= lng && lng <= 128.68083103853695  ) {
+      } else if (35.84100052759342 <= lat && lat <= 35.841257004439704 && 128.68037218713292 <= lng && lng <= 128.68083103853695) {
         setCurrentPosition('3-2')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.8407297168639 <= lat && lat <= 35.84100052759342 && 128.6802447345874 <= lng && lng <= 128.6809808490198) {
+      } else if (35.8407297168639 <= lat && lat <= 35.84100052759342 && 128.6802447345874 <= lng && lng <= 128.6809808490198) {
         setCurrentPosition('T3-2')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84040237812547 <= lat && lat <= 35.8407297168639 && 128.6802931653395 <= lng && lng <= 128.68102321286383) {
+      } else if (35.84040237812547 <= lat && lat <= 35.8407297168639 && 128.6802931653395 <= lng && lng <= 128.68102321286383) {
         setCurrentPosition('TC-2')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.840148084408014 <= lat && lat <= 35.84060048530589 && 128.6804344405443 <= lng && lng <= 128.68094754235815) {
+      } else if (35.840148084408014 <= lat && lat <= 35.84060048530589 && 128.6804344405443 <= lng && lng <= 128.68094754235815) {
         setCurrentPosition('T1-2')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.840056734027634 <= lat && lat <= 35.840148084408014 && 128.68094754235815 <= lng && lng <= 128.68164989674025) {
+      } else if (35.840056734027634 <= lat && lat <= 35.840148084408014 && 128.68094754235815 <= lng && lng <= 128.68164989674025) {
         setCurrentPosition('1-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84009687202578 <= lat && lat <= 35.84065138467286 && 128.68164989674025 <= lng && lng <= 128.68232307201419) {
+      } else if (35.84009687202578 <= lat && lat <= 35.84065138467286 && 128.68164989674025 <= lng && lng <= 128.68232307201419) {
         setCurrentPosition('1-8')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
+      } else if (35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
         setCurrentPosition('RF-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
+      } else if (35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
         setCurrentPosition('RF-7')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
+      } else if (35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
         setCurrentPosition('RF-10')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813  <= lng && lng <= 128.68209186069376) {
+      } else if (35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813 <= lng && lng <= 128.68209186069376) {
         setCurrentPosition('LF-7')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408  <= lng && lng <= 128.6818359228813) {
+      } else if (35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408 <= lng && lng <= 128.6818359228813) {
         setCurrentPosition('LF-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
@@ -147,29 +147,29 @@ export default function Facilities() {
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '5F') {
-      if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408   ) {
-        setCurrentPosition('15Gate')
+      if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
+        setCurrentPosition('U-29')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539 ) {
-        setCurrentPosition('14Gate')
+      } else if (35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539) {
+        setCurrentPosition('U-26')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.841257004439704 <= lat && lat <= 35.84141262165993 && 128.6803969657282 <= lng && lng <= 128.68086784271355 ) {
-        setCurrentPosition('12Gate')
+      } else if (35.841257004439704 <= lat && lat <= 35.84141262165993 && 128.6803969657282 <= lng && lng <= 128.68086784271355) {
+        setCurrentPosition('U-23')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84100052759342 <= lat && lat <= 35.841257004439704 && 128.68037218713292 <= lng && lng <= 128.68083103853695  ) {
-        setCurrentPosition('11Gate')
+      } else if (35.84100052759342 <= lat && lat <= 35.841257004439704 && 128.68037218713292 <= lng && lng <= 128.68083103853695) {
+        setCurrentPosition('U-21')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.8407297168639 <= lat && lat <= 35.84100052759342 && 128.6802447345874 <= lng && lng <= 128.6809808490198) {
-        setCurrentPosition('09Gate')
+      } else if (35.8407297168639 <= lat && lat <= 35.84100052759342 && 128.6802447345874 <= lng && lng <= 128.6809808490198) {
+        setCurrentPosition('U-16')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.84040237812547 <= lat && lat <= 35.8407297168639 && 128.6802931653395 <= lng && lng <= 128.68102321286383) {
-        setCurrentPosition('07Gate')
+      } else if (35.84040237812547 <= lat && lat <= 35.8407297168639 && 128.6802931653395 <= lng && lng <= 128.68102321286383) {
+        setCurrentPosition('U-13')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.840148084408014 <= lat && lat <= 35.84060048530589 && 128.6804344405443 <= lng && lng <= 128.68094754235815) {
-        setCurrentPosition('04Gate')
+      } else if (35.840148084408014 <= lat && lat <= 35.84060048530589 && 128.6804344405443 <= lng && lng <= 128.68094754235815) {
+        setCurrentPosition('U-7')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if(35.840056734027634 <= lat && lat <= 35.840148084408014 && 128.68094754235815 <= lng && lng <= 128.68164989674025) {
-        setCurrentPosition('02Gate')
+      } else if (35.840056734027634 <= lat && lat <= 35.840148084408014 && 128.68094754235815 <= lng && lng <= 128.68164989674025) {
+        setCurrentPosition('U-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     }
@@ -181,46 +181,46 @@ export default function Facilities() {
 
   function focusBody(e) {
     if (e.target.className === 'facilities-body' ||
-    e.target.className === 'points-canvas' ||
-    e.target.className === 'store-img' ||
-    e.target.className === 'to-ar-button') {
+      e.target.className === 'points-canvas' ||
+      e.target.className === 'store-img' ||
+      e.target.className === 'to-ar-button') {
       setFocusedBody(true)
     } else {
       setFocusedBody(false)
     }
   }
 
-  function selectStore (e) {
+  function selectStore(e) {
     setDestination(e.target.id)
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "3-1"}/${e.target.id}`)
-    .then((res) => {
-      // AR 변수 지정해주는 함수
-      setNaviGoal(naviGoal => {
-        naviGoal = res.data.facilityName
-        // goDetail(naviGoal, e.target.src)
-        goDetail(naviGoal)
-        return naviGoal
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
+      .then((res) => {
+        // AR 변수 지정해주는 함수
+        setNaviGoal(naviGoal => {
+          naviGoal = res.data.facilityName
+          // goDetail(naviGoal, e.target.src)
+          goDetail(naviGoal)
+          return naviGoal
+        })
+        // 길찾기 좌표 지정해주는 함수
       })
-      // 길찾기 좌표 지정해주는 함수
-    })
   }
 
-  function goDetail (naviGoal, facilityImg) {
-    
-    axios.get('https://laon.info/api/lions/facility/all')
-    .then((res) => {
-      const facilityId = res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
+  function goDetail(naviGoal, facilityImg) {
 
-      navigate('/facilities/detail/', {
-        state: {
-          facilityId,
-          naviGoal,
-          facilityImg,
-          currentPosition
-        }
+    axios.get('https://laon.info/api/lions/facility/all')
+      .then((res) => {
+        const facilityId = res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
+
+        navigate('/facilities/detail/', {
+          state: {
+            facilityId,
+            naviGoal,
+            facilityImg,
+            currentPosition
+          }
+        })
       })
-    })
-  } 
+  }
 
   function goNavi() {
     navigate('/navigation')
@@ -267,311 +267,311 @@ export default function Facilities() {
       <div className='facilities-body'>
 
         <div className={`store-list ${category === "편의시설" ? "facility-hide" : ""}`}>
-            <div 
-              className='facilities-store'
-              id="KELLY" 
-              onClick={selectStore}
-            >
-              <div className='store-item-header' id="KELLY" >
-                <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' src={KELLY} alt="" id="KELLY" />
-                </div>
+          <div
+            className='facilities-store'
+            id="KELLY"
+            onClick={selectStore}
+          >
+            <div className='store-item-header' id="KELLY" >
+              <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' src={KELLY} alt="" id="KELLY" />
               </div>
-              <div className='store-item-body' id="KELLY" >
-                <div className='store-title' id="KELLY" >
+            </div>
+            <div className='store-item-body' id="KELLY" >
+              <div className='store-title' id="KELLY" >
                 <span className='facility-store-title' id="KELLY" >KELLY</span>
-                </div>
-                <div className='store-itme-tag' id="KELLY" >
-                  <span className='store-tag' id="KELLY" >#맥주</span>
-                  <span className='store-tag' id="KELLY" >#KELLY</span>
-                </div>
+              </div>
+              <div className='store-itme-tag' id="KELLY" >
+                <span className='store-tag' id="KELLY" >#맥주</span>
+                <span className='store-tag' id="KELLY" >#KELLY</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대"/>
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="짝태시대" src={JJAKTAE} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="짝태시대" src={JJAKTAE} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>짝태시대</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#건어물</span>
-                  <span className='store-tag'>#먹태</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#건어물</span>
+                <span className='store-tag'>#먹태</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={HONG_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="리얼키친홍" src={HONG} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={HONG_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="리얼키친홍" src={HONG} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>리얼키친홍</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#덮밥</span>
-                  <span className='store-tag'>#우동</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#덮밥</span>
+                <span className='store-tag'>#우동</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={PAPA_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="파파존스피자" src={PAPA} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={PAPA_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="파파존스피자" src={PAPA} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>파파존스피자</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#피자</span>
-                  <span className='store-tag'>#페퍼로니</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#피자</span>
+                <span className='store-tag'>#페퍼로니</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={CU_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="CU" src={CU} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={CU_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="CU" src={CU} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>CU</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#편의점</span>
-                  <span className='store-tag'>#얼음물</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#편의점</span>
+                <span className='store-tag'>#얼음물</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={HAPPY_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="해피치즈스마일" src={HAPPY} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={HAPPY_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="해피치즈스마일" src={HAPPY} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>해피치즈스마일</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#분식</span>
-                  <span className='store-tag'>#소프트콘</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#분식</span>
+                <span className='store-tag'>#소프트콘</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={TTANG_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="땅땅치킨" src={TTANG} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={TTANG_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="땅땅치킨" src={TTANG} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>땅땅치킨</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#치킨</span>
-                  <span className='store-tag'>#햄버거</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#치킨</span>
+                <span className='store-tag'>#햄버거</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={YUBU_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="대왕유부초밥" src={YUBU} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={YUBU_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="대왕유부초밥" src={YUBU} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>대왕유부초밥</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#유부초밥</span>
-                  <span className='store-tag'>#어묵</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#유부초밥</span>
+                <span className='store-tag'>#어묵</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={KKOCHI_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="전설꼬치" src={KKOCHI} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={KKOCHI_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="전설꼬치" src={KKOCHI} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>전설꼬치</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#꼬치</span>
-                  <span className='store-tag'>#야끼도리</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#꼬치</span>
+                <span className='store-tag'>#야끼도리</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={BUTTER_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="버터우드" src={BUTTER} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={BUTTER_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="버터우드" src={BUTTER} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>버터우드</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#커피</span>
-                  <span className='store-tag'>#베이커리</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#커피</span>
+                <span className='store-tag'>#베이커리</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={ALTON_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="알통닭강정" src={ALTONG} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={ALTON_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="알통닭강정" src={ALTONG} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>알통떡강정</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#닭강정</span>
-                  <span className='store-tag'>#치킨</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#닭강정</span>
+                <span className='store-tag'>#치킨</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={REALPIG_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="리얼피그" src={REALPIG} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={REALPIG_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="리얼피그" src={REALPIG} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>리얼피그</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#돼지</span>
-                  <span className='store-tag'>#후라이드</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#돼지</span>
+                <span className='store-tag'>#후라이드</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={OJIK_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="5직떡볶이" src={OJIK} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={OJIK_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="5직떡볶이" src={OJIK} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>5직떡볶이</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#분식</span>
-                  <span className='store-tag'>#5직5재일</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#분식</span>
+                <span className='store-tag'>#5직5재일</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={JOKSU_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="족발슈퍼" src={JOKSU} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={JOKSU_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="족발슈퍼" src={JOKSU} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>족발슈퍼</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#족발</span>
-                  <span className='store-tag'>#냉면</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#족발</span>
+                <span className='store-tag'>#냉면</span>
               </div>
             </div>
-            <div 
-              className='facilities-store' 
-              onClick={selectStore}
-            >
-              <div className='store-item-header'>
-                <img className='store-img' src={MANDU_img} alt="" />
-                <div className='store-item-logo'>
-                  <img className='store-logo-img' id="한만두" src={MANDU} alt=""/>
-                </div>
+          </div>
+          <div
+            className='facilities-store'
+            onClick={selectStore}
+          >
+            <div className='store-item-header'>
+              <img className='store-img' src={MANDU_img} alt="" />
+              <div className='store-item-logo'>
+                <img className='store-logo-img' id="한만두" src={MANDU} alt="" />
               </div>
-              <div className='store-item-body'>
-                <div className='store-title'>
+            </div>
+            <div className='store-item-body'>
+              <div className='store-title'>
                 <span className='facility-store-title'>한만두</span>
-                </div>
-                <div className='store-itme-tag'>
-                  <span className='store-tag'>#한만두</span>
-                  <span className='store-tag'>#왕만두</span>
-                </div>
+              </div>
+              <div className='store-itme-tag'>
+                <span className='store-tag'>#한만두</span>
+                <span className='store-tag'>#왕만두</span>
               </div>
             </div>
+          </div>
         </div>
 
         <div className={`facility-list ${category === "식음매장" ? "facility-hide" : ""}`}>
-          <div 
+          <div
             className='facilities-facility'
             id="여자화장실"
           >
@@ -589,7 +589,7 @@ export default function Facilities() {
             </div>
           </div>
 
-          <div 
+          <div
             className='facilities-facility'
             id="남자화장실"
           >
@@ -606,7 +606,7 @@ export default function Facilities() {
               </div>
             </div>
           </div>
-          <div 
+          <div
             className='facilities-facility'
             id="여자장애인화장실"
           >
@@ -623,7 +623,7 @@ export default function Facilities() {
               </div>
             </div>
           </div>
-          <div 
+          <div
             className='facilities-facility'
             id="남자장애인화장실"
           >
@@ -640,7 +640,7 @@ export default function Facilities() {
               </div>
             </div>
           </div>
-          <div 
+          <div
             className='facilities-facility'
             id="블루샷"
           >
@@ -657,12 +657,12 @@ export default function Facilities() {
               </div>
             </div>
           </div>
-          <div 
+          <div
             className='facilities-facility'
             id="수유실"
           >
             <div className='facility-scroll-body'>
-            <div className='facility-icon-item'>
+              <div className='facility-icon-item'>
                 <img className='facility-icon' src={baby} alt="" />
               </div>
               <div className='facility-title-item'>
@@ -674,12 +674,12 @@ export default function Facilities() {
               </div>
             </div>
           </div>
-          <div 
+          <div
             className='facilities-facility'
             id="흡연실"
           >
             <div className='facility-scroll-body'>
-            <div className='facility-icon-item'>
+              <div className='facility-icon-item'>
                 <img className='facility-icon' src={smoking} alt="" />
               </div>
               <div className='facility-title-item'>
@@ -691,12 +691,12 @@ export default function Facilities() {
               </div>
             </div>
           </div>
-          <div 
+          <div
             className='facilities-facility'
             id="쓰레기통"
           >
             <div className='facility-scroll-body'>
-            <div className='facility-icon-item'>
+              <div className='facility-icon-item'>
                 <img className='facility-icon' src={trash} alt="" />
               </div>
               <div className='facility-title-item'>
@@ -709,7 +709,7 @@ export default function Facilities() {
             </div>
           </div>
         </div>
-          
+
       </div>
     </div>
   )
