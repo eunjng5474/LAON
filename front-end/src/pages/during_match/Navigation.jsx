@@ -15,6 +15,7 @@ export default function Navigation() {
   const location = useLocation();
   const departure = location.state.departure
   const destination = location.state.destination
+  const currentPosition = location.state.currentPosition
   let currentFloor = location.state.currentFloor
 
   const naviCanvasRef = useRef(null);
@@ -109,7 +110,11 @@ export default function Navigation() {
   // }
 
   function goAR() {
-    window.location.href = `/ar/${naviGoal}.html`
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
+    .then((res) => {
+      const naviGoal = res.data.facilityName
+      window.location.href = `/ar/${naviGoal}.html`
+    })
   }
 
   // const [floorIdx, setFloorIdx] = useState(0);
