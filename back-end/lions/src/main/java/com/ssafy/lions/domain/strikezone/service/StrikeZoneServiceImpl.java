@@ -58,7 +58,7 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
                 strikeZoneResultDto.setZ0(ptsOptions.get("z0").toString());
                 strikeZoneResultDto.setY0(ptsOptions.get("y0").toString());
                 strikeZoneResultDto.setX0(ptsOptions.get("x0").toString());
-            } catch (NullPointerException e) {
+            } catch (Exception e) {
                 return null;
             }
         }
