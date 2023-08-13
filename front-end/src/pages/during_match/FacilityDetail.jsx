@@ -15,6 +15,7 @@ export default function FacilityDetail() {
 
   const departure = location.state.currentPosition;
   const destination = location.state.naviGoal;
+  const currentFloor = location.state.currentFloor
 
   function goAR() {
     window.location.href = `/ar/${location.state.naviGoal}.html`
@@ -25,7 +26,7 @@ export default function FacilityDetail() {
   }
 
   function goNavi() {
-    navigate('/navigation', { state: {departure, destination}})
+    navigate('/navigation', { state: {departure, destination, currentFloor}})
   }
 
   function menuRenderer(menuArray) {
