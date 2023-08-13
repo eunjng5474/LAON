@@ -133,6 +133,9 @@ export default function Navigation() {
         for (let i = 0; i < res.data.pointDtoList.length; i++) {
           if (res.data.pointDtoList[i].type === 'S') {
             flag = false
+            // if(res.data.pointDtoList[i-1].type === 'S' && res.data.pointDtoList[i+1].type === 'S'){
+            //   continue
+            // }
             setPointDtoList(pointDtoList => {
               pointDtoList = res.data.pointDtoList.slice(0, i+1)
               console.log('현재 리스트')
@@ -141,7 +144,12 @@ export default function Navigation() {
               return pointDtoList
             })
             setNextPointDtoList(nextPointDtoList => {
-              nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
+              // 이 부분 추후 예외처리 고려해서 수정하기
+              if(res.data.pointDtoList[i+2].type === 'S'){
+                nextPointDtoList = res.data.pointDtoList.slice(i+2, res.data.pointDtoList.length)
+              } else {
+                nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
+              }
               console.log('다음 리스트')
               console.log(nextPointDtoList)
               // startDraw(nextPointDtoList)
