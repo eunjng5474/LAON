@@ -14,12 +14,10 @@ import axios from 'axios';
 
 
 export default function Match() {
-  // const awayTeamName = useSelector((state) => state.awayTeamName)
-  const awayTeamName = 'SK'
+  const awayTeamName = useSelector((state) => state.awayTeamName)
   const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
   const homeTeamLogo = useSelector((state) => state.homeTeamLogo)
-  // const inningData = useSelector((state) => state.inning)
-  const inningData = 'T08'
+  const inningData = useSelector((state) => state.inning)
   const awayScore = useSelector((state) => state.awayScore )
   const homeScore = useSelector((state) => state.homeScore)
   let liveText = useSelector((state) => state.liveText)
@@ -27,6 +25,7 @@ export default function Match() {
   const strikeCount = useSelector((state) => state.strikeCount)
   const outCount = useSelector((state) => state.outCount)
   const gameDate = useSelector((state) => state.gameDate)
+  const gameStatus = useSelector((state) => state.gameStatus)
 
   const base1 = useSelector((state) => state.base1)
   const base2 = useSelector((state) => state.base2)
@@ -34,6 +33,7 @@ export default function Match() {
 
   const stZoneRef = useRef(null);
   const stZoneRectRef = useRef(null);
+  
   
   const [t, setT] = useState('');
   const [px, setPx] = useState('');
@@ -129,24 +129,20 @@ export default function Match() {
 
   useEffect(() => {
 
-  // const gameStatus = useSelector((state) => state.gameStatus)
+    if (gameStatus === 'PLAY'){
+      const getStzone = setInterval(getStrikeZone, 5000)
+      setTimeout(() => {
 
-
-  const gameStatus = 'PLAY';
-
-  if (gameStatus === 'PLAY'){
-    // const getStzone = setInterval(getStrikeZone, 5000)
-    // setTimeout(() => {
-    //   const getDrawBall = setInterval(drawBall, 5000)
-    // }, 100)
-  }
+        const getDrawBall = setInterval(drawBall, 5000)
+      }, 100)
+    }
 
 
 
-  const strikeCanvas = stZoneRef.current;
-  strikeCanvas.width = 110;
-  strikeCanvas.height = 130;
-  const stZoneBallCtx = strikeCanvas.getContext("2d");
+    const strikeCanvas = stZoneRef.current;
+    strikeCanvas.width = 110;
+    strikeCanvas.height = 130;
+    const stZoneBallCtx = strikeCanvas.getContext("2d");
 
 
     const strikeRectCanvas = stZoneRectRef.current;
