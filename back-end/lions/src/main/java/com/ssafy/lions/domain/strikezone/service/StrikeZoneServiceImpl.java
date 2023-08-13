@@ -35,17 +35,17 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         StrikeZoneResultDto strikeZoneResultDto = new StrikeZoneResultDto();
 
         if (jsonObject.size() > 0) {
-            jsonObject = (JSONObject)jsonObject.get("textRelayData");
-            JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
-            jsonObject = (JSONObject)jsonArray.get(0);
-
-            jsonArray = (JSONArray)jsonObject.get("textOptions");
-            JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
-
-            jsonArray = (JSONArray)jsonObject.get("ptsOptions");
-            JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
-
             try {
+                jsonObject = (JSONObject)jsonObject.get("textRelayData");
+                JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
+                jsonObject = (JSONObject)jsonArray.get(0);
+
+                jsonArray = (JSONArray)jsonObject.get("textOptions");
+                JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
+
+                jsonArray = (JSONArray)jsonObject.get("ptsOptions");
+                JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
+
                 strikeZoneResultDto.setSpeed(textOptions.get("speed").toString());
                 strikeZoneResultDto.setStuff(textOptions.get("stuff").toString());
                 strikeZoneResultDto.setCrossPlateY(ptsOptions.get("crossPlateY").toString());
