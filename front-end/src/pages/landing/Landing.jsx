@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/Landing.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import emblem from './img/emblem.svg'
+import stadium from './img/stadium.PNG'
 
 
 
@@ -19,20 +19,20 @@ function Landing() {
 
   const gameStatus = useSelector((state) => state.gameStatus)
 
-  if (gameStatus === 'PLAY') {
-    setTimeout(() => {
-      navigate('/match')
-    }, 3000)
-  } else {
-    setTimeout(() => {
-      navigate('/seat')
-    }, 3000)
-  }
+  // if (gameStatus === 'PLAY') {
+  //   setTimeout(() => {
+  //     navigate('/match')
+  //   }, 3000)
+  // } else {
+  //   setTimeout(() => {
+  //     navigate('/seat')
+  //   }, 3000)
+  // }
   
     return (
       <div className='landing-container font'>
-        <img className='landing-emblem' src={emblem} alt="" />
-        <span className='landing-title'>devloped by LA:ON</span>
+        <h1 className='landing-title'>당신의 직관을 <br /> 언제나 즐겁게</h1>
+        <img src={stadium} alt="" />
       </div>
     )
 }
