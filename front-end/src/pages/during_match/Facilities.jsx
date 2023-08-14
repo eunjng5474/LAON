@@ -228,12 +228,14 @@ export default function Facilities() {
     // 편의시설 길찾기 보내는 함수
     const destination = e.target.id
     const departure = currentPosition
+    console.log(destination)
 
     navigate('/navigation', {
       state: {
         departure,
         currentFloor,
-        destination
+        destination,
+        currentPosition
       }
     })
   }
