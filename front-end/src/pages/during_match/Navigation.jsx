@@ -80,14 +80,6 @@ export default function Navigation() {
         ctx.strokeStyle = '#074CA1';
         ctx.stroke()
         t++;
-
-        // 이러면 속도는 느려지는데 끊겨서 그려지는 듯한 느낌
-        // if( i < pointDtoList.length){
-        //     setTimeout(() => {
-        //       requestAnimationFrame(draw)
-        //     }, 50)
-        //   }
-        // }
     }
 
     // draw()
@@ -100,8 +92,6 @@ export default function Navigation() {
 
 
   const naviGoal = destination;
-  // const naviGoal = '파파존스피자(Food Street)';
-
 
   // function getCoordinate(e) {
   //   console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
@@ -207,6 +197,13 @@ export default function Navigation() {
 
   return (
     <div className='navigation-container font'>
+      <div className='navigation-text font'>
+        {noRoute ? <h3>출발지와 목적지가 인접해 있습니다</h3> : 
+          <div>
+            <h2>목적지: {destination}</h2>
+          </div>
+        }
+      </div>
 
       <div className='navigation-body'>
         <div className='navigation-route'>
@@ -214,16 +211,10 @@ export default function Navigation() {
           <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef}></canvas>
         </div>
 
-        <button className='to-ar-button' onClick={goAR}>AR</button>
-        <div className='navigation-text font'>
-          {noRoute ? <h3>출발지와 목적지가 인접해 있습니다</h3> : 
-            <div>
-              <h3>출발지: {departure}</h3>
-              <h3>목적지: {destination}</h3>
-            </div>
-          }
+        <div className='navigation-ar'>
+          <button className='to-ar-button' onClick={goAR}>AR</button>
         </div>
-      </div>
+        </div>
     </div>
   )
 }

@@ -4,7 +4,6 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #074CA1;
   overflow: hidden;
 }
 
@@ -23,8 +22,8 @@
 
 .landing-title {
   position: absolute;
-  bottom: 6vh;
-  left: 10vw;
-  font-size: 18px;
+  top: 4vh;
+  left: 6vw;
+  font-size: 34px;
   color: #ffffff;
 }
