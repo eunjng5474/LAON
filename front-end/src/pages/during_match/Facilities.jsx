@@ -90,7 +90,7 @@ export default function Facilities() {
     const lng = position.coords.longitude
     const alt = position.coords.altitude
     setPosition(lat, lng)
-    // setCurrentPosition('U-26')
+    // setCurrentPosition('U-3')
     return alt
   }
 
