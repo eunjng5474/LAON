@@ -198,8 +198,8 @@ export default function Facilities() {
         // AR 변수 지정해주는 함수
         setNaviGoal(naviGoal => {
           naviGoal = res.data.facilityName
-          // goDetail(naviGoal, e.target.src)
-          goDetail(naviGoal)
+          goDetail(naviGoal, e.target.src, e.target.id)
+          // goDetail(naviGoal)
           return naviGoal
         })
         // 길찾기 좌표 지정해주는 함수
@@ -228,7 +228,6 @@ export default function Facilities() {
     // 편의시설 길찾기 보내는 함수
     const destination = e.target.id
     const departure = currentPosition
-    console.log(destination)
 
     navigate('/navigation', {
       state: {
@@ -595,7 +594,7 @@ export default function Facilities() {
             className='facilities-facility'
             id="여자화장실"
           >
-            <div className='facility-scroll-body'>
+            <div className='facility-toilet-scroll-body'>
               <div className='facility-icon-item'>
                 <img className='facility-icon' src={female_logo} alt="" />
               </div>
@@ -604,7 +603,7 @@ export default function Facilities() {
               </div>
               <div className='facility-body'>
                 <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">길찾기</button>
-                <button className='facility-body-button font' id="여자화장실">로드뷰</button>
+                {/* <button className='facility-body-button font' id="여자화장실">로드뷰</button> */}
               </div>
             </div>
           </div>
@@ -613,7 +612,7 @@ export default function Facilities() {
             className='facilities-facility'
             id="남자화장실"
           >
-            <div className='facility-scroll-body'>
+            <div className='facility-toilet-scroll-body'>
               <div className='facility-icon-item'>
                 <img className='facility-icon' src={male_logo} alt="" />
               </div>
@@ -622,7 +621,6 @@ export default function Facilities() {
               </div>
               <div className='facility-body'>
                 <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">길찾기</button>
-                <button className='facility-body-button font' id="남자화장실">로드뷰</button>
               </div>
             </div>
           </div>
