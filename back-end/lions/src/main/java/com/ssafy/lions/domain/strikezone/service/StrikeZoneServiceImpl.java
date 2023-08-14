@@ -42,6 +42,13 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
                 jsonArray = (JSONArray)jsonObject.get("textOptions");
                 JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
 
+                if (textOptions.get("type").equals("8")) {
+                    jsonArray = (JSONArray)jsonObject.get("textRelays");
+                    jsonObject = (JSONObject)jsonArray.get(1);
+                    jsonArray = (JSONArray)jsonObject.get("textOptions");
+                    textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
+                }
+
                 jsonArray = (JSONArray)jsonObject.get("ptsOptions");
                 JSONObject ptsOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
 
@@ -65,3 +72,7 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         return strikeZoneResultDto;
     }
 }
+
+// 1 : 일반 투구
+// 8 : 선수 입장
+// 13 : 출루 or 아웃
