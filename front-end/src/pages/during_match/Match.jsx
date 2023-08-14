@@ -97,8 +97,7 @@ export default function Match() {
 
 
   function getStrikeZone(e) {
-    // 날짜 추후 수정해야 함
-    axios.get(`https://laon.info/api/lions/strike_zone/20230813/${awayTeamName}/${inning[0]}`)
+    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
     .then((res) => {
       console.log(res.data)
       if(res.data){
