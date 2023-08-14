@@ -3,6 +3,7 @@
   flex-direction: column;
   height: 82vh;
   color: #ffffff;
+  padding-top: 8vh;
 }
 
 .navigation-body {
@@ -32,4 +33,9 @@
   border-radius: 5vw;
   background-color: #074CA1;
   color: #ffffff;
+}
+
+.navigation-text {
+  margin-left: 10vw;
+  color: black;
 }

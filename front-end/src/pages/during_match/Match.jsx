@@ -25,6 +25,7 @@ export default function Match() {
   const strikeCount = useSelector((state) => state.strikeCount)
   const outCount = useSelector((state) => state.outCount)
   const gameDate = useSelector((state) => state.gameDate)
+  const gameStatus = useSelector((state) => state.gameStatus)
 
   const base1 = useSelector((state) => state.base1)
   const base2 = useSelector((state) => state.base2)
@@ -33,9 +34,15 @@ export default function Match() {
   const stZoneRef = useRef(null);
   const stZoneRectRef = useRef(null);
   
+  
   const [t, setT] = useState('');
   const [px, setPx] = useState('');
   const [pz, setPz] = useState('');
+  const [ballSpeed, setBallSpeed] = useState('');
+  const [ballStuff, setBallStuff] = useState('');
+
+  const [prevPx, setPrevPx] = useState('')
+  
   // const nowBallcount = 1;
   // const pitchResult = 'S';
 
@@ -90,20 +97,53 @@ export default function Match() {
 
 
   function getStrikeZone(e) {
-    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
+    // 날짜 추후 수정해야 함
+    axios.get(`https://laon.info/api/lions/strike_zone/20230813/${awayTeamName}/${inning[0]}`)
     .then((res) => {
-      setT((-res["vy0"] - (res["vy0"] * res["vy0"] - 2 * res["ay"] * (res["y0"] - res["crossPlateY"])) ** 0.5) / res["ay"])
-      setPx(res["x0"] + res["vx0"] * t + res["ax"] * t * t * 0.5)
-      setPz(res["z0"] + res["vz0"] * t + res["az"] * t * t * 0.5)
+      console.log(res.data)
+      if(res.data){
+        setPrevPx(px)
+        // 값이 자동으로 안 바뀐다,,,,,,
+        setT((-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"])
+        setPx(res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5)
+        setPz(res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5)
+        setBallSpeed(res.data.speed);
+        setBallStuff(res.data.stuff);
+      } else {
+        setT('');
+        setPx('');
+        setPz('');
+        setBallSpeed('');
+        setBallStuff('');
+      }
     })
   }
 
 
+  // const strikeCanvas = stZoneRef.current;
+  // strikeCanvas.width = 110;
+  // strikeCanvas.height = 130;
+  // const stZoneBallCtx = strikeCanvas.getContext("2d");
+
+
+
   useEffect(() => {
+
+    if (gameStatus === 'PLAY'){
+      const getStzone = setInterval(getStrikeZone, 5000)
+      setTimeout(() => {
+
+        const getDrawBall = setInterval(drawBall, 5000)
+      }, 100)
+    }
+
+
+
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
     strikeCanvas.height = 130;
     const stZoneBallCtx = strikeCanvas.getContext("2d");
+
 
     const strikeRectCanvas = stZoneRectRef.current;
     strikeRectCanvas.width = 110;
@@ -128,24 +168,32 @@ export default function Match() {
       stZoneRectCtx.fill();
     }
 
-    function drawBall() {
-      stZoneBallCtx.beginPath();
-      // 4
-      stZoneBallCtx.moveTo(60-px*37, 155-pz*35);
-      stZoneBallCtx.arc(60-px*37, 155-pz*35, 8, 0, 2 * Math.PI);
-  
-      stZoneBallCtx.stroke();
-      // if(pitchResult === 'S'){
-      //   stZoneBallCtx.fillStyle = '#FFCD4A';
-      // } else {
-      //   stZoneBallCtx.fillStyle = '#7DB249';
-      // }
-      // stZoneBallCtx.fill();
-    }
+    
+  // px, pz 변경될 때만 그리도록? 
+  function drawBall() {
+    console.log(ballStuff, ballSpeed, px, pz)
+    // if(prevPx !== px){
+    //   stZoneBallCtx.clearRect(0, 0, strikeRectCanvas.width, strikeRectCanvas.height)
+    // }
+    stZoneBallCtx.beginPath();
+    // 4
+    stZoneBallCtx.moveTo(60-px*25, 155-pz*15);
+    stZoneBallCtx.arc(60-px*25, 155-pz*15, 8, 0, 2 * Math.PI);
+
+    stZoneBallCtx.stroke();
+    stZoneBallCtx.fillStyle = '#7DB249';
+    // if(pitchResult === 'S'){
+    //   stZoneBallCtx.fillStyle = '#FFCD4A';
+    // } else {
+    //   stZoneBallCtx.fillStyle = '#7DB249';
+    // }
+    stZoneBallCtx.fill();
+  }
+    
 
     drawZone();
-    drawBall();
-  })
+    // drawBall();
+  }, [])
 
   return (
     <div className='match-container font'>

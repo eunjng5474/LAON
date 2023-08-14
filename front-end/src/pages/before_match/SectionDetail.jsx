@@ -32,7 +32,7 @@ export default function SectionDetail() {
   }
 
   const [seatUrl, setSeatUrl] = useState(imageUrl + seatUrlAdd);
-  const [pinCoords, setPinCoords] = useState({x:0, y:0})
+  const [pinCoords, setPinCoords] = useState({ x: 0, y: 0 })
 
 
   function toSeat() {
@@ -50,11 +50,11 @@ export default function SectionDetail() {
     }
     const x = event.clientX
     const y = event.clientY - 650
-    setPinCoords({x, y})
+    setPinCoords({ x, y })
   }
 
   function getCoordinate(e) {
-    console.log("x:",e.nativeEvent.offsetX, "y:",e.nativeEvent.offsetY)
+    console.log("x:", e.nativeEvent.offsetX, "y:", e.nativeEvent.offsetY)
     const x = e.nativeEvent.offsetX
     const y = e.nativeEvent.offsetY
 
@@ -262,7 +262,7 @@ export default function SectionDetail() {
         return seatUrl
       })
     }
-    
+
     // sky하단
     else if (42 <= x && x <= 48 && 202 <= y && y <= 223) {
       setSeatUrl(seatUrl => {
@@ -1326,6 +1326,244 @@ export default function SectionDetail() {
         return seatUrl
       })
     }
+
+    // 지브로존
+    else if (200 <= x && x <= 219 && 408 <= y && y <= 431) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-1/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (183 <= x && x <= 209 && 429 <= y && y <= 455) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-1/2.jpg"
+        return seatUrl
+      })
+    }
+    else if (169 <= x && x <= 199 && 448 <= y && y <= 479) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-1/3.jpg"
+        return seatUrl
+      })
+    }
+    else if (188 <= x && x <= 206 && 400 <= y && y <= 417) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-2/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (172 <= x && x <= 190 && 418 <= y && y <= 435) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-2/2.jpg"
+        return seatUrl
+      })
+    }
+    else if (159 <= x && x <= 174 && 435 <= y && y <= 448) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-2/3.jpg"
+        return seatUrl
+      })
+    }
+    else if (152 <= x && x <= 165 && 444 <= y && y <= 455) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-2/4.jpg"
+        return seatUrl
+      })
+    }
+    else if (176 <= x && x <= 196 && 388 <= y && y <= 406) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-3/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (159 <= x && x <= 176 && 406 <= y && y <= 422) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-3/2.jpg"
+        return seatUrl
+      })
+    }
+    else if (146 <= x && x <= 162 && 423 <= y && y <= 437) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-3/3.jpg"
+        return seatUrl
+      })
+    }
+    else if (139 <= x && x <= 152 && 433 <= y && y <= 444) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-2/4.jpg"
+        return seatUrl
+      })
+    }
+    else if (165 <= x && x <= 182 && 379 <= y && y <= 393) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-4/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (149 <= x && x <= 164 && 397 <= y && y <= 410) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-4/2.jpg"
+        return seatUrl
+      })
+    }
+    else if (132 <= x && x <= 148 && 415 <= y && y <= 428) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "T3-4/3.jpg"
+        return seatUrl
+      })
+    }
+
+    // 3루 외야
+    else if (83 <= x && x <= 106 && 217 <= y && y <= 239) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "TL-0/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (63 <= x && x <= 86 && 198 <= y && y <= 219) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "TL-0/2.jpg"
+        return seatUrl
+      })
+    }
+    else if (106 <= x && x <= 118 && 212 <= y && y <= 224) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-1/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (82 <= x && x <= 108 && 189 <= y && y <= 214) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-1/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (115 <= x && x <= 129 && 199 <= y && y <= 211) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-2/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (93 <= x && x <= 120 && 177 <= y && y <= 202) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-2/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (129 <= x && x <= 142 && 188 <= y && y <= 199) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-3/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (106 <= x && x <= 134 && 166 <= y && y <= 190) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-3/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (141 <= x && x <= 155 && 176 <= y && y <= 187) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-4/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (117 <= x && x <= 144 && 153 <= y && y <= 178) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-4/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (154 <= x && x <= 166 && 165 <= y && y <= 174) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-5/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (154 <= x && x <= 166 && 164 <= y && y <= 175) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-5/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (167 <= x && x <= 178 && 152 <= y && y <= 162) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-6/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (141 <= x && x <= 129 && 152 <= y && y <= 154) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-6/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (177 <= x && x <= 188 && 140 <= y && y <= 151) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-7/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (153 <= x && x <= 181 && 117 <= y && y <= 142) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-7/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (188 <= x && x <= 204 && 123 <= y && y <= 140) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-8/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (165 <= x && x <= 194 && 103 <= y && y <= 131) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-8/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (175 <= x && x <= 203 && 91 <= y && y <= 120) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-9/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (205 <= x && x <= 221 && 119 <= y && y <= 129) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ML-10/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (205 <= x && x <= 221 && 91 <= y && y <= 112) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "LF-10/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (206 <= x && x <= 221 && 63 <= y && y <= 74) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "TL-9/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (64 <= x && x <= 99 && 107 <= y && y <= 140) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ROOFTOP/1.jpg"
+        return seatUrl
+      })
+    }
+    else if (90 <= x && x <= 123 && 85 <= y && y <= 114) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ROOFTOP/2.jpg"
+        return seatUrl
+      })
+    }
+    else if (112 <= x && x <= 146 && 60 <= y && y <= 89) {
+      setSeatUrl(seatUrl => {
+        seatUrl = imageUrl + "ROOFTOP/3.jpg"
+        return seatUrl
+      })
+    }
   }
 
   useEffect(() => {
@@ -1344,20 +1582,21 @@ export default function SectionDetail() {
         </div>
       </div>
 
+      <div className='transform-container'>
+        <TransformWrapper
+          initialScale={3}
+          initialPositionX={-400}
+          initialPositionY={-300}
+          className='map-controller'
+        >
+          <TransformComponent>
+            <div onClick={getCoordinate}>
+              <img src={mapImg} alt="" />
+            </div>
+          </TransformComponent>
+        </TransformWrapper>
+      </div>
 
-      <TransformWrapper
-        initialScale={3}
-        initialPositionX={-400}
-        initialPositionY={-300}
-        className='map-controller'
-      >
-        <TransformComponent>
-          <div onClick={getCoordinate}>
-            <img src={mapImg} alt="" />
-          </div>
-        </TransformComponent>
-      </TransformWrapper>
-     
     </div>
   )
 }

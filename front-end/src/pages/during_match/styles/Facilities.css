@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 82vh;
+  height: 87vh;
+  padding-top: 3vh;
 }
 
 .facilities-header {
@@ -10,15 +11,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1.5vh;
 }
 
 .floor-select-button {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
-  width: 100vw;
+  width: 88vw;
   height: 6vh;
   margin-top: 2vh;
-  margin-bottom: 2vh;
+  margin-bottom: 5vh;
+  margin-left: 12vw;
 }
 
 .floor-select-button button {
@@ -47,14 +51,28 @@
   border-bottom: 1px solid rgb(208, 208, 208);
 }
 
-.category-select button {
+.category-button-nonline {
   width: 40vw;
   border: none;
-  border-radius: 18px 18px 0px 0px;
+  background: none;
+  font-size: 5vw;
+  /* font-weight: bold; */
+}
+
+.category-button-line{
+  width: 40vw;
+  border: none;
+  border-bottom: 3.5px solid #0065B3;
+  background: none;
+  font-size: 5vw;
+  font-weight: bold;
 }
 
 .facilities-body {
+  display: flex;
+  justify-content: center;
   overflow: scroll;
+  margin-top: 1.5vh;
 }
 
 .store-list {
@@ -67,9 +85,14 @@
 
 .facility-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   overflow: scroll;
+  border-radius: 20px;
+  /* border: 1px solid rgb(208, 208, 208); */
+  width: 85vw;
+  height: 60vh;
 }
 
 .facility-hide {
@@ -85,14 +108,14 @@
   height: 25vh;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0px 2px 0px 0px rgb(203, 203, 203);
+  /* box-shadow: 0px 2px 0px 0px rgb(203, 203, 203); */
   margin: 10px 14px;
   text-align: center;
+  border-bottom: 2px solid rgb(203, 203, 203);
 }
 
 .store-img {
   width: 100%;
-  /* max-height: 100%; */
   height: 10vh;
   object-fit: cover;
   border-radius: 20px;
@@ -101,40 +124,50 @@
 .store-item-header {
   /* border: 1px solid red; */
   width: 100%;
-  height: 16vh;
+  height: 15vh;
   overflow: hidden;
   position: relative;
 }
 
 .store-item-logo {
-  border: 2px solid fff;
+  border: 5px solid white;
   border-radius: 100%;
   overflow: hidden;
   position: absolute;
-  width: 15vw;
+  width: 13vw;
+  height: 13vw;
   background-color: #fff;
   position: absolute;
   top: 7vh;
   left: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .store-logo-img {
   /* border-radius: 50%; */
   max-width: 100%;
   max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .store-item-body{
   /* border: 1px solid blue; */
-  height: 10vh;
+  height: auto;
   width: 100%;
+  /* display: flex; */
+  align-items: center;
 }
 
 .store-title{
-
+  /* border: 1px solid yellow; */
 }
 
 .facility-store-title{
+  /* border: 1px solid black; */
   color: #000;
   position: relative;
   font-size: 2.5vh;
@@ -147,8 +180,71 @@
 }
 
 .store-tag {
-  background-color: rgb(255, 217, 0);
+  background-color: #0065b3b4;
+  color: #fff;
+  letter-spacing: 1.5px;
   margin: 0.6vh;
   padding: 1vw;
-  border-radius: 15%;
+  border-radius: 5px;
+}
+
+.facilities-facility{
+  align-items: center;
+  width: 80vw;
+  height: 7vh;
+  /* border: 1px solid black; */
+  /* border-radius: 20px; */
+  /* border-bottom: 1px solid rgb(203, 203, 203); */
+  white-space: normal;
+  overflow-x: scroll;
+}
+
+.facility-scroll-body{
+  display: flex;
+  /* border: 1px solid red; */
+  border-bottom: 1px solid  rgb(203, 203, 203);
+  width: 108vw;
+  height: 6vh;
+}
+
+.facility-icon-item{
+  /* border: 1px solid teal; */
+  width: 10vw;
+  height: 6vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facility-icon {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+.facility-title-item{
+  /* border: 1px solid orange; */
+  width: 66vw;
+  display: flex;
+  align-items: center;
+  padding-left: 2vw;
+}
+
+.facility-title {
+  font-size: 4.5vw;
+}
+
+.facility-body {
+  /* border: 1px solid blue; */
+  display: flex;
+}
+
+.facility-body-button{
+  background: #0065b3b4;
+  color: white;
+  font-size: 4vw;
+  border: none;
+  width: 15vw;
+  height: 100%;
+  margin: 0.1vw;
 }

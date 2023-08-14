@@ -1,6 +1,5 @@
 .seat-container {
-  height: 82vh;
-  background-color: #074CA1;
+  height: 90vh;
 }
 
 .swiper-container {
@@ -12,18 +11,6 @@
 .swiper {
   display: flex;
   height: 82vh;
-}
-
-.seat-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0px;
-}
-
-.seat-body p {
-  margin-top: 1rem;
 }
 
 .seat-home-away {
@@ -117,36 +104,69 @@
   width: 100vw;
   height: 82vh;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-image: url('../img/bg.png');
+  justify-content: flex-end;
+  align-items: flex-start;
+  background-image: url('../img/team_bg/lions.png');
   background-color: #074CA1;
+  padding-top: 8vh;
 }
 
-.home-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 82vh;
-  align-items: center;
-}
 
 .away-body {
   width: 100vw;
   height: 82vh;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
-  background-color: #074CA1;
+  align-items: flex-start;
+  padding-top: 8vh;
 }
 
-.away-right {
-  display: flex;
-  flex-direction: column;
-  height: 82vh;
-  align-items: center;
-  justify-content: flex-start;
+.LG {
+  background-image: url('../img/team_bg/twins.png');
+  background-color: #000000;
 }
+
+.KIA {
+  background-image: url('../img/team_bg/tigers.png');
+  background-color: #06141F;
+}
+
+.KT {
+  background-image: url('../img/team_bg/kt_wiz_bg.png');
+  background-color: #000000;
+}
+
+.NC {
+  background-image: url('../img/team_bg/dinos.png');
+  background-color: #315288;
+}
+
+.두산 {
+  background-image: url('../img/team_bg/bears.png');
+  background-color: #131230;
+}
+
+.롯데 {
+  background-image: url('../img/team_bg/giants.png');
+  background-color: #041E42;
+}
+
+.SSG {
+  background-image: url('../img/team_bg/ssg.png');
+  background-color: #CE0E2D;
+}
+
+.한화 {
+  background-image: url('../img/team_bg/eagles.png');
+  background-color: #FF6600;
+}
+
+.키움 {
+  background-image: url('../img/team_bg/heroes.png');
+  background-color: #570514;
+}
+
+
 
 .park-home-img {
   height: 70vh
@@ -156,105 +176,11 @@
   height: 70vh
 }
 
-
-#seat-home-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 2vw;
-  padding: 2vw;
-  width: 20vw;
-  height: 26vh;
-  border: none;
-  border-radius: 40px;
-  background-color: #ffffff3e;
-  color: white;
-}
-
-#seat-away-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 2vw;
-  padding: 2vw;
-  width: 20vw;
-  height: 26vh;
-  border: none;
-  border-radius: 40px;
-  background-color: #ffffff3e;
-  color: white;
-}
-
-.seat-info-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: 4vw;
-}
-
-.seat-info-header-title {
-  font-size: 5vw;
-  margin-bottom: 1.2vh;
-}
-
-.seat-info-header-desc {
-  font-size: 3.6vw;
-}
-
-.seat-info-footer {
-  display: flex;
-  flex-direction: column;
-}
-
-.seat-info-footer button {
-  background-color: #ffffff;
-  border: none;
-  border-radius: 100px;
-  margin: 1vw;
-  width: 18vw;
-  height: 10vh;
-  padding: 0px;
-}
-
-.road-view-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.road-view-icon {
-  max-width: 10vw;
-}
-
-.home-left .ticket-button {
-  width: 20vw;
-  height: 20vw;
-  border: none;
-  border-radius: 36px;
-  margin-bottom: 6vh;
-  color: #ffffff;
-  background-color: #ffffff3e;
-}
-
-.away-right .ticket-button {
-  width: 20vw;
-  height: 20vw;
-  border: none;
-  border-radius: 36px;
-  margin-top: 6vh;
-  color: #ffffff;
-  background-color: #ffffff3e;
-}
-
 .home-right {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  width: 72vw;
+  width: 100%;
   height: 82vh;
 }
 
@@ -262,10 +188,59 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 72vw;
+  width: 100%;
   height: 82vh;
 }
 
-.seat-info-header {
-  height: 10vh;
+.seat-body {
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 9.9vh;
+  z-index: 100;
+  background-color: #ffffff;
+  border-radius: 40px 40px 0px 0px;
+}
+
+
+.seat-body-header {
+  display: flex;
+  justify-content: flex-start;
+  /* border: solid 1px red; */
+  width: 80%;
+  margin: 10px;
+}
+
+.seat-body-title {
+  font-size: 20px;
+  color: #B39249;
+}
+
+.seat-body-button-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border: solid 1px blue; */
+  width: 100%;
+  height: 6vh;
+  margin-bottom: 1vh;
+}
+
+.seat-body-button {
+  border: none;
+  width: 30vw;
+  height: 5vh;
+  background-color: #074CA1;
+  color: #ffffff;
+  border-radius: 20px;
+}
+
+.seat-title {
+  margin-top: 60vh;
+  font-size: 44px;
+  color: #ffffff;
 }
