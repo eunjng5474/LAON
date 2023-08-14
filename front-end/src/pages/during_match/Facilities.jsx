@@ -320,11 +320,11 @@ export default function Facilities() {
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>짝태시대</span>
+                <span className='facility-store-title' id="짝태시대">짝태시대</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#건어물</span>
-                <span className='store-tag'>#먹태</span>
+                <span className='store-tag' id="짝태시대">#건어물</span>
+                <span className='store-tag' id="짝태시대">#먹태</span>
               </div>
             </div>
           </div>
@@ -333,18 +333,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={HONG_img} alt="" />
+              <img className='store-img' src={HONG_img} alt="" id="리얼키친홍"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="리얼키친홍" src={HONG} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>리얼키친홍</span>
+                <span className='facility-store-title' id="리얼키친홍">리얼키친홍</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#덮밥</span>
-                <span className='store-tag'>#우동</span>
+                <span className='store-tag' id="리얼키친홍">#덮밥</span>
+                <span className='store-tag' id="리얼키친홍">#우동</span>
               </div>
             </div>
           </div>
@@ -353,18 +353,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={PAPA_img} alt="" />
+              <img className='store-img' src={PAPA_img} alt="" id="파파존스피자"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="파파존스피자" src={PAPA} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>파파존스피자</span>
+                <span className='facility-store-title' id="파파존스피자">파파존스피자</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#피자</span>
-                <span className='store-tag'>#페퍼로니</span>
+                <span className='store-tag' id="파파존스피자">#피자</span>
+                <span className='store-tag' id="파파존스피자">#페퍼로니</span>
               </div>
             </div>
           </div>
@@ -373,18 +373,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={CU_img} alt="" />
+              <img className='store-img' src={CU_img} alt="" id="CU"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="CU" src={CU} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>CU</span>
+                <span className='facility-store-title' id="CU">CU</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#편의점</span>
-                <span className='store-tag'>#얼음물</span>
+                <span className='store-tag' id="CU">#편의점</span>
+                <span className='store-tag' id="CU">#얼음물</span>
               </div>
             </div>
           </div>
@@ -393,18 +393,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={HAPPY_img} alt="" />
+              <img className='store-img' src={HAPPY_img} alt="" id="해피치즈스마일"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="해피치즈스마일" src={HAPPY} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>해피치즈스마일</span>
+                <span className='facility-store-title' id="해피치즈스마일">해피치즈스마일</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#분식</span>
-                <span className='store-tag'>#소프트콘</span>
+                <span className='store-tag' id="해피치즈스마일">#분식</span>
+                <span className='store-tag' id="해피치즈스마일">#소프트콘</span>
               </div>
             </div>
           </div>
@@ -413,18 +413,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={TTANG_img} alt="" />
+              <img className='store-img' src={TTANG_img} alt="" id="땅땅치킨"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="땅땅치킨" src={TTANG} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>땅땅치킨</span>
+                <span className='facility-store-title' id="땅땅치킨">땅땅치킨</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#치킨</span>
-                <span className='store-tag'>#햄버거</span>
+                <span className='store-tag' id="땅땅치킨">#치킨</span>
+                <span className='store-tag' id="땅땅치킨">#햄버거</span>
               </div>
             </div>
           </div>
@@ -433,18 +433,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={YUBU_img} alt="" />
+              <img className='store-img' src={YUBU_img} alt="" id="대왕유부초밥"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="대왕유부초밥" src={YUBU} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>대왕유부초밥</span>
+                <span className='facility-store-title' id="대왕유부초밥">대왕유부초밥</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#유부초밥</span>
-                <span className='store-tag'>#어묵</span>
+                <span className='store-tag' id="대왕유부초밥">#유부초밥</span>
+                <span className='store-tag' id="대왕유부초밥">#어묵</span>
               </div>
             </div>
           </div>
@@ -453,18 +453,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={KKOCHI_img} alt="" />
+              <img className='store-img' src={KKOCHI_img} alt="" id="전설꼬치"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="전설꼬치" src={KKOCHI} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>전설꼬치</span>
+                <span className='facility-store-title' id="전설꼬치">전설꼬치</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#꼬치</span>
-                <span className='store-tag'>#야끼도리</span>
+                <span className='store-tag' id="전설꼬치">#꼬치</span>
+                <span className='store-tag' id="전설꼬치">#야끼도리</span>
               </div>
             </div>
           </div>
@@ -473,18 +473,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={BUTTER_img} alt="" />
+              <img className='store-img' src={BUTTER_img} alt="" id="버터우드"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="버터우드" src={BUTTER} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>버터우드</span>
+                <span className='facility-store-title' id="버터우드">버터우드</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#커피</span>
-                <span className='store-tag'>#베이커리</span>
+                <span className='store-tag' id="버터우드">#커피</span>
+                <span className='store-tag' id="버터우드">#베이커리</span>
               </div>
             </div>
           </div>
@@ -493,18 +493,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={ALTON_img} alt="" />
+              <img className='store-img' src={ALTON_img} alt="" id="알통닭강정"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="알통닭강정" src={ALTONG} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>알통떡강정</span>
+                <span className='facility-store-title' id="알통닭강정">알통떡강정</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#닭강정</span>
-                <span className='store-tag'>#치킨</span>
+                <span className='store-tag' id="알통닭강정">#닭강정</span>
+                <span className='store-tag' id="알통닭강정">#치킨</span>
               </div>
             </div>
           </div>
@@ -513,18 +513,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={REALPIG_img} alt="" />
+              <img className='store-img' src={REALPIG_img} alt="" id="리얼피그"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="리얼피그" src={REALPIG} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>리얼피그</span>
+                <span className='facility-store-title' id="리얼피그">리얼피그</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#돼지</span>
-                <span className='store-tag'>#후라이드</span>
+                <span className='store-tag' id="리얼피그">#돼지</span>
+                <span className='store-tag' id="리얼피그">#후라이드</span>
               </div>
             </div>
           </div>
@@ -533,18 +533,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={OJIK_img} alt="" />
+              <img className='store-img' src={OJIK_img} alt="" id="5직떡볶이"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="5직떡볶이" src={OJIK} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>5직떡볶이</span>
+                <span className='facility-store-title' id="5직떡볶이">5직떡볶이</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#분식</span>
-                <span className='store-tag'>#5직5재일</span>
+                <span className='store-tag' id="5직떡볶이">#분식</span>
+                <span className='store-tag' id="5직떡볶이">#5직5재일</span>
               </div>
             </div>
           </div>
@@ -553,18 +553,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={JOKSU_img} alt="" />
+              <img className='store-img' src={JOKSU_img} alt="" id="족발슈퍼"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="족발슈퍼" src={JOKSU} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>족발슈퍼</span>
+                <span className='facility-store-title' id="족발슈퍼">족발슈퍼</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#족발</span>
-                <span className='store-tag'>#냉면</span>
+                <span className='store-tag' id="족발슈퍼">#족발</span>
+                <span className='store-tag' id="족발슈퍼">#냉면</span>
               </div>
             </div>
           </div>
@@ -573,18 +573,18 @@ export default function Facilities() {
             onClick={selectStore}
           >
             <div className='store-item-header'>
-              <img className='store-img' src={MANDU_img} alt="" />
+              <img className='store-img' src={MANDU_img} alt="" id="한만두"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="한만두" src={MANDU} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
               <div className='store-title'>
-                <span className='facility-store-title'>한만두</span>
+                <span className='facility-store-title' id="한만두">한만두</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#한만두</span>
-                <span className='store-tag'>#왕만두</span>
+                <span className='store-tag' id="한만두">#한만두</span>
+                <span className='store-tag' id="한만두">#왕만두</span>
               </div>
             </div>
           </div>
