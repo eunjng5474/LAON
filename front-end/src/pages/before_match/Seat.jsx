@@ -4,10 +4,7 @@ import { useNavigate } from 'react-router'
 import { useSelector } from 'react-redux'
 import park_away from './img/seat_r.png'
 import park_home from './img/seat_l.png'
-import roadView from './img/roadviewicon.png'
 import store from '../../store/store.js';
-
-
 
 import ImageMap from 'image-map'
 
@@ -15,10 +12,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 export default function Seat() {
-
-  const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
-  const homeTeamLogo = useSelector((state) => state.homeTeamLogo)
-
   const [selectSeat, setSelectSeat] = useState(null); // 넘겨줄 변수(3-1 이런 식으로)
   const [showSeatName, setShowSeatName] = useState(null); // 보여줄 이름(블루존)
   const [sectionSelect, setSectionSelect] = useState() // sectionDetail에서 보여줄 사진 이름
@@ -27,6 +20,8 @@ export default function Seat() {
   const [seatWeekdayPrice, setSeatWeekdayPrice] = useState(null);
   const [seatWeekendPrice, setSeatWeekendPrice] = useState(null);
 
+  const awayTeam = useSelector(state => state.awayTeamName)
+  console.log(awayTeam)
 
   const navigate = useNavigate();
 
@@ -150,7 +145,6 @@ export default function Seat() {
     }
   ]
 
-
   function toSectionDetail() {
     navigate('/section', {
       state: {
@@ -158,8 +152,6 @@ export default function Seat() {
         selectSeat: selectSeat
       }
     });
-    // selecSeat을 섹션까지 나눠진 번호 넘겨주기 -> detail에서 imgSrc에 해당 변수값만 바꾸면 되게끔
-
   }
 
   function toTicketing() {
@@ -187,46 +179,18 @@ export default function Seat() {
     }
   }
 
-
   useEffect(() => {
     ImageMap('img[useMap]')
   }, [])
 
   return (
-    <div className='seat-container'>
+    <div className='seat-container font'>
 
       <div className='swiper-container'>
         <Swiper>
           <SwiperSlide>
             <div className='home-body'>
-              <div className='home-left'>
-
-                <div id='seat-home-info'>
-                  <div className='seat-info-header font'>
-                    <span className='seat-info-header-title'>
-                      {showSeatName}
-                    </span>
-                    {/* <span className='seat-info-header-desc'>
-                    {seatWeekdayPrice ? "주중: " + seatWeekdayPrice : ""}
-                  </span>
-                  <span className='seat-info-header-desc'>
-                    {seatWeekendPrice ? "주말 : " + seatWeekendPrice : ""} 
-                  </span> */}
-                  </div>
-                  <div className='seat-info-footer'>
-                    <button className='road-view-button font' onClick={toSectionDetail}>
-                      <img className="road-view-icon" src={roadView} alt="" />
-                      <span>시야 보기</span>
-                    </button>
-                  </div>
-                </div>
-                <button onClick={toTicketing} className='ticket-button font'>
-                  TICKET
-                </button>
-              </div>
-              <div className='home-right'>
-                <img className='park-home-img' src={park_home} useMap="#home-map" />
-              </div>
+              <img className='park-home-img' src={park_home} useMap="#home-map" />
 
               <map name="home-map">
                 <area target="" onClick={selectSection} alt="SKY 자유석 1" title="SKY 자유석 1" coords="8,200,37,201,38,370,13,399,6,392" shape="poly" />
@@ -255,10 +219,8 @@ export default function Seat() {
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className='away-body'>
-              <div className='away-left'>
-                <img className='park-away-img' src={park_away} useMap="#away-map" />
-              </div>
+            <div className={`away-body ${awayTeam}`}>
+              <img className='park-away-img' src={park_away} useMap="#away-map" />
 
               <map name="away-map">
                 <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="1,508,50,507,69,547,17,545,17,527,-1,525" shape="poly" />
@@ -284,44 +246,24 @@ export default function Seat() {
                 <area target="" onClick={selectSection} alt="외야 미니테이블석 4" title="외야 미니테이블석 4" coords="130,225,74,169,83,160,143,218" shape="poly" />
                 <area target="" onClick={selectSection} alt="외야 패밀리석" title="외야 패밀리석" coords="184,160,117,90,132,74,201,144" shape="poly" />
               </map>
-              <div className='away-right'>
-                <button onClick={toTicketing} className='ticket-button font'>
-                  TICKET
-                </button>
-                <div id='seat-away-info'>
-                  <div className='seat-info-header font'>
-                    <span className='seat-info-header-title'>
-                      {showSeatName}
-                    </span>
-                    {/* <span className='seat-info-header-desc'>
-                      {seatWeekdayPrice ? "주중: " + seatWeekdayPrice : ""}
-                    </span>
-                    <span className='seat-info-header-desc'>
-                      {seatWeekendPrice ? "주말 : " + seatWeekendPrice : ""} 
-                    </span> */}
-                  </div>
-                  <div className='seat-info-footer'>
-                    <button className='road-view-button font' onClick={toSectionDetail}>
-                      <img className="road-view-icon" src={roadView} alt="" />
-                      <span>시야 보기</span>
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-
             </div>
           </SwiperSlide>
         </Swiper>
       </div>
 
-
-      {selectSeat &&
         <div className='seat-body'>
-
+          <div className='seat-body-header'>
+            <span className='seat-body-title'>{showSeatName} : {sectionSelect}</span>
+          </div>
+          <div className='seat-body-button-container'>
+            <button className='seat-body-button' onClick={toSectionDetail}>
+              <span>좌석 시야 보기</span>
+            </button>
+            <button className='seat-body-button' onClick={toTicketing}>
+              <span>예매 페이지 이동</span>
+            </button>
+          </div>
         </div>
-      }
     </div>
   )
 }
