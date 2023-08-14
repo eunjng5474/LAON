@@ -1,9 +1,9 @@
 .navigation-container {
   display: flex;
   flex-direction: column;
-  height: 82vh;
+  height: 83.1vh;
   color: #ffffff;
-  padding-top: 8vh;
+  padding-top: 7vh;
 }
 
 .navigation-body {
@@ -14,7 +14,7 @@
 .navigation-route {
   margin-top: 5vh;
   width: 100vw;
-  height: 60vh;
+  height: 55vh;
 }
 
 .navigation-map-img {
@@ -23,10 +23,15 @@
   z-index: -1;
 }
 
+.navigation-ar {
+  display: flex;
+  justify-content: center;
+}
+
 .to-ar-button {
-  position: absolute;
-  right: 5vw;
-  bottom: 28vh;
+  /* position: absolute; */
+  /* right: 5vw;
+  bottom: 28vh; */
   width: 20vw;
   height: 6vh;
   border: none;
@@ -36,6 +41,7 @@
 }
 
 .navigation-text {
-  margin-left: 10vw;
+  display: flex;
+  justify-content: center;
   color: black;
 }
