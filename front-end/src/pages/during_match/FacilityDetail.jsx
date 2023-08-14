@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles/FacilityDetail.css'
+import arrow from '../before_match/img/arrow.png'
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -77,11 +78,11 @@ export default function FacilityDetail() {
   return (
     <div className='facility-detail-container font'>
       <div className='facility-detail-header'>
-        <button className='go-back-button' onClick={goBack}>뒤로가기</button>
-        <img className='facility-detail-img' src={location.state.facilityImg} alt="" />
         <div className='facility-detail-title'>
+          <img className='go-back-arrow' src={arrow} onClick={goBack} alt="" />
           <h3>{location.state.naviGoal}</h3>
         </div>
+        <img className='facility-detail-img' src={location.state.facilityImg} alt="" />
       </div>
 
       <div className='facility-detail-body'>
