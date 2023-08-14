@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/lions/route")
-@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*", methods = {
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true", allowedHeaders = "*", methods = {
         RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.OPTIONS,
         RequestMethod.HEAD })
 @Tag(name = "길찾기", description = "길찾기 API")
