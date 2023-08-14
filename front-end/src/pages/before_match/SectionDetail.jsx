@@ -1582,19 +1582,20 @@ export default function SectionDetail() {
         </div>
       </div>
 
-
-      <TransformWrapper
-        initialScale={3}
-        initialPositionX={-400}
-        initialPositionY={-300}
-        className='map-controller'
-      >
-        <TransformComponent>
-          <div onClick={getCoordinate}>
-            <img src={mapImg} alt="" />
-          </div>
-        </TransformComponent>
-      </TransformWrapper>
+      <div className='transform-container'>
+        <TransformWrapper
+          initialScale={3}
+          initialPositionX={-400}
+          initialPositionY={-300}
+          className='map-controller'
+        >
+          <TransformComponent>
+            <div onClick={getCoordinate}>
+              <img src={mapImg} alt="" />
+            </div>
+          </TransformComponent>
+        </TransformWrapper>
+      </div>
 
     </div>
   )

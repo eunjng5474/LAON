@@ -224,13 +224,31 @@ export default function Facilities() {
       })
   }
 
-  function goNavi() {
-    navigate('/navigation')
+  function selectFacilityNavi(e) {
+    // 편의시설 길찾기 보내는 함수
+    const destination = e.target.id
+    const departure = currentPosition
+    console.log(destination)
+
+    navigate('/navigation', {
+      state: {
+        departure,
+        currentFloor,
+        destination,
+        currentPosition
+      }
+    })
   }
 
-  function goAR() {
-    console.log("Ar")
+  function selectFacilityAr(e){
+    console.log('AR')
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
+    .then((res) => {
+      const naviGoal = res.data.facilityName
+      window.location.href = `/ar/${naviGoal}.html`
+    })
   }
+
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(getPosition)
@@ -261,8 +279,8 @@ export default function Facilities() {
         </div>
 
         <div className='category-select'>
-          <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음 매장</button>
-          <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의 시설</button>
+          <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음매장</button>
+          <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의시설</button>
         </div>
       </div>
 
@@ -294,19 +312,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
+            <div className='store-item-header' id="짝태시대">
               <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대" />
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="짝태시대" src={JJAKTAE} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>짝태시대</span>
+            <div className='store-item-body' id="짝태시대">
+              <div className='store-title' id="짝태시대">
+                <span className='facility-store-title' id="짝태시대">짝태시대</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#건어물</span>
-                <span className='store-tag'>#먹태</span>
+                <span className='store-tag' id="짝태시대">#건어물</span>
+                <span className='store-tag' id="짝태시대">#먹태</span>
               </div>
             </div>
           </div>
@@ -314,19 +332,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={HONG_img} alt="" />
+            <div className='store-item-header' id="리얼키친홍">
+              <img className='store-img' src={HONG_img} alt="" id="리얼키친홍"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="리얼키친홍" src={HONG} alt="" />
               </div>
             </div>
             <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>리얼키친홍</span>
+              <div className='store-title' id="리얼키친홍">
+                <span className='facility-store-title' id="리얼키친홍">리얼키친홍</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#덮밥</span>
-                <span className='store-tag'>#우동</span>
+              <div className='store-itme-tag' id="리얼키친홍">
+                <span className='store-tag' id="리얼키친홍">#덮밥</span>
+                <span className='store-tag' id="리얼키친홍">#우동</span>
               </div>
             </div>
           </div>
@@ -334,19 +352,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={PAPA_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="파파존스피자">
+              <img className='store-img' src={PAPA_img} alt="" id="파파존스피자"/>
+              <div className='store-item-logo' id="파파존스피자">
                 <img className='store-logo-img' id="파파존스피자" src={PAPA} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>파파존스피자</span>
+            <div className='store-item-body' id="파파존스피자">
+              <div className='store-title' id="파파존스피자">
+                <span className='facility-store-title' id="파파존스피자">파파존스피자</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#피자</span>
-                <span className='store-tag'>#페퍼로니</span>
+              <div className='store-itme-tag' id="파파존스피자">
+                <span className='store-tag' id="파파존스피자">#피자</span>
+                <span className='store-tag' id="파파존스피자">#페퍼로니</span>
               </div>
             </div>
           </div>
@@ -354,19 +372,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={CU_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="CU">
+              <img className='store-img' src={CU_img} alt="" id="CU"/>
+              <div className='store-item-logo' id="CU">
                 <img className='store-logo-img' id="CU" src={CU} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>CU</span>
+            <div className='store-item-body' id="CU">
+              <div className='store-title' id="CU">
+                <span className='facility-store-title' id="CU">CU</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#편의점</span>
-                <span className='store-tag'>#얼음물</span>
+              <div className='store-itme-tag' id="CU">
+                <span className='store-tag' id="CU">#편의점</span>
+                <span className='store-tag' id="CU">#얼음물</span>
               </div>
             </div>
           </div>
@@ -374,19 +392,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={HAPPY_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="해피치즈스마일">
+              <img className='store-img' src={HAPPY_img} alt="" id="해피치즈스마일"/>
+              <div className='store-item-logo' id="해피치즈스마일">
                 <img className='store-logo-img' id="해피치즈스마일" src={HAPPY} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>해피치즈스마일</span>
+            <div className='store-item-body' id="해피치즈스마일">
+              <div className='store-title' id="해피치즈스마일">
+                <span className='facility-store-title' id="해피치즈스마일">해피치즈스마일</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#분식</span>
-                <span className='store-tag'>#소프트콘</span>
+              <div className='store-itme-tag' id="해피치즈스마일">
+                <span className='store-tag' id="해피치즈스마일">#분식</span>
+                <span className='store-tag' id="해피치즈스마일">#소프트콘</span>
               </div>
             </div>
           </div>
@@ -394,19 +412,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={TTANG_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="땅땅치킨">
+              <img className='store-img' src={TTANG_img} alt="" id="땅땅치킨"/>
+              <div className='store-item-logo' id="땅땅치킨">
                 <img className='store-logo-img' id="땅땅치킨" src={TTANG} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>땅땅치킨</span>
+            <div className='store-item-body' id="땅땅치킨">
+              <div className='store-title' id="땅땅치킨">
+                <span className='facility-store-title' id="땅땅치킨">땅땅치킨</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#치킨</span>
-                <span className='store-tag'>#햄버거</span>
+              <div className='store-itme-tag' id="땅땅치킨">
+                <span className='store-tag' id="땅땅치킨">#치킨</span>
+                <span className='store-tag' id="땅땅치킨">#햄버거</span>
               </div>
             </div>
           </div>
@@ -414,19 +432,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={YUBU_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="대왕유부초밥">
+              <img className='store-img' src={YUBU_img} alt="" id="대왕유부초밥"/>
+              <div className='store-item-logo' id="대왕유부초밥">
                 <img className='store-logo-img' id="대왕유부초밥" src={YUBU} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>대왕유부초밥</span>
+            <div className='store-item-body' id="대왕유부초밥">
+              <div className='store-title' id="대왕유부초밥">
+                <span className='facility-store-title' id="대왕유부초밥">대왕유부초밥</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#유부초밥</span>
-                <span className='store-tag'>#어묵</span>
+              <div className='store-itme-tag' id="대왕유부초밥">
+                <span className='store-tag' id="대왕유부초밥">#유부초밥</span>
+                <span className='store-tag' id="대왕유부초밥">#어묵</span>
               </div>
             </div>
           </div>
@@ -434,19 +452,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={KKOCHI_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="전설꼬치">
+              <img className='store-img' src={KKOCHI_img} alt="" id="전설꼬치"/>
+              <div className='store-item-logo' id="전설꼬치">
                 <img className='store-logo-img' id="전설꼬치" src={KKOCHI} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>전설꼬치</span>
+            <div className='store-item-body' id="전설꼬치">
+              <div className='store-title' id="전설꼬치">
+                <span className='facility-store-title' id="전설꼬치">전설꼬치</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#꼬치</span>
-                <span className='store-tag'>#야끼도리</span>
+              <div className='store-itme-tag' id="전설꼬치">
+                <span className='store-tag' id="전설꼬치">#꼬치</span>
+                <span className='store-tag' id="전설꼬치">#야끼도리</span>
               </div>
             </div>
           </div>
@@ -454,19 +472,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={BUTTER_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="버터우드">
+              <img className='store-img' src={BUTTER_img} alt="" id="버터우드"/>
+              <div className='store-item-logo' id="버터우드">
                 <img className='store-logo-img' id="버터우드" src={BUTTER} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>버터우드</span>
+            <div className='store-item-body' id="버터우드">
+              <div className='store-title'  id="버터우드">
+                <span className='facility-store-title' id="버터우드">버터우드</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#커피</span>
-                <span className='store-tag'>#베이커리</span>
+              <div className='store-itme-tag'  id="버터우드">
+                <span className='store-tag' id="버터우드">#커피</span>
+                <span className='store-tag' id="버터우드">#베이커리</span>
               </div>
             </div>
           </div>
@@ -474,19 +492,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={ALTON_img} alt="" />
+            <div className='store-item-header'  id="알통닭강정">
+              <img className='store-img' src={ALTON_img} alt="" id="알통닭강정"/>
               <div className='store-item-logo'>
                 <img className='store-logo-img' id="알통닭강정" src={ALTONG} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
+            <div className='store-item-body'  id="알통닭강정">
               <div className='store-title'>
-                <span className='facility-store-title'>알통떡강정</span>
+                <span className='facility-store-title' id="알통닭강정">알통떡강정</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag'>#닭강정</span>
-                <span className='store-tag'>#치킨</span>
+                <span className='store-tag' id="알통닭강정">#닭강정</span>
+                <span className='store-tag' id="알통닭강정">#치킨</span>
               </div>
             </div>
           </div>
@@ -494,19 +512,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={REALPIG_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="리얼피그">
+              <img className='store-img' src={REALPIG_img} alt="" id="리얼피그"/>
+              <div className='store-item-logo' id="리얼피그">
                 <img className='store-logo-img' id="리얼피그" src={REALPIG} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>리얼피그</span>
+            <div className='store-item-body' id="리얼피그">
+              <div className='store-title' id="리얼피그">
+                <span className='facility-store-title' id="리얼피그">리얼피그</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#돼지</span>
-                <span className='store-tag'>#후라이드</span>
+              <div className='store-itme-tag' id="리얼피그">
+                <span className='store-tag' id="리얼피그">#돼지</span>
+                <span className='store-tag' id="리얼피그">#후라이드</span>
               </div>
             </div>
           </div>
@@ -514,19 +532,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={OJIK_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="5직떡볶이">
+              <img className='store-img' src={OJIK_img} alt="" id="5직떡볶이"/>
+              <div className='store-item-logo' id="5직떡볶이">
                 <img className='store-logo-img' id="5직떡볶이" src={OJIK} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>5직떡볶이</span>
+            <div className='store-item-body' id="5직떡볶이">
+              <div className='store-title' id="5직떡볶이">
+                <span className='facility-store-title' id="5직떡볶이">5직떡볶이</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#분식</span>
-                <span className='store-tag'>#5직5재일</span>
+              <div className='store-itme-tag' id="5직떡볶이">
+                <span className='store-tag' id="5직떡볶이">#분식</span>
+                <span className='store-tag' id="5직떡볶이">#5직5재일</span>
               </div>
             </div>
           </div>
@@ -534,19 +552,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={JOKSU_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="족발슈퍼">
+              <img className='store-img' src={JOKSU_img} alt="" id="족발슈퍼"/>
+              <div className='store-item-logo' id="족발슈퍼">
                 <img className='store-logo-img' id="족발슈퍼" src={JOKSU} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>족발슈퍼</span>
+            <div className='store-item-body' id="족발슈퍼">
+              <div className='store-title' id="족발슈퍼">
+                <span className='facility-store-title' id="족발슈퍼">족발슈퍼</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#족발</span>
-                <span className='store-tag'>#냉면</span>
+              <div className='store-itme-tag' id="족발슈퍼">
+                <span className='store-tag' id="족발슈퍼">#족발</span>
+                <span className='store-tag' id="족발슈퍼">#냉면</span>
               </div>
             </div>
           </div>
@@ -554,26 +572,26 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStore}
           >
-            <div className='store-item-header'>
-              <img className='store-img' src={MANDU_img} alt="" />
-              <div className='store-item-logo'>
+            <div className='store-item-header' id="한만두">
+              <img className='store-img' src={MANDU_img} alt="" id="한만두"/>
+              <div className='store-item-logo' id="한만두">
                 <img className='store-logo-img' id="한만두" src={MANDU} alt="" />
               </div>
             </div>
-            <div className='store-item-body'>
-              <div className='store-title'>
-                <span className='facility-store-title'>한만두</span>
+            <div className='store-item-body' id="한만두">
+              <div className='store-title' id="한만두">
+                <span className='facility-store-title' id="한만두">한만두</span>
               </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag'>#한만두</span>
-                <span className='store-tag'>#왕만두</span>
+              <div className='store-itme-tag' id="한만두">
+                <span className='store-tag' id="한만두">#한만두</span>
+                <span className='store-tag' id="한만두">#왕만두</span>
               </div>
             </div>
           </div>
         </div>
 
         <div className={`facility-list ${category === "식음매장" ? "facility-hide" : ""}`}>
-          <div
+        <div
             className='facilities-facility'
             id="여자화장실"
           >
@@ -585,8 +603,8 @@ export default function Facilities() {
                 <span className='facility-title font'>여자 화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font' onClick={goNavi}>길찾기</button>
-                <button className='facility-body-button font' onClick={goAR}>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">길찾기</button>
+                <button className='facility-body-button font' id="여자화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -603,8 +621,8 @@ export default function Facilities() {
                 <span className='facility-title font'>남자 화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">길찾기</button>
+                <button className='facility-body-button font' id="남자화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -620,8 +638,8 @@ export default function Facilities() {
                 <span className='facility-title font'>여자 장애인 화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -637,8 +655,8 @@ export default function Facilities() {
                 <span className='facility-title font'>남자 장애인 화장실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -654,8 +672,8 @@ export default function Facilities() {
                 <span className='facility-title font'>블루샷</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">로드뷰</button>
               </div>
             </div>
           </div>
@@ -671,8 +689,8 @@ export default function Facilities() {
                 <span className='facility-title font'>수유실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -688,8 +706,8 @@ export default function Facilities() {
                 <span className='facility-title font'>흡연실</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">로드뷰</button>
               </div>
             </div>
           </div>
@@ -705,8 +723,8 @@ export default function Facilities() {
                 <span className='facility-title font'>쓰레기통</span>
               </div>
               <div className='facility-body'>
-                <button className='facility-body-button font'>길찾기</button>
-                <button className='facility-body-button font'>로드뷰</button>
+                <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">길찾기</button>
+                <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">로드뷰</button>
               </div>
             </div>
           </div>
