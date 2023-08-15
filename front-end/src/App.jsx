@@ -12,6 +12,8 @@ import Navigation from './pages/during_match/Navigation';
 import NotFound from './pages/not_found/NotFound';
 import { useSelector } from 'react-redux';
 
+import Test from './pages/during_match/Test'
+
 const currentDate = new Date();
 const year = currentDate.getFullYear();
 const month = currentDate.getMonth() + 1;
@@ -224,6 +226,7 @@ function App() {
       <Route path="/facilities" element={ <Facilities/> } />
       <Route path="/facilities/detail" element={ <FacilityDetail/> } />
       <Route path="/navigation" element={ <Navigation/> } />
+      <Route path="/test" element={ <Test/> } />
       <Route path="/*" element={<NotFound/>}/>
     </Routes>
   );
