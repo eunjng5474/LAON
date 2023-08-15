@@ -58,7 +58,7 @@ export default function Facilities() {
   const [floor, setFloor] = useState(map3F)
   const [category, setCategory] = useState('식음매장')
   const [focusedBody, setFocusedBody] = useState(false)
-  const [currentFloor, setCurrentFloor] = useState('3F')
+  const [currentFloor, setCurrentFloor] = useState('5F')
   const navigate = useNavigate()
 
   function selectFloor(e) {
@@ -90,7 +90,7 @@ export default function Facilities() {
     const lng = position.coords.longitude
     const alt = position.coords.altitude
     // setPosition(lat, lng)
-    setCurrentPosition('1-8')
+    setCurrentPosition('U-13')
     return alt
   }
 

@@ -102,10 +102,15 @@ export default function Match() {
       console.log(res.data)
       if(res.data){
         setPrevPx(px)
-        // 값이 자동으로 안 바뀐다,,,,,,
-        setT((-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"])
-        setPx(res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5)
-        setPz(res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5)
+        console.log('data 받아옴')
+        
+        const newT = (-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"]
+        const newPx = res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5
+        const newPz = res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5
+
+        setT(newT)
+        setPx(newPx)
+        setPz(newPz)
         setBallSpeed(res.data.speed);
         setBallStuff(res.data.stuff);
       } else {
@@ -129,11 +134,11 @@ export default function Match() {
   useEffect(() => {
 
     if (gameStatus === 'PLAY'){
+      getStrikeZone()
       const getStzone = setInterval(getStrikeZone, 5000)
-      setTimeout(() => {
-
-        const getDrawBall = setInterval(drawBall, 5000)
-      }, 100)
+      // setTimeout(() => {
+      //   const getDrawBall = setInterval(drawBall, 5000)
+      // }, 100)
     }
 
 
@@ -191,8 +196,8 @@ export default function Match() {
     
 
     drawZone();
-    // drawBall();
-  }, [])
+    drawBall();
+  }, [t, px, pz])
 
   return (
     <div className='match-container font'>
