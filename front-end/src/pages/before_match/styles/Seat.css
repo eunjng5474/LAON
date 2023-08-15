@@ -202,12 +202,12 @@
   position: absolute;
   bottom: 9.9vh;
   z-index: 100;
-  background-color: #ffffff;
+  background-color: #f0f0f0;
   border-radius: 40px 40px 0px 0px;
 }
 
 
-.seat-body-header {
+.seat-body-header { 
   display: flex;
   justify-content: flex-start;
   /* border: solid 1px red; */
@@ -216,7 +216,8 @@
 }
 
 .seat-body-title {
-  font-size: 20px;
+  margin-top: 10px;
+  font-size: 22px;
   color: #B39249;
 }
 
@@ -237,6 +238,8 @@
   background-color: #074CA1;
   color: #ffffff;
   border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .seat-title {

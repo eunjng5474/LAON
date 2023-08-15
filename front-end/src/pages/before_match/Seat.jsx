@@ -253,7 +253,7 @@ export default function Seat() {
 
         <div className='seat-body'>
           <div className='seat-body-header'>
-            <span className='seat-body-title'>{showSeatName} : {sectionSelect}</span>
+            <span className='seat-body-title'>{showSeatName ? showSeatName + " : " : "블럭을 선택해주세요"} {sectionSelect}</span>
           </div>
           <div className='seat-body-button-container'>
             <button className='seat-body-button' onClick={toSectionDetail}>

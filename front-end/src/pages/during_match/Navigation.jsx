@@ -5,8 +5,9 @@ import { useSelector } from 'react-redux';
 import './styles/Navigation.css';
 import navigationMap from './img/navigation.png';
 // import EntireSectionMapImg from './img/sectionMap.png';
-import map2F from './img/coordinate_2F.png';
-import map3F from './img/coordinate_3F.png';
+import pointMap from './img/point.png'
+import map2F from './img/map2F.png'
+import map3F from './img/map3F.png'
 import map5F from './img/coordinate_5F.png';
 import axios from 'axios';
 
@@ -25,13 +26,11 @@ export default function Navigation() {
 
   const [showNextPoints, setshowNextPoints] = useState(false)
   const [noRoute, setNoRoute] = useState(false)
+  const [destFloor, setDestFloor] = useState('');
 
   let i = 1;
   
   function startDraw(list) {
-    // let currentFloor = list[0].pointId[0]
-    // console.log(currentFloor)
-    // setFloor(`map${currentFloor}F`)
     let waypoints = [];
 
     if (!pointDtoList) {
@@ -42,9 +41,7 @@ export default function Navigation() {
     canvas.height = "462"
     const ctx = canvas.getContext('2d')
 
-    // let i=1;
     for(i; i < list.length; i++){
-    // for(let i=1; i<pointDtoList.length; i++){
       let pt0 = list[i-1];
       let pt1 = list[i];
       let dx = pt1.x - pt0.x;
@@ -69,9 +66,9 @@ export default function Navigation() {
       if (t < waypoints.length-1) {
         requestAnimationFrame(draw);
       }
-      else if (t === waypoints.length - 1 && nextPointDtoList) {
-        setshowNextPoints(true)
-      }
+      // else if (t === waypoints.length - 1 && nextPointDtoList) {
+      //   setshowNextPoints(true)
+      // }
       ctx.beginPath()
       ctx.moveTo(waypoints[t-1].x, waypoints[t-1].y)
         ctx.lineTo(waypoints[t].x, waypoints[t].y)
@@ -93,11 +90,11 @@ export default function Navigation() {
 
   const naviGoal = destination;
 
-  // function getCoordinate(e) {
-  //   console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
-  //   const x = e.nativeEvent.offsetX
-  //   const y = e.nativeEvent.offsetY
-  // }
+  function getCoordinate(e) {
+    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
+    const x = e.nativeEvent.offsetX
+    const y = e.nativeEvent.offsetY
+  }
 
   function goAR() {
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
@@ -107,8 +104,9 @@ export default function Navigation() {
     })
   }
 
-  // const [floorIdx, setFloorIdx] = useState(0);
-  // 함수에 인자로 넘겨주는 식으로 하기
+  function goNextFloor() {
+    setshowNextPoints(true)
+  }
 
   useEffect(() => {
     console.log(currentFloor)
@@ -123,14 +121,13 @@ export default function Navigation() {
     axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
       console.log(res)
+      const idx = res.data.pointDtoList.length - 1
+      setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
       if(res.data.pointDtoList.length !== 1) {
         let flag = true
         for (let i = 0; i < res.data.pointDtoList.length; i++) {
           if (res.data.pointDtoList[i].type === 'S') {
             flag = false
-            // if(res.data.pointDtoList[i-1].type === 'S' && res.data.pointDtoList[i+1].type === 'S'){
-            //   continue
-            // }
             setPointDtoList(pointDtoList => {
               pointDtoList = res.data.pointDtoList.slice(0, i+1)
               console.log('현재 리스트')
@@ -139,7 +136,7 @@ export default function Navigation() {
               return pointDtoList
             })
             setNextPointDtoList(nextPointDtoList => {
-              // 이 부분 추후 예외처리 고려해서 수정하기
+              // S - S - (이동) - S인 경우 있으면 수정해야 함
               if(res.data.pointDtoList[i+2].type === 'S'){
                 nextPointDtoList = res.data.pointDtoList.slice(i+2, res.data.pointDtoList.length)
               } else {
@@ -156,9 +153,6 @@ export default function Navigation() {
           if (flag && i === res.data.pointDtoList.length - 1) {
             setPointDtoList(pointDtoList => {
               pointDtoList = res.data.pointDtoList
-              // console.log('현재 리스트')
-              // console.log(pointDtoList)
-              // startDraw(pointDtoList)
               return pointDtoList
             })
           }
@@ -168,10 +162,11 @@ export default function Navigation() {
         setNoRoute(true)
       }
     })
-
   }, [])
 
   useEffect(() => {
+    
+    // setDestFloor(parseInt(nextPointDtoList[0].pointId/100))
 
     startDraw(pointDtoList)
     // setshowNextPoints(true)
@@ -180,12 +175,12 @@ export default function Navigation() {
   useEffect(() => {
     if(showNextPoints){
       setTimeout(() => {
-        currentFloor = parseInt(nextPointDtoList[0].pointId/100)
-        if(currentFloor === 2){
+        // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
+        if(destFloor === 2){
           setFloor(map2F)
-        } else if (currentFloor === 3){
+        } else if (destFloor === 3){
           setFloor(map3F)
-        } else if (currentFloor === 5){
+        } else if (destFloor === 5){
           setFloor(map5F)
         }
         setPointDtoList(nextPointDtoList)
@@ -195,12 +190,13 @@ export default function Navigation() {
   }, [nextPointDtoList, showNextPoints])
 
 
+  // currentFloor === destFloor면 이동 버튼 안 보이게 바꾸기
   return (
     <div className='navigation-container font'>
       <div className='navigation-text font'>
         {noRoute ? <h3>출발지와 목적지가 인접해 있습니다</h3> : 
           <div>
-            <h2>목적지: {destination}</h2>
+            <h2>목적지: {destination.split('(')[0]} ({destFloor}층)</h2>
           </div>
         }
       </div>
@@ -208,11 +204,12 @@ export default function Navigation() {
       <div className='navigation-body'>
         <div className='navigation-route'>
           <img className='navigation-map-img' src={floor} alt=''/>
-          <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef}></canvas>
+          <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef} onClick={getCoordinate}></canvas>
         </div>
 
-        <div className='navigation-ar'>
+        <div className='navigation-button'>
           <button className='to-ar-button' onClick={goAR}>AR</button>
+          <button className='to-next-floor' onClick={goNextFloor}>{destFloor}층 이동</button>
         </div>
         </div>
     </div>
