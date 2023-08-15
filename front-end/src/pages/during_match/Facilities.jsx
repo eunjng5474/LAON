@@ -89,8 +89,8 @@ export default function Facilities() {
     const lat = position.coords.latitude
     const lng = position.coords.longitude
     const alt = position.coords.altitude
-    setPosition(lat, lng)
-    // setCurrentPosition('U-3')
+    // setPosition(lat, lng)
+    setCurrentPosition('1-8')
     return alt
   }
 
@@ -98,6 +98,21 @@ export default function Facilities() {
     if (currentFloor === '2F') {
       if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('Food Street')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
+        setCurrentPosition('RF-3')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
+        setCurrentPosition('RF-7')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
+        setCurrentPosition('RF-10')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813 <= lng && lng <= 128.68209186069376) {
+        setCurrentPosition('LF-7')
+        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
+      } else if (35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408 <= lng && lng <= 128.6818359228813) {
+        setCurrentPosition('LF-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '3F') {
@@ -127,21 +142,6 @@ export default function Facilities() {
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84009687202578 <= lat && lat <= 35.84065138467286 && 128.68164989674025 <= lng && lng <= 128.68232307201419) {
         setCurrentPosition('1-8')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
-        setCurrentPosition('RF-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
-        setCurrentPosition('RF-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
-        setCurrentPosition('RF-10')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813 <= lng && lng <= 128.68209186069376) {
-        setCurrentPosition('LF-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
-      } else if (35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408 <= lng && lng <= 128.6818359228813) {
-        setCurrentPosition('LF-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
         setCurrentPosition('3-1')

@@ -29,6 +29,7 @@ export default function Navigation() {
   const [destFloor, setDestFloor] = useState('');
 
   let i = 1;
+  // let flag = true;
   
   function startDraw(list) {
     let waypoints = [];
@@ -123,6 +124,7 @@ export default function Navigation() {
       console.log(res)
       const idx = res.data.pointDtoList.length - 1
       setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
+
       if(res.data.pointDtoList.length !== 1) {
         let flag = true
         for (let i = 0; i < res.data.pointDtoList.length; i++) {
@@ -209,7 +211,12 @@ export default function Navigation() {
 
         <div className='navigation-button'>
           <button className='to-ar-button' onClick={goAR}>AR</button>
+          { currentFloor !== destFloor ?
+          // <p>층 이동</p>
           <button className='to-next-floor' onClick={goNextFloor}>{destFloor}층 이동</button>
+            :
+          <p></p>
+        }
         </div>
         </div>
     </div>
