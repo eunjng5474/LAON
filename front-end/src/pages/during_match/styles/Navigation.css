@@ -1,9 +1,9 @@
 .navigation-container {
   display: flex;
   flex-direction: column;
-  height: 83.1vh;
+  height: 84.1vh;
   color: #ffffff;
-  padding-top: 7vh;
+  padding-top: 6vh;
 }
 
 .navigation-body {
@@ -23,19 +23,33 @@
   z-index: -1;
 }
 
-.navigation-ar {
+.navigation-button {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .to-ar-button {
   /* position: absolute; */
   /* right: 5vw;
   bottom: 28vh; */
-  width: 20vw;
+  font-size: 18px;
+  width: 27vw;
   height: 6vh;
   border: none;
-  border-radius: 5vw;
+  border-radius: 20px;
+  background-color: #074CA1;
+  color: #ffffff;
+}
+
+.to-next-floor {
+  /* position: absolute; */
+  /* right: 5vw;
+  bottom: 28vh; */
+  font-size: 18px;
+  width: 27vw;
+  height: 6vh;
+  border: none;
+  border-radius: 20px;
   background-color: #074CA1;
   color: #ffffff;
 }
@@ -44,4 +58,5 @@
   display: flex;
   justify-content: center;
   color: black;
+  /* margin-bottom: 1vh; */
 }

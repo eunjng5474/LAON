@@ -90,7 +90,7 @@ export default function Facilities() {
     const lng = position.coords.longitude
     const alt = position.coords.altitude
     setPosition(lat, lng)
-    // setCurrentPosition('U-26')
+    // setCurrentPosition('U-3')
     return alt
   }
 
@@ -224,6 +224,32 @@ export default function Facilities() {
       })
   }
 
+  function selectStoreDetail(e){
+    // 식음매장 -> 매장 디테일,navi,ar 
+    const destination = e.target.id
+    const departure = currentPosition
+
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
+    .then((res) => {
+      const naviGoal = res.data.facilityName // KELLLY(1-7)
+
+      axios.get('https://laon.info/api/lions/facility/all')
+      .then((res) => {
+        const facilityId =res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
+
+        navigate('/facilities/detail/', {
+          state: {
+            naviGoal,
+            departure,
+            destination,
+            currentFloor,
+            facilityId
+          }
+        })
+      })
+    })
+  }
+
   function selectFacilityNavi(e) {
     // 편의시설 길찾기 보내는 함수
     const destination = e.target.id
@@ -233,13 +259,13 @@ export default function Facilities() {
       state: {
         departure,
         currentFloor,
-        destination,
-        currentPosition
+        destination
       }
     })
   }
 
   function selectFacilityAr(e){
+    // 편의시설 AR 보내는 함수
     console.log('AR')
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
     .then((res) => {
@@ -289,7 +315,7 @@ export default function Facilities() {
           <div
             className='facilities-store'
             id="KELLY"
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="KELLY" >
               <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
@@ -309,7 +335,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="짝태시대">
               <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대" />
@@ -329,7 +355,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="리얼키친홍">
               <img className='store-img' src={HONG_img} alt="" id="리얼키친홍"/>
@@ -349,7 +375,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="파파존스피자">
               <img className='store-img' src={PAPA_img} alt="" id="파파존스피자"/>
@@ -369,7 +395,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="CU">
               <img className='store-img' src={CU_img} alt="" id="CU"/>
@@ -389,7 +415,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="해피치즈스마일">
               <img className='store-img' src={HAPPY_img} alt="" id="해피치즈스마일"/>
@@ -409,7 +435,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="땅땅치킨">
               <img className='store-img' src={TTANG_img} alt="" id="땅땅치킨"/>
@@ -429,7 +455,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="대왕유부초밥">
               <img className='store-img' src={YUBU_img} alt="" id="대왕유부초밥"/>
@@ -449,7 +475,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="전설꼬치">
               <img className='store-img' src={KKOCHI_img} alt="" id="전설꼬치"/>
@@ -469,7 +495,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="버터우드">
               <img className='store-img' src={BUTTER_img} alt="" id="버터우드"/>
@@ -489,7 +515,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header'  id="알통닭강정">
               <img className='store-img' src={ALTON_img} alt="" id="알통닭강정"/>
@@ -509,7 +535,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="리얼피그">
               <img className='store-img' src={REALPIG_img} alt="" id="리얼피그"/>
@@ -529,7 +555,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="5직떡볶이">
               <img className='store-img' src={OJIK_img} alt="" id="5직떡볶이"/>
@@ -549,7 +575,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="족발슈퍼">
               <img className='store-img' src={JOKSU_img} alt="" id="족발슈퍼"/>
@@ -569,7 +595,7 @@ export default function Facilities() {
           </div>
           <div
             className='facilities-store'
-            onClick={selectStore}
+            onClick={selectStoreDetail}
           >
             <div className='store-item-header' id="한만두">
               <img className='store-img' src={MANDU_img} alt="" id="한만두"/>
