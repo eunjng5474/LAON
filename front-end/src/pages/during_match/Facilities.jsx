@@ -283,8 +283,8 @@ export default function Facilities() {
       <div className='facilities-header'>
 
         <div className='floor-select-button'>
-          <h2>현재 위치 : {currentPosition}</h2>
-          <div>
+          <h2>현재 위치 : {currentPosition} 구역</h2>
+          <div className='floor-button-container'>
             <button>2F</button>
             <button>3F</button>
             <button>5F</button>
