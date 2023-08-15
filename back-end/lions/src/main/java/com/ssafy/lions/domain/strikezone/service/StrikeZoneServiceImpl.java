@@ -37,14 +37,13 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         if (jsonObject.size() > 0) {
             try {
                 jsonObject = (JSONObject)jsonObject.get("textRelayData");
-                JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
-                jsonObject = (JSONObject)jsonArray.get(0);
-                jsonArray = (JSONArray)jsonObject.get("textOptions");
+                JSONArray textRelays = (JSONArray)jsonObject.get("textRelays");
+                jsonObject = (JSONObject)textRelays.get(0);
+                JSONArray jsonArray = (JSONArray)jsonObject.get("textOptions");
                 JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
 
                 if (textOptions.get("type").equals("8")) {
-                    jsonArray = (JSONArray)jsonObject.get("textRelays");
-                    jsonObject = (JSONObject)jsonArray.get(1);
+                    jsonObject = (JSONObject)textRelays.get(1);
                     jsonArray = (JSONArray)jsonObject.get("textOptions");
                     textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
                 }
@@ -72,7 +71,3 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         return strikeZoneResultDto;
     }
 }
-
-// 1 : 일반 투구
-// 8 : 선수 입장
-// 13 : 출루 or 아웃
