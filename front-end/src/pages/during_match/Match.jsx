@@ -42,7 +42,10 @@ export default function Match() {
   const [ballStuff, setBallStuff] = useState('');
 
   const [prevPx, setPrevPx] = useState('')
-  
+  const [prevPz, setPrevPz] = useState('')
+
+  const [ballPositions, setBallPositions] = useState([]);
+
   // const nowBallcount = 1;
   // const pitchResult = 'S';
 
@@ -97,32 +100,44 @@ export default function Match() {
 
 
   function getStrikeZone(e) {
-    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
+    axios.get(`https://laon.info/api/lions/strike_zone/20230815/${awayTeamName}/${inning[0]}`)
     .then((res) => {
       console.log(res.data)
       if(res.data){
         setPrevPx(px)
-        console.log('data 받아옴')
-        
+        setPrevPz(pz)
+
         const newT = (-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"]
         const newPx = res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5
         const newPz = res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5
 
-        setT(newT)
-        setPx(newPx)
-        setPz(newPz)
-        setBallSpeed(res.data.speed);
-        setBallStuff(res.data.stuff);
-      } else {
-        setT('');
-        setPx('');
-        setPz('');
-        setBallSpeed('');
-        setBallStuff('');
-      }
+        if(prevPx !== px && prevPz !== pz){
+
+          setT(newT)
+          setPx(newPx)
+          setPz(newPz)
+          setBallSpeed(res.data.speed);
+          setBallStuff(res.data.stuff);
+          setBallPositions([...ballPositions, { px: newPx, pz: newPz }])
+        }
+      } 
+      // else {
+      //   setT('');
+      //   setPx('');
+      //   setPz('');
+      //   setBallSpeed('');
+      //   setBallStuff('');
+      // }
     })
   }
 
+  if (gameStatus === 'PLAY'){
+    // getStrikeZone()
+    const getStzone = setInterval(getStrikeZone, 5000)
+    // setTimeout(() => {
+    //   const getDrawBall = setInterval(drawBall, 5000)
+    // }, 100)
+  } 
 
   // const strikeCanvas = stZoneRef.current;
   // strikeCanvas.width = 110;
@@ -130,31 +145,13 @@ export default function Match() {
   // const stZoneBallCtx = strikeCanvas.getContext("2d");
 
 
-
   useEffect(() => {
-
-    if (gameStatus === 'PLAY'){
-      getStrikeZone()
-      const getStzone = setInterval(getStrikeZone, 5000)
-      // setTimeout(() => {
-      //   const getDrawBall = setInterval(drawBall, 5000)
-      // }, 100)
-    }
-
-
-
-    const strikeCanvas = stZoneRef.current;
-    strikeCanvas.width = 110;
-    strikeCanvas.height = 130;
-    const stZoneBallCtx = strikeCanvas.getContext("2d");
-
-
     const strikeRectCanvas = stZoneRectRef.current;
     strikeRectCanvas.width = 110;
     strikeRectCanvas.height = 130;
     const stZoneRectCtx = strikeRectCanvas.getContext("2d");
     // console.log(px, pz);
-    
+
     function drawZone() {
       stZoneRectCtx.beginPath();
       stZoneRectCtx.strokeStyle = "white";
@@ -172,19 +169,48 @@ export default function Match() {
       stZoneRectCtx.fill();
     }
 
+    drawZone();
+
+   
+
+     
+  },[])
+
+  useEffect(() => {
+
+
+
+
     
   // px, pz 변경될 때만 그리도록? 
   function drawBall() {
+    const strikeCanvas = stZoneRef.current;
+    strikeCanvas.width = 110;
+    strikeCanvas.height = 130;
+    const stZoneBallCtx = strikeCanvas.getContext("2d");
+
     console.log(ballStuff, ballSpeed, px, pz)
+    // if(!px && !pz){
+    //   return
+    // }
     // if(prevPx !== px){
     //   stZoneBallCtx.clearRect(0, 0, strikeRectCanvas.width, strikeRectCanvas.height)
     // }
+    ballPositions.forEach((position) => {
+      stZoneBallCtx.beginPath();
+      stZoneBallCtx.moveTo(60-position.px*25, 155-position.pz*25);
+      stZoneBallCtx.arc(60-position.px*25, 155-position.pz*25, 8, 0, 2 * Math.PI);
+      stZoneBallCtx.stroke();
+      stZoneBallCtx.fillStyle = '#7DB249';
+      stZoneBallCtx.fill();
+      
+    })
+    
     stZoneBallCtx.beginPath();
-    // 4
-    stZoneBallCtx.moveTo(60-px*25, 155-pz*15);
-    stZoneBallCtx.arc(60-px*25, 155-pz*15, 8, 0, 2 * Math.PI);
-
+    stZoneBallCtx.moveTo(60 - px * 25, 155 - pz * 25);
+    stZoneBallCtx.arc(60-px*25, 155-pz*25, 8, 0, 2 * Math.PI);
     stZoneBallCtx.stroke();
+    // 4
     stZoneBallCtx.fillStyle = '#7DB249';
     // if(pitchResult === 'S'){
     //   stZoneBallCtx.fillStyle = '#FFCD4A';
@@ -192,10 +218,10 @@ export default function Match() {
     //   stZoneBallCtx.fillStyle = '#7DB249';
     // }
     stZoneBallCtx.fill();
-  }
-    
 
-    drawZone();
+  }
+
+
     drawBall();
   }, [t, px, pz])
 
