@@ -19,20 +19,19 @@ function Landing() {
 
   const gameStatus = useSelector((state) => state.gameStatus)
 
-  // if (gameStatus === 'PLAY') {
-  //   setTimeout(() => {
-  //     navigate('/match')
-  //   }, 3000)
-  // } else {
-  //   setTimeout(() => {
-  //     navigate('/seat')
-  //   }, 3000)
-  // }
+  if (gameStatus === 'PLAY') {
+    setTimeout(() => {
+      navigate('/match')
+    }, 3000)
+  } else {
+    setTimeout(() => {
+      navigate('/seat')
+    }, 3000)
+  }
   
     return (
       <div className='landing-container font'>
-        <h1 className='landing-title'>당신의 직관을 <br /> 언제나 즐겁게</h1>
-        <img src={stadium} alt="" />
+        <h1>랜딩 페이지 입니다.</h1>
       </div>
     )
 }
