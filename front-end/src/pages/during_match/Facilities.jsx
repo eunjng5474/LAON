@@ -517,19 +517,19 @@ export default function Facilities() {
             className='facilities-store'
             onClick={selectStoreDetail}
           >
-            <div className='store-item-header'  id="알통닭강정">
-              <img className='store-img' src={ALTON_img} alt="" id="알통닭강정"/>
+            <div className='store-item-header'  id="알통떡강정">
+              <img className='store-img' src={ALTON_img} alt="" id="알통떡강정"/>
               <div className='store-item-logo'>
-                <img className='store-logo-img' id="알통닭강정" src={ALTONG} alt="" />
+                <img className='store-logo-img' id="알통떡강정" src={ALTONG} alt="" />
               </div>
             </div>
-            <div className='store-item-body'  id="알통닭강정">
+            <div className='store-item-body'  id="알통떡강정">
               <div className='store-title'>
-                <span className='facility-store-title' id="알통닭강정">알통떡강정</span>
+                <span className='facility-store-title' id="알통떡강정">알통떡강정</span>
               </div>
               <div className='store-itme-tag'>
-                <span className='store-tag' id="알통닭강정">#닭강정</span>
-                <span className='store-tag' id="알통닭강정">#치킨</span>
+                <span className='store-tag' id="알통떡강정">#닭강정</span>
+                <span className='store-tag' id="알통떡강정">#치킨</span>
               </div>
             </div>
           </div>
