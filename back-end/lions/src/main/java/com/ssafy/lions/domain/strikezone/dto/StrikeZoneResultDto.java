@@ -14,6 +14,7 @@ public class StrikeZoneResultDto {
     @Schema(description = "투수의 투구 구종")
     private String stuff;
 
+    private String crossPlateX;
     private String crossPlateY;
     private String vy0;
     private String vz0;
