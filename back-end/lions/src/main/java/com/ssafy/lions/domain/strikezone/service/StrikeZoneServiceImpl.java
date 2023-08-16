@@ -33,20 +33,28 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         jsonObject = (JSONObject)jsonObject.get("result");
 
         StrikeZoneResultDto strikeZoneResultDto = new StrikeZoneResultDto();
+        int i = 0;
+        int j;
 
         if (jsonObject.size() > 0) {
             try {
                 jsonObject = (JSONObject)jsonObject.get("textRelayData");
-                JSONArray jsonArray = (JSONArray)jsonObject.get("textRelays");
-                jsonObject = (JSONObject)jsonArray.get(0);
-                jsonArray = (JSONArray)jsonObject.get("textOptions");
+                JSONArray textRelays = (JSONArray)jsonObject.get("textRelays");
+                jsonObject = (JSONObject)textRelays.get(i);
+                JSONArray jsonArray = (JSONArray)jsonObject.get("textOptions");
                 JSONObject textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 1);
+                j = jsonArray.size() - 1;
 
-                if (textOptions.get("type").equals("8")) {
-                    jsonArray = (JSONArray)jsonObject.get("textRelays");
-                    jsonObject = (JSONObject)jsonArray.get(1);
-                    jsonArray = (JSONArray)jsonObject.get("textOptions");
-                    textOptions = (JSONObject)jsonArray.get(jsonArray.size() - 2);
+                while ((Long)textOptions.get("type") != 1) {
+                    j--;
+
+                    if (j < 0) {
+                        jsonObject = (JSONObject)textRelays.get(++i);
+                        jsonArray = (JSONArray)jsonObject.get("textOptions");
+                        j = jsonArray.size() - 1;
+                    }
+
+                    textOptions = (JSONObject)jsonArray.get(j);
                 }
 
                 jsonArray = (JSONArray)jsonObject.get("ptsOptions");
@@ -65,6 +73,7 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
                 strikeZoneResultDto.setY0(ptsOptions.get("y0").toString());
                 strikeZoneResultDto.setX0(ptsOptions.get("x0").toString());
             } catch (Exception e) {
+                e.printStackTrace();
                 return null;
             }
         }
@@ -72,7 +81,3 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
         return strikeZoneResultDto;
     }
 }
-
-// 1 : 일반 투구
-// 8 : 선수 입장
-// 13 : 출루 or 아웃
