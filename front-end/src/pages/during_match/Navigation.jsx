@@ -8,7 +8,7 @@ import navigationMap from './img/navigation.png';
 import pointMap from './img/point.png'
 import map2F from './img/map2F.png'
 import map3F from './img/map3F.png'
-import map5F from './img/coordinate_5F.png';
+import map5F from './img/map5F.png'
 import axios from 'axios';
 
 export default function Navigation() {
@@ -28,12 +28,13 @@ export default function Navigation() {
   const [noRoute, setNoRoute] = useState(false)
   const [destFloor, setDestFloor] = useState('');
 
-  let i = 1;
+  let k = 1;
+  // let flag = true;
   
   function startDraw(list) {
     let waypoints = [];
 
-    if (!pointDtoList) {
+    if (!list) {
       return
     }
     const canvas = document.getElementById('navi-canvas')
@@ -41,11 +42,15 @@ export default function Navigation() {
     canvas.height = "462"
     const ctx = canvas.getContext('2d')
 
-    for(i; i < list.length; i++){
-      let pt0 = list[i-1];
-      let pt1 = list[i];
+    for(k; k < list.length; k++){
+      let pt0 = list[k-1];
+      let pt1 = list[k];
       let dx = pt1.x - pt0.x;
       let dy = pt1.y - pt0.y;
+
+      if(dx === 0 && dy === 0){
+        continue;
+      }
 
       // 10 숫자 늘리면 속도 느려짐
       for(let j=0; j<10; j++){
@@ -56,7 +61,12 @@ export default function Navigation() {
     }
     
     let t=1;
-    draw();
+    console.log(waypoints.length)
+    if(waypoints.length !== 0){
+      draw();
+    } else {
+      setNoRoute(true);
+    }
 
     // ctx.beginPath()
     // ctx.moveTo(waypoints[0].x, waypoints[0].y)
@@ -71,12 +81,25 @@ export default function Navigation() {
       // }
       ctx.beginPath()
       ctx.moveTo(waypoints[t-1].x, waypoints[t-1].y)
-        ctx.lineTo(waypoints[t].x, waypoints[t].y)
-        ctx.lineWidth = '10';
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = '#074CA1';
-        ctx.stroke()
-        t++;
+      ctx.lineTo(waypoints[t].x, waypoints[t].y)
+      
+      if(t === waypoints.length - 1){
+        let radians = Math.atan((waypoints[t].y - waypoints[t-1].y)/(waypoints[t].x - waypoints[t-1].x))
+        ctx.translate(waypoints[t].x, waypoints[t].y)
+        ctx.rotate(radians + ((waypoints[t].x >= waypoints[t-1].x)?90:-90)*Math.PI/180)
+        console.log(waypoints[t].x, waypoints[t].y)
+        
+        ctx.moveTo(0, 0)
+        ctx.lineTo(-10, 10);
+        ctx.moveTo(0, 0)
+        ctx.lineTo(10, 10);
+      }
+
+      ctx.lineWidth = '10';
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = 'rgb(0, 176, 255)';
+      ctx.stroke()
+      t++;
     }
 
     // draw()
@@ -123,6 +146,7 @@ export default function Navigation() {
       console.log(res)
       const idx = res.data.pointDtoList.length - 1
       setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
+
       if(res.data.pointDtoList.length !== 1) {
         let flag = true
         for (let i = 0; i < res.data.pointDtoList.length; i++) {
@@ -164,8 +188,7 @@ export default function Navigation() {
     })
   }, [])
 
-  useEffect(() => {
-    
+  useEffect(() => {    
     // setDestFloor(parseInt(nextPointDtoList[0].pointId/100))
 
     startDraw(pointDtoList)
@@ -187,14 +210,14 @@ export default function Navigation() {
         startDraw(nextPointDtoList)
       }, 500)
     }
-  }, [nextPointDtoList, showNextPoints])
+  }, [showNextPoints])
 
 
   // currentFloor === destFloor면 이동 버튼 안 보이게 바꾸기
   return (
     <div className='navigation-container font'>
       <div className='navigation-text font'>
-        {noRoute ? <h3>출발지와 목적지가 인접해 있습니다</h3> : 
+        {noRoute ? <h2>출발지와 목적지가 인접해 있습니다</h2> : 
           <div>
             <h2>목적지: {destination.split('(')[0]} ({destFloor}층)</h2>
           </div>
@@ -207,10 +230,16 @@ export default function Navigation() {
           <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef} onClick={getCoordinate}></canvas>
         </div>
 
+        { currentFloor !== destFloor + 'F' ?
         <div className='navigation-button'>
           <button className='to-ar-button' onClick={goAR}>AR</button>
           <button className='to-next-floor' onClick={goNextFloor}>{destFloor}층 이동</button>
         </div>
+        :
+        <div className='navigation-button'>
+          <button className='to-ar-button' onClick={goAR}>AR</button>
+        </div>
+      }
         </div>
     </div>
   )
