@@ -25,7 +25,6 @@ export default function Navigation() {
   let currentFloor = location.state.currentFloor
 
   const naviCanvasRef = useRef(null);
-  const textRef = useRef(null);
 
   const [floor, setFloor] = useState(navigationMap)
   const [pointDtoList, setPointDtoList] = useState()
@@ -37,6 +36,8 @@ export default function Navigation() {
 
   const [startX, setStartX] = useState(null);
   const [startY, setStartY] = useState(null);
+
+  const [dest, setDest] = useState(null);
 
   // const style = { left: "100px", color="#FFDF43", size="80"}
 
@@ -59,22 +60,28 @@ export default function Navigation() {
     canvas.height = "462"
     const ctx = canvas.getContext('2d')
 
-    const textCanvas = document.getElementById('text-canvas')
-    textCanvas.width = "412"
-    textCanvas.height = "462"
-    const textCtx = textCanvas.getContext('2d')
     // const image = document.getElementById("source")
 
-
-    if(start){
-      imgElem.addEventListener("load", (e) => {
-        ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-        ctx.font="20px bold"
-        ctx.fillStyle="black"
-        ctx.textAlign = "center"
-        ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
-      })
-    }
+    // //// 시작점 마커 그리기
+    // if(start && waypoints.length > 10){
+    //   imgElem.addEventListener("load", (e) => {
+    //     ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
+    //     ctx.font="20px bold"
+    //     ctx.fillStyle="black"
+    //     ctx.textAlign = "center"
+    //     ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
+    //   })
+    // }
+    // if (waypoints.length === 10) {
+    //   console.log('짧음')
+    //   imgElem.addEventListener("load", (e) => {
+    //     ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
+    //     ctx.font="20px bold"
+    //     ctx.fillStyle="black"
+    //     ctx.textAlign = "center"
+    //     ctx.fillText(dest, waypoints[0].x, waypoints[0].y-30)
+    //   })
+    // }
 
     
     for(k; k < list.length; k++){
@@ -96,8 +103,8 @@ export default function Navigation() {
     }
     
     let t=1;
-    console.log(waypoints.length)
-    if(waypoints.length !== 0){
+    console.log('len: ', waypoints.length)
+    if(waypoints.length >= 10){
       draw();
     } else {
       setNoRoute(true);
@@ -114,6 +121,26 @@ export default function Navigation() {
       // else if (t === waypoints.length - 1 && nextPointDtoList) {
       //   setshowNextPoints(true)
       // }
+
+      // if(waypoints.length === 10){
+      //   return;
+      // }
+
+      //// 시작점 마커 그리기
+    if(start && waypoints.length > 10){
+      imgElem.addEventListener("load", (e) => {
+        if(departure.includes("Food")){
+          ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 100, 60)
+        } else {
+          ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
+        }
+        ctx.font="18px bold"
+        ctx.fillStyle="black"
+        ctx.textAlign = "center"
+        ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
+      })
+    }
+
       ctx.beginPath()
       
       ctx.moveTo(waypoints[t-1].x, waypoints[t-1].y)
@@ -121,13 +148,19 @@ export default function Navigation() {
       
       if(t === waypoints.length - 1){
         if(end){
-          console.log("t: ", waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y)
 
-          ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 35, waypoints[waypoints.length-1].y - 60, 70, 60)
-          ctx.font="20px bold"
+          //// 도착점 마커 그리기
+          // console.log("t: ", waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y)
+          if(dest.includes("Food")){
+            ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 50, waypoints[waypoints.length-1].y - 60, 100, 60)
+          } else {
+            ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 35, waypoints[waypoints.length-1].y - 60, 70, 60)
+          }
+          ctx.font="18px bold"
           ctx.fillStyle="black"
           ctx.textAlign = "center"
-          ctx.fillText(destination.split('(')[1].slice(0, -1), waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y-30)
+          ctx.fillText(dest.split('(')[1].slice(0, -1), waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y-30)
+
         }
         
         let radians = Math.atan((waypoints[t].y - waypoints[t-1].y)/(waypoints[t].x - waypoints[t-1].x))
@@ -186,7 +219,7 @@ export default function Navigation() {
   }
 
   useEffect(() => {
-    console.log(currentFloor)
+    console.log('d: ', destination)
     // console.log('s: ', startX, startY)
 
     if(currentFloor === '2F'){
@@ -200,6 +233,8 @@ export default function Navigation() {
     axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
       console.log(res)
+      setDest(res.data.facilityName);
+
       const idx = res.data.pointDtoList.length - 1
       setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
 
@@ -295,9 +330,8 @@ export default function Navigation() {
 
         <div className='navigation-body'>
           <div className='navigation-route'>
-            <img className='navigation-map-img' src={floor} alt=''/>
-            <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef} onClick={getCoordinate}></canvas>
-            <canvas id='text-canvas' className='text-canvas' ref={textRef} onClick={getCoordinate}></canvas>
+          <img className='navigation-map-img' src={floor} alt=''/>
+          <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef} onClick={getCoordinate}></canvas>
           </div>
 
           { currentFloor !== destFloor + 'F' ?
