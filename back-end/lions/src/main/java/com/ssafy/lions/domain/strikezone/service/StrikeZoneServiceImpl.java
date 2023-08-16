@@ -62,6 +62,8 @@ public class StrikeZoneServiceImpl implements StrikeZoneService {
 
                 strikeZoneResultDto.setSpeed(textOptions.get("speed").toString());
                 strikeZoneResultDto.setStuff(textOptions.get("stuff").toString());
+                strikeZoneResultDto.setBallcount(ptsOptions.get("ballcount").toString());
+                strikeZoneResultDto.setCrossPlateX(ptsOptions.get("crossPlateX").toString());
                 strikeZoneResultDto.setCrossPlateY(ptsOptions.get("crossPlateY").toString());
                 strikeZoneResultDto.setVy0(ptsOptions.get("vy0").toString());
                 strikeZoneResultDto.setVz0(ptsOptions.get("vz0").toString());

@@ -7,7 +7,7 @@ import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
 import pin from './img/pin.png'
 
-
+import Wrapper from '../../components/AnimateWrapper';
 import './styles/SectionDetail.css';
 import { useSelector } from 'react-redux';
 
@@ -1571,33 +1571,34 @@ export default function SectionDetail() {
   }, [])
 
   return (
-    <div className='section-detail-container'>
-      <div className='section-detail-header' onClick={toSeat}>
-        <img className='go-back-arrow' src={arrow} alt="" />
-      </div>
+    <Wrapper>
+      <div className='section-detail-container'>
+        <div className='section-detail-header' onClick={toSeat}>
+          <img className='go-back-arrow' src={arrow} alt="" />
+        </div>
 
-      <div>
-        <div className='section-detail-img'>
-          <img src={seatUrl} onClick={selectSeat}></img>
+        <div>
+          <div className='section-detail-img'>
+            <img src={seatUrl} onClick={selectSeat}></img>
+          </div>
+        </div>
+
+        <div className='transform-container'>
+          <TransformWrapper
+            initialScale={5}
+            initialPositionX={0}
+            initialPositionY={-700}
+            className='map-controller'
+          >
+            <TransformComponent>
+              <div onClick={getCoordinate}>
+                <img src={mapImg} alt="" />
+              </div>
+            </TransformComponent>
+          </TransformWrapper>
         </div>
       </div>
-
-      <div className='transform-container'>
-        <TransformWrapper
-          initialScale={5}
-          initialPositionX={0}
-          initialPositionY={-700}
-          className='map-controller'
-        >
-          <TransformComponent>
-            <div onClick={getCoordinate}>
-              <img src={mapImg} alt="" />
-            </div>
-          </TransformComponent>
-        </TransformWrapper>
-      </div>
-
-    </div>
+    </Wrapper>
   )
 }
 
