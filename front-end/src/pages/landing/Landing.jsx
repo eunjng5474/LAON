@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/Landing.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import stadium from './img/stadium.PNG'
+import landing_bg from './img/365437020_611304924491528_5123034982969262014_n.gif'
 
 
 
@@ -31,7 +31,8 @@ function Landing() {
   
     return (
       <div className='landing-container font'>
-        <h1>랜딩 페이지 입니다.</h1>
+        <h1 className='landing-title'>라:온</h1>
+        <img className='laon-bg' src={landing_bg} alt="" />
       </div>
     )
 }

@@ -58,10 +58,6 @@
   overflow: hidden;
 }
 
-.map-controller img {
-  height: 100%;
-  object-fit: cover;
-}
 
 .react-transform-wrapper {
   display: flex;
@@ -88,4 +84,8 @@
   bottom: 0;
   width: 100vw;
   height: 28vh;
+}
+
+.transform-component-module_content__FBWxo img {
+  height: 100%;
 }

@@ -1584,9 +1584,9 @@ export default function SectionDetail() {
 
       <div className='transform-container'>
         <TransformWrapper
-          initialScale={3}
-          initialPositionX={-400}
-          initialPositionY={-300}
+          initialScale={5}
+          initialPositionX={0}
+          initialPositionY={-700}
           className='map-controller'
         >
           <TransformComponent>
