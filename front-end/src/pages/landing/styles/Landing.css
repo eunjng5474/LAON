@@ -22,8 +22,12 @@
 
 .landing-title {
   position: absolute;
-  top: 4vh;
-  left: 6vw;
-  font-size: 34px;
+  top: 0vh;
+  left: 10vw;
+  font-size: 60px;
   color: #ffffff;
+}
+
+.laon-bg {
+  height: 100%;
 }

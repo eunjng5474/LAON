@@ -23,13 +23,13 @@ export default function Match() {
   let liveText = useSelector((state) => state.liveText)
   const ballCount = useSelector((state) => state.ballCount)
   const strikeCount = useSelector((state) => state.strikeCount)
-  const outCount = useSelector((state) => state.outCount)
+  let outCount = useSelector((state) => state.outCount)
   const gameDate = useSelector((state) => state.gameDate)
   const gameStatus = useSelector((state) => state.gameStatus)
 
-  const base1 = useSelector((state) => state.base1)
-  const base2 = useSelector((state) => state.base2)
-  const base3 = useSelector((state) => state.base3)
+  let base1 = useSelector((state) => state.base1)
+  let base2 = useSelector((state) => state.base2)
+  let base3 = useSelector((state) => state.base3)
 
   const stZoneRef = useRef(null);
   const stZoneRectRef = useRef(null);
@@ -42,9 +42,10 @@ export default function Match() {
   const [ballStuff, setBallStuff] = useState('');
 
   const [prevPx, setPrevPx] = useState('')
-  
-  // const nowBallcount = 1;
-  // const pitchResult = 'S';
+  const [prevPz, setPrevPz] = useState('')
+
+  const [ballPositions, setBallPositions] = useState([]);
+
 
 
   // 출루정보
@@ -72,6 +73,13 @@ export default function Match() {
     console.log("end")
   }
 
+  if (gameStatus === 'END'){
+    outCount = 0;
+    base1 = null;
+    base2 = null;
+    base3 = null;
+  }
+
   // 볼카운트
   const divCountBall = function(payload) {
     const result = []
@@ -97,26 +105,38 @@ export default function Match() {
 
 
   function getStrikeZone(e) {
-    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
+    axios.get(`https://laon.info/api/lions/strike_zone/20230815/${awayTeamName}/${inning[0]}`)
     .then((res) => {
       console.log(res.data)
+
       if(res.data){
         setPrevPx(px)
-        // 값이 자동으로 안 바뀐다,,,,,,
-        setT((-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"])
-        setPx(res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5)
-        setPz(res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5)
-        setBallSpeed(res.data.speed);
-        setBallStuff(res.data.stuff);
-      } else {
-        setT('');
-        setPx('');
-        setPz('');
-        setBallSpeed('');
-        setBallStuff('');
-      }
+        setPrevPz(pz)
+
+        const newT = (-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"]
+        const newPx = res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5
+        const newPz = res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5
+
+
+          setT(newT)
+          setPx(newPx)
+          setPz(newPz)
+          setBallSpeed(res.data.speed);
+          setBallStuff(res.data.stuff);
+          setBallPositions([...ballPositions, { px: newPx, pz: newPz }])
+        
+        
+      } 
+      // else {
+      //   setT('');
+      //   setPx('');
+      //   setPz('');
+      //   setBallSpeed('');
+      //   setBallStuff('');
+      // }
     })
   }
+
 
 
   // const strikeCanvas = stZoneRef.current;
@@ -125,31 +145,25 @@ export default function Match() {
   // const stZoneBallCtx = strikeCanvas.getContext("2d");
 
 
-
   useEffect(() => {
 
     if (gameStatus === 'PLAY'){
+      // getStrikeZone()
       const getStzone = setInterval(getStrikeZone, 5000)
-      setTimeout(() => {
-
-        const getDrawBall = setInterval(drawBall, 5000)
-      }, 100)
-    }
-
-
-
-    const strikeCanvas = stZoneRef.current;
-    strikeCanvas.width = 110;
-    strikeCanvas.height = 130;
-    const stZoneBallCtx = strikeCanvas.getContext("2d");
-
+      // setTimeout(() => {
+      //   const getDrawBall = setInterval(drawBall, 5000)
+      // }, 100)
+      return () => {
+        clearInterval(getStzone);
+      }
+    } 
 
     const strikeRectCanvas = stZoneRectRef.current;
     strikeRectCanvas.width = 110;
     strikeRectCanvas.height = 130;
     const stZoneRectCtx = strikeRectCanvas.getContext("2d");
     // console.log(px, pz);
-    
+
     function drawZone() {
       stZoneRectCtx.beginPath();
       stZoneRectCtx.strokeStyle = "white";
@@ -167,32 +181,58 @@ export default function Match() {
       stZoneRectCtx.fill();
     }
 
-    
-  // px, pz 변경될 때만 그리도록? 
+    drawZone();
+     
+  },[])
+
+  useEffect(() => {
+    const strikeCanvas = stZoneRef.current;
+    strikeCanvas.width = 110;
+    strikeCanvas.height = 130;
+    const stZoneBallCtx = strikeCanvas.getContext("2d");
+
   function drawBall() {
+    // stZoneBallCtx.clearRect(0, 0, strikeCanvas.width, strikeCanvas.height)
+
     console.log(ballStuff, ballSpeed, px, pz)
+    // if(!px && !pz){
+    //   return
+    // }
     // if(prevPx !== px){
     //   stZoneBallCtx.clearRect(0, 0, strikeRectCanvas.width, strikeRectCanvas.height)
     // }
-    stZoneBallCtx.beginPath();
-    // 4
-    stZoneBallCtx.moveTo(60-px*25, 155-pz*15);
-    stZoneBallCtx.arc(60-px*25, 155-pz*15, 8, 0, 2 * Math.PI);
 
-    stZoneBallCtx.stroke();
-    stZoneBallCtx.fillStyle = '#7DB249';
-    // if(pitchResult === 'S'){
-    //   stZoneBallCtx.fillStyle = '#FFCD4A';
-    // } else {
+    //// 이전 공들 녹색으로 그리기
+    // ballPositions.forEach((position) => {
+    //   stZoneBallCtx.beginPath();
+    //   stZoneBallCtx.moveTo(60-position.px*25, 155-position.pz*25);
+    //   stZoneBallCtx.arc(60-position.px*25, 155-position.pz*25, 8, 0, 2 * Math.PI);
+    //   stZoneBallCtx.stroke();
     //   stZoneBallCtx.fillStyle = '#7DB249';
-    // }
-    stZoneBallCtx.fill();
-  }
-    
+    //   stZoneBallCtx.fill();
+      
+    // })
+    // console.log(ballPositions)
 
-    drawZone();
-    // drawBall();
-  }, [])
+
+      stZoneBallCtx.beginPath();
+      stZoneBallCtx.moveTo(40 + px * 25, 150 - pz * 25);
+      stZoneBallCtx.arc(40 + px*25, 150-pz*25, 18, 0, 2 * Math.PI);
+      stZoneBallCtx.stroke();
+      // 4
+      stZoneBallCtx.fillStyle = 'red';
+      // if(pitchResult === 'S'){
+        //   stZoneBallCtx.fillStyle = '#FFCD4A';
+        // } else {
+          //   stZoneBallCtx.fillStyle = '#7DB249';
+          // }
+          stZoneBallCtx.fill();
+  }
+
+    drawBall();
+
+  }, [t, px, pz])
+
 
   return (
     <div className='match-container font'>

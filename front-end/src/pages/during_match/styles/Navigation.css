@@ -26,6 +26,7 @@
 .navigation-button {
   display: flex;
   justify-content: space-around;
+  color: black;
 }
 
 .to-ar-button {
@@ -60,3 +61,9 @@
   color: black;
   /* margin-bottom: 1vh; */
 }
+
+/* .navigation-move-floor {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+} */
