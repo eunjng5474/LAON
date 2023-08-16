@@ -12,6 +12,7 @@ import map5F from './img/map5F.png'
 import Wrapper from '../../components/AnimateWrapper';
 
 import bubble from './img/bubble.png'
+import {BiArrowBack} from 'react-icons/bi'
 import { HiChatBubbleBottomCenter } from 'react-icons/hi2'
 
 import axios from 'axios';
@@ -320,10 +321,13 @@ export default function Navigation() {
             {/* <HiChatBubbleBottomCenter color="#FFDF43" size="70" className="bubble" style={{left: '100px'}}/> */}
           {/* </div> */}
         {/* </HiChatBubbleBottomCenter.Provider> */}
-        <div className='navigation-text font'>
-          {noRoute ? <h2>출발지와 목적지가 인접해 있습니다</h2> : 
-            <div>
-              <h2>목적지: {destination.split('(')[0]} ({destFloor}층)</h2>
+        <div className='navigation-header font'>
+          <div className='go-back-container'>
+            <BiArrowBack size={36}/>
+          </div>
+          {noRoute ? <h2 className='navigation-text'>출발지와 목적지가 인접해 있습니다</h2> : 
+            <div className='navigation-destination'>
+              <h2 className='navigation-text'>{destination.split('(')[0]} ({destFloor}층)</h2>
             </div>
           }
         </div>
