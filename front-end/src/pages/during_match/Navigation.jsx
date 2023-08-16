@@ -9,6 +9,7 @@ import pointMap from './img/point.png'
 import map2F from './img/map2F.png'
 import map3F from './img/map3F.png'
 import map5F from './img/map5F.png'
+import Wrapper from '../../components/AnimateWrapper';
 
 import bubble from './img/bubble.png'
 import { HiChatBubbleBottomCenter } from 'react-icons/hi2'
@@ -277,38 +278,40 @@ export default function Navigation() {
 
   // currentFloor === destFloor면 이동 버튼 안 보이게 바꾸기
   return (
-    <div className='navigation-container font'>
-      {/* <HiChatBubbleBottomCenter.Provider value={{color: "#FFDF43", size: "70", className: "bubble", style: {left: '100px'}}}> */}
-        {/* <div> */}
-          {/* <HiChatBubbleBottomCenter color="#FFDF43" size="70" className="bubble" style={{left: '100px'}}/> */}
-        {/* </div> */}
-      {/* </HiChatBubbleBottomCenter.Provider> */}
-      <div className='navigation-text font'>
-        {noRoute ? <h2>출발지와 목적지가 인접해 있습니다</h2> : 
-          <div>
-            <h2>목적지: {destination.split('(')[0]} ({destFloor}층)</h2>
+    <Wrapper>
+      <div className='navigation-container font'>
+        {/* <HiChatBubbleBottomCenter.Provider value={{color: "#FFDF43", size: "70", className: "bubble", style: {left: '100px'}}}> */}
+          {/* <div> */}
+            {/* <HiChatBubbleBottomCenter color="#FFDF43" size="70" className="bubble" style={{left: '100px'}}/> */}
+          {/* </div> */}
+        {/* </HiChatBubbleBottomCenter.Provider> */}
+        <div className='navigation-text font'>
+          {noRoute ? <h2>출발지와 목적지가 인접해 있습니다</h2> : 
+            <div>
+              <h2>목적지: {destination.split('(')[0]} ({destFloor}층)</h2>
+            </div>
+          }
+        </div>
+
+        <div className='navigation-body'>
+          <div className='navigation-route'>
+            <img className='navigation-map-img' src={floor} alt=''/>
+            <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef} onClick={getCoordinate}></canvas>
+            <canvas id='text-canvas' className='text-canvas' ref={textRef} onClick={getCoordinate}></canvas>
+          </div>
+
+          { currentFloor !== destFloor + 'F' ?
+          <div className='navigation-button'>
+            <button className='to-ar-button' onClick={goAR}>AR</button>
+            <button className='to-next-floor' onClick={goNextFloor}>{destFloor}층 이동</button>
+          </div>
+          :
+          <div className='navigation-button'>
+            <button className='to-ar-button' onClick={goAR}>AR</button>
           </div>
         }
+          </div>
       </div>
-
-      <div className='navigation-body'>
-        <div className='navigation-route'>
-          <img className='navigation-map-img' src={floor} alt=''/>
-          <canvas id='navi-canvas' className='navigation-canvas' ref={naviCanvasRef} onClick={getCoordinate}></canvas>
-          <canvas id='text-canvas' className='text-canvas' ref={textRef} onClick={getCoordinate}></canvas>
-        </div>
-
-        { currentFloor !== destFloor + 'F' ?
-        <div className='navigation-button'>
-          <button className='to-ar-button' onClick={goAR}>AR</button>
-          <button className='to-next-floor' onClick={goNextFloor}>{destFloor}층 이동</button>
-        </div>
-        :
-        <div className='navigation-button'>
-          <button className='to-ar-button' onClick={goAR}>AR</button>
-        </div>
-      }
-        </div>
-    </div>
+    </Wrapper>
   )
 }

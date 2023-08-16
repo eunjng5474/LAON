@@ -44,9 +44,11 @@ import camera from './img/facility/camera.png'
 import baby from './img/facility/baby-bottle.png'
 import smoking from './img/facility/smoking.png'
 import trash from './img/facility/trash-can.png'
+import {MdGpsFixed} from 'react-icons/md'
 
 import axios from 'axios';
 import './styles/Facilities.css';
+import Wrapper from '../../components/AnimateWrapper';
 
 
 export default function Facilities() {
@@ -279,482 +281,489 @@ export default function Facilities() {
     navigator.geolocation.getCurrentPosition(getPosition)
   }, [])
   return (
-    <div className='facilities-container font'>
-      <div className='facilities-header'>
+    <Wrapper>
+      <div className='facilities-container font'>
+        <div className='facilities-header'>
 
-        <div className='floor-select-button'>
-          <h2>현재 위치 : {currentPosition} 구역</h2>
-          <div className='floor-button-container'>
-            <button>2F</button>
-            <button>3F</button>
-            <button>5F</button>
+          <div className='floor-select-button'>
+            <div className='current-location-container'>
+              <div className='current-location'>
+                <MdGpsFixed size={34}/> 
+                <h2>{currentPosition} 구역</h2>
+              </div>
+              <div className='current-floor-selector'>
+                <button>2F</button>
+                <button>3F</button>
+                <button>5F</button>
+              </div>
+            </div>
+          </div>
+
+          <div className='facilities-search-bar'>
+
+            {/* <div className='facilities-category'>
+              <input id="departure" onChange={onChangeDeparture} value={currentPosition ? '현위치 : ' + currentPosition +'구역 ' + currentFloor  : '위치 조회중...'} placeholder='출발지'/>
+            </div>
+
+            <div className='facilities-category'>
+              <input onClick={focusBody} id="destination" onChange={onChangeDestination} value={destination} placeholder='목적지'/>          
+            </div> */}
+
+          </div>
+
+          <div className='category-select'>
+            <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음매장</button>
+            <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의시설</button>
           </div>
         </div>
 
-        <div className='facilities-search-bar'>
+        <div className='facilities-body'>
 
-          {/* <div className='facilities-category'>
-            <input id="departure" onChange={onChangeDeparture} value={currentPosition ? '현위치 : ' + currentPosition +'구역 ' + currentFloor  : '위치 조회중...'} placeholder='출발지'/>
+          <div className={`store-list ${category === "편의시설" ? "facility-hide" : ""}`}>
+            <div
+              className='facilities-store'
+              id="KELLY"
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="KELLY" >
+                <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
+                <div className='store-item-logo'>
+                  <img className='store-logo-img' src={KELLY} alt="" id="KELLY" />
+                </div>
+              </div>
+              <div className='store-item-body' id="KELLY" >
+                <div className='store-title' id="KELLY" >
+                  <span className='facility-store-title' id="KELLY" >KELLY</span>
+                </div>
+                <div className='store-itme-tag' id="KELLY" >
+                  <span className='store-tag' id="KELLY" >#맥주</span>
+                  <span className='store-tag' id="KELLY" >#KELLY</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="짝태시대">
+                <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대" />
+                <div className='store-item-logo'>
+                  <img className='store-logo-img' id="짝태시대" src={JJAKTAE} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="짝태시대">
+                <div className='store-title' id="짝태시대">
+                  <span className='facility-store-title' id="짝태시대">짝태시대</span>
+                </div>
+                <div className='store-itme-tag'>
+                  <span className='store-tag' id="짝태시대">#건어물</span>
+                  <span className='store-tag' id="짝태시대">#먹태</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="리얼키친홍">
+                <img className='store-img' src={HONG_img} alt="" id="리얼키친홍"/>
+                <div className='store-item-logo'>
+                  <img className='store-logo-img' id="리얼키친홍" src={HONG} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body'>
+                <div className='store-title' id="리얼키친홍">
+                  <span className='facility-store-title' id="리얼키친홍">리얼키친홍</span>
+                </div>
+                <div className='store-itme-tag' id="리얼키친홍">
+                  <span className='store-tag' id="리얼키친홍">#덮밥</span>
+                  <span className='store-tag' id="리얼키친홍">#우동</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="파파존스피자">
+                <img className='store-img' src={PAPA_img} alt="" id="파파존스피자"/>
+                <div className='store-item-logo' id="파파존스피자">
+                  <img className='store-logo-img' id="파파존스피자" src={PAPA} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="파파존스피자">
+                <div className='store-title' id="파파존스피자">
+                  <span className='facility-store-title' id="파파존스피자">파파존스피자</span>
+                </div>
+                <div className='store-itme-tag' id="파파존스피자">
+                  <span className='store-tag' id="파파존스피자">#피자</span>
+                  <span className='store-tag' id="파파존스피자">#페퍼로니</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="CU">
+                <img className='store-img' src={CU_img} alt="" id="CU"/>
+                <div className='store-item-logo' id="CU">
+                  <img className='store-logo-img' id="CU" src={CU} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="CU">
+                <div className='store-title' id="CU">
+                  <span className='facility-store-title' id="CU">CU</span>
+                </div>
+                <div className='store-itme-tag' id="CU">
+                  <span className='store-tag' id="CU">#편의점</span>
+                  <span className='store-tag' id="CU">#얼음물</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="해피치즈스마일">
+                <img className='store-img' src={HAPPY_img} alt="" id="해피치즈스마일"/>
+                <div className='store-item-logo' id="해피치즈스마일">
+                  <img className='store-logo-img' id="해피치즈스마일" src={HAPPY} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="해피치즈스마일">
+                <div className='store-title' id="해피치즈스마일">
+                  <span className='facility-store-title' id="해피치즈스마일">해피치즈스마일</span>
+                </div>
+                <div className='store-itme-tag' id="해피치즈스마일">
+                  <span className='store-tag' id="해피치즈스마일">#분식</span>
+                  <span className='store-tag' id="해피치즈스마일">#소프트콘</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="땅땅치킨">
+                <img className='store-img' src={TTANG_img} alt="" id="땅땅치킨"/>
+                <div className='store-item-logo' id="땅땅치킨">
+                  <img className='store-logo-img' id="땅땅치킨" src={TTANG} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="땅땅치킨">
+                <div className='store-title' id="땅땅치킨">
+                  <span className='facility-store-title' id="땅땅치킨">땅땅치킨</span>
+                </div>
+                <div className='store-itme-tag' id="땅땅치킨">
+                  <span className='store-tag' id="땅땅치킨">#치킨</span>
+                  <span className='store-tag' id="땅땅치킨">#햄버거</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="대왕유부초밥">
+                <img className='store-img' src={YUBU_img} alt="" id="대왕유부초밥"/>
+                <div className='store-item-logo' id="대왕유부초밥">
+                  <img className='store-logo-img' id="대왕유부초밥" src={YUBU} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="대왕유부초밥">
+                <div className='store-title' id="대왕유부초밥">
+                  <span className='facility-store-title' id="대왕유부초밥">대왕유부초밥</span>
+                </div>
+                <div className='store-itme-tag' id="대왕유부초밥">
+                  <span className='store-tag' id="대왕유부초밥">#유부초밥</span>
+                  <span className='store-tag' id="대왕유부초밥">#어묵</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="전설꼬치">
+                <img className='store-img' src={KKOCHI_img} alt="" id="전설꼬치"/>
+                <div className='store-item-logo' id="전설꼬치">
+                  <img className='store-logo-img' id="전설꼬치" src={KKOCHI} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="전설꼬치">
+                <div className='store-title' id="전설꼬치">
+                  <span className='facility-store-title' id="전설꼬치">전설꼬치</span>
+                </div>
+                <div className='store-itme-tag' id="전설꼬치">
+                  <span className='store-tag' id="전설꼬치">#꼬치</span>
+                  <span className='store-tag' id="전설꼬치">#야끼도리</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="버터우드">
+                <img className='store-img' src={BUTTER_img} alt="" id="버터우드"/>
+                <div className='store-item-logo' id="버터우드">
+                  <img className='store-logo-img' id="버터우드" src={BUTTER} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="버터우드">
+                <div className='store-title'  id="버터우드">
+                  <span className='facility-store-title' id="버터우드">버터우드</span>
+                </div>
+                <div className='store-itme-tag'  id="버터우드">
+                  <span className='store-tag' id="버터우드">#커피</span>
+                  <span className='store-tag' id="버터우드">#베이커리</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header'  id="알통떡강정">
+                <img className='store-img' src={ALTON_img} alt="" id="알통떡강정"/>
+                <div className='store-item-logo'>
+                  <img className='store-logo-img' id="알통떡강정" src={ALTONG} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body'  id="알통떡강정">
+                <div className='store-title'>
+                  <span className='facility-store-title' id="알통떡강정">알통떡강정</span>
+                </div>
+                <div className='store-itme-tag'>
+                  <span className='store-tag' id="알통떡강정">#닭강정</span>
+                  <span className='store-tag' id="알통떡강정">#치킨</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="리얼피그">
+                <img className='store-img' src={REALPIG_img} alt="" id="리얼피그"/>
+                <div className='store-item-logo' id="리얼피그">
+                  <img className='store-logo-img' id="리얼피그" src={REALPIG} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="리얼피그">
+                <div className='store-title' id="리얼피그">
+                  <span className='facility-store-title' id="리얼피그">리얼피그</span>
+                </div>
+                <div className='store-itme-tag' id="리얼피그">
+                  <span className='store-tag' id="리얼피그">#돼지</span>
+                  <span className='store-tag' id="리얼피그">#후라이드</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="5직떡볶이">
+                <img className='store-img' src={OJIK_img} alt="" id="5직떡볶이"/>
+                <div className='store-item-logo' id="5직떡볶이">
+                  <img className='store-logo-img' id="5직떡볶이" src={OJIK} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="5직떡볶이">
+                <div className='store-title' id="5직떡볶이">
+                  <span className='facility-store-title' id="5직떡볶이">5직떡볶이</span>
+                </div>
+                <div className='store-itme-tag' id="5직떡볶이">
+                  <span className='store-tag' id="5직떡볶이">#분식</span>
+                  <span className='store-tag' id="5직떡볶이">#5직5재일</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="족발슈퍼">
+                <img className='store-img' src={JOKSU_img} alt="" id="족발슈퍼"/>
+                <div className='store-item-logo' id="족발슈퍼">
+                  <img className='store-logo-img' id="족발슈퍼" src={JOKSU} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="족발슈퍼">
+                <div className='store-title' id="족발슈퍼">
+                  <span className='facility-store-title' id="족발슈퍼">족발슈퍼</span>
+                </div>
+                <div className='store-itme-tag' id="족발슈퍼">
+                  <span className='store-tag' id="족발슈퍼">#족발</span>
+                  <span className='store-tag' id="족발슈퍼">#냉면</span>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-store'
+              onClick={selectStoreDetail}
+            >
+              <div className='store-item-header' id="한만두">
+                <img className='store-img' src={MANDU_img} alt="" id="한만두"/>
+                <div className='store-item-logo' id="한만두">
+                  <img className='store-logo-img' id="한만두" src={MANDU} alt="" />
+                </div>
+              </div>
+              <div className='store-item-body' id="한만두">
+                <div className='store-title' id="한만두">
+                  <span className='facility-store-title' id="한만두">한만두</span>
+                </div>
+                <div className='store-itme-tag' id="한만두">
+                  <span className='store-tag' id="한만두">#한만두</span>
+                  <span className='store-tag' id="한만두">#왕만두</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className='facilities-category'>
-            <input onClick={focusBody} id="destination" onChange={onChangeDestination} value={destination} placeholder='목적지'/>          
-          </div> */}
+          <div className={`facility-list ${category === "식음매장" ? "facility-hide" : ""}`}>
+          <div
+              className='facilities-facility'
+              id="여자화장실"
+            >
+              <div className='facility-toilet-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={female_logo} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>여자 화장실</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">길찾기</button>
+                  {/* <button className='facility-body-button font' id="여자화장실">로드뷰</button> */}
+                </div>
+              </div>
+            </div>
 
-        </div>
+            <div
+              className='facilities-facility'
+              id="남자화장실"
+            >
+              <div className='facility-toilet-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={male_logo} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>남자 화장실</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">길찾기</button>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-facility'
+              id="여자장애인화장실"
+            >
+              <div className='facility-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={disabled_female} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>여자 장애인 화장실</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">로드뷰</button>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-facility'
+              id="남자장애인화장실"
+            >
+              <div className='facility-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={disabled_male} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>남자 장애인 화장실</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">로드뷰</button>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-facility'
+              id="블루샷"
+            >
+              <div className='facility-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={camera} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>블루샷</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">로드뷰</button>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-facility'
+              id="수유실"
+            >
+              <div className='facility-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={baby} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>수유실</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">로드뷰</button>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-facility'
+              id="흡연실"
+            >
+              <div className='facility-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={smoking} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>흡연실</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">로드뷰</button>
+                </div>
+              </div>
+            </div>
+            <div
+              className='facilities-facility'
+              id="쓰레기통"
+            >
+              <div className='facility-scroll-body'>
+                <div className='facility-icon-item'>
+                  <img className='facility-icon' src={trash} alt="" />
+                </div>
+                <div className='facility-title-item'>
+                  <span className='facility-title font'>쓰레기통</span>
+                </div>
+                <div className='facility-body'>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">로드뷰</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div className='category-select'>
-          <button onClick={categorySelect} className={category === "식음매장" ? "category-button-line font" : "category-button-nonline font"}>식음매장</button>
-          <button onClick={categorySelect} className={category === "편의시설" ? "category-button-line font" : "category-button-nonline font"}>편의시설</button>
         </div>
       </div>
-
-      <div className='facilities-body'>
-
-        <div className={`store-list ${category === "편의시설" ? "facility-hide" : ""}`}>
-          <div
-            className='facilities-store'
-            id="KELLY"
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="KELLY" >
-              <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
-              <div className='store-item-logo'>
-                <img className='store-logo-img' src={KELLY} alt="" id="KELLY" />
-              </div>
-            </div>
-            <div className='store-item-body' id="KELLY" >
-              <div className='store-title' id="KELLY" >
-                <span className='facility-store-title' id="KELLY" >KELLY</span>
-              </div>
-              <div className='store-itme-tag' id="KELLY" >
-                <span className='store-tag' id="KELLY" >#맥주</span>
-                <span className='store-tag' id="KELLY" >#KELLY</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="짝태시대">
-              <img className='store-img' src={JJAKTAE_img} alt="" id="짝태시대" />
-              <div className='store-item-logo'>
-                <img className='store-logo-img' id="짝태시대" src={JJAKTAE} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="짝태시대">
-              <div className='store-title' id="짝태시대">
-                <span className='facility-store-title' id="짝태시대">짝태시대</span>
-              </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag' id="짝태시대">#건어물</span>
-                <span className='store-tag' id="짝태시대">#먹태</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="리얼키친홍">
-              <img className='store-img' src={HONG_img} alt="" id="리얼키친홍"/>
-              <div className='store-item-logo'>
-                <img className='store-logo-img' id="리얼키친홍" src={HONG} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body'>
-              <div className='store-title' id="리얼키친홍">
-                <span className='facility-store-title' id="리얼키친홍">리얼키친홍</span>
-              </div>
-              <div className='store-itme-tag' id="리얼키친홍">
-                <span className='store-tag' id="리얼키친홍">#덮밥</span>
-                <span className='store-tag' id="리얼키친홍">#우동</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="파파존스피자">
-              <img className='store-img' src={PAPA_img} alt="" id="파파존스피자"/>
-              <div className='store-item-logo' id="파파존스피자">
-                <img className='store-logo-img' id="파파존스피자" src={PAPA} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="파파존스피자">
-              <div className='store-title' id="파파존스피자">
-                <span className='facility-store-title' id="파파존스피자">파파존스피자</span>
-              </div>
-              <div className='store-itme-tag' id="파파존스피자">
-                <span className='store-tag' id="파파존스피자">#피자</span>
-                <span className='store-tag' id="파파존스피자">#페퍼로니</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="CU">
-              <img className='store-img' src={CU_img} alt="" id="CU"/>
-              <div className='store-item-logo' id="CU">
-                <img className='store-logo-img' id="CU" src={CU} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="CU">
-              <div className='store-title' id="CU">
-                <span className='facility-store-title' id="CU">CU</span>
-              </div>
-              <div className='store-itme-tag' id="CU">
-                <span className='store-tag' id="CU">#편의점</span>
-                <span className='store-tag' id="CU">#얼음물</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="해피치즈스마일">
-              <img className='store-img' src={HAPPY_img} alt="" id="해피치즈스마일"/>
-              <div className='store-item-logo' id="해피치즈스마일">
-                <img className='store-logo-img' id="해피치즈스마일" src={HAPPY} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="해피치즈스마일">
-              <div className='store-title' id="해피치즈스마일">
-                <span className='facility-store-title' id="해피치즈스마일">해피치즈스마일</span>
-              </div>
-              <div className='store-itme-tag' id="해피치즈스마일">
-                <span className='store-tag' id="해피치즈스마일">#분식</span>
-                <span className='store-tag' id="해피치즈스마일">#소프트콘</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="땅땅치킨">
-              <img className='store-img' src={TTANG_img} alt="" id="땅땅치킨"/>
-              <div className='store-item-logo' id="땅땅치킨">
-                <img className='store-logo-img' id="땅땅치킨" src={TTANG} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="땅땅치킨">
-              <div className='store-title' id="땅땅치킨">
-                <span className='facility-store-title' id="땅땅치킨">땅땅치킨</span>
-              </div>
-              <div className='store-itme-tag' id="땅땅치킨">
-                <span className='store-tag' id="땅땅치킨">#치킨</span>
-                <span className='store-tag' id="땅땅치킨">#햄버거</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="대왕유부초밥">
-              <img className='store-img' src={YUBU_img} alt="" id="대왕유부초밥"/>
-              <div className='store-item-logo' id="대왕유부초밥">
-                <img className='store-logo-img' id="대왕유부초밥" src={YUBU} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="대왕유부초밥">
-              <div className='store-title' id="대왕유부초밥">
-                <span className='facility-store-title' id="대왕유부초밥">대왕유부초밥</span>
-              </div>
-              <div className='store-itme-tag' id="대왕유부초밥">
-                <span className='store-tag' id="대왕유부초밥">#유부초밥</span>
-                <span className='store-tag' id="대왕유부초밥">#어묵</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="전설꼬치">
-              <img className='store-img' src={KKOCHI_img} alt="" id="전설꼬치"/>
-              <div className='store-item-logo' id="전설꼬치">
-                <img className='store-logo-img' id="전설꼬치" src={KKOCHI} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="전설꼬치">
-              <div className='store-title' id="전설꼬치">
-                <span className='facility-store-title' id="전설꼬치">전설꼬치</span>
-              </div>
-              <div className='store-itme-tag' id="전설꼬치">
-                <span className='store-tag' id="전설꼬치">#꼬치</span>
-                <span className='store-tag' id="전설꼬치">#야끼도리</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="버터우드">
-              <img className='store-img' src={BUTTER_img} alt="" id="버터우드"/>
-              <div className='store-item-logo' id="버터우드">
-                <img className='store-logo-img' id="버터우드" src={BUTTER} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="버터우드">
-              <div className='store-title'  id="버터우드">
-                <span className='facility-store-title' id="버터우드">버터우드</span>
-              </div>
-              <div className='store-itme-tag'  id="버터우드">
-                <span className='store-tag' id="버터우드">#커피</span>
-                <span className='store-tag' id="버터우드">#베이커리</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header'  id="알통떡강정">
-              <img className='store-img' src={ALTON_img} alt="" id="알통떡강정"/>
-              <div className='store-item-logo'>
-                <img className='store-logo-img' id="알통떡강정" src={ALTONG} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body'  id="알통떡강정">
-              <div className='store-title'>
-                <span className='facility-store-title' id="알통떡강정">알통떡강정</span>
-              </div>
-              <div className='store-itme-tag'>
-                <span className='store-tag' id="알통떡강정">#닭강정</span>
-                <span className='store-tag' id="알통떡강정">#치킨</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="리얼피그">
-              <img className='store-img' src={REALPIG_img} alt="" id="리얼피그"/>
-              <div className='store-item-logo' id="리얼피그">
-                <img className='store-logo-img' id="리얼피그" src={REALPIG} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="리얼피그">
-              <div className='store-title' id="리얼피그">
-                <span className='facility-store-title' id="리얼피그">리얼피그</span>
-              </div>
-              <div className='store-itme-tag' id="리얼피그">
-                <span className='store-tag' id="리얼피그">#돼지</span>
-                <span className='store-tag' id="리얼피그">#후라이드</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="5직떡볶이">
-              <img className='store-img' src={OJIK_img} alt="" id="5직떡볶이"/>
-              <div className='store-item-logo' id="5직떡볶이">
-                <img className='store-logo-img' id="5직떡볶이" src={OJIK} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="5직떡볶이">
-              <div className='store-title' id="5직떡볶이">
-                <span className='facility-store-title' id="5직떡볶이">5직떡볶이</span>
-              </div>
-              <div className='store-itme-tag' id="5직떡볶이">
-                <span className='store-tag' id="5직떡볶이">#분식</span>
-                <span className='store-tag' id="5직떡볶이">#5직5재일</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="족발슈퍼">
-              <img className='store-img' src={JOKSU_img} alt="" id="족발슈퍼"/>
-              <div className='store-item-logo' id="족발슈퍼">
-                <img className='store-logo-img' id="족발슈퍼" src={JOKSU} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="족발슈퍼">
-              <div className='store-title' id="족발슈퍼">
-                <span className='facility-store-title' id="족발슈퍼">족발슈퍼</span>
-              </div>
-              <div className='store-itme-tag' id="족발슈퍼">
-                <span className='store-tag' id="족발슈퍼">#족발</span>
-                <span className='store-tag' id="족발슈퍼">#냉면</span>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-store'
-            onClick={selectStoreDetail}
-          >
-            <div className='store-item-header' id="한만두">
-              <img className='store-img' src={MANDU_img} alt="" id="한만두"/>
-              <div className='store-item-logo' id="한만두">
-                <img className='store-logo-img' id="한만두" src={MANDU} alt="" />
-              </div>
-            </div>
-            <div className='store-item-body' id="한만두">
-              <div className='store-title' id="한만두">
-                <span className='facility-store-title' id="한만두">한만두</span>
-              </div>
-              <div className='store-itme-tag' id="한만두">
-                <span className='store-tag' id="한만두">#한만두</span>
-                <span className='store-tag' id="한만두">#왕만두</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className={`facility-list ${category === "식음매장" ? "facility-hide" : ""}`}>
-        <div
-            className='facilities-facility'
-            id="여자화장실"
-          >
-            <div className='facility-toilet-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={female_logo} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>여자 화장실</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">길찾기</button>
-                {/* <button className='facility-body-button font' id="여자화장실">로드뷰</button> */}
-              </div>
-            </div>
-          </div>
-
-          <div
-            className='facilities-facility'
-            id="남자화장실"
-          >
-            <div className='facility-toilet-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={male_logo} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>남자 화장실</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">길찾기</button>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-facility'
-            id="여자장애인화장실"
-          >
-            <div className='facility-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={disabled_female} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>여자 장애인 화장실</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">길찾기</button>
-                <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">로드뷰</button>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-facility'
-            id="남자장애인화장실"
-          >
-            <div className='facility-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={disabled_male} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>남자 장애인 화장실</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">길찾기</button>
-                <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">로드뷰</button>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-facility'
-            id="블루샷"
-          >
-            <div className='facility-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={camera} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>블루샷</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">길찾기</button>
-                <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">로드뷰</button>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-facility'
-            id="수유실"
-          >
-            <div className='facility-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={baby} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>수유실</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">길찾기</button>
-                <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">로드뷰</button>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-facility'
-            id="흡연실"
-          >
-            <div className='facility-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={smoking} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>흡연실</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">길찾기</button>
-                <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">로드뷰</button>
-              </div>
-            </div>
-          </div>
-          <div
-            className='facilities-facility'
-            id="쓰레기통"
-          >
-            <div className='facility-scroll-body'>
-              <div className='facility-icon-item'>
-                <img className='facility-icon' src={trash} alt="" />
-              </div>
-              <div className='facility-title-item'>
-                <span className='facility-title font'>쓰레기통</span>
-              </div>
-              <div className='facility-body'>
-                <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">길찾기</button>
-                <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">로드뷰</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
+    </Wrapper>
   )
 }

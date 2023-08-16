@@ -1,8 +1,8 @@
 import React from 'react'
 import './styles/Landing.css'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import landing_bg from './img/365437020_611304924491528_5123034982969262014_n.gif'
+import { useSelector } from 'react-redux'
+import Wrapper from '../../components/AnimateWrapper'
 
 
 
@@ -19,21 +19,34 @@ function Landing() {
 
   const gameStatus = useSelector((state) => state.gameStatus)
 
-  if (gameStatus === 'PLAY') {
-    setTimeout(() => {
-      navigate('/match')
-    }, 3000)
-  } else {
-    setTimeout(() => {
+  function enterLAON() {
+    if (gameStatus === 'PLAY') {
+      navigate('/match')  
+    } else {
       navigate('/seat')
-    }, 3000)
+    }
   }
   
     return (
-      <div className='landing-container font'>
-        <h1 className='landing-title'>라:온</h1>
-        <img className='laon-bg' src={landing_bg} alt="" />
-      </div>
+      <Wrapper>
+        <div className='landing-container font'>
+          <div className='landing-header'>
+            <h1 className='landing-title'>
+              <span className='test_obj'>당신의</span>
+              <br />
+              <span className='test_obj'>직관을</span>
+              <br />
+              <span className='test_obj'>즐겁게</span> 
+            </h1>
+            <span className='landing-logo test_obj'>LA:ON</span>
+          </div>
+          <div className='landing-body'>
+            <button className='landing-button' onClick={enterLAON}>
+              <h1>라이온즈 파크 입장하기</h1>
+            </button>
+          </div>
+        </div>
+      </Wrapper>
     )
 }
 

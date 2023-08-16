@@ -10,6 +10,7 @@ import base2No from './img/base2_no.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import Wrapper from '../../components/AnimateWrapper';
 
 
 
@@ -235,94 +236,96 @@ export default function Match() {
 
 
   return (
-    <div className='match-container font'>
+    <Wrapper>
+      <div className='match-container font'>
 
-      <div className='match-body'>
+        <div className='match-body'>
 
-        <div className='match-score-board'>
-          <div className='match-away-team-container'>
-            <img className='match-away-team' src={awayTeamLogo} alt="" />
-            <div className='match-away-info'>
-              <h3>AWAY</h3>
+          <div className='match-score-board'>
+            <div className='match-away-team-container'>
+              <img className='match-away-team' src={awayTeamLogo} alt="" />
+              <div className='match-away-info'>
+                <h3>AWAY</h3>
+              </div>
             </div>
-          </div>
-          
-          <div className='score-board-center'>
-            <div className='score-board-inning'>
-              {inning}
+            
+            <div className='score-board-center'>
+              <div className='score-board-inning'>
+                {inning}
+              </div>
+              <div className='score-board-point'>
+                {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
+                <div className='score-board-attack'>
+                  <div className={ awayAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+                  <div className={ homeAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+                </div>
+              </div>
             </div>
-            <div className='score-board-point'>
-              {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
-              <div className='score-board-attack'>
-                <div className={ awayAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
-                <div className={ homeAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+            
+            <div className='match-home-team-container'>
+              <img className='match-home-team' src={homeTeamLogo} alt="" />
+              <div className='match-home-info'>
+                <h3>HOME</h3>
               </div>
             </div>
           </div>
-          
-          <div className='match-home-team-container'>
-            <img className='match-home-team' src={homeTeamLogo} alt="" />
-            <div className='match-home-info'>
-              <h3>HOME</h3>
-            </div>
+
+            
+          <div className='liveText'>
+            <span>{liveText}</span>
           </div>
-        </div>
 
-          
-        <div className='liveText'>
-          <span>{liveText}</span>
-        </div>
+          <div className='match-live-info'>
+            <div className='match-ball-count'>
 
-        <div className='match-live-info'>
-          <div className='match-ball-count'>
+              <div className='bso-container'>
+                
+                <div className='bso-text-container'>
+                  <span>B</span>
+                  <span>S</span>
+                  <span>O</span>
+                </div>
 
-            <div className='bso-container'>
-              
-              <div className='bso-text-container'>
-                <span>B</span>
-                <span>S</span>
-                <span>O</span>
+                <div className='bso-circle-container'>
+
+                  <div  className='ball-circle-container'>
+                    {divCountBall(ballCount)}
+                  </div>
+
+                  <div className='strike-circle-container'>
+                    {divCountSO(strikeCount)}
+                  </div>
+
+                  <div className='out-circle-container'>
+                    {divCountSO(outCount)}
+                  </div>
+
+                </div>
               </div>
 
-              <div className='bso-circle-container'>
-
-                <div  className='ball-circle-container'>
-                  {divCountBall(ballCount)}
-                </div>
-
-                <div className='strike-circle-container'>
-                  {divCountSO(strikeCount)}
-                </div>
-
-                <div className='out-circle-container'>
-                  {divCountSO(outCount)}
-                </div>
-
-              </div>
             </div>
+            <div className='strike-zone-container'>
+              {/* <span>스트라이크 존</span> */}
+              <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
+              <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
+            </div>
+          </div>
 
+          <div className='match-field'>
+            <div className='base1'>
+              {base1 ? <img src={base13Yes}/> : <img src={base13No}/>}
+            </div>
+            <div className='base2'>
+              {base2 ? <img src={base2Yes}/> : <img src={base2No}/>}
+            </div>
+            <div className='base3'>
+              {base3 ? <img src={base13Yes}/> : <img src={base13No}/>}
+            </div>
+            <img className='match-field-img' src={fieldImg} alt="" />
           </div>
-          <div className='strike-zone-container'>
-            {/* <span>스트라이크 존</span> */}
-            <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
-            <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
-          </div>
+
         </div>
-
-        <div className='match-field'>
-          <div className='base1'>
-            {base1 ? <img src={base13Yes}/> : <img src={base13No}/>}
-          </div>
-          <div className='base2'>
-            {base2 ? <img src={base2Yes}/> : <img src={base2No}/>}
-          </div>
-          <div className='base3'>
-            {base3 ? <img src={base13Yes}/> : <img src={base13No}/>}
-          </div>
-          <img className='match-field-img' src={fieldImg} alt="" />
-        </div>
-
       </div>
-    </div>
+    </Wrapper>
   )
 }

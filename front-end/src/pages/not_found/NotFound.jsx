@@ -1,5 +1,4 @@
 import React from 'react'
-import emblem from '../landing/img/emblem.svg'
 import laonChr from '../landing/img/laon_404.png'
 import './styles/NotFound.css'
 
