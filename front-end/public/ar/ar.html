@@ -52,10 +52,28 @@
                 ></a-image>
             </a-camera>
         </a-scene>
-        <script>
+        <script type="text/javascript">
             document.querySelector('a-scene').addEventListener('click', function() {
                 window.location.href="/seat"
             })
+
+            function getParams(){
+                const url = window.location.search.replace('?','');
+                const params = {};
+                const urlArray = url.split('&');
+
+                for (let i in urlArray) {
+                    const param = urlArray[i].split('=');
+                    params[param[0]] = param[1]; 
+                }
+
+                return params;
+            }
+
+            const params = getParams();
+
+            console.log(params['lat'])
+            console.log(params['lng'])
         </script>
     </body>
 </html>

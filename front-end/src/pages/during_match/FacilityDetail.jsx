@@ -20,6 +20,8 @@ import KKOCHI_img from './img/food/kkochi.jpg'
 import REALPIG_img from './img/food/realPig.jpg'
 import OJIK_img from './img/food/5직떡볶이.jpg'
 
+import { BiArrowBack } from 'react-icons/bi'
+
 import axios from 'axios'
 
 export default function FacilityDetail() {
@@ -197,9 +199,9 @@ export default function FacilityDetail() {
   return (
     <div className='facility-detail-container font'>
       <div className='facility-detail-header'>
-          <img className='go-back-arrow' src={arrow} onClick={goBack} alt="" />
+        <BiArrowBack size={36} onClick={goBack}/>
           <div className='facility-detail-coverimg'>
-            <img className='facility-detail-img' src={mainImg } alt="" />
+            <img className='facility-detail-img' src={mainImg} alt="" />
           </div>
       </div>
 

@@ -88,10 +88,10 @@ export default function Match() {
   const divCountBall = function(payload) {
     const result = []
     for (let i = 0; i < payload; i++) {
-      result.push(<div className='bso-circle' key={i}></div>)      
+      result.push(<div className='bso-circle' key={`bso` + i}></div>)      
     }
     for(let j = 0; j < 3 - payload; j++) {
-      result.push(<div className='no-bso-circle' key={j}></div>)      
+      result.push(<div className='no-bso-circle' key={`no-bso` + j}></div>)      
     }
     return result
   }
@@ -99,10 +99,10 @@ export default function Match() {
   const divCountSO = function(payload) {
     const result = []
     for (let i = 0; i < payload; i++) {
-      result.push(<div className='bso-circle' key={i}></div>)      
+      result.push(<div className='bso-circle' key={`bso` + i}></div>)      
     }
     for(let j = 0; j < 2 - payload; j++) {
-      result.push(<div className='no-bso-circle' key={j}></div>)      
+      result.push(<div className='no-bso-circle' key={`no-bso` + j}></div>)      
     }
     return result
   }
@@ -154,9 +154,10 @@ export default function Match() {
       // setTimeout(() => {
       //   const getDrawBall = setInterval(drawBall, 5000)
       // }, 100)
-      return () => {
-        clearInterval(getStzone);
-      }
+      // return () => {
+      //   clearInterval(getStzone);
+      // }
+
     } 
 
     const strikeRectCanvas = stZoneRectRef.current;

@@ -44,7 +44,9 @@ import camera from './img/facility/camera.png'
 import baby from './img/facility/baby-bottle.png'
 import smoking from './img/facility/smoking.png'
 import trash from './img/facility/trash-can.png'
-import {MdGpsFixed} from 'react-icons/md'
+
+import { BiSolidDownArrow } from 'react-icons/bi'
+import { MdGpsFixed } from 'react-icons/md'
 
 import axios from 'axios';
 import './styles/Facilities.css';
@@ -61,10 +63,10 @@ export default function Facilities() {
   const [category, setCategory] = useState('식음매장')
   const [focusedBody, setFocusedBody] = useState(false)
   const [currentFloor, setCurrentFloor] = useState('3F')
+  const [view, setView] = useState(false); 
   const navigate = useNavigate()
 
   function selectFloor(e) {
-    console.log(e)
     if (e.target.innerText === '2F') {
       setFloor(map2F)
       setCurrentFloor('2F')
@@ -77,6 +79,7 @@ export default function Facilities() {
       setFloor(map5F)
       setCurrentFloor('5F')
     }
+    getGPS()
   }
 
   const onChangeDeparture = (e) => {
@@ -182,17 +185,6 @@ export default function Facilities() {
     setCategory(e.target.innerText)
   }
 
-  function focusBody(e) {
-    if (e.target.className === 'facilities-body' ||
-      e.target.className === 'points-canvas' ||
-      e.target.className === 'store-img' ||
-      e.target.className === 'to-ar-button') {
-      setFocusedBody(true)
-    } else {
-      setFocusedBody(false)
-    }
-  }
-
   function selectStore(e) {
     setDestination(e.target.id)
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
@@ -276,10 +268,19 @@ export default function Facilities() {
     })
   }
 
+  function getGPS() {
+    console.log(1)
+    navigator.geolocation.getCurrentPosition(getPosition)
+  }
+
+  function dropdown() {
+    setView(!view)
+  }
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(getPosition)
+    getGPS()
   }, [])
+
   return (
     <Wrapper>
       <div className='facilities-container font'>
@@ -287,14 +288,21 @@ export default function Facilities() {
 
           <div className='floor-select-button'>
             <div className='current-location-container'>
-              <div className='current-location'>
+              <div className='current-location' onClick={getGPS}>
                 <MdGpsFixed size={34}/> 
                 <h2>{currentPosition} 구역</h2>
               </div>
-              <div className='current-floor-selector'>
-                <button>2F</button>
-                <button>3F</button>
-                <button>5F</button>
+              <div className='floor-dropdown' onClick={dropdown}>
+                <span className='current-floor'>
+                  {currentFloor}
+                  <BiSolidDownArrow size={26}/>  
+                </span>
+                
+                {view && <div className='dropdown-content'>
+                  <button onClick={selectFloor} className='dropdown-item'>2F</button>
+                  <button onClick={selectFloor} className='dropdown-item'>3F</button>
+                  <button onClick={selectFloor} className='dropdown-item'>5F</button>
+                </div>}
               </div>
             </div>
           </div>
