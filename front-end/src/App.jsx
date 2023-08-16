@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion'
 import './App.css'
 import axios from 'axios';
 import store from "./store/store"
@@ -216,19 +217,20 @@ function App() {
   if (gameStatus === 'PLAY'){
     const reGetData = setInterval(getData, 2000)
   }
-
   return (
-    <Routes>
-      <Route path="/" element={ <Landing/> } />
-      <Route path="/seat" element={ <Seat/> } />
-      <Route path="/section" element={ <SectionDetail/> } />
-      <Route path="/match" element={ <Match/> } />
-      <Route path="/facilities" element={ <Facilities/> } />
-      <Route path="/facilities/detail" element={ <FacilityDetail/> } />
-      <Route path="/navigation" element={ <Navigation/> } />
-      <Route path="/test" element={ <Test/> } />
-      <Route path="/*" element={<NotFound/>}/>
-    </Routes>
+    <AnimatePresence>
+      <Routes>
+        <Route path="/" element={ <Landing/> } />
+        <Route path="/seat" element={ <Seat/> } />
+        <Route path="/section" element={ <SectionDetail/> } />
+        <Route path="/match" element={ <Match/> } />
+        <Route path="/facilities" element={ <Facilities/> } />
+        <Route path="/facilities/detail" element={ <FacilityDetail/> } />
+        <Route path="/navigation" element={ <Navigation/> } />
+        <Route path="/test" element={ <Test/> } />
+        <Route path="/*" element={<NotFound/>}/>
+      </Routes>
+    </AnimatePresence>
   );
 }
 

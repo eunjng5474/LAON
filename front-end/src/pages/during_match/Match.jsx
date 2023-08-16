@@ -10,6 +10,7 @@ import base2No from './img/base2_no.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import Wrapper from '../../components/AnimateWrapper';
 
 
 
@@ -21,8 +22,8 @@ export default function Match() {
   const awayScore = useSelector((state) => state.awayScore )
   const homeScore = useSelector((state) => state.homeScore)
   let liveText = useSelector((state) => state.liveText)
-  const ballCount = useSelector((state) => state.ballCount)
-  const strikeCount = useSelector((state) => state.strikeCount)
+  let ballCount = useSelector((state) => state.ballCount)
+  let strikeCount = useSelector((state) => state.strikeCount)
   let outCount = useSelector((state) => state.outCount)
   const gameDate = useSelector((state) => state.gameDate)
   const gameStatus = useSelector((state) => state.gameStatus)
@@ -74,10 +75,13 @@ export default function Match() {
   }
 
   if (gameStatus === 'END'){
+    ballCount = 0;
+    strikeCount = 0;
     outCount = 0;
     base1 = null;
     base2 = null;
     base3 = null;
+    // setBallPositions([]);
   }
 
   // 볼카운트
@@ -104,8 +108,9 @@ export default function Match() {
   }
 
 
+
   function getStrikeZone(e) {
-    axios.get(`https://laon.info/api/lions/strike_zone/20230815/${awayTeamName}/${inning[0]}`)
+    axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
     .then((res) => {
       console.log(res.data)
 
@@ -113,19 +118,17 @@ export default function Match() {
         setPrevPx(px)
         setPrevPz(pz)
 
-        const newT = (-res.data["vy0"] - (res.data["vy0"] * res.data["vy0"] - 2 * res.data["ay"] * (res.data["y0"] - res.data["crossPlateY"])) ** 0.5) / res.data["ay"]
-        const newPx = res.data["x0"] + res.data["vx0"] * t + res.data["ax"] * t * t * 0.5
-        const newPz = res.data["z0"] + res.data["vz0"] * t + res.data["az"] * t * t * 0.5
+        const newT = (-Number(res.data["vy0"]) - (Number(res.data["vy0"]) * Number(res.data["vy0"]) - 2 * Number(res.data["ay"]) * (Number(res.data["y0"]) - Number(res.data["crossPlateY"]))) ** 0.5) / Number(res.data["ay"])
+        const newPx = Number(res.data["x0"]) + Number(res.data["vx0"]) * newT + Number(res.data["ax"]) * newT * newT * 0.5 + Number(res.data["crossPlateX"])
+        const newPz = Number(res.data["z0"]) + Number(res.data["vz0"]) * newT + Number(res.data["az"]) * newT * newT * 0.5 
 
+        setT(newT)
+        setPx(newPx)
+        setPz(newPz)
+        setBallSpeed(res.data.speed);
+        setBallStuff(res.data.stuff);
+        setBallPositions([...ballPositions, { px: newPx, pz: newPz }])
 
-          setT(newT)
-          setPx(newPx)
-          setPz(newPz)
-          setBallSpeed(res.data.speed);
-          setBallStuff(res.data.stuff);
-          setBallPositions([...ballPositions, { px: newPx, pz: newPz }])
-        
-        
       } 
       // else {
       //   setT('');
@@ -138,17 +141,15 @@ export default function Match() {
   }
 
 
-
   // const strikeCanvas = stZoneRef.current;
   // strikeCanvas.width = 110;
   // strikeCanvas.height = 130;
   // const stZoneBallCtx = strikeCanvas.getContext("2d");
 
-
   useEffect(() => {
 
     if (gameStatus === 'PLAY'){
-      // getStrikeZone()
+      getStrikeZone()
       const getStzone = setInterval(getStrikeZone, 5000)
       // setTimeout(() => {
       //   const getDrawBall = setInterval(drawBall, 5000)
@@ -202,24 +203,24 @@ export default function Match() {
     //   stZoneBallCtx.clearRect(0, 0, strikeRectCanvas.width, strikeRectCanvas.height)
     // }
 
-    //// 이전 공들 녹색으로 그리기
-    // ballPositions.forEach((position) => {
-    //   stZoneBallCtx.beginPath();
-    //   stZoneBallCtx.moveTo(60-position.px*25, 155-position.pz*25);
-    //   stZoneBallCtx.arc(60-position.px*25, 155-position.pz*25, 8, 0, 2 * Math.PI);
-    //   stZoneBallCtx.stroke();
-    //   stZoneBallCtx.fillStyle = '#7DB249';
-    //   stZoneBallCtx.fill();
+    // 타자 바뀌면 ballPositions 초기화하기!!!!!!!!!!!!
+
+    // 이전 공들 녹색으로 그리기
+    ballPositions.forEach((position) => {
+      stZoneBallCtx.beginPath();
+      stZoneBallCtx.moveTo(55-position.px*10, 65+position.pz*10);
+      stZoneBallCtx.arc(55-position.px*10, 65+position.pz*10, 8, 0, 2 * Math.PI);
+      stZoneBallCtx.stroke();
+      stZoneBallCtx.fillStyle = '#7DB249';
+      stZoneBallCtx.fill();
       
-    // })
+    })
     // console.log(ballPositions)
 
-
       stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(40 + px * 25, 150 - pz * 25);
-      stZoneBallCtx.arc(40 + px*25, 150-pz*25, 18, 0, 2 * Math.PI);
+      stZoneBallCtx.moveTo(55 -px*10, 65+pz*10);
+      stZoneBallCtx.arc(55 -px*10, 65+pz*10, 8, 0, 2 * Math.PI);
       stZoneBallCtx.stroke();
-      // 4
       stZoneBallCtx.fillStyle = 'red';
       // if(pitchResult === 'S'){
         //   stZoneBallCtx.fillStyle = '#FFCD4A';
@@ -228,101 +229,105 @@ export default function Match() {
           // }
           stZoneBallCtx.fill();
   }
-
+  if(gameStatus === 'PLAY'){
     drawBall();
+  }
 
   }, [t, px, pz])
 
 
+
   return (
-    <div className='match-container font'>
+    <Wrapper>
+      <div className='match-container font'>
 
-      <div className='match-body'>
+        <div className='match-body'>
 
-        <div className='match-score-board'>
-          <div className='match-away-team-container'>
-            <img className='match-away-team' src={awayTeamLogo} alt="" />
-            <div className='match-away-info'>
-              <h3>AWAY</h3>
+          <div className='match-score-board'>
+            <div className='match-away-team-container'>
+              <img className='match-away-team' src={awayTeamLogo} alt="" />
+              <div className='match-away-info'>
+                <h3>AWAY</h3>
+              </div>
             </div>
-          </div>
-          
-          <div className='score-board-center'>
-            <div className='score-board-inning'>
-              {inning}
+            
+            <div className='score-board-center'>
+              <div className='score-board-inning'>
+                {inning}
+              </div>
+              <div className='score-board-point'>
+                {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
+                <div className='score-board-attack'>
+                  <div className={ awayAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+                  <div className={ homeAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+                </div>
+              </div>
             </div>
-            <div className='score-board-point'>
-              {awayScore ? awayScore : 0} : {homeScore ? homeScore : 0}
-              <div className='score-board-attack'>
-                <div className={ awayAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
-                <div className={ homeAttack ? 'match-attack-circle' : 'match-non-attack-circle' }></div>
+            
+            <div className='match-home-team-container'>
+              <img className='match-home-team' src={homeTeamLogo} alt="" />
+              <div className='match-home-info'>
+                <h3>HOME</h3>
               </div>
             </div>
           </div>
-          
-          <div className='match-home-team-container'>
-            <img className='match-home-team' src={homeTeamLogo} alt="" />
-            <div className='match-home-info'>
-              <h3>HOME</h3>
-            </div>
+
+            
+          <div className='liveText'>
+            <span>{liveText}</span>
           </div>
-        </div>
 
-          
-        <div className='liveText'>
-          <span>{liveText}</span>
-        </div>
+          <div className='match-live-info'>
+            <div className='match-ball-count'>
 
-        <div className='match-live-info'>
-          <div className='match-ball-count'>
+              <div className='bso-container'>
+                
+                <div className='bso-text-container'>
+                  <span>B</span>
+                  <span>S</span>
+                  <span>O</span>
+                </div>
 
-            <div className='bso-container'>
-              
-              <div className='bso-text-container'>
-                <span>B</span>
-                <span>S</span>
-                <span>O</span>
+                <div className='bso-circle-container'>
+
+                  <div  className='ball-circle-container'>
+                    {divCountBall(ballCount)}
+                  </div>
+
+                  <div className='strike-circle-container'>
+                    {divCountSO(strikeCount)}
+                  </div>
+
+                  <div className='out-circle-container'>
+                    {divCountSO(outCount)}
+                  </div>
+
+                </div>
               </div>
 
-              <div className='bso-circle-container'>
-
-                <div  className='ball-circle-container'>
-                  {divCountBall(ballCount)}
-                </div>
-
-                <div className='strike-circle-container'>
-                  {divCountSO(strikeCount)}
-                </div>
-
-                <div className='out-circle-container'>
-                  {divCountSO(outCount)}
-                </div>
-
-              </div>
             </div>
+            <div className='strike-zone-container'>
+              {/* <span>스트라이크 존</span> */}
+              <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
+              <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
+            </div>
+          </div>
 
+          <div className='match-field'>
+            <div className='base1'>
+              {base1 ? <img src={base13Yes}/> : <img src={base13No}/>}
+            </div>
+            <div className='base2'>
+              {base2 ? <img src={base2Yes}/> : <img src={base2No}/>}
+            </div>
+            <div className='base3'>
+              {base3 ? <img src={base13Yes}/> : <img src={base13No}/>}
+            </div>
+            <img className='match-field-img' src={fieldImg} alt="" />
           </div>
-          <div className='strike-zone-container'>
-            {/* <span>스트라이크 존</span> */}
-            <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
-            <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
-          </div>
+
         </div>
-
-        <div className='match-field'>
-          <div className='base1'>
-            {base1 ? <img src={base13Yes}/> : <img src={base13No}/>}
-          </div>
-          <div className='base2'>
-            {base2 ? <img src={base2Yes}/> : <img src={base2No}/>}
-          </div>
-          <div className='base3'>
-            {base3 ? <img src={base13Yes}/> : <img src={base13No}/>}
-          </div>
-          <img className='match-field-img' src={fieldImg} alt="" />
-        </div>
-
       </div>
-    </div>
+    </Wrapper>
   )
 }
