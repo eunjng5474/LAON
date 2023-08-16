@@ -13,24 +13,23 @@ import axios from 'axios';
 
 
 
-export default function Match() {
+export default function Test() {
   const awayTeamName = useSelector((state) => state.awayTeamName)
   const awayTeamLogo = useSelector((state) => state.awayTeamLogo)
   const homeTeamLogo = useSelector((state) => state.homeTeamLogo)
   const [inningData, setInningData] = useState('');
+  const [awayScore, setAwayScore] = useState('');
+  const [homeScore, setHomeScore] = useState('');
+  const [liveText, setLiveText] = useState('');
+  const [ballCount, setBallCount] = useState('');
+  const [strikeCount, setStrikeCount] = useState('');
+  const [outCount, setOutCount] = useState('');
+  const [ballNum, setBallNum] = useState('');
 
-  const awayScore = useSelector((state) => state.awayScore )
-  const homeScore = useSelector((state) => state.homeScore)
-  let liveText = useSelector((state) => state.liveText)
-  let ballCount = useSelector((state) => state.ballCount)
-  let strikeCount = useSelector((state) => state.strikeCount)
-  let outCount = useSelector((state) => state.outCount)
-  const gameDate = useSelector((state) => state.gameDate)
-  const gameStatus = useSelector((state) => state.gameStatus)
+  const [base1, setBase1] = useState('');
+  const [base2, setBase2] = useState('');
+  const [base3, setBase3] = useState('');
 
-  let base1 = useSelector((state) => state.base1)
-  let base2 = useSelector((state) => state.base2)
-  let base3 = useSelector((state) => state.base3)
 
   const stZoneRef = useRef(null);
   const stZoneRectRef = useRef(null);
@@ -54,76 +53,147 @@ export default function Match() {
   let homeAttack = false;  // 홈 공격 여부
   let awayAttack = false;  // 어웨이 공격 여부
 
+  if (inningData === "BEFORE"){
+    inning = "경기 예정" // 이닝
+    // liveText = `${gameDate.substr(4, 2)}월 ${gameDate.substr(6, 2)}일 경기 예정입니다`
+  } else if (inningData === 'END') { 
+    inning = "경기 종료"
+    liveText = "경기가 종료되었습니다"
+  } else if (inningData === null) {
+    console.log('로딩 중..')
+  } else if (inningData[0] === "B"){
+    inning = inningData[2] + "회말" // 이닝
+    homeAttack = true;
+  } else if (inningData[0] === 'T'){
+    inning = inningData[2] + "회초" // 이닝
+    awayAttack = true;
+  } else if (inningData === null){
+    inning = "경기종료" // 이닝
+  } else {
+    console.log("end")
+  }
   
 
   // 볼카운트
   const divCountBall = function(payload) {
     const result = []
     for (let i = 0; i < payload; i++) {
-      result.push(<div className='bso-circle' key={i}></div>)      
+      result.push(<div className='bso-circle' key={`test-bso` + i}></div>)      
     }
     for(let j = 0; j < 3 - payload; j++) {
-      result.push(<div className='no-bso-circle' key={j}></div>)      
+      result.push(<div className='no-bso-circle' key={`test-no-bso` + j}></div>)      
     }
     return result
   }
+
+
 
   const divCountSO = function(payload) {
     const result = []
     for (let i = 0; i < payload; i++) {
-      result.push(<div className='bso-circle' key={i}></div>)      
+      result.push(<div className='bso-circle' key={`test-bso` + i}></div>)      
     }
     for(let j = 0; j < 2 - payload; j++) {
-      result.push(<div className='no-bso-circle' key={j}></div>)      
+      result.push(<div className='no-bso-circle' key={`test-no-bso` + j}></div>)      
     }
     return result
   }
 
 
-
-  function getStrikeZone(e) {
-    axios.get(`https://laon.info/test`)
-    .then((res) => {
-      console.log(res.data)
-
-      if(res.data){
-        setInningData(res.data.periodType)
-
-      //   setPrevPx(px)
-      //   setPrevPz(pz)
-
-      //   const newT = (-Number(res.data["vy0"]) - (Number(res.data["vy0"]) * Number(res.data["vy0"]) - 2 * Number(res.data["ay"]) * (Number(res.data["y0"]) - Number(res.data["crossPlateY"]))) ** 0.5) / Number(res.data["ay"])
-      //   const newPx = Number(res.data["x0"]) + Number(res.data["vx0"]) * newT + Number(res.data["ax"]) * newT * newT * 0.5 + Number(res.data["crossPlateX"])
-      //   const newPz = Number(res.data["z0"]) + Number(res.data["vz0"]) * newT + Number(res.data["az"]) * newT * newT * 0.5 
-
-      //   setT(newT)
-      //   setPx(newPx)
-      //   setPz(newPz)
-      //   setBallSpeed(res.data.speed);
-      //   setBallStuff(res.data.stuff);
-      //   setBallPositions([...ballPositions, { px: newPx, pz: newPz }])
-
-      } 
-    })
-  }
+  
 
 
   useEffect(() => {
+    const strikeCanvas = stZoneRef.current;
+    strikeCanvas.width = 110;
+    strikeCanvas.height = 130;
+    const stZoneBallCtx = strikeCanvas.getContext("2d");
+
+    function drawBall(px, pz) {
+      console.log('그리기')
+      console.log(ballStuff, ballSpeed, px, pz)
+
+      // 이전 공들 녹색으로 그리기
+      ballPositions.forEach((position) => {
+        stZoneBallCtx.beginPath();
+        stZoneBallCtx.moveTo(55-position.px*10, 65+position.pz*10);
+        stZoneBallCtx.arc(55-position.px*10, 65+position.pz*10, 8, 0, 2 * Math.PI);
+        stZoneBallCtx.stroke();
+        stZoneBallCtx.fillStyle = '#7DB249';
+        stZoneBallCtx.fill();
+      })
+
+      stZoneBallCtx.beginPath();
+      stZoneBallCtx.moveTo(55 -px*10, 65+pz*10);
+      stZoneBallCtx.arc(55 -px*10, 65+pz*10, 8, 0, 2 * Math.PI);
+      stZoneBallCtx.stroke();
+      stZoneBallCtx.fillStyle = 'red';
+      stZoneBallCtx.fill();
+    }
+
+
+    function getStrikeZone() {
+      axios.get(`https://laon.info/test`)
+      .then((res) => {
+        console.log(res.data)
+  
+        if(res.data){
+          if (res.data.text.includes('번타자')) {
+            stZoneBallCtx.clearRect(0, 0, strikeCanvas.width, strikeCanvas.height)
+          }
+
+          setInningData(res.data.periodType)
+          setAwayScore(res.data.awayScore)
+          setHomeScore(res.data.homeScore)
+          setLiveText(res.data.text)
+          setBallCount(res.data.ball)
+          setStrikeCount(res.data.strike)
+          setOutCount(res.data.out)
+          setBase1(res.data.base1)
+          setBase2(res.data.base2)
+          setBase3(res.data.base3)
+  
+          setBallSpeed(res.data.speed)
+          setBallStuff(res.data.sutff)
+          setBallNum(res.data.ballcount)
+
+          setPrevPx(px)
+          setPrevPz(pz)
+  
+          const newT = (-Number(res.data["vy0"]) - (Number(res.data["vy0"]) * Number(res.data["vy0"]) - 2 * Number(res.data["ay"]) * (Number(res.data["y0"]) - Number(res.data["crossPlateY"]))) ** 0.5) / Number(res.data["ay"])
+          const newPx = Number(res.data["x0"]) + Number(res.data["vx0"]) * newT + Number(res.data["ax"]) * newT * newT * 0.5 + Number(res.data["crossPlateX"])
+          const newPz = Number(res.data["z0"]) + Number(res.data["vz0"]) * newT + Number(res.data["az"]) * newT * newT * 0.5 
+  
+          if(px !== newPx || pz !== newPz){
+            setT(newT)
+            setPx(newPx)
+            setPz(newPz)
+            setBallPositions([...ballPositions, { px: newPx, pz: newPz }])
+          }
+          
+          if (newPx && newPz) {
+            drawBall(newPx, newPz);
+          }
+        }
+      })
+    }
+
+
 
     // if (gameStatus === 'PLAY'){
       getStrikeZone()
-      const getStzone = setInterval(getStrikeZone, 100000)
 
-      return () => {
-        clearInterval(getStzone);
-      }
+      const getStzone = setInterval(getStrikeZone, 6000)
+
+      // return () => {
+      //   clearInterval(getStzone);
+      // }
     // } 
 
     const strikeRectCanvas = stZoneRectRef.current;
     strikeRectCanvas.width = 110;
     strikeRectCanvas.height = 130;
     const stZoneRectCtx = strikeRectCanvas.getContext("2d");
-    // console.log(px, pz);
 
     function drawZone() {
       stZoneRectCtx.beginPath();
@@ -143,45 +213,51 @@ export default function Match() {
     }
 
     drawZone();
+    // drawBall();
      
   },[])
 
-  useEffect(() => {
-    const strikeCanvas = stZoneRef.current;
-    strikeCanvas.width = 110;
-    strikeCanvas.height = 130;
-    const stZoneBallCtx = strikeCanvas.getContext("2d");
+  // useEffect(() => {
+    // const strikeCanvas = stZoneRef.current;
+    // strikeCanvas.width = 110;
+    // strikeCanvas.height = 130;
+    // const stZoneBallCtx = strikeCanvas.getContext("2d");
 
-  function drawBall() {
+  //   function drawBall() {
 
-    console.log(ballStuff, ballSpeed, px, pz)
+  //     console.log(ballStuff, ballSpeed, px, pz)
 
 
-    // 타자 바뀌면 ballPositions 초기화하기!!!!!!!!!!!!
+  //     // 타자 바뀌면 ballPositions 초기화하기!!!!!!!!!!!!
+  //     if(ballNum === 1){
+  //       setBallPositions([]);
+  //     }
 
-    // 이전 공들 녹색으로 그리기
-    ballPositions.forEach((position) => {
-      stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(55-position.px*10, 65+position.pz*10);
-      stZoneBallCtx.arc(55-position.px*10, 65+position.pz*10, 8, 0, 2 * Math.PI);
-      stZoneBallCtx.stroke();
-      stZoneBallCtx.fillStyle = '#7DB249';
-      stZoneBallCtx.fill();
-      
-    })
+  //     // 이전 공들 녹색으로 그리기
+  //     ballPositions.forEach((position) => {
+  //       stZoneBallCtx.beginPath();
+  //       stZoneBallCtx.moveTo(55-position.px*10, 65+position.pz*10);
+  //       stZoneBallCtx.arc(55-position.px*10, 65+position.pz*10, 8, 0, 2 * Math.PI);
+  //       stZoneBallCtx.stroke();
+  //       stZoneBallCtx.fillStyle = '#7DB249';
+  //       stZoneBallCtx.fill();
+  //     })
 
-      stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(55 -px*10, 65+pz*10);
-      stZoneBallCtx.arc(55 -px*10, 65+pz*10, 8, 0, 2 * Math.PI);
-      stZoneBallCtx.stroke();
-      stZoneBallCtx.fillStyle = 'red';
-      stZoneBallCtx.fill();
-  }
+  //     console.log(ballPositions)
+
+  //     stZoneBallCtx.beginPath();
+  //     stZoneBallCtx.moveTo(55 -px*10, 65+pz*10);
+  //     stZoneBallCtx.arc(55 -px*10, 65+pz*10, 8, 0, 2 * Math.PI);
+  //     stZoneBallCtx.stroke();
+  //     stZoneBallCtx.fillStyle = 'red';
+  //     stZoneBallCtx.fill();
+  // }
   // if(gameStatus === 'PLAY'){
-  //   drawBall();
+    
+  // drawBall();
   // }
 
-  }, [t, px, pz])
+  // }, [t, px, pz])
 
 
 
