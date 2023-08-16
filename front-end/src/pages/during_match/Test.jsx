@@ -54,30 +54,35 @@ export default function Test() {
     const stZoneBallCtx = strikeCanvas.getContext("2d");
 
   function drawBall() {
-    const ballcount = 4;
-    const crossPlateX = -0.542066;
+    const ballcount = 2;
+    const crossPlateX = 0.806934;
     const crossPlateY = 1.4167;
-    const topSz = 3.48983;
-    const bottomSz = 1.5;
-    const vy0 = -130.496;
-    const vz0 = -4.74224;
-    const vx0 = 7.18303;
-    const z0 = 5.60606;
+    const topSz = 3.67483;
+    const bottomSz = 1.64555;
+    const vy0 = -131.642;
+    const vz0 = -10.5243;
+    const vx0 = 6.25119;
+    const z0 = 6.04097;
     const y0 = 50.0;
-    const x0 = -2.42921;
-    const ax = -11.9247;
-    const ay = 25.7969;
-    const az = -14.6202;
+    const x0 = -1.50738;
+    const ax = -1.2529;
+    const ay = 28.4536;
+    const az = -11.2004;
+    
+    
     
 
 
     const t = (-vy0 - (vy0 * vy0 - 2 * ay * (y0 - crossPlateY)) ** 0.5) / ay    
     const px = x0 + vx0 * t + ax * t * t * 0.5;
     const pz = z0 + vz0 * t + az * t * t * 0.5;
+
+    console.log(ballcount, ': ', crossPlateX+px, pz)
     
     stZoneBallCtx.beginPath();
-    stZoneBallCtx.moveTo(55+(crossPlateX+px)*20, 110-(crossPlateX+pz)*30);
-    stZoneBallCtx.arc(55+(crossPlateX+px)*20, 110-(crossPlateX+pz)*30, 8, 0, 2 * Math.PI);
+    stZoneBallCtx.moveTo(55+(x0+px)*20, 50+(z0+pz)*20);
+    // stZoneBallCtx.arc(55+(x0+px)*10, 50+(z0+pz)*10, 8, 0, 2 * Math.PI);
+    stZoneBallCtx.arc(55-(crossPlateX+px)*20, 65+(crossPlateY+pz)*20, 8, 0, 2 * Math.PI);
     stZoneBallCtx.stroke();
 
     stZoneBallCtx.fillStyle = 'red';
