@@ -67,3 +67,10 @@
   justify-content: space-around;
   color: black;
 } */
+/* 
+ */
+
+ .text-canvas {
+  position: absolute;
+  z-index: 5;
+ }
