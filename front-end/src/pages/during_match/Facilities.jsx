@@ -336,7 +336,7 @@ export default function Facilities() {
               onClick={selectStoreDetail}
             >
               <div className='store-item-header' id="KELLY" >
-                {/* <img className='store-img' src={KEELY_img} alt="" id="KELLY" /> */}
+                <img className='store-img' src={KEELY_img} alt="" id="KELLY" />
                 <div className='store-item-logo'>
                   <img className='store-logo-img' src={KELLY} alt="" id="KELLY" />
                 </div>
