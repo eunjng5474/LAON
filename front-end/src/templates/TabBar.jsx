@@ -43,7 +43,7 @@ export default function TabBar() {
     navigate('/seat')
   }
   function navigateMatchPage() {
-    navigate('/match')
+    navigate('/test')
   }
 
   useEffect(() => {

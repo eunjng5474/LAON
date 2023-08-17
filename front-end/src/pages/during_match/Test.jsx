@@ -104,6 +104,8 @@ export default function Test() {
 
 
   useEffect(() => {
+    axios.get(`https://laon.info/test/reset`)
+
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
     strikeCanvas.height = 130;
@@ -116,16 +118,17 @@ export default function Test() {
       // 이전 공들 녹색으로 그리기
       ballPositions.forEach((position) => {
         stZoneBallCtx.beginPath();
-        stZoneBallCtx.moveTo(55-position.px*10, 65+position.pz*10);
-        stZoneBallCtx.arc(55-position.px*10, 65+position.pz*10, 8, 0, 2 * Math.PI);
+        stZoneBallCtx.moveTo(55-position.px*15, 150-position.pz*10);
+        stZoneBallCtx.arc(55-position.px*20, 150-+position.pz*10, 8, 0, 2 * Math.PI);
         stZoneBallCtx.stroke();
         stZoneBallCtx.fillStyle = '#7DB249';
         stZoneBallCtx.fill();
+        console.log('p:', position)
       })
 
       stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(55 -px*10, 65+pz*10);
-      stZoneBallCtx.arc(55 -px*10, 65+pz*10, 8, 0, 2 * Math.PI);
+      stZoneBallCtx.moveTo(55 -px*15, 150-pz*10);
+      stZoneBallCtx.arc(55 -px*20, 150-pz*10, 8, 0, 2 * Math.PI);
       stZoneBallCtx.stroke();
       stZoneBallCtx.fillStyle = 'red';
       stZoneBallCtx.fill();
@@ -138,7 +141,7 @@ export default function Test() {
         console.log(res.data)
   
         if(res.data){
-          if (res.data.text.includes('번타자')) {
+          if (res.data.text.includes('번타자') || res.data.text.includes('홈런')) {
             stZoneBallCtx.clearRect(0, 0, strikeCanvas.width, strikeCanvas.height)
           }
 
@@ -162,7 +165,7 @@ export default function Test() {
   
           const newT = (-Number(res.data["vy0"]) - (Number(res.data["vy0"]) * Number(res.data["vy0"]) - 2 * Number(res.data["ay"]) * (Number(res.data["y0"]) - Number(res.data["crossPlateY"]))) ** 0.5) / Number(res.data["ay"])
           const newPx = Number(res.data["x0"]) + Number(res.data["vx0"]) * newT + Number(res.data["ax"]) * newT * newT * 0.5 + Number(res.data["crossPlateX"])
-          const newPz = Number(res.data["z0"]) + Number(res.data["vz0"]) * newT + Number(res.data["az"]) * newT * newT * 0.5 
+          const newPz = Number(res.data["z0"]) + Number(res.data["vz0"]) * newT + Number(res.data["az"]) * newT * newT * 0.5 + Number(res.data["z0"])
   
           if(px !== newPx || pz !== newPz){
             setT(newT)
@@ -182,8 +185,9 @@ export default function Test() {
 
     // if (gameStatus === 'PLAY'){
       getStrikeZone()
-
-      const getStzone = setInterval(getStrikeZone, 6000)
+      if ( !liveText.includes('홈런')) {
+        const getStzone = setInterval(getStrikeZone, 3000)
+      }
 
       // return () => {
       //   clearInterval(getStzone);
