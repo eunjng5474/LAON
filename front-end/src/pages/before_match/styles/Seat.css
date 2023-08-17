@@ -106,7 +106,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  background-image: url('../img/team_bg/lions.png');
+  background-image: url('../img/team_bg/seat-bg-l.png');
+  /* background-image: url('../img/team_bg/lions.png'); */
   background-color: #074CA1;
   padding-top: 8vh;
 }
