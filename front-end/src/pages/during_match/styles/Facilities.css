@@ -5,7 +5,7 @@
   width: 100vw;
   height: 87vh;
   padding-top: 3vh;
-  background-color: #fefefe;
+  background-image: url('../img/facility_bg.png');
 }
 
 .facilities-header {
@@ -23,7 +23,8 @@
   padding: 14px 24px;
   width: 78vw;
   height: 6vh;
-  border-radius: 30px;
+  border-radius: 20px;
+  background-color: #fffffff0;
   box-shadow: 3px 3px 3px 3px rgb(244, 244, 244);
 }
 
@@ -60,6 +61,7 @@
 }
 
 .category-button-nonline {
+  letter-spacing: 2px;
   width: 40vw;
   border: none;
   background: none;
@@ -68,9 +70,10 @@
 }
 
 .category-button-line{
+  letter-spacing: 2px;
   width: 40vw;
   border: none;
-  border-bottom: 3.5px solid #0065B3;
+  border-bottom: 3.6px solid #0970ED;
   background: none;
   font-size: 5vw;
   font-weight: bold;
@@ -119,7 +122,7 @@
   /* box-shadow: 0px 2px 0px 0px rgb(203, 203, 203); */
   margin: 10px 14px;
   text-align: center;
-  background-color: #ffffff;
+  background-color: #fffffff0;
   box-shadow: 2px 2px 3px 2px rgb(239, 239, 239);
 }
 
@@ -174,9 +177,11 @@
 
 .facility-store-title{
   /* border: 1px solid black; */
+  letter-spacing: 2px;
   color: #000;
   position: relative;
   font-size: 2.5vh;
+  font-weight: 600;
 }
 
 .store-itme-tag{
@@ -189,7 +194,8 @@
 
 .store-tag {
   color: #ffffff;
-  background-color: #0065b3b4;
+  background-color: #5197ED;
+  font-weight: 200;
   letter-spacing: 1.5px;
   margin: 0.6vh;
   padding: 5px;
@@ -210,7 +216,9 @@
 .facility-scroll-body{
   display: flex;
   /* border: 1px solid red; */
+  border-radius: 12px;
   border-bottom: 1px solid  rgb(203, 203, 203);
+  background-color: #fffffff0;
   width: 108vw;
   height: 6vh;
 }
@@ -218,7 +226,9 @@
 .facility-toilet-scroll-body{
   display: flex;
   /* border: 1px solid red; */
+  border-radius: 12px;
   border-bottom: 1px solid  rgb(203, 203, 203);
+  background-color: #fffffff0;
   width: 93vw;
   height: 6vh;
 }
@@ -294,6 +304,14 @@
   width: 64px;
   font-size: 16px;
   color: #ffffff;
-  background-color: #0065B3;
+  background-color: #3C70B0;
   border-radius: 12px 0px 0px 12px;
+}
+
+.gps-icon {
+  color: #0970ED;
+}
+
+.dropdown-icon {
+  color: #0970ED;
 }

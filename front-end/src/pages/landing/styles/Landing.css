@@ -18,15 +18,15 @@
 
 .landing-title {
   color: #ffffff;
-  font-size: 32px;
+  font-size: 40px;
   line-height: 48px;
   letter-spacing: 4px;
   text-align: end;
 }
 
 .landing-logo {
-  color: #FFDF43;
-  font-size: 52px;
+  color: #FFCF69;
+  font-size: 50px;
   font-weight: 600;
 }
 
@@ -42,8 +42,14 @@
   height: 11vh;
   border: none;
   border-radius: 34px;
-  background-color: #074ca1da;
+  background-color: #04346ed2;
   color: #ffffff;
+}
+
+.landing-button h1 {
+  padding: 6px;
+  font-weight: 400;
+  letter-spacing: 2px;
 }
 
 @keyframes fadeInUp {

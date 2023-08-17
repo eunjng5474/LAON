@@ -42,7 +42,7 @@ function Landing() {
           </div>
           <div className='landing-body'>
             <button className='landing-button' onClick={enterLAON}>
-              <h1>라이온즈 파크 입장하기</h1>
+              <h1>라이온즈 파크</h1>
             </button>
           </div>
         </div>
