@@ -3,8 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import './styles/Navigation.css';
-import navigationMap from './img/navigation.png';
-// import EntireSectionMapImg from './img/sectionMap.png';
 import pointMap from './img/point.png'
 import map2F from './img/map2F.png'
 import map3F from './img/map3F.png'
@@ -13,7 +11,6 @@ import Wrapper from '../../components/AnimateWrapper';
 
 import bubble from './img/bubble.png'
 import {BiArrowBack, BiPhoneOutgoing} from 'react-icons/bi'
-import { HiChatBubbleBottomCenter } from 'react-icons/hi2'
 
 import axios from 'axios';
 
@@ -27,7 +24,7 @@ export default function Navigation() {
 
   const naviCanvasRef = useRef(null);
 
-  const [floor, setFloor] = useState(navigationMap)
+  const [floor, setFloor] = useState(map3F)
   const [pointDtoList, setPointDtoList] = useState()
   const [nextPointDtoList, setNextPointDtoList] = useState()
   const [showNextPoints, setshowNextPoints] = useState(false)
@@ -322,11 +319,11 @@ export default function Navigation() {
 
           { currentFloor !== destFloor + 'F' ?
           <div className='navigation-button'>
-            <button className='to-ar-button' onClick={goAR}>AR</button>
+            <button className='to-ar-button' onClick={goAR}>AR로 보기</button>
           </div>
           :
           <div className='navigation-button'>
-            <button className='to-ar-button' onClick={goAR}>AR</button>
+            <button className='to-ar-button' onClick={goAR}>AR로 보기</button>
           </div>
         }
           </div>

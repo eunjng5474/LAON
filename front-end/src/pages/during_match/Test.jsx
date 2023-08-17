@@ -10,6 +10,7 @@ import base2No from './img/base2_no.png';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import { PiSpeakerSimpleNoneFill } from 'react-icons/pi'
 
 
 
@@ -301,6 +302,7 @@ export default function Test() {
 
           
         <div className='liveText'>
+          <PiSpeakerSimpleNoneFill size={30}/>
           <span>{liveText}</span>
         </div>
 
