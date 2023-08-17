@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 export default function TabBar() {
   const navigate = useNavigate();
   const [hide, setHide] = useState()
+  const [dark, setDark] = useState()
   const [naviSelected, setNaviSelected] = useState()
   const [seatSelected, setSeatSelected] = useState()
   const [matchSelected, setMatchSelected] = useState()
@@ -56,20 +57,23 @@ export default function TabBar() {
       setNaviSelected(true)
       setSeatSelected(false)
       setMatchSelected(false)
+      setDark(false)
     } else if (window.location.pathname === '/seat') {
       setNaviSelected(false)
       setSeatSelected(true)
       setMatchSelected(false)
+      setDark(false)
     } else if (window.location.pathname === '/match') {
       setNaviSelected(false)
       setSeatSelected(false)
       setMatchSelected(true)
+      setDark(true)
     }
   })
 
 
   return (
-    <div className={`tab-bar-container ${hide ? "hide" : ""} font`}>
+    <div className={`tab-bar-container ${hide ? "hide" : ""} ${dark ? "dark" : ""} font`}>
       <div className='tab-bar-item'>
         {/* <img className={`tab-bar-icon ${naviSelected ? "tab-bar-selected" : ""}`} onClick={navigatePage} src={gps} alt="내비" /> */}
 

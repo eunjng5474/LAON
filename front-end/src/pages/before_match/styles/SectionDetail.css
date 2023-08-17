@@ -26,7 +26,7 @@
   scrollbar-width: none;
 }
 
-.section-detail-img img{
+.seat-view-img{
   height: 85vh;
 }
 
@@ -106,4 +106,32 @@
   top: 38vh;
   position: absolute;
   color: #FFCF69;
+}
+
+
+.swipe-notification-container {
+  transition: 3s;
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 20vw;
+  width: 60vw;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.swipe-hand-img {
+  transition: 1s;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.hand-show {
+  transition: 1s;
+  opacity: 1;
 }
