@@ -219,6 +219,10 @@ export default function Navigation() {
     setEnd(true)
   }
 
+  function goBack() {
+    window.history.back()
+  }
+
   useEffect(() => {
     console.log('d: ', destination)
     // console.log('s: ', startX, startY)
@@ -323,7 +327,7 @@ export default function Navigation() {
         {/* </HiChatBubbleBottomCenter.Provider> */}
         <div className='navigation-header font'>
           <div className='go-back-container'>
-            <BiArrowBack size={36}/>
+            <BiArrowBack size={36} onClick={goBack}/>
           </div>
           {noRoute ? <h2 className='navigation-text'>출발지와 목적지가 인접해 있습니다</h2> : 
             <div className='navigation-destination'>
