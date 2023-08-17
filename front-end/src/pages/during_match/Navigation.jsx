@@ -50,7 +50,38 @@ export default function Navigation() {
   const imgElem = new Image();
   imgElem.src = bubble;
 
-  function startDraw(list) {
+  
+
+
+
+
+  const naviGoal = destination;
+
+  function getCoordinate(e) {
+    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
+    const x = e.nativeEvent.offsetX
+    const y = e.nativeEvent.offsetY
+  }
+
+  function goAR() {
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
+    .then((res) => {
+      const naviGoal = res.data.facilityName
+      window.location.href = `/ar/${naviGoal}.html`
+    })
+  }
+
+  function goNextFloor() {
+    setshowNextPoints(true)
+    setStart(false)
+    setEnd(true)
+  }
+
+  useEffect(() => {
+    // console.log('d: ', destination)
+    // console.log('s: ', startX, startY)
+
+    function startDraw(list) {
     let waypoints = [];
 
     if (!list) {
@@ -194,35 +225,6 @@ export default function Navigation() {
     // }
   }
 
-
-
-
-  const naviGoal = destination;
-
-  function getCoordinate(e) {
-    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
-    const x = e.nativeEvent.offsetX
-    const y = e.nativeEvent.offsetY
-  }
-
-  function goAR() {
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
-    .then((res) => {
-      const naviGoal = res.data.facilityName
-      window.location.href = `/ar/${naviGoal}.html`
-    })
-  }
-
-  function goNextFloor() {
-    setshowNextPoints(true)
-    setStart(false)
-    setEnd(true)
-  }
-
-  useEffect(() => {
-    console.log('d: ', destination)
-    // console.log('s: ', startX, startY)
-
     if(currentFloor === '2F'){
       setFloor(map2F)
     } else if (currentFloor === '3F'){
@@ -262,9 +264,14 @@ export default function Navigation() {
               }
               console.log('다음 리스트')
               console.log(nextPointDtoList)
-              // startDraw(nextPointDtoList)
+
+
               return nextPointDtoList
             })
+            // startDraw(pointDtoList)
+            // setshowNextPoints(true)
+            // setStart(false)
+            // setEnd(true)
             // setshowNextPoints(true)
             break
           }
@@ -276,26 +283,24 @@ export default function Navigation() {
             })
           }
         }
+
       }
       else {
         setNoRoute(true)
       }
     })
-  }, [])
 
-  useEffect(() => {    
-    // setDestFloor(parseInt(nextPointDtoList[0].pointId/100))
-    // start = true
+    // if(start){
+      if(pointDtoList){
 
-    startDraw(pointDtoList)
-    // start = false
-    // setshowNextPoints(true)
-  }, [pointDtoList])
+        startDraw(pointDtoList)
+      }
+    // }
 
-  useEffect(() => {
     if(showNextPoints){
+      
       setTimeout(() => {
-        // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
+      // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
         if(destFloor === 2){
           setFloor(map2F)
         } else if (destFloor === 3){
@@ -303,13 +308,59 @@ export default function Navigation() {
         } else if (destFloor === 5){
           setFloor(map5F)
         }
-        setPointDtoList(nextPointDtoList)
-        // setStart(false)
-        // setEnd(true)
-        startDraw(nextPointDtoList)
-      }, 500)
-    }
-  }, [showNextPoints])
+      setPointDtoList(nextPointDtoList)
+      // setStart(false)
+      // setEnd(true)
+      startDraw(nextPointDtoList)
+    }, 500)
+  }
+  }, [start])
+
+  // useEffect(() => {    
+  //   // setDestFloor(parseInt(nextPointDtoList[0].pointId/100))
+  //   // start = true
+  //   if(start){
+  //     startDraw(pointDtoList)
+  //   }
+
+  //   if(showNextPoints){
+  //     setTimeout(() => {
+  //     // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
+  //       if(destFloor === 2){
+  //         setFloor(map2F)
+  //       } else if (destFloor === 3){
+  //         setFloor(map3F)
+  //       } else if (destFloor === 5){
+  //         setFloor(map5F)
+  //       }
+  //     setPointDtoList(nextPointDtoList)
+  //     // setStart(false)
+  //     // setEnd(true)
+  //     startDraw(nextPointDtoList)
+  //   }, 500)
+  // }
+  //   // start = false
+  //   // setshowNextPoints(true)
+  // }, [pointDtoList])
+
+  // useEffect(() => {
+  //   if(showNextPoints){
+  //     setTimeout(() => {
+  //       // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
+  //       if(destFloor === 2){
+  //         setFloor(map2F)
+  //       } else if (destFloor === 3){
+  //         setFloor(map3F)
+  //       } else if (destFloor === 5){
+  //         setFloor(map5F)
+  //       }
+  //       setPointDtoList(nextPointDtoList)
+  //       // setStart(false)
+  //       // setEnd(true)
+  //       startDraw(nextPointDtoList)
+  //     }, 500)
+  //   }
+  // }, [showNextPoints])
 
 
   // currentFloor === destFloor면 이동 버튼 안 보이게 바꾸기
