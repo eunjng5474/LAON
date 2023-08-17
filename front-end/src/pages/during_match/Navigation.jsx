@@ -73,7 +73,10 @@ export default function Navigation() {
   useEffect(() => {
     axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
-      console.log(res.data)      
+      console.log(res.data)
+      
+      const idx = res.data.pointDtoList.length - 1
+      setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
 
       if(currentFloor === '2F'){
         setFloor(map2F)
@@ -275,6 +278,15 @@ export default function Navigation() {
 
   useEffect(() => {
     if (trigger) {
+
+      if(destFloor === 2){
+        setFloor(map2F)
+      } else if (destFloor === 3){
+        setFloor(map3F)
+      } else if (destFloor === 5){
+        setFloor(map5F)
+      }
+
       setPointDtoList(pointDtoList => {
         pointDtoList = nextPointDtoList
         return pointDtoList

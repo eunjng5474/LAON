@@ -153,12 +153,15 @@ export default function FacilityDetail() {
 
   function menuRenderer(menuArray) {
     const result = []
+    
     if (menuArray) {
-      for (let i=0; i < menuArray.length; i++) {
+      for (let i = 0; i < menuArray.length; i++) {
+        const newPrice = menuArray[i].price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        console.log(newPrice)
         result.push(
           <div className='menu-item'>
             <span className='menu-item-name'>{menuArray[i].itemName}</span>
-            <span className='menu-item-price'>{menuArray[i].price}원</span>
+            <span className='menu-item-price'>{newPrice}원</span>
           </div>
         )
       }
@@ -217,34 +220,43 @@ export default function FacilityDetail() {
           </div>
         </div>
 
-      <div className='facility-detail-body'>
+        <div className='facility-detail-body'>
         </div>
+
         <div className='facility-detail-menu'>
-          <div className='menu-container'>
+
+          {setItem && <div className='menu-container'>
             <span className='menu-category'>세트메뉴</span>
             <hr />
             {menuRenderer(setItem)}
-          </div>
-          <div className='menu-container'>
+          </div>}
+
+          {singleItem && <div className='menu-container'>
             <span className='menu-category'>단품</span>
             <hr />
             {menuRenderer(singleItem)}
-          </div>
-          <div className='menu-container'>
+          </div>}
+
+          {sideItem && <div className='menu-container'>
             <span className='menu-category'>사이드</span>
             <hr />
             {menuRenderer(sideItem)}
-          </div>
-          <div className='menu-container'>
+          </div>}
+
+          {beverage && <div className='menu-container'>
             <span className='menu-category'>음료</span>
             <hr />
             {menuRenderer(beverage)}
-          </div>
+            
+          </div>}
+
         </div>
+        
         <div className='facility-detail-navi-button'>
           <button className='facility-navi-button' onClick={goNavi}>길찾기</button>
           <button className='facility-navi-button' onClick={goAR}>ROADVIEW</button>
         </div>
+
       </div>
   )
 }

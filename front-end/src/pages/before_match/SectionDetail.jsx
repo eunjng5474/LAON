@@ -72,43 +72,44 @@ export default function SectionDetail() {
         return seatUrl
       })
     }
-    else if (2 <= x && x <= 17 && 251 <= y && y <= 271) {
+    else if (2 <= x && x <= 17 && 117 <= y && y <= 126) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/3.jpg"
         return seatUrl
       })
     }
-    else if (2 <= x && x <= 17 && 276 <= y && y <= 296) {
+    else if (2 <= x && x <= 17 && 127 <= y && y <= 137) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/4.jpg"
         return seatUrl
       })
     }
-    else if (2 <= x && x <= 17 && 301 <= y && y <= 321) {
+    else if (2 <= x && x <= 17 && 140 <= y && y <= 149) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/5.jpg"
         return seatUrl
       })
     }
-    else if (2 <= x && x <= 17 && 326 <= y && y <= 346) {
+    else if (2 <= x && x <= 17 && 152 <= y && y <= 162) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/6.jpg"
         return seatUrl
       })
     }
-    else if (2 <= x && x <= 17 && 353 <= y && y <= 371) {
+    else if (2 <= x && x <= 17 && 164 <= y && y <= 175) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/7.jpg"
         return seatUrl
       })
     }
-    else if (20 <= x && x <= 40 && 381 <= y && y <= 390) {
+    // 좌표 여기부터 찍어야 함
+    else if (4 <= x && x <= 21 && 177 <= y && y <= 180) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY2/1.jpg"
         return seatUrl
       })
     }
-    else if (40 <= x && x <= 54 && 395 <= y && y <= 405) {
+    else if (10 <= x && x <= 54 && 395 <= y && y <= 405) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY2/2.jpg"
         return seatUrl

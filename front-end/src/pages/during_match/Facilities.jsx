@@ -289,13 +289,13 @@ export default function Facilities() {
           <div className='floor-select-button'>
             <div className='current-location-container'>
               <div className='current-location' onClick={getGPS}>
-                <MdGpsFixed size={34}/> 
+                <MdGpsFixed className='gps-icon' size={34}/> 
                 <h2>{currentPosition} 구역</h2>
               </div>
               <div className='floor-dropdown' onClick={dropdown}>
                 <span className='current-floor'>
                   {currentFloor}
-                  <BiSolidDownArrow size={26}/>  
+                  <BiSolidDownArrow className='dropdown-icon' size={26}/>  
                 </span>
                 
                 {view && <div className='dropdown-content'>
