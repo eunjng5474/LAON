@@ -19,8 +19,6 @@ export default function TabBar() {
   const [matchSelected, setMatchSelected] = useState()
   const gameStatus = useSelector(state => state.gameStatus)
 
-  console.log(gameStatus)
-
   function setCurrentPage(currentPage) {
     return {
       type: 'SET_CURRENT_PAGE',
