@@ -225,6 +225,39 @@ export default function Navigation() {
     // }
   }
 
+
+
+
+  const naviGoal = destination;
+
+  function getCoordinate(e) {
+    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
+    const x = e.nativeEvent.offsetX
+    const y = e.nativeEvent.offsetY
+  }
+
+  function goAR() {
+    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
+    .then((res) => {
+      const naviGoal = res.data.facilityName
+      window.location.href = `/ar/${naviGoal}.html`
+    })
+  }
+
+  function goNextFloor() {
+    setshowNextPoints(true)
+    setStart(false)
+    setEnd(true)
+  }
+
+  function goBack() {
+    window.history.back()
+  }
+
+  useEffect(() => {
+    console.log('d: ', destination)
+    // console.log('s: ', startX, startY)
+
     if(currentFloor === '2F'){
       setFloor(map2F)
     } else if (currentFloor === '3F'){
@@ -374,7 +407,7 @@ export default function Navigation() {
         {/* </HiChatBubbleBottomCenter.Provider> */}
         <div className='navigation-header font'>
           <div className='go-back-container'>
-            <BiArrowBack size={36}/>
+            <BiArrowBack size={36} onClick={goBack}/>
           </div>
           {noRoute ? <h2 className='navigation-text'>출발지와 목적지가 인접해 있습니다</h2> : 
             <div className='navigation-destination'>

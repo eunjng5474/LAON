@@ -7,6 +7,8 @@ import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
 import pin from './img/pin.png'
 
+import { BiArrowBack } from 'react-icons/bi'
+
 import Wrapper from '../../components/AnimateWrapper';
 import './styles/SectionDetail.css';
 import { useSelector } from 'react-redux';
@@ -35,7 +37,7 @@ export default function SectionDetail() {
   const [pinCoords, setPinCoords] = useState({ x: 0, y: 0 })
 
 
-  function toSeat() {
+  function goBack() {
     navigate('/seat');
   }
 
@@ -58,43 +60,43 @@ export default function SectionDetail() {
     const x = e.nativeEvent.offsetX
     const y = e.nativeEvent.offsetY
 
-    if (7 <= x && x <= 37 && 201 <= y && y <= 223) {
+    if (2 <= x && x <= 17 && 94 <= y && y <= 104) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/1.jpg"
         return seatUrl
       })
     }
-    else if (7 <= x && x <= 37 && 227 <= y && y <= 247) {
+    else if (2 <= x && x <= 17 && 106 <= y && y <= 115) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/2.jpg"
         return seatUrl
       })
     }
-    else if (7 <= x && x <= 37 && 251 <= y && y <= 271) {
+    else if (2 <= x && x <= 17 && 251 <= y && y <= 271) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/3.jpg"
         return seatUrl
       })
     }
-    else if (7 <= x && x <= 37 && 276 <= y && y <= 296) {
+    else if (2 <= x && x <= 17 && 276 <= y && y <= 296) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/4.jpg"
         return seatUrl
       })
     }
-    else if (7 <= x && x <= 37 && 301 <= y && y <= 321) {
+    else if (2 <= x && x <= 17 && 301 <= y && y <= 321) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/5.jpg"
         return seatUrl
       })
     }
-    else if (7 <= x && x <= 37 && 326 <= y && y <= 346) {
+    else if (2 <= x && x <= 17 && 326 <= y && y <= 346) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/6.jpg"
         return seatUrl
       })
     }
-    else if (7 <= x && x <= 37 && 353 <= y && y <= 371) {
+    else if (2 <= x && x <= 17 && 353 <= y && y <= 371) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "SKY1/7.jpg"
         return seatUrl
@@ -1573,8 +1575,8 @@ export default function SectionDetail() {
   return (
     <Wrapper>
       <div className='section-detail-container'>
-        <div className='section-detail-header' onClick={toSeat}>
-          <img className='go-back-arrow' src={arrow} alt="" />
+        <div className='section-detail-header' onClick={goBack}>
+        <BiArrowBack className='section-detail-go-back-button' size={36} onClick={goBack}/>
         </div>
 
         <div>
