@@ -6,7 +6,6 @@ import arrow from './img/arrow.png'
 import ImageMap from 'image-map';
 import mapImg from './img/sectionMap.png'
 import pin from './img/pin.png'
-import swipeHand from '../before_match/img/pngegg.png'
 
 import { BiArrowBack } from 'react-icons/bi'
 
@@ -1567,12 +1566,6 @@ export default function SectionDetail() {
 
   useEffect(() => {
     ImageMap('img[useMap]')
-
-    const swipeHand = document.querySelector('.swipe-notification-container')
-    swipeHand.classList.add('hand-show')
-    setTimeout(() => {
-      swipeHand.classList.remove('hand-show')
-    }, 2500)
   }, [])
 
   return (
@@ -1584,11 +1577,7 @@ export default function SectionDetail() {
 
         <div>
           <div className='section-detail-img'>
-            <div className='swipe-notification-container'>
-              <img className='swipe-hand-img' src={swipeHand} alt="" />
-              <span>화면을 드래그 해보세요</span>
-            </div>
-            <img className='seat-view-img' src={seatUrl} onClick={selectSeat}></img>
+            <img src={seatUrl} onClick={selectSeat}></img>
           </div>
         </div>
 
