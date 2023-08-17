@@ -297,7 +297,7 @@ export default function Facilities() {
               <div className='floor-dropdown' onClick={dropdown}>
                 <span className='current-floor'>
                   {currentFloor}
-                  <BiSolidDownArrow className='dropdown-icon' size={26}/>  
+                  <BiSolidDownArrow className='dropdown-icon' size={22}/>  
                 </span>
                 
                 {view && <div className='dropdown-content'>
@@ -646,7 +646,7 @@ export default function Facilities() {
                   <span className='facility-title font'>여자 화장실</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">| 길찾기</button>
                   {/* <button className='facility-body-button font' id="여자화장실">로드뷰</button> */}
                 </div>
               </div>
@@ -664,7 +664,7 @@ export default function Facilities() {
                   <span className='facility-title font'>남자 화장실</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자화장실">| 길찾기</button>
                 </div>
               </div>
             </div>
@@ -680,7 +680,7 @@ export default function Facilities() {
                   <span className='facility-title font'>여자 장애인 화장실</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">| 길찾기</button>
                   <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">로드뷰</button>
                 </div>
               </div>
@@ -697,7 +697,7 @@ export default function Facilities() {
                   <span className='facility-title font'>남자 장애인 화장실</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">| 길찾기</button>
                   <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">로드뷰</button>
                 </div>
               </div>
@@ -714,7 +714,7 @@ export default function Facilities() {
                   <span className='facility-title font'>블루샷</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">| 길찾기</button>
                   <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">로드뷰</button>
                 </div>
               </div>
@@ -731,7 +731,7 @@ export default function Facilities() {
                   <span className='facility-title font'>수유실</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">| 길찾기</button>
                   <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">로드뷰</button>
                 </div>
               </div>
@@ -748,7 +748,7 @@ export default function Facilities() {
                   <span className='facility-title font'>흡연실</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">| 길찾기</button>
                   <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">로드뷰</button>
                 </div>
               </div>
@@ -765,7 +765,7 @@ export default function Facilities() {
                   <span className='facility-title font'>쓰레기통</span>
                 </div>
                 <div className='facility-body'>
-                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">길찾기</button>
+                  <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">| 길찾기</button>
                   <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">로드뷰</button>
                 </div>
               </div>
