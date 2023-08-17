@@ -8,7 +8,7 @@ const Wrapper = ({ children, ...rest }) => {
       initial="initial"
       animate="in"
       exit="out"
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.6 }}
       variants={pageEffect}
       {...rest}
     >
