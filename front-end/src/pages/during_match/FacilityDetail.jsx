@@ -253,8 +253,8 @@ export default function FacilityDetail() {
         </div>
         
         <div className='facility-detail-navi-button'>
-          <button className='facility-navi-button' onClick={goNavi}>길찾기</button>
-          <button className='facility-navi-button' onClick={goAR}>ROADVIEW</button>
+          <button className='facility-navi-button' onClick={goNavi}>길 찾기</button>
+          <button className='facility-navi-button' onClick={goAR}>AR로 보기</button>
         </div>
 
       </div>

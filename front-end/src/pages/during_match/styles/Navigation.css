@@ -13,7 +13,7 @@
 .navigation-route {
   margin-top: 6vh;
   width: 100vw;
-  height: 55vh;
+  height: 50h;
 }
 
 .navigation-map-img {
@@ -34,9 +34,9 @@
   bottom: 28vh; */
   font-size: 18px;
   width: 27vw;
-  height: 6vh;
+  height: 27vw;
   border: none;
-  border-radius: 20px;
+  border-radius: 80px;
   background-color: #074CA1;
   color: #ffffff;
 }

@@ -46,11 +46,11 @@
   align-items: center;
   width: 100%;
   height: 5.5vh;
-  color: #ffffff;
+  color: #FFCF69;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 20px;
+  font-size: 26px;
   margin-bottom: 10vh;
 }
 
