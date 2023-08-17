@@ -1573,6 +1573,7 @@ export default function SectionDetail() {
     setTimeout(() => {
       swipeHand.classList.remove('hand-show')
     }, 2500)
+    
   }, [])
 
   return (
