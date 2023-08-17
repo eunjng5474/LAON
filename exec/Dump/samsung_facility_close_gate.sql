@@ -1,0 +1,56 @@
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+--
+-- Host: i9E207.p.ssafy.io    Database: samsung
+-- ------------------------------------------------------
+-- Server version	8.0.34
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `facility_close_gate`
+--
+
+DROP TABLE IF EXISTS `facility_close_gate`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `facility_close_gate` (
+  `close_info_id` int NOT NULL AUTO_INCREMENT,
+  `facility_id` int DEFAULT NULL,
+  `gate_id` int DEFAULT NULL,
+  PRIMARY KEY (`close_info_id`),
+  KEY `facility_idx` (`facility_id`),
+  KEY `gate_idx` (`gate_id`),
+  CONSTRAINT `facility` FOREIGN KEY (`facility_id`) REFERENCES `facility` (`facility_id`),
+  CONSTRAINT `gate` FOREIGN KEY (`gate_id`) REFERENCES `gate` (`gate_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `facility_close_gate`
+--
+
+LOCK TABLES `facility_close_gate` WRITE;
+/*!40000 ALTER TABLE `facility_close_gate` DISABLE KEYS */;
+INSERT INTO `facility_close_gate` VALUES (1,1,229),(2,2,229),(3,3,205),(4,4,209),(5,5,209),(6,6,210),(7,7,214),(8,8,215),(9,9,216),(10,10,217),(11,11,218),(12,12,220),(13,13,223),(14,14,223),(15,15,224),(16,16,224),(17,17,225),(18,18,225),(19,19,226),(20,20,226),(21,21,301),(22,22,302),(23,23,303),(24,24,305),(25,25,306),(26,26,306),(27,27,307),(28,28,308),(29,29,308),(30,30,308),(31,31,309),(32,32,309),(33,33,309),(34,34,309),(35,35,312),(36,36,312),(37,37,314),(38,38,314),(39,39,317),(40,40,317),(41,41,317),(42,42,317),(43,43,318),(44,44,320),(45,45,320),(46,46,320),(47,47,320),(48,48,320),(49,49,320),(50,50,320),(51,51,320),(52,52,324),(53,53,324),(54,54,324),(55,55,325),(56,56,325),(57,57,325),(58,58,325),(59,59,328),(60,60,325),(61,61,332),(62,62,333),(63,63,333),(64,64,335),(65,65,335),(66,66,337),(67,67,337),(68,68,501),(69,69,502),(70,70,504),(71,71,504),(72,72,505),(73,73,507),(74,74,507),(75,75,508),(76,76,508),(77,77,508),(78,78,509),(79,79,509),(80,80,509),(81,81,509),(82,82,510),(83,83,512),(84,84,512),(85,85,513),(86,86,514),(87,87,515),(88,88,516),(89,89,516),(90,90,516),(91,91,518),(92,92,518),(93,93,518),(94,94,519),(95,95,521),(96,96,521);
+/*!40000 ALTER TABLE `facility_close_gate` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-08-17 10:46:57
