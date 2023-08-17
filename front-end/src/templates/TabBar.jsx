@@ -63,7 +63,7 @@ export default function TabBar() {
       setSeatSelected(true)
       setMatchSelected(false)
       setDark(false)
-    } else if (window.location.pathname === '/match') {
+    } else if (window.location.pathname === '/match' || window.location.pathname === '/test') {
       setNaviSelected(false)
       setSeatSelected(false)
       setMatchSelected(true)

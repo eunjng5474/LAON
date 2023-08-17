@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Wrapper from '../../components/AnimateWrapper';
+import { PiSpeakerSimpleNoneFill } from 'react-icons/pi'
 
 
 export default function Match() {
@@ -246,7 +247,10 @@ export default function Match() {
 
             
           <div className='liveText'>
-            <span>{liveText}</span>
+            <PiSpeakerSimpleNoneFill size={30}/>
+            <span>
+              {liveText}
+            </span>
           </div>
 
           <div className='match-live-info'>

@@ -96,18 +96,6 @@
   color: white;
 }
 
-.swipe-left-icon {
-  top: 38vh;
-  position: absolute;
-  color: #FFCF69;
-}
-
-.swipe-right-icon {
-  top: 38vh;
-  position: absolute;
-  color: #FFCF69;
-}
-
 
 .swipe-notification-container {
   transition: 3s;

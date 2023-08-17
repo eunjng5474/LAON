@@ -247,3 +247,41 @@
   font-size: 44px;
   color: #ffffff;
 }
+
+@keyframes leftIconAni {
+  0% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translate(10px);
+  }
+  100% {
+    transform: translate(-10px);
+  }
+}
+
+@keyframes rightIconAni {
+  0% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translate(-10px);
+  }
+  100% {
+    transform: translate(10px);
+  }
+}
+
+.swipe-left-icon {
+  top: 38vh;
+  position: absolute;
+  color: #FFCF69;
+  animation: leftIconAni 1.6s infinite ease-in-out;
+}
+
+.swipe-right-icon {
+  top: 38vh;
+  position: absolute;
+  color: #FFCF69;
+  animation: rightIconAni 1.6s infinite ease-in-out;
+}
