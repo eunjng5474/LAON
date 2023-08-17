@@ -288,3 +288,12 @@
   width: 60px;
   font-size: 24px;
 }
+
+.facility-body-button {
+  border: none;
+  width: 64px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #0065B3;
+  border-radius: 12px 0px 0px 12px;
+}

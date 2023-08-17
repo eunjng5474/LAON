@@ -10,6 +10,7 @@ import ImageMap from 'image-map'
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { MdOutlineKeyboardDoubleArrowLeft, MdOutlineKeyboardDoubleArrowRight } from 'react-icons/md'
 import Wrapper from '../../components/AnimateWrapper'
 
 export default function Seat() {
@@ -147,12 +148,16 @@ export default function Seat() {
   ]
 
   function toSectionDetail() {
-    navigate('/section', {
-      state: {
-        sectionSelect: sectionSelect,
-        selectSeat: selectSeat
-      }
-    });
+    if (sectionSelect) {
+      navigate('/section', {
+        state: {
+          sectionSelect: sectionSelect,
+          selectSeat: selectSeat
+        }
+      });
+    } else {
+      return
+    }
   }
 
   function toTicketing() {
@@ -192,36 +197,38 @@ export default function Seat() {
           <Swiper>
             <SwiperSlide>
               <div className='home-body'>
+                <MdOutlineKeyboardDoubleArrowRight size={80} className='swipe-left-icon'/>
                 <img className='park-home-img' src={park_home} useMap="#home-map" />
 
                 <map name="home-map">
-                  <area target="" onClick={selectSection} alt="SKY 자유석 1" title="SKY 자유석 1" coords="8,200,37,201,38,370,13,399,6,392" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 자유석 2" title="SKY 자유석 2" coords="15,401,99,476,125,452,37,376" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 자유석 3" title="SKY 자유석 3" coords="101,479,172,545,185,508,127,453" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 자유석 4" title="SKY 자유석 4" coords="175,543,198,544,196,527,239,524,237,507,187,506" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 지정석 1" title="SKY 지정석 1" coords="38,203,39,367,49,358,48,202" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 지정석 2" title="SKY 지정석 2" coords="41,374,122,449,133,437,51,364" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 지정석 3" title="SKY 지정석 3" coords="125,449,183,502,189,487,134,441" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 지정석 4" title="SKY 지정석 4" coords="239,506,187,506,191,490,239,492" shape="poly" />
-                  <area target="" onClick={selectSection} alt="3루 내야지정석" title="3루 내야지정석" coords="55,218,54,302,128,302,126,278,63,217" shape="poly" />
-                  <area target="" onClick={selectSection} alt="블루존" title="블루존" coords="55,308,56,358,129,423,173,374,128,331,125,309" shape="poly" />
-                  <area target="" onClick={selectSection} alt="지브로존" title="지브로존" coords="130,427,194,480,217,411,177,378" shape="poly" />
-                  <area target="" onClick={selectSection} alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="238,483,200,483,221,416,239,416" shape="poly" />
-                  <area target="" onClick={selectSection} alt="3루 익사이팅석" title="3루 익사이팅석" coords="159,352,130,330,133,284,161,304" shape="poly" />
-                  <area target="" onClick={selectSection} alt="외야 테이블석 1" title="외야 테이블석 1" coords="96,239,105,229,72,197,61,206" shape="poly" />
-                  <area target="" onClick={selectSection} alt="외야 지정석 1" title="외야 지정석 1" coords="95,213,153,154,132,134,74,194" shape="poly" />
-                  <area target="" onClick={selectSection} alt="외야 지정석 2" title="외야 지정석 2" coords="155,151,197,108,218,107,219,82,188,81,135,133" shape="poly" />
-                  <area target="" onClick={selectSection} alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="109,225,165,166,156,159,101,214" shape="poly" />
-                  <area target="" onClick={selectSection} alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="171,165,203,132,221,129,222,112,202,112,163,153" shape="poly" />
-                  <area target="" onClick={selectSection} alt="외야 테이블석 2" title="외야 테이블석 2" coords="222,74,190,74,191,63,222,62" shape="poly" />
-                  <area target="" onClick={selectSection} alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="80,133,145,69,132,58,67,120" shape="poly" />
-                  <area target="" onClick={selectSection} alt="VIP석" title="VIP석" coords="222,410,239,410,240,393,224,393" shape="poly" />
-                  <area target="" onClick={selectSection} alt="SKY 여기보존" title="SKY 여기보존" coords="238,543,200,544,198,527,239,529" shape="poly" />
+                  <area target="" alt="땅땅치킨 루프탑" title="땅땅치킨 루프탑" coords="49,87,58,98,110,49,100,39" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 자유석 1" title="SKY 자유석 1" coords="6,150,29,149,29,279,6,297" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 자유석 2" title="SKY 자유석 2" coords="10,300,30,279,92,336,73,357" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 자유석 3" title="SKY 자유석 3" coords="75,358,94,337,139,377,130,407" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 자유석 4" title="SKY 자유석 4" coords="141,379,132,407,180,408,180,379" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 지정석 1" title="SKY 지정석 1" coords="30,149,38,149,38,267,30,273" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 지정석 2" title="SKY 지정석 2" coords="32,278,39,270,101,327,93,335" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 지정석 3" title="SKY 지정석 3" coords="95,335,103,328,145,365,140,375" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 지정석 4" title="SKY 지정석 4" coords="146,365,141,376,180,377,180,366" shape="poly" onClick={selectSection} />
+                  <area target="" alt="3루 내야지정석" title="3루 내야지정석" coords="42,159,49,159,99,207,98,225,41,225" shape="poly" onClick={selectSection} />
+                  <area target="" alt="블루존" title="블루존" coords="41,228,41,268,98,318,132,278,99,248,99,228" shape="poly" onClick={selectSection} />
+                  <area target="" alt="지브로존" title="지브로존" coords="135,279,101,321,148,359,167,305" shape="poly" onClick={selectSection} />
+                  <area target="" alt="으뜸병원 중앙테이블석" title="으뜸병원 중앙테이블석" coords="167,310,150,360,180,361,180,309" shape="poly" onClick={selectSection} />
+                  <area target="" alt="3루 익사이팅석" title="3루 익사이팅석" coords="102,208,102,248,123,265,123,226" shape="poly" onClick={selectSection} />
+                  <area target="" alt="외야 테이블석 1" title="외야 테이블석 1" coords="48,152,55,144,82,169,73,178" shape="poly" onClick={selectSection} />
+                  <area target="" alt="외야 지정석 1" title="외야 지정석 1" coords="58,142,73,159,117,113,101,98" shape="poly" onClick={selectSection} />
+                  <area target="" alt="외야 지정석 2" title="외야 지정석 2" coords="103,97,119,112,150,80,168,79,168,58,142,58" shape="poly" onClick={selectSection} />
+                  <area target="" alt="외야 미니테이블석 1" title="외야 미니테이블석 1" coords="76,159,83,167,126,123,119,116" shape="poly" onClick={selectSection} />
+                  <area target="" alt="외야 미니테이블석 2" title="외야 미니테이블석 2" coords="121,112,128,119,153,94,166,92,167,81,151,81" shape="poly" onClick={selectSection} />
+                  <area target="" alt="외야 테이블석 2" title="외야 테이블석 2" coords="143,42,143,52,168,52,167,42" shape="poly" onClick={selectSection} />
+                  <area target="" alt="VIP석" title="VIP석" coords="171,296,167,306,180,304,180,296" shape="poly" onClick={selectSection} />
+                  <area target="" alt="SKY 여기보존" title="SKY 여기보존" coords="151,394,150,407,179,407,179,394" shape="poly" onClick={selectSection} />
                 </map>
               </div>
             </SwiperSlide>
             <SwiperSlide>
               <div className={`away-body ${awayTeam}`}>
+                <MdOutlineKeyboardDoubleArrowLeft size={80} className='swipe-right-icon'/>
                 <img className='park-away-img' src={park_away} useMap="#away-map" />
 
                 <map name="away-map">

@@ -144,7 +144,7 @@ export default function FacilityDetail() {
   }
 
   function goBack() {
-    navigate('/facilities')
+    window.history.back()
   }
 
   function goNavi() {
@@ -177,14 +177,17 @@ export default function FacilityDetail() {
           setItem = facility.setItemDtoList
           return setItem
         })
+        
         setSingleItem(singleItem => {
           singleItem = facility.singleItemDtoList
           return singleItem
         })
+
         setSideItem(sideItem => {
           sideItem = facility.sideItemDtoList
           return sideItem
         })
+
         setBeverage(beverage => {
           beverage = facility.beverageItemDtoList
           return beverage
@@ -193,13 +196,12 @@ export default function FacilityDetail() {
         return facility
       })
     })
-
   }, [])
 
   return (
     <div className='facility-detail-container font'>
       <div className='facility-detail-header'>
-        <BiArrowBack size={36} onClick={goBack}/>
+        <BiArrowBack className='detail-go-back-button' size={36} onClick={goBack}/>
           <div className='facility-detail-coverimg'>
             <img className='facility-detail-img' src={mainImg} alt="" />
           </div>
@@ -240,8 +242,8 @@ export default function FacilityDetail() {
           </div>
         </div>
         <div className='facility-detail-navi-button'>
-          <button onClick={goNavi}>길찾기</button>
-          <button onClick={goAR}>ROADVIEW</button>
+          <button className='facility-navi-button' onClick={goNavi}>길찾기</button>
+          <button className='facility-navi-button' onClick={goAR}>ROADVIEW</button>
         </div>
       </div>
   )
