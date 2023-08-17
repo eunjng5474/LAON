@@ -12,7 +12,7 @@ import map5F from './img/map5F.png'
 import Wrapper from '../../components/AnimateWrapper';
 
 import bubble from './img/bubble.png'
-import {BiArrowBack} from 'react-icons/bi'
+import {BiArrowBack, BiPhoneOutgoing} from 'react-icons/bi'
 import { HiChatBubbleBottomCenter } from 'react-icons/hi2'
 
 import axios from 'axios';
@@ -30,13 +30,13 @@ export default function Navigation() {
   const [floor, setFloor] = useState(navigationMap)
   const [pointDtoList, setPointDtoList] = useState()
   const [nextPointDtoList, setNextPointDtoList] = useState()
-
   const [showNextPoints, setshowNextPoints] = useState(false)
   const [noRoute, setNoRoute] = useState(false)
   const [destFloor, setDestFloor] = useState('');
-
   const [startX, setStartX] = useState(null);
   const [startY, setStartY] = useState(null);
+
+  const [trigger, setTrigger] = useState(false);
 
   const [dest, setDest] = useState(null);
 
@@ -49,11 +49,6 @@ export default function Navigation() {
   
   const imgElem = new Image();
   imgElem.src = bubble;
-
-  
-
-
-
 
   const naviGoal = destination;
 
@@ -71,475 +66,223 @@ export default function Navigation() {
     })
   }
 
-  function goNextFloor() {
-    setshowNextPoints(true)
-    setStart(false)
-    setEnd(true)
-  }
-
-//   useEffect(() => {
-//     // console.log('d: ', destination)
-//     // console.log('s: ', startX, startY)
-
-//     function startDraw(list) {
-//     let waypoints = [];
-
-//     if (!list) {
-//       return
-//     }
-//     const canvas = document.getElementById('navi-canvas')
-//     canvas.width = "412"
-//     canvas.height = "462"
-//     const ctx = canvas.getContext('2d')
-
-//     // const image = document.getElementById("source")
-
-//     // //// 시작점 마커 그리기
-//     // if(start && waypoints.length > 10){
-//     //   imgElem.addEventListener("load", (e) => {
-//     //     ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-//     //     ctx.font="20px bold"
-//     //     ctx.fillStyle="black"
-//     //     ctx.textAlign = "center"
-//     //     ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
-//     //   })
-//     // }
-//     // if (waypoints.length === 10) {
-//     //   console.log('짧음')
-//     //   imgElem.addEventListener("load", (e) => {
-//     //     ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-//     //     ctx.font="20px bold"
-//     //     ctx.fillStyle="black"
-//     //     ctx.textAlign = "center"
-//     //     ctx.fillText(dest, waypoints[0].x, waypoints[0].y-30)
-//     //   })
-//     // }
-
-    
-//     for(k; k < list.length; k++){
-//       let pt0 = list[k-1];
-//       let pt1 = list[k];
-//       let dx = pt1.x - pt0.x;
-//       let dy = pt1.y - pt0.y;
-
-//       if(dx === 0 && dy === 0){
-//         continue;
-//       }
-
-//       // 10 숫자 늘리면 속도 느려짐
-//       for(let j=0; j<10; j++){
-//         let x=pt0.x+dx*j/10;
-//         let y=pt0.y+dy*j/10;
-//         waypoints.push({x:x, y:y});
-//       }
-//     }
-    
-//     let t=1;
-//     console.log('len: ', waypoints.length)
-//     if(waypoints.length >= 10){
-//       draw();
-//     } else {
-//       setNoRoute(true);
-//     }
-
-//     // ctx.beginPath()
-//     // ctx.moveTo(waypoints[0].x, waypoints[0].y)
-//     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-//     function draw() {
-//       if (t < waypoints.length-1) {
-//         requestAnimationFrame(draw);
-//       }
-//       // else if (t === waypoints.length - 1 && nextPointDtoList) {
-//       //   setshowNextPoints(true)
-//       // }
-
-//       // if(waypoints.length === 10){
-//       //   return;
-//       // }
-
-//       //// 시작점 마커 그리기
-//     if(start && waypoints.length > 10){
-//       imgElem.addEventListener("load", (e) => {
-//         if(departure.includes("Food")){
-//           ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 100, 60)
-//         } else {
-//           ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-//         }
-//         ctx.font="18px bold"
-//         ctx.fillStyle="black"
-//         ctx.textAlign = "center"
-//         ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
-//       })
-//     }
-
-//       ctx.beginPath()
-      
-//       ctx.moveTo(waypoints[t-1].x, waypoints[t-1].y)
-//       ctx.lineTo(waypoints[t].x, waypoints[t].y)
-      
-//       if(t === waypoints.length - 1){
-//         if(end){
-
-//           //// 도착점 마커 그리기
-//           // console.log("t: ", waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y)
-//           if(dest.includes("Food")){
-//             ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 50, waypoints[waypoints.length-1].y - 60, 100, 60)
-//           } else {
-//             ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 35, waypoints[waypoints.length-1].y - 60, 70, 60)
-//           }
-//           ctx.font="18px bold"
-//           ctx.fillStyle="black"
-//           ctx.textAlign = "center"
-//           ctx.fillText(dest.split('(')[1].slice(0, -1), waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y-30)
-
-//         }
-        
-//         let radians = Math.atan((waypoints[t].y - waypoints[t-1].y)/(waypoints[t].x - waypoints[t-1].x))
-//         ctx.translate(waypoints[t].x, waypoints[t].y)
-//         ctx.rotate(radians + ((waypoints[t].x >= waypoints[t-1].x)?90:-90)*Math.PI/180)
-//         console.log(waypoints[t].x, waypoints[t].y)
-
-        
-//         ctx.moveTo(0, 0)
-//         ctx.lineTo(-10, 10);
-//         ctx.moveTo(0, 0)
-//         ctx.lineTo(10, 10);
-
-        
-//       // imgElem.addEventListener("load", (e) => {
-       
-//       // })
-//       }
-
-//       ctx.lineWidth = '10';
-//       ctx.lineCap = 'round';
-//       ctx.strokeStyle = '#FFDF43';
-//       ctx.stroke()
-//       t++;
-//     }
-
-//     // draw()
-//     // if(i === pointDtoList.length){
-//     //   setshowNextPoints(true)
-//     // }
-//   }
-//  }, [])
-
-
-
-  function getCoordinate(e) {
-    console.log(e.nativeEvent.offsetX, e.nativeEvent.offsetY)
-    const x = e.nativeEvent.offsetX
-    const y = e.nativeEvent.offsetY
-  }
-
-  function goAR() {
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
-    .then((res) => {
-      const naviGoal = res.data.facilityName
-      window.location.href = `/ar/${naviGoal}.html`
-    })
-  }
-
-  function goNextFloor() {
-    setshowNextPoints(true)
-    setStart(false)
-    setEnd(true)
-  }
-
   function goBack() {
     window.history.back()
   }
 
   useEffect(() => {
-
-    function startDraw(list) {
-      let waypoints = [];
-  
-      if (!list) {
-        return
-      }
-      const canvas = document.getElementById('navi-canvas')
-      canvas.width = "412"
-      canvas.height = "462"
-      const ctx = canvas.getContext('2d')
-  
-      // const image = document.getElementById("source")
-  
-      // //// 시작점 마커 그리기
-      // if(start && waypoints.length > 10){
-      //   imgElem.addEventListener("load", (e) => {
-      //     ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-      //     ctx.font="20px bold"
-      //     ctx.fillStyle="black"
-      //     ctx.textAlign = "center"
-      //     ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
-      //   })
-      // }
-      // if (waypoints.length === 10) {
-      //   console.log('짧음')
-      //   imgElem.addEventListener("load", (e) => {
-      //     ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-      //     ctx.font="20px bold"
-      //     ctx.fillStyle="black"
-      //     ctx.textAlign = "center"
-      //     ctx.fillText(dest, waypoints[0].x, waypoints[0].y-30)
-      //   })
-      // }
-  
-      
-      for(k; k < list.length; k++){
-        let pt0 = list[k-1];
-        let pt1 = list[k];
-        let dx = pt1.x - pt0.x;
-        let dy = pt1.y - pt0.y;
-  
-        if(dx === 0 && dy === 0){
-          continue;
-        }
-  
-        // 10 숫자 늘리면 속도 느려짐
-        for(let j=0; j<10; j++){
-          let x=pt0.x+dx*j/10;
-          let y=pt0.y+dy*j/10;
-          waypoints.push({x:x, y:y});
-        }
-      }
-      
-      let t=1;
-      console.log('len: ', waypoints.length)
-      if(waypoints.length >= 10){
-        draw();
-      } else {
-        setNoRoute(true);
-      }
-  
-      // ctx.beginPath()
-      // ctx.moveTo(waypoints[0].x, waypoints[0].y)
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-  
-      function draw() {
-        if (t < waypoints.length-1) {
-          requestAnimationFrame(draw);
-        }
-        // else if (t === waypoints.length - 1 && nextPointDtoList) {
-        //   setshowNextPoints(true)
-        // }
-  
-        // if(waypoints.length === 10){
-        //   return;
-        // }
-  
-        //// 시작점 마커 그리기
-      if(start && waypoints.length > 10){
-        imgElem.addEventListener("load", (e) => {
-          if(departure.includes("Food")){
-            ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 100, 60)
-          } else {
-            ctx.drawImage(imgElem, waypoints[0].x - 35, waypoints[0].y - 60, 70, 60)
-          }
-          ctx.font="18px bold"
-          ctx.fillStyle="black"
-          ctx.textAlign = "center"
-          ctx.fillText(departure, waypoints[0].x, waypoints[0].y-30)
-        })
-      }
-  
-        ctx.beginPath()
-        
-        ctx.moveTo(waypoints[t-1].x, waypoints[t-1].y)
-        ctx.lineTo(waypoints[t].x, waypoints[t].y)
-        
-        if(t === waypoints.length - 1){
-          if(end){
-  
-            //// 도착점 마커 그리기
-            // console.log("t: ", waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y)
-            if(dest.includes("Food")){
-              ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 50, waypoints[waypoints.length-1].y - 60, 100, 60)
-            } else {
-              ctx.drawImage(imgElem, waypoints[waypoints.length-1].x - 35, waypoints[waypoints.length-1].y - 60, 70, 60)
-            }
-            ctx.font="18px bold"
-            ctx.fillStyle="black"
-            ctx.textAlign = "center"
-            ctx.fillText(dest.split('(')[1].slice(0, -1), waypoints[waypoints.length-1].x, waypoints[waypoints.length-1].y-30)
-  
-          }
-          
-          let radians = Math.atan((waypoints[t].y - waypoints[t-1].y)/(waypoints[t].x - waypoints[t-1].x))
-          ctx.translate(waypoints[t].x, waypoints[t].y)
-          ctx.rotate(radians + ((waypoints[t].x >= waypoints[t-1].x)?90:-90)*Math.PI/180)
-          console.log(waypoints[t].x, waypoints[t].y)
-  
-          
-          ctx.moveTo(0, 0)
-          ctx.lineTo(-10, 10);
-          ctx.moveTo(0, 0)
-          ctx.lineTo(10, 10);
-  
-          
-        // imgElem.addEventListener("load", (e) => {
-         
-        // })
-        }
-  
-        ctx.lineWidth = '10';
-        ctx.lineCap = 'round';
-        ctx.strokeStyle = '#FFDF43';
-        ctx.stroke()
-        t++;
-      }
-  
-      // draw()
-      // if(i === pointDtoList.length){
-      //   setshowNextPoints(true)
-      // }
-    }
-
-    console.log('d: ', destination)
-    // console.log('s: ', startX, startY)
-
-    if(currentFloor === '2F'){
-      setFloor(map2F)
-    } else if (currentFloor === '3F'){
-      setFloor(map3F)
-    } else if (currentFloor === '5F'){
-      setFloor(map5F)
-    }
-
     axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
-      console.log(res)
-      setDest(res.data.facilityName);
+      console.log(res.data)      
 
-      const idx = res.data.pointDtoList.length - 1
-      setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
-
-      setStartX(res.data.pointDtoList[0].x)
-      setStartY(res.data.pointDtoList[0].y)
-      if(res.data.pointDtoList.length !== 1) {
-        let flag = true
-        for (let i = 0; i < res.data.pointDtoList.length; i++) {
-          if (res.data.pointDtoList[i].type === 'S') {
-            flag = false
-            setPointDtoList(pointDtoList => {
-              pointDtoList = res.data.pointDtoList.slice(0, i+1)
-              console.log('현재 리스트')
-              console.log(pointDtoList)
-              // startDraw(pointDtoList)
-              return pointDtoList
-            })
-            setNextPointDtoList(nextPointDtoList => {
-              // S - S - (이동) - S인 경우 있으면 수정해야 함
-              if(res.data.pointDtoList[i+2].type === 'S'){
-                nextPointDtoList = res.data.pointDtoList.slice(i+2, res.data.pointDtoList.length)
-              } else {
-                nextPointDtoList = res.data.pointDtoList.slice(i+1, res.data.pointDtoList.length)
-              }
-              console.log('다음 리스트')
-              console.log(nextPointDtoList)
-
-
-              return nextPointDtoList
-            })
-            // startDraw(pointDtoList)
-            // setshowNextPoints(true)
-            // setStart(false)
-            // setEnd(true)
-            // setshowNextPoints(true)
-            break
-          }
-          if (flag && i === res.data.pointDtoList.length - 1) {
-            setEnd(true)
-            setPointDtoList(pointDtoList => {
-              pointDtoList = res.data.pointDtoList
-              return pointDtoList
-            })
-          }
-        }
-
+      if(currentFloor === '2F'){
+        setFloor(map2F)
+      } else if (currentFloor === '3F'){
+        setFloor(map3F)
+      } else if (currentFloor === '5F'){
+        setFloor(map5F)
       }
-      else {
-        setNoRoute(true)
+
+      setDest(dest => {
+        dest = res.data.facilityName;
+        return dest
+      })
+
+      for (let i = 0; i < res.data.pointDtoList.length; i++) {
+        if (res.data.pointDtoList[i].type === 'S') {
+
+          setPointDtoList(pointDtoList => {
+            pointDtoList = res.data.pointDtoList.slice(0, i + 1)
+            return pointDtoList
+          })
+          break
+
+        } else {
+
+          setPointDtoList(pointDtoList => {
+            pointDtoList = res.data.pointDtoList
+            return pointDtoList
+          })
+
+        }
+      }
+
+      for (let j = res.data.pointDtoList.length - 1; j >= 0; j--) {
+        if (res.data.pointDtoList[j].type === 'S') {
+
+          setNextPointDtoList(nextPointDtoList => {
+            nextPointDtoList = res.data.pointDtoList.slice(j, res.data.pointDtoList.length)
+            return nextPointDtoList
+          })
+          break
+        }
       }
     })
+  }, [])
 
-    // if(start){
-      if(pointDtoList){
+  useEffect(() => {
 
-        startDraw(pointDtoList)
-      }
-    // }
+    if (pointDtoList) {
 
-    if(showNextPoints){
-      
-      setTimeout(() => {
-      // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
-        if(destFloor === 2){
-          setFloor(map2F)
-        } else if (destFloor === 3){
-          setFloor(map3F)
-        } else if (destFloor === 5){
-          setFloor(map5F)
+      function draw() {
+        let wayPoints = [];
+        let t = 1;
+
+        function animate() {
+          // console.log(1)
+          
+          if (t < wayPoints.length - 1) {
+            requestAnimationFrame(animate);
+          }
+
+          if (!nextPointDtoList) {
+
+            if (wayPoints.length > 10) {
+
+              imgElem.addEventListener("load", (e) => {
+                if(departure.includes("Food")){
+
+                  ctx.drawImage(imgElem, wayPoints[0].x - 35, wayPoints[0].y - 60, 100, 60)
+
+                } else {
+
+                  ctx.drawImage(imgElem, wayPoints[0].x - 35, wayPoints[0].y - 60, 70, 60)
+
+                }
+
+                ctx.font="18px bold"
+                ctx.fillStyle="black"
+                ctx.textAlign = "center"
+                ctx.fillText(departure, wayPoints[0].x, wayPoints[0].y-30)
+
+              })
+            }
+
+            if (t === wayPoints.length - 1) {
+
+                if (dest.includes("Food")) {
+
+                  ctx.drawImage(imgElem, wayPoints[wayPoints.length-1].x - 50, wayPoints[wayPoints.length-1].y - 60, 100, 60)
+
+                } else {
+
+                  ctx.drawImage(imgElem, wayPoints[wayPoints.length-1].x - 35, wayPoints[wayPoints.length-1].y - 60, 70, 60)
+
+                }
+
+                ctx.font="18px bold"
+                ctx.fillStyle="black"
+                ctx.textAlign = "center"
+                ctx.fillText(dest.split('(')[1].slice(0, -1), wayPoints[wayPoints.length-1].x, wayPoints[wayPoints.length-1].y-30)
+
+            }
+          }
+          
+          //// 시작점 마커 그리기
+          if (!trigger && wayPoints.length > 10) {
+            imgElem.addEventListener("load", (e) => {
+              if(departure.includes("Food")){
+                ctx.drawImage(imgElem, wayPoints[0].x - 35, wayPoints[0].y - 60, 100, 60)
+              } else {
+                ctx.drawImage(imgElem, wayPoints[0].x - 35, wayPoints[0].y - 60, 70, 60)
+              }
+              ctx.font="18px bold"
+              ctx.fillStyle="black"
+              ctx.textAlign = "center"
+              ctx.fillText(departure, wayPoints[0].x, wayPoints[0].y-30)
+            })
+          }
+
+          //루트 그리기
+          ctx.beginPath()  
+          ctx.moveTo(wayPoints[t-1].x, wayPoints[t-1].y)
+          ctx.lineTo(wayPoints[t].x, wayPoints[t].y)
+
+          //// 도착점 마커 그리기
+          if (t === wayPoints.length - 1) {
+
+            if (!trigger) {
+              setTimeout(() => {
+                setTrigger(true)
+              }, 500)
+
+            } else {
+
+              if (dest.includes("Food")) {
+                ctx.drawImage(imgElem, wayPoints[wayPoints.length-1].x - 50, wayPoints[wayPoints.length-1].y - 60, 100, 60)
+              } else {
+                ctx.drawImage(imgElem, wayPoints[wayPoints.length-1].x - 35, wayPoints[wayPoints.length-1].y - 60, 70, 60)
+              }
+
+              ctx.font="18px bold"
+              ctx.fillStyle="black"
+              ctx.textAlign = "center"
+              ctx.fillText(dest.split('(')[1].slice(0, -1), wayPoints[wayPoints.length-1].x, wayPoints[wayPoints.length-1].y-30)
+            }
+              
+            let radians = Math.atan((wayPoints[t].y - wayPoints[t-1].y)/(wayPoints[t].x - wayPoints[t-1].x))
+
+            ctx.translate(wayPoints[t].x, wayPoints[t].y)
+            ctx.rotate(radians + ((wayPoints[t].x >= wayPoints[t-1].x)?90:-90)*Math.PI/180)
+
+            console.log(wayPoints[t].x, wayPoints[t].y)
+            
+            ctx.moveTo(0, 0)
+            ctx.lineTo(-10, 10);
+            ctx.moveTo(0, 0)
+            ctx.lineTo(10, 10);
+          }
+    
+          ctx.lineWidth = '10';
+          ctx.lineCap = 'round';
+          ctx.strokeStyle = '#FFDF43';
+          ctx.stroke()
+          
+          t++;
         }
-      setPointDtoList(nextPointDtoList)
-      // setStart(false)
-      // setEnd(true)
-      startDraw(nextPointDtoList)
-    }, 500)
-  }
-  }, [start])
 
-  // useEffect(() => {    
-  //   // setDestFloor(parseInt(nextPointDtoList[0].pointId/100))
-  //   // start = true
-  //   if(start){
-  //     startDraw(pointDtoList)
-  //   }
+        const canvas = document.getElementById('navi-canvas')
+        canvas.width = "412"
+        canvas.height = "462"
+        const ctx = canvas.getContext('2d')
 
-  //   if(showNextPoints){
-  //     setTimeout(() => {
-  //     // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
-  //       if(destFloor === 2){
-  //         setFloor(map2F)
-  //       } else if (destFloor === 3){
-  //         setFloor(map3F)
-  //       } else if (destFloor === 5){
-  //         setFloor(map5F)
-  //       }
-  //     setPointDtoList(nextPointDtoList)
-  //     // setStart(false)
-  //     // setEnd(true)
-  //     startDraw(nextPointDtoList)
-  //   }, 500)
-  // }
-  //   // start = false
-  //   // setshowNextPoints(true)
-  // }, [pointDtoList])
+        for (k; k < pointDtoList.length; k++) {
+          let pt0 = pointDtoList[k - 1];
+          let pt1 = pointDtoList[k];
+          let dx = pt1.x - pt0.x;
+          let dy = pt1.y - pt0.y;
+    
+          if (dx === 0 && dy === 0) {
+            continue;
+          }
+    
+          // 10 숫자 늘리면 속도 느려짐
+          for (let j = 0; j < 10; j++) {
+            let x = pt0.x + dx * j / 10;
+            let y = pt0.y + dy * j / 10;
+            wayPoints.push({x: x, y: y});
+          }
+        }
 
-  // useEffect(() => {
-  //   if(showNextPoints){
-  //     setTimeout(() => {
-  //       // let nextFloor = parseInt(nextPointDtoList[0].pointId/100)
-  //       if(destFloor === 2){
-  //         setFloor(map2F)
-  //       } else if (destFloor === 3){
-  //         setFloor(map3F)
-  //       } else if (destFloor === 5){
-  //         setFloor(map5F)
-  //       }
-  //       setPointDtoList(nextPointDtoList)
-  //       // setStart(false)
-  //       // setEnd(true)
-  //       startDraw(nextPointDtoList)
-  //     }, 500)
-  //   }
-  // }, [showNextPoints])
+        animate()
+
+      }
+
+      draw()
+    }
+
+  }, [pointDtoList])
+
+  useEffect(() => {
+    if (trigger) {
+      setPointDtoList(pointDtoList => {
+        pointDtoList = nextPointDtoList
+        return pointDtoList
+      })
+    }
+  }, [trigger])
 
 
-  // currentFloor === destFloor면 이동 버튼 안 보이게 바꾸기
   return (
     <Wrapper>
       <div className='navigation-container font'>
@@ -568,7 +311,6 @@ export default function Navigation() {
           { currentFloor !== destFloor + 'F' ?
           <div className='navigation-button'>
             <button className='to-ar-button' onClick={goAR}>AR</button>
-            <button className='to-next-floor' onClick={goNextFloor}>{destFloor}층 이동</button>
           </div>
           :
           <div className='navigation-button'>
