@@ -3,8 +3,8 @@ import './styles/Landing.css'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Wrapper from '../../components/AnimateWrapper'
-
-
+import secondBg from './img/landing-bg-second.png'
+import thirdBg from './img/landing-bg-third.png'
 
 function Landing() {
 
@@ -30,19 +30,13 @@ function Landing() {
     return (
       <Wrapper>
         <div className='landing-container font'>
+          <img className='landing-second-img' src={secondBg} alt="" />
+          <img className='landing-third-img' src={thirdBg} alt="" />
           <div className='landing-header'>
-            <h1 className='landing-title'>
-              <span className='test_obj'>당신의</span>
-              <br />
-              <span className='test_obj'>직관을</span>
-              <br />
-              <span className='test_obj'>즐겁게</span> 
-            </h1>
-            <span className='landing-logo test_obj'>LA:ON</span>
           </div>
           <div className='landing-body'>
-            <button className='landing-button' onClick={enterLAON}>
-              <h1>라이온즈 파크</h1>
+            <button className='landing-button test_obj' onClick={enterLAON}>
+              <h1>입장하기</h1>
             </button>
           </div>
         </div>
