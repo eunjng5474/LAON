@@ -60,6 +60,7 @@
 }
 
 .category-button-nonline {
+  letter-spacing: 2px;
   width: 40vw;
   border: none;
   background: none;
@@ -68,9 +69,10 @@
 }
 
 .category-button-line{
+  letter-spacing: 2px;
   width: 40vw;
   border: none;
-  border-bottom: 3.5px solid #0065B3;
+  border-bottom: 3.6px solid #0970ED;
   background: none;
   font-size: 5vw;
   font-weight: bold;
@@ -178,6 +180,7 @@
   color: #000;
   position: relative;
   font-size: 2.5vh;
+  font-weight: 600;
 }
 
 .store-itme-tag{
@@ -190,7 +193,8 @@
 
 .store-tag {
   color: #ffffff;
-  background-color: #0065b3b4;
+  background-color: #5197ED;
+  font-weight: 200;
   letter-spacing: 1.5px;
   margin: 0.6vh;
   padding: 5px;
@@ -295,6 +299,14 @@
   width: 64px;
   font-size: 16px;
   color: #ffffff;
-  background-color: #0065B3;
+  background-color: #3C70B0;
   border-radius: 12px 0px 0px 12px;
+}
+
+.gps-icon {
+  color: #0970ED;
+}
+
+.dropdown-icon {
+  color: #0970ED;
 }

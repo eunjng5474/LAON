@@ -61,7 +61,7 @@
   left: 3vw;
   height: 21.5vh;
   border-radius: 30px;
-  background-color: #074ca1ba;
+  background-color: #04346eb6;
 }
 
 .bso-container {
@@ -316,7 +316,6 @@
   background-color: gray;
 }
 
-.match-away-info,
 .match-home-info {
   display: flex;
   justify-content: space-between;

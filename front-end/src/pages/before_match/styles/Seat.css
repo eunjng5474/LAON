@@ -217,7 +217,6 @@
 .seat-body-title {
   margin-top: 10px;
   font-size: 22px;
-  color: #B39249;
 }
 
 .seat-body-button-container {
@@ -234,7 +233,7 @@
   border: none;
   width: 30vw;
   height: 5vh;
-  background-color: #074CA1;
+  background-color: #3c70b0d5;
   color: #ffffff;
   border-radius: 20px;
   font-size: 14px;

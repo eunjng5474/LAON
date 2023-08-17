@@ -153,12 +153,15 @@ export default function FacilityDetail() {
 
   function menuRenderer(menuArray) {
     const result = []
+    
     if (menuArray) {
-      for (let i=0; i < menuArray.length; i++) {
+      for (let i = 0; i < menuArray.length; i++) {
+        const newPrice = menuArray[i].price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        console.log(newPrice)
         result.push(
           <div className='menu-item'>
             <span className='menu-item-name'>{menuArray[i].itemName}</span>
-            <span className='menu-item-price'>{menuArray[i].price}원</span>
+            <span className='menu-item-price'>{newPrice}원</span>
           </div>
         )
       }
@@ -253,7 +256,7 @@ export default function FacilityDetail() {
           <button className='facility-navi-button' onClick={goNavi}>길찾기</button>
           <button className='facility-navi-button' onClick={goAR}>ROADVIEW</button>
         </div>
-        
+
       </div>
   )
 }
