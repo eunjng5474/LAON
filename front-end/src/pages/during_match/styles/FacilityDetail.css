@@ -1,0 +1,153 @@
+.facility-detail-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 90vh;
+}
+
+.facility-detail-header {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.go-back-button {
+  position: absolute;
+  top: 2vw;
+  left: 2vw;
+}
+
+.facility-detail-coverimg{
+  background: wheat;
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+}
+
+.facility-detail-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.facility-detail-title {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  height: 5vh;
+  background-color: #074CA1;
+  color: #ffffff;
+}
+
+.facility-detail-navi-button {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 6vh;
+  margin-bottom: 2vh;
+}
+
+.facility-detail-navi-button button {
+  width: 30vw;
+  height: 14vw;
+  border: none;
+  border-radius: 30px;
+  background-color: #0970ED;
+  color: #ffffff;
+}
+
+.facility-detail-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+
+.facility-detail-menu {
+  padding: 4vw;
+  width: 90%;
+  height: 40.8vh;
+  overflow: scroll;
+  margin-bottom: 2vh;
+}
+
+.menu-category {
+  letter-spacing: 4px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.menu-container {
+  margin-bottom: 5vh;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item-name {
+  font-size: 18px;
+  font-weight:400;
+  margin-bottom: 4px;
+}
+
+.menu-item-price {
+  font-size: 16px;
+}
+
+.go-back-arrow{
+  /* border: 1px solid black; */
+  width: 10vw;
+  height: 4vh;
+  margin: 2vh;
+  position: absolute;
+}
+
+.facility-detail-store-title{
+  /* background: red; */
+  /* border-bottom: 1px solid black; */
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0px 0px 0px;
+  padding-bottom: 10px;
+}
+
+.detail-store-title{
+  letter-spacing: 4px;
+  margin: 10px 0px;
+  font-size : 35px;
+  font-weight: bold;
+}
+
+.facility-navi-button {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.detail-go-back-button {
+  margin: 3vh 5vw 0vh 5vw;
+  position: absolute;
+  color: white;
+}
+
+.menu-item-name {
+  letter-spacing: 2px;
+  width: 60vw;
+  font-size: 22px;
+}
+
+.menu-item-price {
+  font-size: 22px;
+}

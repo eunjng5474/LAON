@@ -1,0 +1,86 @@
+.navigation-container {
+  display: flex;
+  flex-direction: column;
+  height: 90.1vh;
+  color: #ffffff;
+}
+
+.navigation-body {
+  width: 100vw;
+  height: 79.5vh;
+}
+
+.navigation-route {
+  margin-top: 6vh;
+  width: 100vw;
+  height: 50h;
+}
+
+.navigation-map-img {
+  width: 100vw;
+  position: absolute;
+  z-index: -1;
+}
+
+.navigation-button {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+}
+
+.to-ar-button {
+  /* position: absolute; */
+  /* right: 5vw;
+  bottom: 28vh; */
+  font-size: 18px;
+  width: 27vw;
+  height: 27vw;
+  border: none;
+  border-radius: 80px;
+  background-color: #074CA1;
+  color: #ffffff;
+}
+
+.to-next-floor {
+  position: absolute;
+  top: 17vh;
+  left: 36vw;
+  /* right: 5vw;
+  bottom: 28vh; */
+  font-size: 20px;
+  width: 27vw;
+  height: 6vh;
+  border: none;
+  border-radius: 17px;
+  background-color: #074CA1;
+  color: #ffffff;
+}
+
+.navigation-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 121px;
+  color: rgb(255, 255, 255);
+  background-color: #074ca1;
+  border-radius: 0px 0px 20% 20%;
+}
+
+.navigation-text {
+  margin: 0px;
+  font-size: 30px;
+}
+
+.text-canvas {
+  position: absolute;
+  z-index: 5;
+}
+
+.go-back-container {
+  width: 90vw;
+  padding: 3vh 5vw 0vh 5vw;
+}
+
+
+

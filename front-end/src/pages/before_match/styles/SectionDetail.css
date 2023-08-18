@@ -1,0 +1,125 @@
+.section-detail-container {
+  height: 100vh;
+}
+
+.section-detail-header {
+  /* padding: 1rem; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.section-detail-header h2 {
+  color: white;
+}
+
+.section-detail-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: scroll;
+  height: 85vh;
+  scrollbar-width: none;
+}
+
+.seat-view-img{
+  height: 85vh;
+}
+
+.section-detail-body::-webkit-scrollbar {
+  display: none;
+}
+
+.section-detail-map {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.go-back-arrow {
+  width: 10vw;
+  height: 4vh;
+  margin: 2vh;
+}
+
+.map-controller {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100vw;
+  height: 30vh;
+  bottom: 0;
+  border-radius: 48px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+
+.react-transform-wrapper {
+  display: flex;
+  position: relative;
+  padding: 1vh 3vw;
+  /* border: 1px solid red; */
+  border-radius: 140px 140px 0px 0px;
+  background-color: rgb(241, 241, 241);
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.pin {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 100%;
+  background-color: red;
+  top: 10px;
+}
+
+.transform-container div {
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 28vh;
+}
+
+.transform-component-module_content__FBWxo img {
+  height: 100%;
+}
+
+.section-detail-header {
+  margin: 3vh 5vw 0vh 5vw;
+  position: absolute;
+  color: white;
+}
+
+
+.swipe-notification-container {
+  transition: 3s;
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 20vw;
+  width: 60vw;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.swipe-hand-img {
+  transition: 1s;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.hand-show {
+  transition: 1s;
+  opacity: 1;
+}
