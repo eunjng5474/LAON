@@ -105,7 +105,7 @@ export default function Test() {
 
 
   useEffect(() => {
-    axios.get(`https://laon.info/test/reset`)
+    // axios.get(`https://laon.info/test/reset`)
 
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;

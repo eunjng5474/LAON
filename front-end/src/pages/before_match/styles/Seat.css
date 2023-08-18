@@ -123,13 +123,12 @@
 }
 
 .LG {
-  /* background-image: url('../img/team_bg/twins.png'); */
-  background-image: url('../img/team_bg/seat-bg-r.png');
+  background-image: url('../img/team_bg/twins.png');
   background-color: #000000;
 }
 
 .KIA {
-  background-image: url('../img/team_bg/tigers.png');
+  background-image: url('../img/team_bg/seat-bg-r.png');
   background-color: #06141F;
 }
 
