@@ -105,7 +105,7 @@ export default function Test() {
 
 
   useEffect(() => {
-    axios.get(`https://laon.info/test/reset`)
+    // axios.get(`https://laon.info/test/reset`)
 
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
@@ -131,7 +131,7 @@ export default function Test() {
       stZoneBallCtx.moveTo(55 -px*15, 150-pz*10);
       stZoneBallCtx.arc(55 -px*20, 150-pz*10, 8, 0, 2 * Math.PI);
       stZoneBallCtx.stroke();
-      stZoneBallCtx.fillStyle = 'red';
+      stZoneBallCtx.fillStyle = '#FFCF69';
       stZoneBallCtx.fill();
     }
 
