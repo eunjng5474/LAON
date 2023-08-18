@@ -64,7 +64,7 @@ export default function Facilities() {
   const [floor, setFloor] = useState(map3F)
   const [category, setCategory] = useState('식음매장')
   const [focusedBody, setFocusedBody] = useState(false)
-  const [currentFloor, setCurrentFloor] = useState('3F')
+  const [currentFloor, setCurrentFloor] = useState('2F')
   const [view, setView] = useState(false);
   const navigate = useNavigate()
 
