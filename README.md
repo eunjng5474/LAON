@@ -102,6 +102,12 @@
 
 > 경기중계
 
+    <img title="" src="README/live.jpg" alt="index.jpg" width="615">
+
+- 경기전의 경우, 삼성 라이온즈 파크 경기가 있는 날의 경기 정보를 알려드립니다.
+- 경기중일 경우, 어웨이팀, 이닝, 점수, 문자중계, 볼카운트, 출루정보 그리고 스트라이크 존을 제공합니다.
+<br/>
+
 > 시설안내
 
         <img title="" src="README/시설안내.jpg" alt="index.jpg" width="607">
@@ -120,4 +126,4 @@
 
 <hr>
 
-[⚙️ PrtingManual](/exec/포팅-매뉴얼.pdf)
+[⚙️ PrtingManual](/exec/Porting_Manual.pdf)

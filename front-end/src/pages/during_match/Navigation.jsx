@@ -243,7 +243,7 @@ export default function Navigation() {
 
         const canvas = document.getElementById('navi-canvas')
         canvas.width = "412"
-        canvas.height = "462"
+        canvas.height = "480"
         const ctx = canvas.getContext('2d')
 
         for (k; k < pointDtoList.length; k++) {
