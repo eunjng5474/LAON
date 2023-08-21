@@ -120,4 +120,4 @@
 
 <hr>
 
-[⚙️ PrtingManual](/exec/Porting_Manual.pdf)
+[⚙️ PrtingManual](/exec/포팅-매뉴얼.pdf)
