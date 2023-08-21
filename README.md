@@ -69,7 +69,7 @@
 
 - <strong>직관 중</strong>
   - 실시간 중계 서비스를 통해 이닝, 스코어, 볼카운트, 문자중계, 스트라이크존을 제공합니다.
-  - 원하는 식음매장 및 편의 시설 클릭 시, 현 위치를 기반으로 최단 경로를 네비게이션, AR을 통해 안내합니다
+  - 원하는 식음매장 및 편의 시설 클릭 시, 현 위치를 기반으로 최단 경로를 네비게이션, AR을 통해 안내합니다.
 
 <br>
 <br>
@@ -120,4 +120,4 @@
 
 <hr>
 
-[⚙️ PrtingManual](/exec/포팅-매뉴얼.pdf)
+[⚙️ PrtingManual](https://lab.ssafy.com/s09-webmobile2-sub2/S09P12E207/-/blob/master/exec/Porting_Manual.pdf)
