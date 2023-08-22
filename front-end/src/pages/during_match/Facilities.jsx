@@ -64,7 +64,7 @@ export default function Facilities() {
   const [floor, setFloor] = useState(map3F)
   const [category, setCategory] = useState('식음매장')
   const [focusedBody, setFocusedBody] = useState(false)
-  const [currentFloor, setCurrentFloor] = useState('2F')
+  const [currentFloor, setCurrentFloor] = useState('3F')
   const [view, setView] = useState(false);
   const navigate = useNavigate()
 
@@ -122,7 +122,7 @@ export default function Facilities() {
         setCurrentPosition('LF-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
-        setCurrentPosition('RF-8')
+        setCurrentPosition('3-1')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '3F') {
@@ -154,7 +154,7 @@ export default function Facilities() {
         setCurrentPosition('1-8')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
-        setCurrentPosition('RF-8')
+        setCurrentPosition('3-1')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '5F') {
@@ -183,7 +183,7 @@ export default function Facilities() {
         setCurrentPosition('U-3')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
-        setCurrentPosition('RF-8')
+        setCurrentPosition('3-1')
         // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     }

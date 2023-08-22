@@ -82,7 +82,6 @@ export default function Match() {
     base1 = null;
     base2 = null;
     base3 = null;
-    // setBallPositions([]);
   }
 
   // 볼카운트
@@ -120,22 +119,11 @@ export default function Match() {
 
 
     function drawBall(px, pz) {
-      // console.log('그리기')
       console.log(ballStuff, ballSpeed, px, pz)
 
-      // 이전 공들 녹색으로 그리기 
-      // ballPositions.forEach((position) => {
-      //   stZoneBallCtx.beginPath();
-      //   stZoneBallCtx.moveTo(55-position.px*15, 65+position.pz*15);
-      //   stZoneBallCtx.arc(55-position.px*15, 65+position.pz*15, 8, 0, 2 * Math.PI);
-      //   stZoneBallCtx.stroke();
-      //   stZoneBallCtx.fillStyle = '#7DB249';
-      //   stZoneBallCtx.fill();
-      // })
-
       stZoneBallCtx.beginPath();
-      stZoneBallCtx.moveTo(55 -px*15, 65+pz*15);
-      stZoneBallCtx.arc(55 -px*15, 65+pz*15, 8, 0, 2 * Math.PI);
+      stZoneBallCtx.moveTo(55 -px*20, 150-pz*10);
+      stZoneBallCtx.arc(55 -px*20, 150-pz*10, 8, 0, 2 * Math.PI);
       stZoneBallCtx.stroke();
       stZoneBallCtx.fillStyle = '#FFCF69';
       stZoneBallCtx.fill();
