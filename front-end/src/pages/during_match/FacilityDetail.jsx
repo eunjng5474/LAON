@@ -100,7 +100,7 @@ export default function FacilityDetail() {
     tag2 = "#야끼도리"
     tag3 = "#가라아게"
     tag4 = "#3F"
-  } else if(storeName === '알통닭강정'){
+  } else if(storeName === '알통떡강정'){
     mainImg = ALTON_img
     tag1 = "#닭강정"
     tag2 = "#치킨"
