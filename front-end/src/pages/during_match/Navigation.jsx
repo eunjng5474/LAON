@@ -84,6 +84,10 @@ export default function Navigation() {
       const idx = res.data.pointDtoList.length - 1
       setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
 
+      // if(destFloor === currentFloor){
+      //   setTrigger(true)
+      // }
+
       if(currentFloor === '2F'){
         setFloor(map2F)
       } else if (currentFloor === '3F'){
