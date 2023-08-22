@@ -10,7 +10,7 @@ import map5F from './img/map5F.png'
 import Wrapper from '../../components/AnimateWrapper';
 
 import bubble from './img/bubble.png'
-import {BiArrowBack, BiPhoneOutgoing} from 'react-icons/bi'
+import {BiArrowBack} from 'react-icons/bi'
 
 import axios from 'axios';
 
@@ -72,6 +72,15 @@ export default function Navigation() {
     .then((res) => {
       console.log(res.data)
       
+      if(res.data.pointDtoList.length <= 1){
+        setNoRoute(true);
+        const canvas = document.getElementById('navi-canvas')
+        canvas.width = "412"
+        canvas.height = "480"
+        const ctx = canvas.getContext('2d')
+        return
+      }
+
       const idx = res.data.pointDtoList.length - 1
       setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
 
@@ -130,6 +139,8 @@ export default function Navigation() {
 
         function animate() {
           // console.log(1)
+
+          console.log(wayPoints)
           
           if (t < wayPoints.length - 1) {
             requestAnimationFrame(animate);
@@ -264,11 +275,20 @@ export default function Navigation() {
           }
         }
 
-        animate()
+        console.log('way: ', wayPoints)
+
+        if (wayPoints.length > 1) {
+          animate()
+          return
+        } else {
+          setNoRoute(true)
+          return
+        }
 
       }
 
       draw()
+
     }
 
   }, [pointDtoList])
