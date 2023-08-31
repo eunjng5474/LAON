@@ -35,7 +35,6 @@ import REALPIG_img from './img/food/realPig.jpg'
 import OJIK from './img/facilities/ojik로고.png'
 import OJIK_img from './img/food/5직떡볶이.jpg'
 
-//////
 import female_logo from './img/facility/female-sign.png'
 import male_logo from './img/facility/male-sign.png'
 import disabled_female from './img/facility/disabled-female.png'
@@ -97,7 +96,6 @@ export default function Facilities() {
     const lng = position.coords.longitude
     const alt = position.coords.altitude
     setPosition(lat, lng)
-    // setCurrentPosition('U-13')
     return alt
   }
 
@@ -105,86 +103,60 @@ export default function Facilities() {
     if (currentFloor === '2F') {
       if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('Food Street')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84088727860394 <= lat && lat <= 35.84065138467286 && 128.682132476393 <= lng && lng <= 128.68267484669371) {
         setCurrentPosition('RF-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84065138467286 <= lat && lat <= 35.841235745073256 && 128.68225004602883 <= lng && lng <= 128.68272064701438) {
         setCurrentPosition('RF-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.841235745073256 <= lat && lat <= 35.8417188936227 && 128.68209186069376 <= lng && lng <= 128.68272064701438) {
         setCurrentPosition('RF-10')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.841408326501735 <= lat && lat <= 35.84177084845157 && 128.6818359228813 <= lng && lng <= 128.68209186069376) {
         setCurrentPosition('LF-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84145482233314 <= lat && lat <= 35.84186203939144 && 128.68125028657408 <= lng && lng <= 128.6818359228813) {
         setCurrentPosition('LF-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
         setCurrentPosition('3-1')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '3F') {
       if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('3-9')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539) {
         setCurrentPosition('3-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.841257004439704 <= lat && lat <= 35.84141262165993 && 128.6803969657282 <= lng && lng <= 128.68086784271355) {
         setCurrentPosition('3-5')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84100052759342 <= lat && lat <= 35.841257004439704 && 128.68037218713292 <= lng && lng <= 128.68083103853695) {
         setCurrentPosition('3-2')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.8407297168639 <= lat && lat <= 35.84100052759342 && 128.6802447345874 <= lng && lng <= 128.6809808490198) {
         setCurrentPosition('T3-2')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84040237812547 <= lat && lat <= 35.8407297168639 && 128.6802931653395 <= lng && lng <= 128.68102321286383) {
         setCurrentPosition('TC-2')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.840148084408014 <= lat && lat <= 35.84060048530589 && 128.6804344405443 <= lng && lng <= 128.68094754235815) {
         setCurrentPosition('T1-2')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.840056734027634 <= lat && lat <= 35.840148084408014 && 128.68094754235815 <= lng && lng <= 128.68164989674025) {
         setCurrentPosition('1-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84009687202578 <= lat && lat <= 35.84065138467286 && 128.68164989674025 <= lng && lng <= 128.68232307201419) {
         setCurrentPosition('1-8')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
         setCurrentPosition('3-1')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     } else if (currentFloor === '5F') {
       if (35.84157845414607 <= lat && lat <= 35.84183530928126 && 128.6806084931448 <= lng && lng <= 128.68125028657408) {
         setCurrentPosition('U-29')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.841433997522735 <= lat && lat <= 35.84157845414607 && 128.6804671036832 <= lng && lng <= 128.6811114803539) {
         setCurrentPosition('U-26')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.841257004439704 <= lat && lat <= 35.84141262165993 && 128.6803969657282 <= lng && lng <= 128.68086784271355) {
         setCurrentPosition('U-23')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84100052759342 <= lat && lat <= 35.841257004439704 && 128.68037218713292 <= lng && lng <= 128.68083103853695) {
         setCurrentPosition('U-21')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.8407297168639 <= lat && lat <= 35.84100052759342 && 128.6802447345874 <= lng && lng <= 128.6809808490198) {
         setCurrentPosition('U-16')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.84040237812547 <= lat && lat <= 35.8407297168639 && 128.6802931653395 <= lng && lng <= 128.68102321286383) {
         setCurrentPosition('U-13')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.840148084408014 <= lat && lat <= 35.84060048530589 && 128.6804344405443 <= lng && lng <= 128.68094754235815) {
         setCurrentPosition('U-7')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else if (35.840056734027634 <= lat && lat <= 35.840148084408014 && 128.68094754235815 <= lng && lng <= 128.68164989674025) {
         setCurrentPosition('U-3')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       } else {
         setCurrentPosition('3-1')
-        // document.querySelector('#departure').value = '현위치 : ' + currentPosition + '구역'
       }
     }
   }
@@ -201,10 +173,8 @@ export default function Facilities() {
         setNaviGoal(naviGoal => {
           naviGoal = res.data.facilityName
           goDetail(naviGoal, e.target.src, e.target.id)
-          // goDetail(naviGoal)
           return naviGoal
         })
-        // 길찾기 좌표 지정해주는 함수
       })
   }
 
@@ -268,7 +238,6 @@ export default function Facilities() {
 
   function selectFacilityAr(e) {
     // 편의시설 AR 보내는 함수
-    console.log('AR')
     axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
       .then((res) => {
         const naviGoal = res.data.facilityName
@@ -277,7 +246,6 @@ export default function Facilities() {
   }
 
   function getGPS() {
-    console.log(1)
     navigator.geolocation.getCurrentPosition(getPosition)
   }
 
@@ -316,14 +284,6 @@ export default function Facilities() {
           </div>
 
           <div className='facilities-search-bar'>
-
-            {/* <div className='facilities-category'>
-              <input id="departure" onChange={onChangeDeparture} value={currentPosition ? '현위치 : ' + currentPosition +'구역 ' + currentFloor  : '위치 조회중...'} placeholder='출발지'/>
-            </div>
-
-            <div className='facilities-category'>
-              <input onClick={focusBody} id="destination" onChange={onChangeDestination} value={destination} placeholder='목적지'/>          
-            </div> */}
 
           </div>
 
@@ -653,7 +613,6 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자화장실">| 길찾기</button>
-                  {/* <button className='facility-body-button font' id="여자화장실">로드뷰</button> */}
                 </div>
               </div>
             </div>
@@ -687,7 +646,7 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="여자장애인화장실">| 길찾기</button>
-                  <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">로드뷰</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="여자장애인화장실">AR</button>
                 </div>
               </div>
             </div>
@@ -704,7 +663,7 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="남자장애인화장실">| 길찾기</button>
-                  <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">로드뷰</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="남자장애인화장실">AR</button>
                 </div>
               </div>
             </div>
@@ -721,7 +680,7 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="블루샷">| 길찾기</button>
-                  <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">로드뷰</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="블루샷">AR</button>
                 </div>
               </div>
             </div>
@@ -738,7 +697,7 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="수유실">| 길찾기</button>
-                  <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">로드뷰</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="수유실">AR</button>
                 </div>
               </div>
             </div>
@@ -755,7 +714,7 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="흡연실">| 길찾기</button>
-                  <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">로드뷰</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="흡연실">AR</button>
                 </div>
               </div>
             </div>
@@ -772,7 +731,7 @@ export default function Facilities() {
                 </div>
                 <div className='facility-body'>
                   <button className='facility-body-button font' onClick={selectFacilityNavi} id="쓰레기통">| 길찾기</button>
-                  <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">로드뷰</button>
+                  <button className='facility-body-button font' onClick={selectFacilityAr} id="쓰레기통">AR</button>
                 </div>
               </div>
             </div>

@@ -42,7 +42,6 @@ export default function SectionDetail() {
   }
 
   function selectSeat(event) {
-    console.log(event.target.title)
     const title = event.target.title;
     const titleList = title.split('_');
     if (titleList.length === 2) {
@@ -56,7 +55,6 @@ export default function SectionDetail() {
   }
 
   function getCoordinate(e) {
-    console.log("x:", e.nativeEvent.offsetX, "y:", e.nativeEvent.offsetY)
     const x = e.nativeEvent.offsetX
     const y = e.nativeEvent.offsetY
 
@@ -497,7 +495,6 @@ export default function SectionDetail() {
         return seatUrl
       })
     }
-    // 여기부터 찍어야 함
     else if (176 <= x && x <= 184 && 126 <= y && y <= 133) {
       setSeatUrl(seatUrl => {
         seatUrl = imageUrl + "1-9/2.jpg"

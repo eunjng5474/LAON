@@ -29,9 +29,6 @@
 }
 
 .to-ar-button {
-  /* position: absolute; */
-  /* right: 5vw;
-  bottom: 28vh; */
   font-size: 18px;
   width: 27vw;
   height: 27vw;
@@ -45,8 +42,6 @@
   position: absolute;
   top: 17vh;
   left: 36vw;
-  /* right: 5vw;
-  bottom: 28vh; */
   font-size: 20px;
   width: 27vw;
   height: 6vh;

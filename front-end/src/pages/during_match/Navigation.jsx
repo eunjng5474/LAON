@@ -37,12 +37,9 @@ export default function Navigation() {
 
   const [dest, setDest] = useState(null);
 
-  // const style = { left: "100px", color="#FFDF43", size="80"}
-
   let k = 1;
   const [start, setStart] = useState(true);
   const [end, setEnd] = useState(false);
-  // let flag = true;
   
   const imgElem = new Image();
   imgElem.src = bubble;
@@ -70,7 +67,6 @@ export default function Navigation() {
   useEffect(() => {
     axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
     .then((res) => {
-      console.log(res.data)
       
       if(res.data.pointDtoList.length <= 1){
         setNoRoute(true);
@@ -83,10 +79,6 @@ export default function Navigation() {
 
       const idx = res.data.pointDtoList.length - 1
       setDestFloor(parseInt(res.data.pointDtoList[idx].pointId/100))
-
-      // if(destFloor === currentFloor){
-      //   setTrigger(true)
-      // }
 
       if(currentFloor === '2F'){
         setFloor(map2F)
@@ -142,9 +134,6 @@ export default function Navigation() {
         let t = 1;
 
         function animate() {
-          // console.log(1)
-
-          console.log(wayPoints)
           
           if (t < wayPoints.length - 1) {
             requestAnimationFrame(animate);
@@ -239,8 +228,6 @@ export default function Navigation() {
 
             ctx.translate(wayPoints[t].x, wayPoints[t].y)
             ctx.rotate(radians + ((wayPoints[t].x >= wayPoints[t-1].x)?90:-90)*Math.PI/180)
-
-            console.log(wayPoints[t].x, wayPoints[t].y)
             
             ctx.moveTo(0, 0)
             ctx.lineTo(-10, 10);
@@ -278,8 +265,6 @@ export default function Navigation() {
             wayPoints.push({x: x, y: y});
           }
         }
-
-        console.log('way: ', wayPoints)
 
         if (wayPoints.length > 1) {
           animate()
@@ -319,11 +304,6 @@ export default function Navigation() {
   return (
     <Wrapper>
       <div className='navigation-container font'>
-        {/* <HiChatBubbleBottomCenter.Provider value={{color: "#FFDF43", size: "70", className: "bubble", style: {left: '100px'}}}> */}
-          {/* <div> */}
-            {/* <HiChatBubbleBottomCenter color="#FFDF43" size="70" className="bubble" style={{left: '100px'}}/> */}
-          {/* </div> */}
-        {/* </HiChatBubbleBottomCenter.Provider> */}
         <div className='navigation-header font'>
           <div className='go-back-container'>
             <BiArrowBack size={36} onClick={goBack}/>

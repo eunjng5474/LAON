@@ -45,7 +45,6 @@ export default function FacilityDetail() {
   let tag3 = null
   let tag4 = null
 
-  // 가게들 다른 층에도 있는 경우 있어서 태그4 수정해야 하지 않을까?!
   if(storeName === 'KELLY'){
     mainImg = kelly_img
     tag1 = "#맥주"
@@ -157,7 +156,6 @@ export default function FacilityDetail() {
     if (menuArray) {
       for (let i = 0; i < menuArray.length; i++) {
         const newPrice = menuArray[i].price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-        console.log(newPrice)
         result.push(
           <div className='menu-item'>
             <span className='menu-item-name'>{menuArray[i].itemName}</span>
