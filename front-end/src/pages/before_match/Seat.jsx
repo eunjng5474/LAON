@@ -18,12 +18,10 @@ export default function Seat() {
   const [showSeatName, setShowSeatName] = useState(null); // 보여줄 이름(블루존)
   const [sectionSelect, setSectionSelect] = useState() // sectionDetail에서 보여줄 사진 이름
 
-  // const [onClick, setOnClick] = useState(false);
   const [seatWeekdayPrice, setSeatWeekdayPrice] = useState(null);
   const [seatWeekendPrice, setSeatWeekendPrice] = useState(null);
 
   const awayTeam = useSelector(state => state.awayTeamName)
-  console.log(awayTeam)
 
   const navigate = useNavigate();
 
@@ -165,15 +163,11 @@ export default function Seat() {
   }
 
   function selectSection(event) {
-    // console.log(event.target.title)
-    // 좌표 수정하기
-    // setSelectSeat("3_4_1");
     const title = event.target.title
     setShowSeatName(title);
     for (let index = 0; index < seatData.length; index++) {
       if (title === seatData[index].title) {
         const seats = seatData[index];
-        console.log(seats.title);
         const seatsSeat = seats.seat
         const sectionSelect = seats.seatSelect
 

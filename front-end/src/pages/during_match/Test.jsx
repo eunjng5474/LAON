@@ -56,7 +56,6 @@ export default function Test() {
 
   if (inningData === "BEFORE"){
     inning = "경기 예정" // 이닝
-    // liveText = `${gameDate.substr(4, 2)}월 ${gameDate.substr(6, 2)}일 경기 예정입니다`
   } else if (inningData === 'END') { 
     inning = "경기 종료"
     liveText = "경기가 종료되었습니다"
@@ -105,8 +104,6 @@ export default function Test() {
 
 
   useEffect(() => {
-    // axios.get(`https://laon.info/test/reset`)
-
     const strikeCanvas = stZoneRef.current;
     strikeCanvas.width = 110;
     strikeCanvas.height = 130;
@@ -182,18 +179,10 @@ export default function Test() {
       })
     }
 
-
-
-    // if (gameStatus === 'PLAY'){
       getStrikeZone()
       if ( !liveText.includes('홈런')) {
         const getStzone = setInterval(getStrikeZone, 3000)
       }
-
-      // return () => {
-      //   clearInterval(getStzone);
-      // }
-    // } 
 
     const strikeRectCanvas = stZoneRectRef.current;
     strikeRectCanvas.width = 110;
@@ -218,52 +207,8 @@ export default function Test() {
     }
 
     drawZone();
-    // drawBall();
      
   },[])
-
-  // useEffect(() => {
-    // const strikeCanvas = stZoneRef.current;
-    // strikeCanvas.width = 110;
-    // strikeCanvas.height = 130;
-    // const stZoneBallCtx = strikeCanvas.getContext("2d");
-
-  //   function drawBall() {
-
-  //     console.log(ballStuff, ballSpeed, px, pz)
-
-
-  //     // 타자 바뀌면 ballPositions 초기화하기!!!!!!!!!!!!
-  //     if(ballNum === 1){
-  //       setBallPositions([]);
-  //     }
-
-  //     // 이전 공들 녹색으로 그리기
-  //     ballPositions.forEach((position) => {
-  //       stZoneBallCtx.beginPath();
-  //       stZoneBallCtx.moveTo(55-position.px*10, 65+position.pz*10);
-  //       stZoneBallCtx.arc(55-position.px*10, 65+position.pz*10, 8, 0, 2 * Math.PI);
-  //       stZoneBallCtx.stroke();
-  //       stZoneBallCtx.fillStyle = '#7DB249';
-  //       stZoneBallCtx.fill();
-  //     })
-
-  //     console.log(ballPositions)
-
-  //     stZoneBallCtx.beginPath();
-  //     stZoneBallCtx.moveTo(55 -px*10, 65+pz*10);
-  //     stZoneBallCtx.arc(55 -px*10, 65+pz*10, 8, 0, 2 * Math.PI);
-  //     stZoneBallCtx.stroke();
-  //     stZoneBallCtx.fillStyle = 'red';
-  //     stZoneBallCtx.fill();
-  // }
-  // if(gameStatus === 'PLAY'){
-    
-  // drawBall();
-  // }
-
-  // }, [t, px, pz])
-
 
 
   return (
@@ -336,7 +281,6 @@ export default function Test() {
 
           </div>
           <div className='strike-zone-container'>
-            {/* <span>스트라이크 존</span> */}
             <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
             <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
           </div>

@@ -3,7 +3,6 @@
 }
 
 .section-detail-header {
-  /* padding: 1rem; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,7 +62,6 @@
   display: flex;
   position: relative;
   padding: 1vh 3vw;
-  /* border: 1px solid red; */
   border-radius: 140px 140px 0px 0px;
   background-color: rgb(241, 241, 241);
   overflow: hidden;

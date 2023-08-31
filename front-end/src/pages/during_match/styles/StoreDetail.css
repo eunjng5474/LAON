@@ -1,5 +1,4 @@
 .store-detail-container {
-  /* display: none; */
   display: flex;
   justify-content: space-around;
 }

@@ -119,8 +119,6 @@ export default function Match() {
 
 
     function drawBall(px, pz) {
-      console.log(ballStuff, ballSpeed, px, pz)
-
       stZoneBallCtx.beginPath();
       stZoneBallCtx.moveTo(55 -px*20, 150-pz*10);
       stZoneBallCtx.arc(55 -px*20, 150-pz*10, 8, 0, 2 * Math.PI);
@@ -133,13 +131,11 @@ export default function Match() {
     function getStrikeZone(e) {
       axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
       .then((res) => {
-        console.log(res.data)
         if(res.data){
           setPrevPx(px)
           setPrevPz(pz)
 
           if (res.data.ballcount == 1 || liveText.includes('번타자')) {
-            console.log(res.data.ballcount)
             stZoneBallCtx.clearRect(0, 0, strikeCanvas.width, strikeCanvas.height)
           }
   
@@ -173,7 +169,6 @@ export default function Match() {
     strikeRectCanvas.width = 110;
     strikeRectCanvas.height = 130;
     const stZoneRectCtx = strikeRectCanvas.getContext("2d");
-    // console.log(px, pz);
 
     function drawZone() {
       stZoneRectCtx.beginPath();
@@ -271,7 +266,6 @@ export default function Match() {
 
             </div>
             <div className='strike-zone-container'>
-              {/* <span>스트라이크 존</span> */}
               <canvas className='strikezone-canvas' ref={stZoneRef}></canvas>
               <canvas className='strikezone-rect-canvas' ref={stZoneRectRef}></canvas>
             </div>

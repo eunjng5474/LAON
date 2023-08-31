@@ -36,7 +36,6 @@
   align-items: center;
   width: 100%;
   height: 544px;
-  /* border: solid 1px blue; */
 }
 
 .seat-away-logo {
@@ -46,7 +45,6 @@
   align-items: center;
   width: 100%;
   height: 544px;
-  /* border: solid 1px blue; */
 }
 
 .seat-img {
@@ -96,7 +94,6 @@
   position: absolute;
   top:0;
   left:0;
-  /* border: 1px solid; */
   margin-top: 5rem;
 }
 
@@ -106,8 +103,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
-  background-image: url('../img/team_bg/seat-bg-l.png');
-  /* background-image: url('../img/team_bg/lions.png'); */
+  background-image: url('../img/team_bg/lions.png');
   background-color: #074CA1;
   padding-top: 8vh;
 }
@@ -128,12 +124,12 @@
 }
 
 .KIA {
-  background-image: url('../img/team_bg/seat-bg-r.png');
+  background-image: url('../img/team_bg/tigers.png');
   background-color: #06141F;
 }
 
 .KT {
-  background-image: url('../img/team_bg/kt_wiz_bg.png');
+  background-image: url('../img/team_bg/wiz.png');
   background-color: #000000;
 }
 
@@ -210,7 +206,6 @@
 .seat-body-header { 
   display: flex;
   justify-content: flex-start;
-  /* border: solid 1px red; */
   width: 80%;
   margin: 10px;
 }
@@ -224,7 +219,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* border: solid 1px blue; */
   width: 100%;
   height: 6vh;
   margin-bottom: 1vh;

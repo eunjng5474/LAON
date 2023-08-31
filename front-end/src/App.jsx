@@ -35,8 +35,8 @@ function getData() {
         loop: for (let date in res.data.schedule) {
           let month = date.substring(4, 6);
           let day = date.substring(6);
-
-          if (month >= todayMonth && day >= todayDay) {
+          
+          if ((month >= todayMonth && day >= todayDay) || month > todayMonth) {
             for (let game in res.data.schedule[date]) {
               if (res.data.schedule[date][game].fieldName === '대구 삼성 라이온즈 파크') {
                 const gameId = res.data.schedule[date][game].gameId
@@ -79,9 +79,9 @@ function getData() {
                 target = date;
                 number = game;
 
+
                 axios.get(`https://sports.daum.net/prx/hermes/api/game/get.json?gameId=${gameId}&detail=liveData`)
                 .then((res) => {
-                  // console.log(res.data)
                   const gameDate = res.data.startDate
                   function setDate(gameDate){
                     return {
