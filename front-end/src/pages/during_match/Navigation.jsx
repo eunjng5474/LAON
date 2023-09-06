@@ -53,7 +53,7 @@ export default function Navigation() {
   }
 
   function goAR() {
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
+    axios.get(`http://localhost:8080/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
     .then((res) => {
       const naviGoal = res.data.facilityName
       window.location.href = `/ar/${naviGoal}.html`
@@ -65,7 +65,7 @@ export default function Navigation() {
   }
 
   useEffect(() => {
-    axios.get(`https://laon.info/api/lions/route/${departure}/${destination}`)
+    axios.get(`http://localhost:8080/api/lions/route/${departure}/${destination}`)
     .then((res) => {
       
       if(res.data.pointDtoList.length <= 1){

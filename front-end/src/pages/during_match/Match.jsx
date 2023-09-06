@@ -129,7 +129,7 @@ export default function Match() {
 
 
     function getStrikeZone(e) {
-      axios.get(`https://laon.info/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
+      axios.get(`http://localhost:8080/api/lions/strike_zone/${gameDate}/${awayTeamName}/${inning[0]}`)
       .then((res) => {
         if(res.data){
           setPrevPx(px)

@@ -170,7 +170,7 @@ export default function FacilityDetail() {
   useEffect(() => {
     const facilityId = location.state.facilityId
 
-    axios.get(`https://laon.info/api/lions/facility/detail/${facilityId}`)
+    axios.get(`http://localhost:8080/api/lions/facility/detail/${facilityId}`)
     .then((res) => {
       setFacility(facility => {
         facility = res.data

@@ -167,7 +167,7 @@ export default function Facilities() {
 
   function selectStore(e) {
     setDestination(e.target.id)
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
+    axios.get(`http://localhost:8080/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
       .then((res) => {
         // AR 변수 지정해주는 함수
         setNaviGoal(naviGoal => {
@@ -180,7 +180,7 @@ export default function Facilities() {
 
   function goDetail(naviGoal, facilityImg) {
 
-    axios.get('https://laon.info/api/lions/facility/all')
+    axios.get('http://localhost:8080/api/lions/facility/all')
       .then((res) => {
         const facilityId = res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
 
@@ -201,11 +201,11 @@ export default function Facilities() {
     const destination = e.target.id
     const departure = currentPosition
 
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
+    axios.get(`http://localhost:8080/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${destination}`)
       .then((res) => {
         const naviGoal = res.data.facilityName // KELLLY(1-7)
 
-        axios.get('https://laon.info/api/lions/facility/all')
+        axios.get('http://localhost:8080/api/lions/facility/all')
           .then((res) => {
             const facilityId = res.data.facilityList.find(e => e.facilityName === naviGoal).facilityId
 
@@ -238,7 +238,7 @@ export default function Facilities() {
 
   function selectFacilityAr(e) {
     // 편의시설 AR 보내는 함수
-    axios.get(`https://laon.info/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
+    axios.get(`http://localhost:8080/api/lions/route/${currentPosition ? currentPosition : "U-21"}/${e.target.id}`)
       .then((res) => {
         const naviGoal = res.data.facilityName
         window.location.href = `/ar/${naviGoal}.html`

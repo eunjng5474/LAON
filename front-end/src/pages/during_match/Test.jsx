@@ -134,7 +134,7 @@ export default function Test() {
 
 
     function getStrikeZone() {
-      axios.get(`https://laon.info/test`)
+      axios.get(`http://localhost:8080/test`)
       .then((res) => {
         console.log(res.data)
   
