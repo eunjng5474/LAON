@@ -126,4 +126,4 @@
 
 <hr>
 
-[⚙️ PrtingManual](https://lab.ssafy.com/s09-webmobile2-sub2/S09P12E207/-/blob/master/exec/Porting_Manual.pdf)
+[⚙️ PrtingManual](https://github.com/eunjng5474/Laon/blob/master/exec/Porting_Manual.pdf)
