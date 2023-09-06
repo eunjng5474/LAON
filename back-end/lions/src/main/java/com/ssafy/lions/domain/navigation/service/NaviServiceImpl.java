@@ -110,6 +110,7 @@ public class NaviServiceImpl implements NaviService{
                 destinationDto.setFacilityId(facilityCloseGateDto.getFacilityId());
                 destinationDto.setCloseGateId(facilityCloseGateDto.getCloseGateId());
                 destinationDto.setFacilityName(facilityCloseGateDto.getFacilityName());
+                realDestinationList.add(destinationDto);
             }
         }
 
