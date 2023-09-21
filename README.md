@@ -1,6 +1,6 @@
 <br>
 
-<img title="" src="README/landing.jpg" alt="lalnding.jpg" width="659">
+<img title="" src="README/landing.jpg" alt="lalnding.jpg" width="600">
 
 #### 삼성 라이온즈 파크 서비스
 
@@ -10,8 +10,6 @@
 
 ## 🗒️ 목차
 
-<hr>
-
 1. [👨‍👩‍👧‍👦 팀원 소개](#👩‍👩‍👧‍👦-팀원-소개)
 2. [📝 프로젝트 개요](#📝-프로젝트-개요)
 3. [💡 주요 기능](#💡-주요-기능)
@@ -20,8 +18,6 @@
 <br>
 
 ## 👩‍👩‍👧‍👦 팀원 소개
-
-<hr>
 
 #### 🧑‍💻 <strong>이상훈</strong> - 팀장, BE
 
@@ -39,8 +35,6 @@
 
 ## 📝 프로젝트 개요
 
-<hr>
-
 - <strong>진행 기간</strong>: 2023.07.10 ~ 2023.08.18
 
 - <strong>목표</strong>
@@ -52,8 +46,6 @@
     <br>
 
 ## ✍️ 프로젝트 소개
-
-<hr>
 
 “<strong>라온</strong>”은 삼성 라이온즈 파크에 방문하는 직관러들을 위한 서비스 제공 어플리케이션/웹 서비스 입니다.
 
@@ -75,8 +67,6 @@
 <br>
 
 ## 💡 주요 기능
-
-<hr>
 
 ### 랜딩/메인페이지
 
@@ -122,25 +112,22 @@
 
 - 최적의 경로를 알려주는 네비게이션과 AR을 통해 식음시설과 편의시설까지의 길안내를 제공합니다.
 
+<br>
 
 
 ## :chart_with_upwards_trend: ERD
 
-<hr>
+<img title="" src="README/ERD.png" alt="lalnding.jpg" width="659">
+<br>
 
-![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-09-21-09-19-43-라온%20erd.png)
-
-## 
 
 ## :open_file_folder: 시스템 아키텍처
 
-<hr>
+<img title="" src="README/시스템아키텍처.png" alt="lalnding.jpg" width="659">
+<br>
 
-![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-09-21-09-20-03-Frame%201.png)
 
 ## :wrench: 기술 스택
-
-<hr>
 
 ### Front-end
 
@@ -154,10 +141,9 @@
 
 `JIRA` `GitLab` `Notion` `MatterMost`
 
+<br>
 
 
 ## ⚙️ PrtingManual
-
-<hr>
 
 [⚙️ PrtingManual](https://github.com/eunjng5474/Laon/blob/master/exec/Porting_Manual.pdf)
