@@ -105,8 +105,10 @@
     <img title="" src="README/live.jpg" alt="index.jpg" width="615">
 
 - 경기전의 경우, 삼성 라이온즈 파크 경기가 있는 날의 경기 정보를 알려드립니다.
+
 - 경기중일 경우, 어웨이팀, 이닝, 점수, 문자중계, 볼카운트, 출루정보 그리고 스트라이크 존을 제공합니다.
-<br/>
+  
+  <br/>
 
 > 시설안내
 
@@ -120,7 +122,39 @@
 
 - 최적의 경로를 알려주는 네비게이션과 AR을 통해 식음시설과 편의시설까지의 길안내를 제공합니다.
 
-<br>
+
+
+## :chart_with_upwards_trend: ERD
+
+<hr>
+
+![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-09-21-09-19-43-라온%20erd.png)
+
+## 
+
+## :open_file_folder: 시스템 아키텍처
+
+<hr>
+
+![](C:\Users\SSAFY\AppData\Roaming\marktext\images\2023-09-21-09-20-03-Frame%201.png)
+
+## :wrench: 기술 스택
+
+<hr>
+
+### Front-end
+
+`React` `JavaScript` `Redux` `AR.js` `HTML5` `CSS`
+
+### Back-end
+
+`JAVA` `Spring Boot` `JPA` `MySQL`
+
+### 협업 Tool
+
+`JIRA` `GitLab` `Notion` `MatterMost`
+
+
 
 ## ⚙️ PrtingManual
 
