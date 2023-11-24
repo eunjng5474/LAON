@@ -44,7 +44,7 @@
 
 ### 랜딩/메인페이지
 
-<img src="README/index.jpg" title="" alt="index.jpg" width="198">
+<img src="README/index.jpg" title="" alt="index.jpg" width="150">
 - 입장하기 버튼을 통해 앱을 시작합니다.
 - 경기중일때 경기중계화면으로, 경기중이 아닐때는 좌석 안내페이지로 이동합니다.
 
@@ -121,11 +121,11 @@
 <br>
 
 ### 협업
-<img title="" src="README/데일리스크럼.png" alt="데일리 스크럼" width="300">
+<img title="" src="README/데일리스크럼.png" alt="데일리 스크럼" width="400">
 - 데일리 스크럼 회의를 통해 진행 상황을 공유하였습니다.
-<img title="" src="README/스프린트회고.png" alt="스프린트 회고" width="300">
+<img title="" src="README/스프린트회고.png" alt="스프린트 회고" width="500">
 - JIRA를 활용하여 일정을 관리하고, 매주 스프린트 회고를 통해 주차별 현황을 파악할 수 있었습니다.
-<img title="" src="README/노션.png" alt="노션" width="659">
+<img title="" src="README/노션.png" alt="노션" width="700">
 - Notion을 통해 정보 및 공통ㆍ개인 일정을 공유하였습니다.
 
 <br>
